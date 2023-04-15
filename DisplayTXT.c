@@ -21,10 +21,11 @@ void displayTxt(int size, char* txt){
 
 void WaitPress(){
 	char e;
-	printf("\n~~ Appuyez sur entree pour continuer ~~\n");
+	printf("\n\n~~ Appuyez sur entree pour continuer ~~ ");
 	while (e != '\n' && e  != '\r') {  
 		e = getchar();
 	}
+	system("clear");
 }
 
 #endif

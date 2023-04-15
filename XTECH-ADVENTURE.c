@@ -100,22 +100,19 @@ int main(){
     }
     WaitPress();
     fclose(fp1);
-    system("clear");
 //CREATE STUDENTS
     char* txt1 = "Avant de commencer a jouer, vous allez saisir votre personnage principal\n\n";
     int size2 = strlen(txt1);
-    displayTxt(size2, txt1);//Affichage de Txt1   
-
+    displayTxt(size2, txt1);//Affichage de Txt1
     Student mainCharacter = createStudent();
     system("clear");
     displayStd(mainCharacter);
-    WaitPress();
-    system("clear");
+	WaitPress();
 
     char* txt2 = "Commençons...\n";
+	sleep(1);
     int size3 = strlen(txt2);
     displayTxt(size3, txt2);
-    sleep(2);
     system("clear");
     
 //GAME PART    
@@ -124,10 +121,7 @@ int main(){
         displayTxt(size4, weekend);   
     }  
     fclose(fp2);
-    sleep(5);
-    system("clear"); 
-
-    printf("Saisir 1 ou 2 : ");
+    printf("\nSaisir 1 ou 2 : ");
     scanf("%d", &nbr1);
     //ROBUST
 
