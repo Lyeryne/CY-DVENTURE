@@ -105,12 +105,11 @@ int main(){
     int size2 = strlen(txt1);
     displayTxt(size2, txt1);//Affichage de Txt1
     Student mainCharacter = createStudent();
-    system("clear");
     displayStd(mainCharacter);
-	WaitPress();
+    sleep(2);
 
     char* txt2 = "Commençons...\n";
-	sleep(1);
+    sleep(1);
     int size3 = strlen(txt2);
     displayTxt(size3, txt2);
     system("clear");

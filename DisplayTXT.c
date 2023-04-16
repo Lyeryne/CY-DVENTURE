@@ -10,7 +10,7 @@
 
 
 void displayTxt(int size, char* txt){ 
-	int delay1 = 0; 
+	int delay1 = 35; 
 	for(int i=0; i<size; i++){
 		printf("%c", txt[i]);
 		fflush(stdout);
