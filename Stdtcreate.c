@@ -86,7 +86,7 @@ void displayStd(Student a){
     printf("[%s %s]\n", a.name, a.sname);
     printf("Reputation : %d\n", a.fame);
     printf("Intelligence : %d\n", a.intellect);
-    printf("Force : %d\n", a.power);
+    printf("Force : %d", a.power);
 }
 /*void displayStdF(Std b){
     int delay = 20;

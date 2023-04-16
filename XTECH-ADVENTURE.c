@@ -121,107 +121,99 @@ int main(){
         displayTxt(size4, weekend);   
     }  
     fclose(fp2);
-    printf("\nSaisir 1 ou 2 : ");
+    printf("Choix : "); 
     scanf("%d", &nbr1);
-    //ROBUST
 
-    while(verif == 1){
+    //ROBUST
     system("clear");
     switch (nbr1){
     	case 1 :
-            verif = 0;
     		while(fgets(we1, SIZE, fp3) != NULL){
         	    int size5 = strlen(we1);
         	    displayTxt(size5, we1);   
-            }
-        WaitPress();
-        fclose(fp3);
-        sleep(2);
-        system("clear");
+	        }
+	        fclose(fp3);
+	        sleep(2);
+			system("clear");
+
+			while(fgets(rentree, SIZE, fp5) != NULL){
+	        	int size7 = strlen(rentree);
+	        	displayTxt(size7, rentree);
+	        }
+	        fclose(fp5);
+	        sleep(10);
+	        printf("\n\n");
+
+
+	        printf("Choix : ");
+	        scanf("%d", &nbr2);
+	        system("clear");
+	        //ROBUST
+	        while(nbr2 < 1 || nbr2 > 3){
+	    	    printf("Mauvaise Saisie !\n\n");
+	    	    printf("Choix : ");
+	    	    scanf("%d", &nbr2);
+	        }
+			sleep(2);
+	        system("clear");
+	        switch (nbr2){
+	    	    case 1 :
+	                while(fgets(rentree1, SIZE, fp6) != NULL){
+	        	        int size8 = strlen(rentree1);
+	        	        displayTxt(size8, rentree1);
+	                    /*sscanf(rentree3, "%s", main.name);
+	                    fseek(fp8, 19, SEEK_CUR);//déplacement de 19 en partant du début
+	                    fprintf(fp8, "%s ", main.name);*/
+	                }
+		            fclose(fp6);
+		            sleep(2);
+					system("clear");
+		            break;
+	            case 2 :
+                	while(fgets(rentree2, SIZE, fp7) != NULL){
+        	    	    int size9 = strlen(rentree2);
+        	    	    displayTxt(size9, rentree2);
+                	    /*sscanf(rentree3, "%s", main.name);
+                	    fseek(fp8, 19, SEEK_CUR);//déplacement de 19 en partant du début
+                	    fprintf(fp8, "%s ", main.name);*/
+                	}            
+            		fclose(fp7);
+            	sleep(2);
+				system("clear");
+       	     	break;
+        	    case 3 :
+        	        while(fgets(rentree3, SIZE, fp8) != NULL){
+        		        int size10 = strlen(rentree3);
+        		        displayTxt(size10, rentree3);	
+        	            /*sscanf(rentree3, "%s", main.name);
+            	        fseek(fp8, 19, SEEK_CUR);//déplacement de 19 en partant du début
+                	    fprintf(fp8, "%s ", main.name);*/
+                	}
+            		fclose(fp8);
+            		sleep(2);
+					system("clear");
+            		break;
+        	}
+		system("clear");
         break; 
 
         case 2 :
-            verif = 0;
         	while(fgets(we2, SIZE, fp4) != NULL){
-        	int size6 = strlen(we2);
-        	displayTxt(size6, we2);
+        		int size6 = strlen(we2);
+        		displayTxt(size6, we2);
             }
-        WaitPress();
-        fclose(fp4);
-        sleep(2);
-        system("clear");
-        break;
+        	fclose(fp4);
+        	sleep(2);
+			system("clear");
+        	break;
 
         default:
-        printf("Mauvaise saisie\n");
-        printf("Saisis un nombre entre 1 et 2 : ");
-        scanf("%d", &nbr1);
-        break;
+        	printf("Mauvaise saisie\n");
+        	printf("Choix : ");
+        	scanf("%d", &nbr1);
+        	break;
     }
-}
-    if(nbr1 == 1){
-        while(fgets(rentree, SIZE, fp5) != NULL){
-        	int size7 = strlen(rentree);
-        	displayTxt(size7, rentree);
-        }
-        WaitPress();
-        fclose(fp5);
-        sleep(10);
-        printf("\n\n");
-        system("clear");
-        printf("Saisir 1 ou 2 ou 3 : ");
-        scanf("%d", &nbr2);
-        system("clear");
-        //ROBUST
-        while((nbr2 < 1 || nbr2 > 3) || (is_number(nbr2) == 0)){
-    	    printf("Mauvaise Saisie !\n\n");
-    	    printf("Saisir à nouveau 1 ou 2 ou 3 : ");
-    	    scanf("%d", &nbr2);
-        }
-        system("clear");
-        switch (nbr2){
-    	    case 1 :
-                while(fgets(rentree1, SIZE, fp6) != NULL){
-        	        int size8 = strlen(rentree1);
-        	        displayTxt(size8, rentree1);
-                    /*sscanf(rentree3, "%s", main.name);
-                    fseek(fp8, 19, SEEK_CUR);//déplacement de 19 en partant du début
-                    fprintf(fp8, "%s ", main.name);*/
-                }
-            WaitPress();
-            fclose(fp6);
-            sleep(10);
-            system("clear");
-            break;
-            case 2 :
-                while(fgets(rentree2, SIZE, fp7) != NULL){
-        	        int size9 = strlen(rentree2);
-        	        displayTxt(size9, rentree2);
-                    /*sscanf(rentree3, "%s", main.name);
-                    fseek(fp8, 19, SEEK_CUR);//déplacement de 19 en partant du début
-                    fprintf(fp8, "%s ", main.name);*/
-                }
-            WaitPress();
-            fclose(fp7);
-            sleep(10);
-            system("clear");
-            break;
-            case 3 :
-                while(fgets(rentree3, SIZE, fp8) != NULL){
-        	        int size10 = strlen(rentree3);
-        	        displayTxt(size10, rentree3);
 
-                    /*sscanf(rentree3, "%s", main.name);
-                    fseek(fp8, 19, SEEK_CUR);//déplacement de 19 en partant du début
-                    fprintf(fp8, "%s ", main.name);*/
-                }
-            WaitPress();
-            fclose(fp8);
-            sleep(10);
-            system("clear");
-            break;
-        }
-    }	    
 return 0;
 }
 
