@@ -112,6 +112,7 @@ int main(){
     sleep(1);
     int size3 = strlen(txt2);
     displayTxt(size3, txt2);
+    sleep(2)
     system("clear");
     
 //GAME PART    
@@ -122,6 +123,12 @@ int main(){
     fclose(fp2);
     printf("Choix : "); 
     scanf("%d", &nbr1);
+	//ROBUST
+	while(nbr1 < 1 || nbr1 > 2){
+   	    printf("Mauvaise Saisie !\n\n");
+   	    printf("Choix : ");
+    	    scanf("%d", &nbr2);
+        }
 
     //ROBUST
     system("clear");
