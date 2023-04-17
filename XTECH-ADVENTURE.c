@@ -80,12 +80,13 @@ int main(){
     system("clear");
     printf("Webtoon MI5\n");
     sleep(2);
-    char* txt = "Produit par\n-> Louaye SAGHIR\n-> Clement PRIMOLI\n-> Roman BOULLIER\n\n";
+    char* txt = "Produit par\n-> Louaye SAGHIR\n-> Clement PREMOLI\n-> Roman BOULLIER\n\n";
     int size = strlen(txt);
+    //affiche le texte lettre par lettre avec la fonction displayTXT
     displayTxt(size, txt);  
     sleep(1);
     system("clear");
-    //affichage de %tage en temps réelle
+    //affichage de pourcentage en temps réelle
     for(pourcentage = 0; pourcentage <= 100; pourcentage+=4) {
         printf("LANCEMENT DU JEU... %d%%\r", pourcentage); // \r permet de revenir en début de ligne
         fflush(stdout); // force l'affichage immédiat du texte
@@ -94,12 +95,17 @@ int main(){
     printf("Chargement fini !\n");
     sleep(1);
     system("clear");
+    //affiche le message d'introduction/explication du jeu
     while(fgets(intro, SIZE, fp1) != NULL){ 
         int size1 = strlen(intro);
         displayTxt(size1, intro);
     }
-    WaitPress();
+    //libère la mémoire tampon en fermant le fichier
     fclose(fp1);
+    //attend que l'utilisateur continue
+    WaitPress();
+
+
 //CREATE STUDENTS
     char* txt1 = "Avant de commencer a jouer, vous allez saisir votre personnage principal\n\n";
     int size2 = strlen(txt1);
@@ -114,6 +120,7 @@ int main(){
     displayTxt(size3, txt2);
     sleep(2);
     system("clear");
+    
 //GAME PART    
     while(fgets(weekend, SIZE, fp2) != NULL){
         int size4 = strlen(weekend);

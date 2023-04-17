@@ -29,10 +29,9 @@ Student createStudent(){
     printf("Saisir le nom de l'eleve :");
     scanf("%s", x.name);
     num1 = strlen(x.name);
-    while(num1>=SIZE_NAMES || (is_char(x.name)==0)){//ROBUST
-        printf("Mauvaise saisie ou saisie trop longue !\n");
-        sleep(1);
-        system("clear");
+    //vérifie que la nom saisi est assez court et est une string
+    while(num1>=SIZE_NAMES || (is_char(x.name)==0)){
+        printf("\nMauvaise saisie ou saisie trop longue !\n");
         printf("Saisir a nouveau le nom de l'eleve :");
         scanf("%s", x.name);
         num1 = strlen(x.name);
@@ -53,9 +52,7 @@ Student createStudent(){
     scanf("%s", x.sname);
     num2 = strlen(x.sname);
     while(num2>SIZE_NAMES || is_char(x.sname) == 0){//ROBUST
-        printf("Mauvaise saisie ou saisie trop longue !\n");
-        sleep(1);
-        system("clear");
+        printf("\nMauvaise saisie ou saisie trop longue !\n");
         printf("Saisir à nouveau le nom de famille l'eleve :");
         scanf("%s", x.sname);
         num2 = strlen(x.sname);

@@ -1,3 +1,7 @@
+#ifndef EVENT2RENTREE_H
+#define EVENTRENTREE_H
+
+
 #include<ctype.h>
 #include<stdio.h>
 #include<time.h>
@@ -22,3 +26,8 @@ while(fgets(rentree, SIZE, fp5) != NULL){
 	        	int size7 = strlen(rentree);
 	        	displayTxt(size7, rentree);
 	        }
+
+
+
+
+#endif
