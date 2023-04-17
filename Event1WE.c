@@ -38,7 +38,8 @@ void Event1(){
     //on ferme le fichier pour libérer la mémoire tampon
     fclose(fp2);
     printf("Veux-tu y aller ?\n Oui(1) ou Non(2)");
-    switch(choice(2)){
+    int c = choice(2);
+    switch(c){
         case 1:
             //Choix d'aller au weekend d'inté accepté
     		while(fgets(we1, SIZE, fp3) != NULL){

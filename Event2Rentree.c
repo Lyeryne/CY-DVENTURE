@@ -10,6 +10,7 @@
 #include<errno.h>
 #include<unistd.h>
 #include"DisplayTXT.c" // fonction affichant caractère par caractère
+#define SIZE 100000
 
 
 
@@ -25,8 +26,10 @@ void Event2(){
 	    int size7 = strlen(rentree);
 	    displayTxt(size7, rentree);
 	}
-    switch(Choice(3)){
-        clear();
+    fclose(fp5);
+    system("clear");
+    int c = choice(3);
+    switch(c){
         case 1:
             FILE* fp6 = fopen("txt/Rentrée1.txt", "r");
             char rentree1[SIZE];
