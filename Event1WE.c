@@ -8,6 +8,7 @@
 #include<stdlib.h>
 #include<errno.h>
 #include<unistd.h>
+#define SIZE 100000
 
 void Event1(){
     FILE* fp2 = fopen("txt/WE.txt", "r"); //intro du WE
@@ -62,7 +63,7 @@ void Event1(){
             //ferme le fichier pour libérer la mémoire tampon
             fclose(fp4);
             //attend une rep de l'utilisateur pour continuer
-            Waitpress();
+            WaitPress();
 
             // afficher message de fin d'event de weekend d'intégration :
             //Envoie vers le prochain Event

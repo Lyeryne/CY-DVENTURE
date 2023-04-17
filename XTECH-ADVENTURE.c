@@ -25,7 +25,6 @@ int main(){
         printf("Erreur on fopen\n");
         exit(1);
     }
-
 //GAME
     system("clear");
     printf("Webtoon MI5\n");
@@ -40,7 +39,7 @@ int main(){
     for(pourcentage = 0; pourcentage <= 100; pourcentage+=4) {
         printf("LANCEMENT DU JEU... %d%%\r", pourcentage); // \r permet de revenir en début de ligne
         fflush(stdout); // force l'affichage immédiat du texte
-        usleep(100000); // suspend l'exécution du programme pendant 100000 microsecondes (0,1 seconde)
+        nanosleep(100000); // suspend l'exécution du programme pendant 100000 microsecondes (0,1 seconde)
     }
     printf("Chargement fini !\n");
     sleep(1);
