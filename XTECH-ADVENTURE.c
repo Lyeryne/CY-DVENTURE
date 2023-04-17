@@ -71,7 +71,7 @@ int main(){
     sleep(2);
     system("clear");  
 
-Event1()
+    Event1();
 return 0;
 }
 
