@@ -112,9 +112,9 @@ int main(){
     sleep(1);
     int size3 = strlen(txt2);
     displayTxt(size3, txt2);
-    sleep(2)
+    sleep(2);
     system("clear");
-    
+//CLEMENT
 //GAME PART    
     while(fgets(weekend, SIZE, fp2) != NULL){
         int size4 = strlen(weekend);
