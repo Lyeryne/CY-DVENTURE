@@ -9,14 +9,34 @@
 #include<errno.h>
 #include<unistd.h>
 
-int Event1(int choix1){
+void Event1(){
+    FILE* fp2 = fopen("txt/WE.txt", "r"); //intro du WE
+    char weekend[SIZE];
+    if(fp2 == NULL){
+        printf("Erreur on fopen\n");
+        exit(1);
+    }
+    FILE* fp3 = fopen("txt/we1.txt", "r"); //choix 1 du WE
+    char we1[SIZE];
+    if(fp3 == NULL){
+        printf("Erreur on fopen\n");
+        exit(1);
+    }
+    FILE* fp4 = fopen("txt/we2.txt", "r"); //choix 2 du WE
+    char we2[SIZE];
+    if(fp4 == NULL){
+        printf("Erreur on fopen\n");
+        exit(1);
+    }
+    
+    
     //affiche le premier choix entre aller au WE ou pas
     while(fgets(weekend, SIZE, fp2) != NULL){
         int size4 = strlen(weekend);
         displayTxt(size4, weekend);   
     }  
     //on ferme le fichier pour libérer la mémoire tampon
-    fclose(fp1);
+    fclose(fp2);
     printf("Veux-tu y aller ?\n Oui(1) ou Non(2)");
     switch(choice(2)){
         case 1:
