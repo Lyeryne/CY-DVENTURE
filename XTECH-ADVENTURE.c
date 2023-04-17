@@ -8,7 +8,7 @@
 #include"Stdtcreate.c" //appelle une partie d'un programme qui creer l'étudiant
 #include"Robust.c" // appelle fonctions robust
 #include"DisplayTXT.c" // fonction affichant caractère par caractère
-#define SIZE 100000
+#define SIZE 1000000
 
 int main(){
 //VALUES
@@ -114,7 +114,6 @@ int main(){
     displayTxt(size3, txt2);
     sleep(2);
     system("clear");
-//CLEMENT
 //GAME PART    
     while(fgets(weekend, SIZE, fp2) != NULL){
         int size4 = strlen(weekend);
