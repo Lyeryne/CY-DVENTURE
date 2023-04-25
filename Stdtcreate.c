@@ -1,29 +1,35 @@
 #ifndef STDTCREATE_H
 #define STDTCREATE_H
 
-#include<ctype.h> // pour la fonction isdigit()
-#include<time.h>
-#include<stdio.h>
-#include<stdlib.h>
-#include<errno.h>
-#include<unistd.h>
-#include<string.h>
-#include"Robust.c"
-#include"DisplayTXT.c"
+#include <time.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 #define SIZE_NAMES 100
 
 typedef struct{
-    char name[SIZE_NAMES];
-    char sname[SIZE_NAMES];
-    int fame;
-    int power;
-    int intellect;
-}Student;//Main character + fighter character
+  char name[SIZE_NAMES];
+  char sname[SIZE_NAMES];
+  int fame;                    
+  int power;
+  int intellect;
+  int wellness;
+} Stdt; // Main character
 
+typedef enum{
+  //intellect stuff
+  Pencil, Book, Computer,
+  //power stuff
+  Knife, Knuckles, 
+  //fame stuff
+  Sunglasses, Jacket,
+  //wellness stuff
+  Girlfriend    
+}Bag; // Items
 
-Student createStudent(){
+Stdt createStudent(){
 //VARIABLES
-    Student x;
+    Stdt x;
     int num1, num2;
 //CREATE STUDENT
     printf("Saisir le nom de l'eleve :");
@@ -72,34 +78,15 @@ Student createStudent(){
     x.power = 50 + rand()%51;
     x.fame = 50;
     x.intellect = 50 + rand()%51;
-
+    x.wellness = 100;
 return x;
 }
-
-void displayStd(Student a){
+void displayStdt(Stdt a){
     char* txt1 = "Description de votre personnage principal \n\n";
     int size1 = strlen(txt1);
-    displayTxt(size1, txt1);
     printf("[%s %s]\n", a.name, a.sname);
     printf("Reputation : %d\n", a.fame);
     printf("Intelligence : %d\n", a.intellect);
     printf("Force : %d\n", a.power);
 }
-/*void displayStdF(Std b){
-    int delay = 20;
-    char* txt2 = "Description de votre potentielle concurrent:\n\n";
-    int size2 = strlen(txt2);
-    for(int i=0; i<size2; i++){
-        printf("%c", txt2[i]);
-        fflush(stdout);
-        struct timespec attente = {0, delay*1000000};
-        nanosleep(&attente, NULL);
-    }
-    printf("[%s %s]\n", b.name, b.sname);
-    printf("Reputation : %d\n", b.fame);
-    printf("Intelligence : %d\n", b.intellect);
-    printf("Force : %d\n", b.power);
-}*/
-
 #endif
-

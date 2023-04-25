@@ -1,76 +1,102 @@
-#include<ctype.h>
-#include<stdio.h>
-#include<time.h>
-#include<stdbool.h>
-#include<stdlib.h>
-#include<errno.h>
-#include<unistd.h>
-#include"Stdtcreate.c" //appelle une partie d'un programme qui creer l'étudiant
-#include"Robust.c" // appelle fonctions robust
-#include"DisplayTXT.c" // fonction affichant caractère par caractère
-#include"Event1WE.c"
-#include"Event2Rentree.c"
-#define SIZE 1000000
+#include <stdlib.h>
+#include <stdio.h>
+#include <unistd.h>
+#include <string.h>
+#include "Process.h"
+#define SIZE_LINE 10000
 
 int main(){
-//VALUES
-    srand(time(NULL));
-    int pourcentage;
-    int delay1 = 35; // temps de délai en millisecondes
-    Student main;
+//VARIABLES
+  char line[SIZE_LINE];
+  char currentLine[SIZE_LINE] = "";
+  //char choice[SIZE_LINE];
+  char description[SIZE_LINE];
+  int num_choice[10];
+  int currentPart = 0;
+  int next_step;
+  //char diese[] = "###";
 //CREATION DE FICHIER
-    FILE* fp1 = fopen("txt/Intro.txt", "r");
-    char intro[SIZE];
-    if(fp1 == NULL){
-        printf("Erreur on fopen\n");
+    FILE *fp1 = fopen("txt/DebutJeu.txt", "r");
+    if (fp1 == NULL) {
+        printf("\nErreur fopen (file 1)\n");
         exit(1);
     }
 //GAME
-    system("clear");
-    printf("Webtoon MI5\n");
-    sleep(2);
-    char* txt = "Produit par\n-> Louaye SAGHIR\n-> Clement PREMOLI\n-> Roman BOULLIER\n\n";
-    int size = strlen(txt);
-    //affiche le texte lettre par lettre avec la fonction displayTXT
-    displayTxt(size, txt);  
-    sleep(1);
-    system("clear");
-    //affichage de pourcentage en temps réelle
-    for(pourcentage = 0; pourcentage <= 100; pourcentage+=4) {
-        printf("LANCEMENT DU JEU... %d%%\r", pourcentage); // \r permet de revenir en début de ligne
-        fflush(stdout); // force l'affichage immédiat du texte
-        nanosleep(100000); // suspend l'exécution du programme pendant 100000 microsecondes (0,1 seconde)
+while (fgets(line, SIZE_LINE, fp1) != NULL) {
+    if(line[0] == '#'){
+        currentPart ++;
     }
-    printf("Chargement fini !\n");
-    sleep(1);
-    system("clear");
-    //affiche le message d'introduction/explication du jeu
-    while(fgets(intro, SIZE, fp1) != NULL){ 
-        int size1 = strlen(intro);
-        displayTxt(size1, intro);
+    else{
+        switch(currentPart){
+        // on est dans la part 1 : la description du truc
+        case 0: 
+            ProcessDescription(line);
+            break;
+        
+        // on est dans la part 2 : l'event 
+        case 1: 
+            //faut mettre processEvent normalement ici
+            //ProcessEvent(line);
+            next_step = ProcessChoice(line);
+            printf("la prochaine etape c'est : %d\n", next_step);
+
+            break;
+
+        case 2:
+
+            ProcessChoice(line);
+            break;
+
+        case 3:
+
+            ProcessChoice(line);
+            break;
+
+        }
     }
-    //libère la mémoire tampon en fermant le fichier
-    fclose(fp1);
-    //attend que l'utilisateur continue
-    WaitPress();
-
-
-//CREATE STUDENTS
-    char* txt1 = "Avant de commencer a jouer, vous allez saisir votre personnage principal\n\n";
-    int size2 = strlen(txt1);
-    displayTxt(size2, txt1);//Affichage de Txt1
-    Student mainCharacter = createStudent();
-    displayStd(mainCharacter);
-    sleep(2);
-
-    char* txt2 = "Commençons...\n";
-    sleep(1);
-    int size3 = strlen(txt2);
-    displayTxt(size3, txt2);
-    sleep(2);
-    system("clear");  
-
-    Event1();
-return 0;
 }
 
+/*
+    if(strcmp(diese, line) == 0){
+        //c'est la partie des choix
+        if(line[0] == "*"){
+            sscanf(line, "**%d", &num_choice[i]);
+            i++;
+        }
+        while(fgets(line, SIZE_LINE, file) != NULL){
+            sscanf(line, "**%d", &num_choice[i]);
+            i++;
+        }
+    }
+    else{
+        printf("%s\n", line);
+        fflush(stdin);
+        if(line[0] == '#'){
+            printf("oui");
+            }
+        for(int j = 0; j < i; j ++){
+            printf("votre choix : %d\n", num_choice[j]);
+        }
+    
+    if(line[0] == "###"){
+        while(fgets(line, SIZE_LINE, file) != NULL)
+            sscanf(line, "**%d", &num_choice);
+    }
+    
+    if (line[0] != '(') {
+        sscanf(line, "(%d)", &num_choice); // Extract the choice number using sscanf
+        printf("(%d) ", num_choice);
+        fgets(description, SIZE_LINE, file); // Extract the choice description
+    } 
+      else if (line[0] == '###') {
+          printf("%s\n", line + 1);
+          char user_choice[SIZE_LINE];
+          fgets(user_choice, SIZE_LINE, stdin);
+          int choice_num;
+          sscanf(user_choice, "%d", &choice_num);   // Extract the user's choice
+          if (choice_num == num_choice) {
+            printf("%s\n", description); // Print the corresponding description
+          }
+      }*/
+return 0;
+}
