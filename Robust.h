@@ -34,13 +34,13 @@ int choice(int size){
 int lu,n, count = 0;
 //initialise un tableau de taille choice pour vérifier la correspondance avec n
 int *tab = NULL;
-tab = malloc(size * sizeof(int));
+//tab = malloc(size * sizeof(int));
 //remplissage du tableau de valeurs de 1 a choice
 for(int i = 0; i < size; i++){
     tab[i] = i+1;
 }
 do{
-    printf("Veuillez entrer votre réponse: ");
+    printf("Veuillez entrer votre réponse : ");
     //demande une valeur a l'utilisateur et vide la mémoire tampon
     lu = scanf("%d", &n);
     fflush(stdin);
@@ -68,5 +68,6 @@ do{
 }while(lu == 0 || count == 0);
 }
 
-#endif
 
+
+#endif

@@ -5,6 +5,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include "Robust.h"
 #define SIZE_NAMES 100
 
 typedef struct{
@@ -89,4 +90,5 @@ void displayStdt(Stdt a){
     printf("Intelligence : %d\n", a.intellect);
     printf("Force : %d\n", a.power);
 }
+
 #endif

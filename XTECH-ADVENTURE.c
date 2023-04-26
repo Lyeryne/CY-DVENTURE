@@ -9,12 +9,12 @@ int main(){
 //VARIABLES
   char line[SIZE_LINE];
   char currentLine[SIZE_LINE] = "";
-  //char choice[SIZE_LINE];
+  char choice[SIZE_LINE];
   char description[SIZE_LINE];
   int num_choice[10];
   int currentPart = 0;
   int next_step;
-  //char diese[] = "###";
+  char diese[] = "###";
 //CREATION DE FICHIER
     FILE *fp1 = fopen("txt/DebutJeu.txt", "r");
     if (fp1 == NULL) {
@@ -36,7 +36,7 @@ while (fgets(line, SIZE_LINE, fp1) != NULL) {
         // on est dans la part 2 : l'event 
         case 1: 
             //faut mettre processEvent normalement ici
-            //ProcessEvent(line);
+            ProcessEvent(line);
             next_step = ProcessChoice(line);
             printf("la prochaine etape c'est : %d\n", next_step);
 

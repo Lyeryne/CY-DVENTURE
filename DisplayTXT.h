@@ -7,7 +7,7 @@
 #include<unistd.h>
 #include<string.h>
 #include<ctype.h>
-//LOUAY
+#include<time.h>
 
 void displayTxt(int size, char* txt){ 
 	int delay1 = 35; 

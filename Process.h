@@ -1,3 +1,6 @@
+#ifndef PROCESS_H
+#define PROCESS_H
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -24,3 +27,5 @@ int ProcessChoice(char* string){
     }while(string[i] != '#');
 return next_step - 528;
 }
+
+#endif
