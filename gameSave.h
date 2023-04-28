@@ -20,10 +20,14 @@ void SaveGame(Stdt a, Bag b){
     fprintf(fp, "%d\n", a.intellect);
     fprintf(fp, "%d\n", a.wellness);
     //BAG
-    fprintf(fp, "%d\n", b.fame);
-    fprintf(fp, "%d\n", b.power);
-    fprintf(fp, "%d\n", b.intellect);
-    fprintf(fp, "%d\n", b.wellness);
+    fprintf(fp, "%d\n", Pencil);
+    fprintf(fp, "%d\n", Book);
+    fprintf(fp, "%d\n", Computer);
+    fprintf(fp, "%d\n", Knife);
+    fprintf(fp, "%d\n", Knuckles);
+    fprintf(fp, "%d\n", Sunglasses);
+    fprintf(fp, "%d\n", Jacket);
+    fprintf(fp, "%d\n", Girlfriend);
 
     fclose(fp);
 }

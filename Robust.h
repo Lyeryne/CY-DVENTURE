@@ -17,6 +17,7 @@ char toLower(char c){
     return c+32;
 }
 //vérifie si toutes les valeurs de la chaine sont des lettres
+
 int is_char(char* chaine) {
     for(int i=0; i < strlen(chaine);i++){
         if(chaine[i] < 65 || (chaine[i]>90 && chaine[i]<97) || chaine[i]>122){
@@ -26,7 +27,7 @@ int is_char(char* chaine) {
     return 1;
 }
 
-int choice(int size){
+int typechoice(int size){
     /*Cette fonction a pour but de proposer un choix sur size propositions,
     Elle vérifie également que les valeurs retournées par l'utilisateurs 
     sont des valeurs de type int et comprises entre 1 et size*/

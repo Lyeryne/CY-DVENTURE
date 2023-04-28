@@ -16,8 +16,8 @@ void displayStat(Stdt a){
     printf("Mental : %d\n", a.wellness);
 }
 
-void displayBag(){
-  switch () {
+void displayBag(Bag b){
+  switch (b) {
     case Pencil: "Pencil";
     case Book: "Book";
     case Computer: "Computer";
@@ -30,7 +30,7 @@ void displayBag(){
   }
   char* txt2 = "Stuf dans votre sac : \n\n";
   int size2 = strlen(txt2);
-  printf("%s; %s; %s; %s", a.Pencil, a.Book, a.Computer, a.Knife, a.Knuckles, a.Sunglasses, a.Jacket, a.Girlfriend);
+  printf("%s; %s; %s; %s; %s; %s; %s; %s", Pencil, Book, Computer, Knife, Knuckles, Sunglasses, Jacket, Girlfriend);
   //Mettre dans XTECH pour afficher le sac
   // printf("Le contenu de myBag est : %s\n", displayBag(myBag)); 
   
