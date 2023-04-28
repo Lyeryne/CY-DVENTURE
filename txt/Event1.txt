@@ -1,25 +1,27 @@
+EVENT 1 - LA RENTRER DES CLASSES (ASCI ART)
+
 Ce matin, tu as cours d’Analyse avec Mr Bihtata. 
 L'un des trois groupes t'interpellent pour que tu te mettes a cote d'eux !
 
-Avec qui devrais-je me mettre ?
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~XTECH DVENTURE~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-
-1/ - Amir, Mohammed et Charles : (っ▀¯▀)つ
-~> les surdoues = Souvent ce sont les étudiants isoles, studieux et peu intéressés par les activites sociales.
+1/ - Amir, Mohammed et Charles : (▀¯▀)
+~> les surdouees = Souvent ce sont les étudiants isoles, studieux et peu intéressés par les activites sociales.
 Cependant, Ils peuvent être passionnes par n'importe quoi mais gare a toi si tu as une mauvaise reputation, ils t'approcheront plus ! 
 
-2/ - Youssef, Mahmoud et Lyeryne : q(❂‿❂)p 
+2/ - Youssef, Mahmoud et Lyeryne : (❂‿❂)
 ~> les stars de l’ecole = C'est le groupe d'étudiants qui passent la plupart de leur temps a socialiser, 
 a faire la fête et a chercher l'approbation des autres. La reputation est tout pour eux !
 Cependant, certains sont très engagee dans leurs etudes, tout en ayant une vie sociale active.
 
-3/ - Mamadou, François et Léo : ᕙ(⇀‸↼‶)ᕗ
+3/ - Mamadou, François et Léo : ᕙ(⇀‸↼)ᕗ
 ~> les sportifs = A part leur forces, ce sont les types d'etudiants qui ne se concentre que sur le sport, au détriment de leurs etudes.
 Cependant, ce sont des etudiants engages et serieux qui t'apporteront forces mentales et physiques que tu as besoins durant cette annee !
 
+###
 Avec qui veux-tu te mettre ?
+###
+1- Amir, Mohammed et Charles_1
+2- Youssef, Mahmoud et Lyeryne_2
+3- Mamadou, Francis et Leo_3
 
-#
-1- Amir, Mohammed et Charles_04
-2- Youssef, Mahmoud et Lyeryne_02
-3- Mamadou, Francis et Leo_02
