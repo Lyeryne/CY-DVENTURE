@@ -1,7 +1,12 @@
+#ifndef PROCESS_H
+#define PROCESS_H
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <stdbool.h>
+
+#include "DisplayTXT.h"
 
 #define SIZE_LINE 10000
 #define MAX_CHOICE 10
@@ -275,3 +280,5 @@ char* displayChapter(chapter chap)
     }while(lu == 0 || count == 0);
 return chap.choices[user_choice - 1].nextChapter;
 }
+
+#endif

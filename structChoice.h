@@ -5,34 +5,33 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <string.h>
+#include <stdbool.h>
+
+#include "DisplayTXT.h"
+#include "structChoice.h"
+#include "Process.h"
+#include "Stdtcreate.h"
+#include "Chapter.h"
+
+#define SIZE_LINE 10000
+#define MAX_CHOICE 10
 
 
-static const char part_seperator[] = "###";//Separateur entre description/choix
-struct choice;  // déclaration de la structure choice
-struct chapter; // déclaration de la structure chapter
+static const char part_seperator[] = "###";
+struct choice;
 
 typedef struct
 {
     char *description;
     char *event;
-    choice* choices;
-    int choice_count;//représente le nombre de choix dans ce chapitre
+    struct choice *choices;
+    int choice_count;
 } chapter;
 
 typedef struct choice
 {
     char *text;
-    chapter* nextChapter;
+    char *nextChapter;
 } choice;
-
-char *fillChoice(char s[], char s2[500][2], int currentChoiceInd)
-{
-    for (int i = 0; i < 2; i++)
-    {
-        s[i] = s2[currentChoiceInd][i];
-    }
-
-    return s;
-}
 
 #endif

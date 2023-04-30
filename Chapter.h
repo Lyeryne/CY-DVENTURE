@@ -5,33 +5,43 @@
 #include "structChoice.h"
 #include "Process.h"
 #include "Stdtcreate.h"
-#include "statPlayer.h"
-#include "gameSave.h"
+
 
 #define SIZE_LINE 10000
 #define MAX_CHOICE 10
+
+static const char part_seperator[] = "###";
+struct choice;
+
+typedef struct
+{
+    char *description;
+    char *event;
+    struct choice *choices;
+    int choice_count;
+} chapter;
+
+typedef struct choice
+{
+    char *text;
+    char *nextChapter;
+} choice;
 
 chapter create_chapter(char *chapter_name)
 {
     // VARIABLES
     char line[SIZE_LINE];
-    
+
     int currentPart = 0;
-    int next_step;
-    int currentChoiceInd = 0;
-    char *currentChoice[2];
-    char choices[10][2];
-    
-    int i = 0;
-    char * path = (char *)malloc((strlen("txt/") + strlen(chapter_name) + strlen(".txt"))* sizeof(char) + 1);
+    char *path = (char *)malloc((strlen("txt/") + strlen(chapter_name) + strlen(".txt")) * sizeof(char) + 1);
     //~~> contien le chemin d'accès au fichier txt que nous voulons ouvrir
 
-    strcpy(path, "txt/");//copie la chaîne 'txt' dans chaîne 'path'
-    strcat(path, chapter_name); //suivie de 'chapter_name'(concaténation)
-    strcat(path, ".txt");//et de '.txt'
+    strcpy(path, "txt/");       // copie la chaîne 'txt' dans chaîne 'path'
+    strcat(path, chapter_name); // suivie de 'chapter_name'(concaténation)
+    strcat(path, ".txt");       // et de '.txt'
 
     FILE *file = fopen(path, "r");
-    //crée un chemin vers le fichier txt à partir du nom du chapitre et stocke dans 'path'
+    // crée un chemin vers le fichier txt à partir du nom du chapitre et stocke dans 'path'
 
     // FILE *file = fopen("../txt/Event1.txt", "r");
     if (file == NULL)
@@ -48,14 +58,14 @@ chapter create_chapter(char *chapter_name)
     while (fgets(line, SIZE_LINE, file) != NULL)
     {
         *first_line_chars = '\0';
-        strncat(first_line_chars, line, 3);//extrait les 3 premiers caractères en les stockant dans 'first_line_chars'
+        strncat(first_line_chars, line, 3); // extrait les 3 premiers caractères en les stockant dans 'first_line_chars'
         if (strcmp(first_line_chars, part_seperator) == 0)
-        //Si ces 3 premiers caractères correspondent à 'part_seperator'
+        // Si ces 3 premiers caractères correspondent à 'part_seperator'
         {
-            //Alors currentPart est incrémentée
+            // Alors currentPart est incrémentée
             currentPart++;
         }
-        else //Sinon utilisé pour traiter la ligne en fonction de la valeur de 'currentPart'
+        else // Sinon utilisé pour traiter la ligne en fonction de la valeur de 'currentPart'
         {
             switch (currentPart)
             {
@@ -67,9 +77,10 @@ chapter create_chapter(char *chapter_name)
                 ProcessEvent(&chap, line);
                 break;
 
-            // on est dans la part 2 : décrit l'événement du chapitre 
+            // on est dans la part 2 : décrit l'événement du chapitre
             case 2:
                 ProcessChoice(&chap, line);
+
                 //~~> affiche l'événement en cours et les choix disponibles.
 
                 // faut mettre processEvent normalement ici
@@ -95,8 +106,7 @@ chapter create_chapter(char *chapter_name)
             }
         }
     }
-
-    printf("end of file");
+    fclose(file);
 
     /*
         if(strcmp(diese, line) == 0){
@@ -141,6 +151,33 @@ chapter create_chapter(char *chapter_name)
               }
           }*/
     return chap;
+}
+
+char* displayChapter(chapter chap)
+{
+    int lu;
+    int user_choice = 0, count = 0;
+    printf("%s", chap.description);
+    printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~XTECH DVENTURE~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+    for (int i = 0; i < chap.choice_count; i++)
+    {
+        printf("\n%s", chap.choices[i].text);
+    }
+    do
+    {
+        printf("\nChoix : ");
+        lu = scanf("%d", &user_choice);
+        fflush(stdin);
+        if (user_choice < 1 || user_choice > chap.choice_count)
+        {
+            printf("Veuillez saisir une reponse valide : ");
+        }
+        else
+        {
+            count = 1;
+        }
+    }while(lu == 0 || count == 0);
+return chap.choices[user_choice - 1].nextChapter;
 }
 
 #endif
