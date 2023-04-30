@@ -16,18 +16,6 @@ typedef struct{
   int intellect;
   int wellness;
 } Stdt; // Main character
-
-typedef enum{
-  //intellect stuff
-  Pencil, Book, Computer,
-  //power stuff
-  Knife, Knuckles, 
-  //fame stuff
-  Sunglasses, Jacket,
-  //wellness stuff
-  Girlfriend    
-}Bag; // Items
-
 Stdt createStudent(){
 //VARIABLES
     Stdt x;
@@ -82,13 +70,69 @@ Stdt createStudent(){
     x.wellness = 100;
 return x;
 }
-void displayStdt(Stdt a){
+
+typedef enum{
+  //intellect stuff
+  Pencil, Book, Computer,
+  //power stuff
+  Knife, Knuckles, 
+  //fame stuff
+  Sunglasses, Jacket,
+  //wellness stuff
+  Girlfriend,
+  //empty
+  Vide    
+}Bag; // Items
+char* enum2string(Bag bag)
+{
+    switch(bag){
+        case Pencil:
+            return "Stylot";
+        case Book:
+            return "Cahier";
+        case Computer:
+            return "PC";
+        case Knife:
+            return "Opinel";
+        case Knuckles:
+            return "Knuckles";
+        case Sunglasses:
+            return "Lunette de soleil";
+        case Jacket:
+            return "Veste";
+        case Girlfriend:
+            return "Bae";
+        case Vide:
+            return "Vide";
+    }
+}
+
+void displayStdt(Stdt a, Bag b){
     char* txt1 = "Description de votre personnage principal \n\n";
     int size1 = strlen(txt1);
+    //displayTxt(size1, txt1);
     printf("[%s %s]\n", a.name, a.sname);
     printf("Reputation : %d\n", a.fame);
     printf("Intelligence : %d\n", a.intellect);
     printf("Force : %d\n", a.power);
 }
 
+void removeItem(Bag* bag, Bag item){
+    int numItems = sizeof(*bag) / sizeof(bag[0]);
+    int itemIndex = -1;
+
+    for(int i = 0; i<numItems; i++){ // Cherche l'index de l'objet dans le sac
+        if(bag[i] == item){
+            itemIndex = i;
+            break; 
+        }
+    }
+
+    if(itemIndex>=0){// Si l'objet est dans le sac, le supprimer
+        for(int i = itemIndex; i<numItems-1; i++){ // Décaler tous les éléments suivants d'un index vers la gauche
+            bag[i] = bag[i+1];
+        }
+        bag[numItems-1] = Vide;// Mettre le dernier élément à 'Vide'
+    }
+}
 #endif

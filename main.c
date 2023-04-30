@@ -20,7 +20,7 @@ int main()
     int delay1 = 35;
     Stdt main;
 //CREATION DE FICHIER
-    FILE* fp1 = fopen("txt/DebutJeu.txt", "r");
+    FILE* fp1 = fopen("../txt/DebutJeu.txt", "r");
     char intro[SIZE];
     if(fp1 == NULL){
         printf("Erreur on fopen\n");

@@ -133,10 +133,10 @@ chapter create_chapter(char *chapter_name)
     char line[SIZE_LINE];
 
     int currentPart = 0;
-    char *path = (char *)malloc((strlen("txt/") + strlen(chapter_name) + strlen(".txt")) * sizeof(char) + 1);
+    char *path = (char *)malloc((strlen("../txt/") + strlen(chapter_name) + strlen(".txt")) * sizeof(char) + 1);
     //~~> contien le chemin d'accès au fichier txt que nous voulons ouvrir
 
-    strcpy(path, "txt/");       // copie la chaîne 'txt' dans chaîne 'path'
+    strcpy(path, "../txt/");       // copie la chaîne 'txt' dans chaîne 'path'
     strcat(path, chapter_name); // suivie de 'chapter_name'(concaténation)
     strcat(path, ".txt");       // et de '.txt'
 

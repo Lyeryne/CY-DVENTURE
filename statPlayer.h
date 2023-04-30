@@ -17,22 +17,12 @@ void displayStat(Stdt a){
 }
 
 void displayBag(Bag b){
-  switch (b) {
-    case Pencil: "Pencil";
-    case Book: "Book";
-    case Computer: "Computer";
-    case Knife: "Knife";
-    case Knuckles: "Knuckles";
-    case Sunglasses: "Sunglasses";
-    case Jacket: "Jacket";
-    case Girlfriend: "Girlfriend";
-    default: "Unknown";
+  Bag myBag[] = {Pencil, Book, Computer, Knife, Knuckles, Sunglasses, Jacket, Girlfriend};
+  int numItems = sizeof(myBag) / sizeof(myBag[0]);
+
+  printf("Bag items:\n");
+  for(int i = 0; i < numItems; i++) {
+    printf("- %s\n", enum2string(myBag[i]));
   }
-  char* txt2 = "Stuf dans votre sac : \n\n";
-  int size2 = strlen(txt2);
-  printf("%s; %s; %s; %s; %s; %s; %s; %s", Pencil, Book, Computer, Knife, Knuckles, Sunglasses, Jacket, Girlfriend);
-  //Mettre dans XTECH pour afficher le sac
-  // printf("Le contenu de myBag est : %s\n", displayBag(myBag)); 
-  
 }
 #endif

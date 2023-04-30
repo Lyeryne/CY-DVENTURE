@@ -5,7 +5,14 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+
+#include "DisplayTXT.h"
+#include "structChoice.h"
+#include "Process.h"
 #include "Stdtcreate.h"
+#include "statPlayer.h"
+#include "gameSave.h"
+#include "Chapter.h"
 
 void SaveGame(Stdt a, Bag b){
     FILE* fp = fopen("txt/save.txt", "w");
@@ -28,6 +35,9 @@ void SaveGame(Stdt a, Bag b){
     fprintf(fp, "%d\n", Sunglasses);
     fprintf(fp, "%d\n", Jacket);
     fprintf(fp, "%d\n", Girlfriend);
+    //CHOICES
+    fprintf(fp, "%s\n", fillChoice()); //'currentChoiceInd', variable de suivi pour le choix actuel
+
 
     fclose(fp);
 }
