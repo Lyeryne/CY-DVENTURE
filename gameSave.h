@@ -26,6 +26,9 @@ void SaveGame(Stdt a, Bag b){
     fprintf(fp, "%d\n", a.power);
     fprintf(fp, "%d\n", a.intellect);
     fprintf(fp, "%d\n", a.wellness);
+    fprintf(fp, "%d\n", a.health);
+    fprintf(fp, "%d\n", a.dodge);
+    fprintf(fp, "%d\n", a.defence);
     //BAG
     Bag myBag[] = {Pencil, Book, Computer, Knife, Knuckles, Sunglasses, Jacket, Girlfriend};
     int numItems = sizeof(myBag) / sizeof(myBag[0]);
@@ -39,6 +42,51 @@ void SaveGame(Stdt a, Bag b){
 
 
     fclose(fp);
+}
+
+int loadGame(Stdt* main, Bag* b) {
+    FILE* fp = fopen("txt/save.txt", "r");
+    if (fp == NULL) {
+        printf("Erreur fopen (file LoadSave)\n");
+        exit(1);
+    }
+
+    //STAT
+    if (fscanf(fp, "%d", &(main->fame)) != 1 ||
+        fscanf(fp, "%d", &(main->power)) != 1 ||
+        fscanf(fp, "%d", &(main->intellect)) != 1 ||
+        fscanf(fp, "%d", &(main->wellness)) != 1 || 
+        fscanf(fp, "%d", &(main->health)) != 1 ||
+        fscanf(fp, "%d", &(main->dodge)) != 1 ||
+        fscanf(fp, "%d", &(main->defence)) != 1) {
+        printf("Erreur de lecture des données de stat\n");
+        fclose(fp);
+        return 0;
+    }
+
+    //BAG
+    char line[128];
+    if (fgets(line, sizeof(line), fp) == NULL ||
+        strcmp(line, "Bag items:\n") != 0) {
+        printf("Erreur de lecture de l'en-tête de la liste de sac\n");
+        fclose(fp);
+        return 0;
+    }
+
+    Bag item;
+    while (fgets(line, sizeof(line), fp) != NULL) {
+        line[strcspn(line, "\r\n")] = '\0'; // Supprimer le retour chariot
+        item = string2enum(line + 2); // Ignorer le préfixe "- "
+        if (item == Error) {
+            printf("Erreur de lecture d'un élément de sac\n");
+            fclose(fp);
+            return 0;
+        }
+        *b |= item;
+    }
+
+    fclose(fp);
+    return 1;
 }
 
 #endif

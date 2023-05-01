@@ -6,19 +6,24 @@
 #include <stdlib.h>
 #include <string.h>
 #include "Robust.h"
+
 #define SIZE_NAMES 100
+#define MAX_BAG_SIZE 8
 
 typedef struct{
   char name[SIZE_NAMES];
   char sname[SIZE_NAMES];
-  int fame;                    
+  int fame;
+  int health;                    
   int power;
   int intellect;
   int wellness;
+  int dodge;
+  int defence;
 } Stdt; // Main character
 Stdt createStudent(){
 //VARIABLES
-    Stdt x;
+    Stdt x, y, z, w, t;
     int num1, num2;
 //CREATE STUDENT
     printf("Saisir le nom de l'eleve :");
@@ -64,11 +69,56 @@ Stdt createStudent(){
         j++;
     }
     
+    //main Student
     x.power = 50 + rand()%51;
     x.fame = 50;
     x.intellect = 50 + rand()%51;
     x.wellness = 100;
-return x;
+    x.health = 1000;
+    x.dodge = 50 + rand()%51;
+    x.defence = 50 + rand()%51;
+//FIGHTERS
+    //fighter 1
+    strcpy(y.name, "Boris");
+    strcpy(y.sname, "Jackson");
+    y.power = 50 + rand()%51;
+    y.fame = 50;
+    y.intellect = 50 + rand()%51;
+    y.wellness = 100;
+    y.health = 1000;
+    y.dodge = 50 + rand()%51;
+    y.defence = 50 + rand()%51;
+    //fighter 2
+    strcpy(z.name, "Adama");
+    strcpy(z.sname, "Younga");
+    z.power = 50 + rand()%51;
+    z.fame = 50;
+    z.intellect = 50 + rand()%51;
+    z.wellness = 100;
+    z.health = 1000;
+    z.dodge = 50 + rand()%51;
+    z.defence = 50 + rand()%51;
+    //fighter 3
+    strcpy(w.name, "Etienne");
+    strcpy(w.sname, "Wojdilot");
+    w.power = 50 + rand()%51;
+    w.fame = 50;
+    w.intellect = 50 + rand()%51;
+    w.wellness = 100;
+    w.health = 1000;
+    w.dodge = 50 + rand()%51;
+    w.defence = 50 + rand()%51;
+    //fighter 4
+    strcpy(t.name, "Lucas");
+    strcpy(t.sname, "Traoré");
+    t.power = 50 + rand()%51;
+    t.fame = 50;
+    t.intellect = 50 + rand()%51;
+    t.wellness = 100;
+    t.health = 1000;
+    t.dodge = 50 + rand()%51;
+    t.defence = 50 + rand()%51;
+return x, y, z, w, t;
 }
 
 typedef enum{
@@ -83,6 +133,7 @@ typedef enum{
   //empty
   Vide    
 }Bag; // Items
+
 char* enum2string(Bag bag)
 {
     switch(bag){
@@ -101,7 +152,7 @@ char* enum2string(Bag bag)
         case Jacket:
             return "Veste";
         case Girlfriend:
-            return "Bae";
+            return "bitch";
         case Vide:
             return "Vide";
     }
@@ -116,6 +167,7 @@ void displayStdt(Stdt a, Bag b){
     printf("Intelligence : %d\n", a.intellect);
     printf("Force : %d\n", a.power);
 }
+
 
 void removeItem(Bag* bag, Bag item){
     int numItems = sizeof(*bag) / sizeof(bag[0]);
@@ -135,4 +187,17 @@ void removeItem(Bag* bag, Bag item){
         bag[numItems-1] = Vide;// Mettre le dernier élément à 'Vide'
     }
 }
+void addItem(Bag* bag, Bag item){
+    int numItems = sizeof(*bag) / sizeof(bag[0]);
+
+    //vérifie si le sac est plein
+    if(numItems >= MAX_BAG_SIZE){
+        printf("le sac est déjà plein -8/8- \n");
+        return;
+    }
+
+    //ajoute l'objet à la fin du Sac
+    bag[numItems] = item;
+}
+
 #endif

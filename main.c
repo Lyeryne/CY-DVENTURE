@@ -18,7 +18,10 @@ int main()
     int verif = 1;
     int pourcentage;
     int delay1 = 35;
-    Stdt main;
+    Stdt main, fighter1, fighter2, fighter3, fighter4;
+    Bag myBag[] = {Pencil, Book, Computer, Knife, Knuckles, Sunglasses, Jacket, Girlfriend};
+    int numItems = sizeof(myBag) / sizeof(myBag[0]);
+    int start = 0;
 //CREATION DE FICHIER
     FILE* fp1 = fopen("../txt/DebutJeu.txt", "r");
     char intro[SIZE];
@@ -35,6 +38,17 @@ int main()
     displayTxt(size, txt);  
     sleep(1);
     system("clear");
+//Choix de partie
+        printf("=== MENU ===\n");
+        printf("1 - Nouvelle Partie\n");
+        printf("2 - Reprendre Partie\n\n");
+    while(start != 1 || && start != 2){
+        printf("Entrez votre choix : ");
+        scanf("%d", &start);
+    }
+    sleep(1);
+    system("clear");
+
     //affichage de %tage en temps réelle
     for(pourcentage = 0; pourcentage <= 100; pourcentage+=20) {
         printf("LANCEMENT DU JEU... %d%%\r", pourcentage); // \r permet de revenir en début de ligne
@@ -44,6 +58,10 @@ int main()
     printf("Chargement fini !\n");
     sleep(1);
     system("clear");
+
+//Choix d'une "Nouvelle Partie"
+    if(start == 1)
+    {
     while(fgets(intro, SIZE, fp1) != NULL){ 
         int size1 = strlen(intro);
         displayTxt(size1, intro);
@@ -69,10 +87,8 @@ int main()
     system("clear");*/
 //VARIABLES 
     int game = 1;
-    char* next_chap1;
-    char* next_chap2;
-    chapter ch1 = create_chapter("Event1");
-    chapter ch2 = create_chapter("Event2");
+    char* next_chap;
+    chapter ch = create_chapter("Event1");
 
 //GAME
     while (game == 1)
@@ -80,16 +96,35 @@ int main()
 
         //strcpy(next_chap, displayChapter(ch));
 	
-        next_chap1= displayChapter(ch1);
-        ch1 = create_chapter(next_chap1);
-
-	next_chap2= displayChapter(ch2);
-        ch2 = create_chapter(next_chap2);
-	
-
+        next_chap= displayChapter(ch);
+        ch = create_chapter(next_chap);
 
     }
     return 0;
+// }//ferme boucle de start == 1
+/*else if(start == 2){ //"Reprendre partie"
+    //affichage de %tage en temps réelle
+    for(pourcentage = 0; pourcentage <= 100; pourcentage+=20) {
+        printf("CHARGEMENT DE PARTIE... %d%%\r", pourcentage); // \r permet de revenir en début de ligne
+        fflush(stdout); // force l'affichage immédiat du texte
+        usleep(100000); // suspend l'exécution du programme pendant 100000 microsecondes (0,1 seconde)
+    }
+    
+    Bag b = 0;
+    if(loadGame(&main, &b)){
+        printf("Sauvegarde chargée avec succès !\n");
+        sleep(1);
+        system("clear");
+
+        next_chap= displayChapter(ch);
+        ch = create_chapter(next_chap);
+
+    } else {
+        printf("Impossible de charger la sauvegarde!\n");
+        exit(100);
+    }
+}*/ 
 }
+
 
 

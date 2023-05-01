@@ -264,6 +264,7 @@ char* displayChapter(chapter chap)
     {
         printf("\n%s", chap.choices[i].text);
     }
+    //event
     do
     {
         printf("\nChoix : ");
