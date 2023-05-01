@@ -27,16 +27,15 @@ void SaveGame(Stdt a, Bag b){
     fprintf(fp, "%d\n", a.intellect);
     fprintf(fp, "%d\n", a.wellness);
     //BAG
-    fprintf(fp, "%d\n", Pencil);
-    fprintf(fp, "%d\n", Book);
-    fprintf(fp, "%d\n", Computer);
-    fprintf(fp, "%d\n", Knife);
-    fprintf(fp, "%d\n", Knuckles);
-    fprintf(fp, "%d\n", Sunglasses);
-    fprintf(fp, "%d\n", Jacket);
-    fprintf(fp, "%d\n", Girlfriend);
+    Bag myBag[] = {Pencil, Book, Computer, Knife, Knuckles, Sunglasses, Jacket, Girlfriend};
+    int numItems = sizeof(myBag) / sizeof(myBag[0]);
+
+    fprintf(fp, "Bag items:\n");
+    for(int i = 0; i < numItems; i++) {
+        fprintf(fp, "- %s\n", enum2string(myBag[i]));
+    }
     //CHOICES
-    fprintf(fp, "%s\n", fillChoice()); //'currentChoiceInd', variable de suivi pour le choix actuel
+    //fprintf(fp, "%s\n", fillChoice()); //'currentChoiceInd', variable de suivi pour le choix actuel
 
 
     fclose(fp);
