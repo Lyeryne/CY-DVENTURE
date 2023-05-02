@@ -131,7 +131,7 @@ typedef enum{
   //wellness stuff
   Girlfriend,
   //empty
-  Vide    
+  Vide  
 }Bag; // Items
 
 char* enum2string(Bag bag)
@@ -152,10 +152,31 @@ char* enum2string(Bag bag)
         case Jacket:
             return "Veste";
         case Girlfriend:
-            return "bitch";
+            return "Petite amie";
         case Vide:
             return "Vide";
     }
+}
+Bag string2enum(const char* str) {
+    if (strcmp(str, "Stylot") == 0) {
+        return Pencil;
+    } else if (strcmp(str, "Cahier") == 0) {
+        return Book;
+    } else if (strcmp(str, "PC") == 0) {
+        return Computer;
+    } else if (strcmp(str, "Opinel") == 0) {
+        return Knife;
+    } else if (strcmp(str, "Knuckles") == 0) {
+        return Knuckles;
+    } else if (strcmp(str, "Lunette de soleil") == 0) {
+        return Sunglasses;
+    } else if (strcmp(str, "Veste") == 0) {
+        return Jacket;
+    } else if (strcmp(str, "Petite amie") == 0) {
+        return Girlfriend;
+    } else if (strcmp(str, "Vide") == 0) {
+        return Vide;
+    } 
 }
 
 void displayStdt(Stdt a, Bag b){

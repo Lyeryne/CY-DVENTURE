@@ -28,6 +28,12 @@ typedef struct choice
     char *nextChapter;
 } choice;
 
+typedef struct {
+    Stdt a;
+    Bag b;
+    int selected_choice;//stocke l'option de choix sélectionnée par l'utilisateur
+} SaveData;
+
 char *set_text_property(char *buf, char *value)
 //=>permet de remplir une propriété de type char * (%s) d'une structure de manière dynamique
 {
@@ -112,6 +118,9 @@ void ProcessChoice(chapter *chap, char *value)
     // ajoutons le choix 'ch' à la liste des choix dans le chapter actuel 'chap' en l'ajoutant à l'ind 'chap->choice_count' de la liste
     chap->choices[chap->choice_count] = ch; // incrémenter la valeur de 'chap->choice_count'
     chap->choice_count++;
+
+    // Stocke la sélection de l'utilisateur dans la structure chapter
+    chap->selected_choice = -1; // initialise la propriété `selected_choice` à -1
 
     // gère le choix
     /*  int next_step, i = 0;

@@ -14,7 +14,7 @@
 #include "gameSave.h"
 #include "Chapter.h"
 
-void SaveGame(Stdt a, Bag b){
+void SaveGame(SaveData data){
     FILE* fp = fopen("txt/save.txt", "w");
     if(fp == NULL){
         printf("Erreur fopen (file Save)\n");
@@ -22,24 +22,23 @@ void SaveGame(Stdt a, Bag b){
     }
 
     //STAT
-    fprintf(fp, "%d\n", a.fame);
-    fprintf(fp, "%d\n", a.power);
-    fprintf(fp, "%d\n", a.intellect);
-    fprintf(fp, "%d\n", a.wellness);
-    fprintf(fp, "%d\n", a.health);
-    fprintf(fp, "%d\n", a.dodge);
-    fprintf(fp, "%d\n", a.defence);
+    fprintf(fp, "%d\n", data.a.fame);
+    fprintf(fp, "%d\n", data.a.power);
+    fprintf(fp, "%d\n", data.a.intellect);
+    fprintf(fp, "%d\n", data.a.wellness);
+    fprintf(fp, "%d\n", data.a.health);
+    fprintf(fp, "%d\n", data.a.dodge);
+    fprintf(fp, "%d\n", data.a.defence);
     //BAG
     Bag myBag[] = {Pencil, Book, Computer, Knife, Knuckles, Sunglasses, Jacket, Girlfriend};
     int numItems = sizeof(myBag) / sizeof(myBag[0]);
 
     fprintf(fp, "Bag items:\n");
     for(int i = 0; i < numItems; i++) {
-        fprintf(fp, "- %s\n", enum2string(myBag[i]));
+        fprintf(fp, "- %s\n", enum2string(data.b[i]));
     }
     //CHOICES
-    //fprintf(fp, "%s\n", fillChoice()); //'currentChoiceInd', variable de suivi pour le choix actuel
-
+    fprintf(fp, "selected_choice:%d\n", data.selected_choice);
 
     fclose(fp);
 }
@@ -73,18 +72,27 @@ int loadGame(Stdt* main, Bag* b) {
         return 0;
     }
 
+    int i = 0; // compteur d'éléments de sac lus
     Bag item;
     while (fgets(line, sizeof(line), fp) != NULL) {
         line[strcspn(line, "\r\n")] = '\0'; // Supprimer le retour chariot
         item = string2enum(line + 2); // Ignorer le préfixe "- "
-        if (item == Error) {
-            printf("Erreur de lecture d'un élément de sac\n");
+        if (i >= MAX_BAG_SIZE) {
+            printf("Le nombre d'éléments de sac dépasse la taille du tableau\n");
             fclose(fp);
             return 0;
         }
-        *b |= item;
+        b[i++]= item;
     }
 
+
+    char line[1000];
+    if (fgets(line, sizeof(line), fp) != NULL &&
+        sscanf(line, "selected_choice:%d", &(chap->selected_choice)) == 1) {
+        // Le choix de l'utilisateur a été trouvé et chargé
+    } else {
+        // Aucune information sur le choix de l'utilisateur n'a été trouvée dans le fichier de sauvegarde
+    }
     fclose(fp);
     return 1;
 }
