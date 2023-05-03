@@ -5,11 +5,15 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+
 #include "Stdtcreate.h"
+#include "displayTXT.h"
+
 
 void displayStat(Stdt a){
     char* txt1 = "Stat actuel de votre personnage : \n\n";
     int size1 = strlen(txt1);
+    displayTxt(size1, txt1);
     printf("Reputation : %d\n", a.fame);
     printf("Intelligence : %d\n", a.intellect);
     printf("Force : %d\n", a.power);

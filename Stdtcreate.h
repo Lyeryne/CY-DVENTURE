@@ -5,6 +5,14 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+
+#include "DisplayTXT.h"
+#include "Process.h"
+#include "statPlayer.h"
+#include "stdtcreate.h"
+#include "Game.h"
+#include "Save.h"
+
 #include "Robust.h"
 
 #define SIZE_NAMES 100
@@ -21,7 +29,22 @@ typedef struct{
   int dodge;
   int defence;
 } Stdt; // Main character
-Stdt createStudent(){
+
+typedef enum{
+  //intellect stuff
+  Pencil, Book, Computer,
+  //power stuff
+  Knife, Knuckles, 
+  //fame stuff
+  Sunglasses, Jacket,
+  //wellness stuff
+  Girlfriend,
+  //empty
+  Vide  
+}Bag; // Items
+
+Stdt createStudent()
+{
 //VARIABLES
     Stdt x, y, z, w, t;
     int num1, num2;
@@ -120,19 +143,28 @@ Stdt createStudent(){
     t.defence = 50 + rand()%51;
 return x, y, z, w, t;
 }
-
-typedef enum{
-  //intellect stuff
-  Pencil, Book, Computer,
-  //power stuff
-  Knife, Knuckles, 
-  //fame stuff
-  Sunglasses, Jacket,
-  //wellness stuff
-  Girlfriend,
-  //empty
-  Vide  
-}Bag; // Items
+Bag string2enum(const char* str) 
+{
+    if (strcmp(str, "Stylot") == 0) {
+        return Pencil;
+    } else if (strcmp(str, "Cahier") == 0) {
+        return Book;
+    } else if (strcmp(str, "PC") == 0) {
+        return Computer;
+    } else if (strcmp(str, "Opinel") == 0) {
+        return Knife;
+    } else if (strcmp(str, "Knuckles") == 0) {
+        return Knuckles;
+    } else if (strcmp(str, "Lunette de soleil") == 0) {
+        return Sunglasses;
+    } else if (strcmp(str, "Veste") == 0) {
+        return Jacket;
+    } else if (strcmp(str, "Petite amie") == 0) {
+        return Girlfriend;
+    } else if (strcmp(str, "Vide") == 0) {
+        return Vide;
+    } 
+}
 
 char* enum2string(Bag bag)
 {
@@ -157,40 +189,9 @@ char* enum2string(Bag bag)
             return "Vide";
     }
 }
-Bag string2enum(const char* str) {
-    if (strcmp(str, "Stylot") == 0) {
-        return Pencil;
-    } else if (strcmp(str, "Cahier") == 0) {
-        return Book;
-    } else if (strcmp(str, "PC") == 0) {
-        return Computer;
-    } else if (strcmp(str, "Opinel") == 0) {
-        return Knife;
-    } else if (strcmp(str, "Knuckles") == 0) {
-        return Knuckles;
-    } else if (strcmp(str, "Lunette de soleil") == 0) {
-        return Sunglasses;
-    } else if (strcmp(str, "Veste") == 0) {
-        return Jacket;
-    } else if (strcmp(str, "Petite amie") == 0) {
-        return Girlfriend;
-    } else if (strcmp(str, "Vide") == 0) {
-        return Vide;
-    } 
-}
 
-void displayStdt(Stdt a, Bag b){
-    char* txt1 = "Description de votre personnage principal \n\n";
-    int size1 = strlen(txt1);
-    //displayTxt(size1, txt1);
-    printf("[%s %s]\n", a.name, a.sname);
-    printf("Reputation : %d\n", a.fame);
-    printf("Intelligence : %d\n", a.intellect);
-    printf("Force : %d\n", a.power);
-}
-
-
-void removeItem(Bag* bag, Bag item){
+void removeItem(Bag* bag, Bag item)
+{
     int numItems = sizeof(*bag) / sizeof(bag[0]);
     int itemIndex = -1;
 
@@ -208,7 +209,8 @@ void removeItem(Bag* bag, Bag item){
         bag[numItems-1] = Vide;// Mettre le dernier élément à 'Vide'
     }
 }
-void addItem(Bag* bag, Bag item){
+void addItem(Bag* bag, Bag item)
+{
     int numItems = sizeof(*bag) / sizeof(bag[0]);
 
     //vérifie si le sac est plein

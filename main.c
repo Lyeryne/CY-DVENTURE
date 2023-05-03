@@ -6,6 +6,10 @@
 #include "Process.h"
 #include "Stdtcreate.h"
 #include "DisplayTXT.h"
+#include "statPlayer.h"
+#include "Game.h"
+#include "Robust.h"
+
 
 #define SIZE 100000
 
@@ -13,12 +17,10 @@ int main()
 {
 //VALUES
     srand(time(NULL));
-    int nbr1, nbr2, nbr3, nbr4;
     int choice1;
     int verif = 1;
     int pourcentage;
-    int delay1 = 35;
-    Stdt main, fighter1, fighter2, fighter3, fighter4;
+    Stdt mainCharacter, fighter1, fighter2, fighter3, fighter4;
     Bag myBag[] = {Pencil, Book, Computer, Knife, Knuckles, Sunglasses, Jacket, Girlfriend};
     int numItems = sizeof(myBag) / sizeof(myBag[0]);
     int start = 0;
@@ -75,9 +77,9 @@ int main()
         int size2 = strlen(txt1);
         displayTxt(size2, txt1);//Affichage de Txt1   
 
-        Stdt mainCharacter = createStudent();
+        mainCharacter = createStudent();
         system("clear");
-        displayStdt(mainCharacter, myBag);
+        displayStat(mainCharacter);
         sleep(2);
         system("clear");
 
@@ -94,12 +96,8 @@ int main()
         //GAME
         while (game == 1)
         {
-
-            //strcpy(next_chap, displayChapter(ch));
-
             next_chap= displayChapter(ch);
             ch = create_chapter(next_chap);
-
         }
         }//ferme boucle de start == 1
     else if(start == 2){ //"Reprendre partie"
@@ -110,8 +108,7 @@ int main()
             usleep(100000); // suspend l'exécution du programme pendant 100000 microsecondes (0,1 seconde)
         }
 
-        Bag b = 0;
-        if(loadGame(&main, &b)){
+        if(loadGame(&mainCharacter, &myBag)){
             printf("Sauvegarde chargée avec succès !\n");
             sleep(1);
             system("clear");
@@ -154,7 +151,7 @@ int main()
 
                 }
             return 0;
-            }else{ //"Quitter le Jeu"
+            } else{ //"Quitter le Jeu"
                 system("clear");
                 return 0;
             }

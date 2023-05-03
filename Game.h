@@ -1,12 +1,14 @@
-#ifndef PROCESS_H
-#define PROCESS_H
+#ifndef GAME_H
+#define GAME_H
 
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <stdbool.h>
 
-#include "DisplayTXT.h"
+#include "Robust.h"
+#include "Stdtcreate.h"
+
 
 #define SIZE_LINE 10000
 #define MAX_CHOICE 10
@@ -118,22 +120,6 @@ void ProcessChoice(chapter *chap, char *value)
     // ajoutons le choix 'ch' à la liste des choix dans le chapter actuel 'chap' en l'ajoutant à l'ind 'chap->choice_count' de la liste
     chap->choices[chap->choice_count] = ch; // incrémenter la valeur de 'chap->choice_count'
     chap->choice_count++;
-
-    // Stocke la sélection de l'utilisateur dans la structure chapter
-    chap->selected_choice = -1; // initialise la propriété `selected_choice` à -1
-
-    // gère le choix
-    /*  int next_step, i = 0;
-
-     char *cutteds = strtok(string, delim);
-     while (cutteds != NULL)
-     {
-         choice1[i] = cutteds;
-         cutteds = strtok(NULL, delim);
-         i++;
-     }
-
-     printf("%s", choice1[string[0] - 1]); */
 }
 
 chapter create_chapter(char *chapter_name)
@@ -142,10 +128,10 @@ chapter create_chapter(char *chapter_name)
     char line[SIZE_LINE];
 
     int currentPart = 0;
-    char *path = (char *)malloc((strlen("../txt/") + strlen(chapter_name) + strlen(".txt")) * sizeof(char) + 1);
+    char *path = (char *)malloc((strlen("txt/") + strlen(chapter_name) + strlen(".txt")) * sizeof(char) + 1);
     //~~> contien le chemin d'accès au fichier txt que nous voulons ouvrir
 
-    strcpy(path, "../txt/");       // copie la chaîne 'txt' dans chaîne 'path'
+    strcpy(path, "txt/");       // copie la chaîne 'txt' dans chaîne 'path'
     strcat(path, chapter_name); // suivie de 'chapter_name'(concaténation)
     strcat(path, ".txt");       // et de '.txt'
 
@@ -159,7 +145,6 @@ chapter create_chapter(char *chapter_name)
         exit(1);
     }
 
-    // char buf[10] = "";
     chapter chap = {}; // {malloc(1), malloc(0), malloc(0)};
     char first_line_chars[4];
 
@@ -189,79 +174,18 @@ chapter create_chapter(char *chapter_name)
             // on est dans la part 2 : décrit l'événement du chapitre
             case 2:
                 ProcessChoice(&chap, line);
-
                 //~~> affiche l'événement en cours et les choix disponibles.
-
-                // faut mettre processEvent normalement ici
-                // ProcessEvent(line);
-
-                // currentChoice le char[2] qui contient la description et le numero de l'etape suivante?
-                // choices le tableau 2d contenant tous les choice : la desciption et le numero de l'etape suivante associée
-                /*  fillChoice(currentChoice, choices, currentChoiceInd);
-                 // next_step le numero de l'etape suivante dans le choice ou on est
-
-                 printf("la prochaine etape c'est : %d\n", next_step);
-                 while(choices[i][0] != "\0"){
-                     printf("%s", choices[i][0]);
-                     i++;
-                 } */
-
                 break;
-
             case 3:
-
-                // ProcessChoice(line);
+                ProcessChoice(&chap, line);
                 break;
             }
         }
     }
     fclose(file);
 
-    /*
-        if(strcmp(diese, line) == 0){
-            //c'est la partie des choix
-            if(line[0] == "*"){
-                sscanf(line, "**%d", &num_choice[i]);
-                i++;
-            }
-            while(fgets(line, SIZE_LINE, file) != NULL){
-                sscanf(line, "**%d", &num_choice[i]);
-                i++;
-            }
-        }
-        else{
-            printf("%s\n", line);
-            fflush(stdin);
-            if(line[0] == '#'){
-                printf("oui");
-                }
-            for(int j = 0; j < i; j ++){
-                printf("votre choix : %d\n", num_choice[j]);
-            }
-
-        if(line[0] == "###"){
-            while(fgets(line, SIZE_LINE, file) != NULL)
-                sscanf(line, "**%d", &num_choice);
-        }
-
-        if (line[0] != '(') {
-            sscanf(line, "(%d)", &num_choice); // Extract the choice number using sscanf
-            printf("(%d) ", num_choice);
-            fgets(description, SIZE_LINE, file); // Extract the choice description
-        }
-          else if (line[0] == '###') {
-              printf("%s\n", line + 1);
-              char user_choice[SIZE_LINE];
-              fgets(user_choice, SIZE_LINE, stdin);
-              int choice_num;
-              sscanf(user_choice, "%d", &choice_num);   // Extract the user's choice
-              if (choice_num == num_choice) {
-                printf("%s\n", description); // Print the corresponding description
-              }
-          }*/
-    return chap;
+return chap;
 }
-
 
 char* displayChapter(chapter chap)
 {
@@ -273,13 +197,13 @@ char* displayChapter(chapter chap)
     {
         printf("\n%s", chap.choices[i].text);
     }
-    //event
+    //Event
     do
     {
-        printf("\nChoix : ");
+        printf("Choix : ");
         lu = scanf("%d", &user_choice);
         fflush(stdin);
-        if (user_choice < 1 || user_choice > chap.choice_count)
+        if (choice(user_choice) || (user_choice < 1 || user_choice > chap.choice_count))
         {
             printf("Veuillez saisir une reponse valide : ");
         }

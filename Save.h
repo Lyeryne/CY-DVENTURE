@@ -1,18 +1,15 @@
-#ifndef GAMESAVE_H
-#define GAMESAVE_H
+#ifndef SAVE_H
+#define SAVE_H
 
 #include <time.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
 
 #include "DisplayTXT.h"
-#include "structChoice.h"
-#include "Process.h"
+#include "Game.h"
 #include "Stdtcreate.h"
-#include "statPlayer.h"
-#include "gameSave.h"
-#include "Chapter.h"
+
+#define MAX_BAG_SIZE 8
 
 void SaveGame(SaveData data){
     FILE* fp = fopen("txt/save.txt", "w");
