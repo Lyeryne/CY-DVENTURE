@@ -7,41 +7,15 @@
 #include <string.h>
 
 #include "DisplayTXT.h"
-#include "Process.h"
 #include "statPlayer.h"
-#include "stdtcreate.h"
 #include "Game.h"
 #include "Save.h"
-
 #include "Robust.h"
+#include "structures.h"
 
-#define SIZE_NAMES 100
-#define MAX_BAG_SIZE 8
+struct Stdt;
+struct Bag;
 
-typedef struct{
-  char name[SIZE_NAMES];
-  char sname[SIZE_NAMES];
-  int fame;
-  int health;                    
-  int power;
-  int intellect;
-  int wellness;
-  int dodge;
-  int defence;
-} Stdt; // Main character
-
-typedef enum{
-  //intellect stuff
-  Pencil, Book, Computer,
-  //power stuff
-  Knife, Knuckles, 
-  //fame stuff
-  Sunglasses, Jacket,
-  //wellness stuff
-  Girlfriend,
-  //empty
-  Vide  
-}Bag; // Items
 
 Stdt createStudent()
 {
@@ -143,6 +117,7 @@ Stdt createStudent()
     t.defence = 50 + rand()%51;
 return x, y, z, w, t;
 }
+
 Bag string2enum(const char* str) 
 {
     if (strcmp(str, "Stylot") == 0) {

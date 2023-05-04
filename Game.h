@@ -8,33 +8,13 @@
 
 #include "Robust.h"
 #include "Stdtcreate.h"
-
-
-#define SIZE_LINE 10000
-#define MAX_CHOICE 10
+#include "statPlayer.h"
 
 static const char part_seperator[] = "###";
-struct choice;
+struct Choice;
+struct chapter;
+struct SaveData;
 
-typedef struct
-{
-    char *description;
-    char *event;
-    struct choice *choices;
-    int choice_count;
-} chapter;
-
-typedef struct choice
-{
-    char *text;
-    char *nextChapter;
-} choice;
-
-typedef struct {
-    Stdt a;
-    Bag b;
-    int selected_choice;//stocke l'option de choix sélectionnée par l'utilisateur
-} SaveData;
 
 char *set_text_property(char *buf, char *value)
 //=>permet de remplir une propriété de type char * (%s) d'une structure de manière dynamique
@@ -80,46 +60,43 @@ void ProcessChoice(chapter *chap, char *value)
 // =>Ce code est une fonction qui ajoute une option de choix à un chapitre d'une histoire interactive
 {
     if (chap->choices == NULL)
-    { // gère la mémoire allouée pour stocker les choix dans la structure chapter
+    {
         // Si la liste des choix est vide (== NULL)
         chap->choice_count = 0;
-        chap->choices = (choice *)malloc(1 * sizeof(choice)); // alors un choix est alloué
+	    chap->choices = (Choice*)malloc(sizeof(Choice)); // allocation d'un choix
     }
     else
     {
-        choice *temp = (choice *)realloc(chap->choices, (chap->choice_count + 1) * sizeof(choice));
-        // Sinon, un choix supplémentaire est alloué avec 'realloc' pour augmenter la taille de la liste des choix.
+        Choice *temp = (Choice*)realloc(chap->choices, (chap->choice_count + 1) * sizeof(Choice));
+        // allocation d'un choix supplémentaire avec 'realloc' pour augmenter la taille de la liste des choix.
         if (temp != NULL)
         {
             chap->choices = temp;
         }
     }
-    choice ch = {};
-    // analyse la chaîne de caractères value en utilisant le délimiteur '_' et extrait chaque partie de la %s
+    Choice ch = {};
     char delim[] = "_";
-    char *cutteds = strtok(value, delim); // séparer la chaîne value en sous-chaînes en utilisant ces délimiteurs
+    char *cutteds = strtok(value, delim);
     int i = 0;
     while (cutteds != NULL)
-    // parcourt toutes les sous-chaînes et pour chaque sous-chaîne, elle fait une action différente en fonction de son index 'i'
     {
-        if (i == 0) // nous remplissons la propriété text de notre choix avec la première sous-chaîne
+        if (i == 0)
         {
             ch.text = set_text_property(ch.text, cutteds);
             printf("\n");
         }
         else
-        { // nous créons un nouveau chapitre en utilisant la sous-chaîne courante
+        {
             cutteds[strlen(cutteds) - 1] = '\0';
             ch.nextChapter = set_text_property(ch.nextChapter, cutteds);
-            //ch.nextChapter = create_chapter(cutteds);
         }
         cutteds = strtok(NULL, delim);
         i++;
     }
 
-    // ajoutons le choix 'ch' à la liste des choix dans le chapter actuel 'chap' en l'ajoutant à l'ind 'chap->choice_count' de la liste
-    chap->choices[chap->choice_count] = ch; // incrémenter la valeur de 'chap->choice_count'
+    chap->choices[chap->choice_count] = ch;
     chap->choice_count++;
+
 }
 
 chapter create_chapter(char *chapter_name)
@@ -145,6 +122,7 @@ chapter create_chapter(char *chapter_name)
         exit(1);
     }
 
+    // char buf[10] = "";
     chapter chap = {}; // {malloc(1), malloc(0), malloc(0)};
     char first_line_chars[4];
 
@@ -174,8 +152,8 @@ chapter create_chapter(char *chapter_name)
             // on est dans la part 2 : décrit l'événement du chapitre
             case 2:
                 ProcessChoice(&chap, line);
-                //~~> affiche l'événement en cours et les choix disponibles.
                 break;
+
             case 3:
                 ProcessChoice(&chap, line);
                 break;
@@ -184,7 +162,7 @@ chapter create_chapter(char *chapter_name)
     }
     fclose(file);
 
-return chap;
+    return chap;
 }
 
 char* displayChapter(chapter chap)

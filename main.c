@@ -3,15 +3,19 @@
 #include <unistd.h>
 #include <string.h>
 
-#include "Process.h"
+#include "Save.h"
 #include "Stdtcreate.h"
 #include "DisplayTXT.h"
 #include "statPlayer.h"
 #include "Game.h"
 #include "Robust.h"
+#include "structures.h"
 
-
-#define SIZE 100000
+struct Choice;
+struct chapter;
+struct SaveData;
+struct Stdt;
+struct Bag;
 
 int main()
 {
@@ -25,7 +29,7 @@ int main()
     int numItems = sizeof(myBag) / sizeof(myBag[0]);
     int start = 0;
     //CREATION DE FICHIER
-    FILE* fp1 = fopen("../txt/DebutJeu.txt", "r");
+    FILE* fp1 = fopen("txt/DebutJeu.txt", "r");
     char intro[SIZE];
     if(fp1 == NULL){
         printf("Erreur on fopen\n");
@@ -45,13 +49,17 @@ int main()
     printf("1 - Nouvelle Partie\n");//ASCI ART
     printf("2 - Reprendre Partie\n");//ASCI ART
     printf("3 - Quitter le Jeu\n\n");//ASCI ART
-    while(start >= 1 && start <= 3){
+	printf("Choix :");
+	scanf("%d", &start);
+    while(start < 1 && start > 3){
         printf("Entrez votre choix : ");
         scanf("%d", &start);
     }
     sleep(1);
     system("clear");
-
+    //Choix d'une "Nouvelle Partie"
+    if(start == 1)
+    {
     //affichage de %tage en temps réelle
     for(pourcentage = 0; pourcentage <= 100; pourcentage+=20) {
         printf("LANCEMENT DU JEU... %d%%\r", pourcentage); // \r permet de revenir en début de ligne
@@ -61,16 +69,12 @@ int main()
     printf("Chargement fini !\n");
     sleep(1);
     system("clear");
-
-    //Choix d'une "Nouvelle Partie"
-    if(start == 1)
-    {
         while(fgets(intro, SIZE, fp1) != NULL){ 
             int size1 = strlen(intro);
             displayTxt(size1, intro);
         }
-        WaitPress();
         fclose(fp1);
+	sleep(2);
         system("clear");
         //CREATE STUDENTS
         char* txt1 = "Avant de commencer a jouer, vous allez saisir votre personnage principal\n\n";
@@ -108,7 +112,7 @@ int main()
             usleep(100000); // suspend l'exécution du programme pendant 100000 microsecondes (0,1 seconde)
         }
 
-        if(loadGame(&mainCharacter, &myBag)){
+        if(loadGame(&mainCharacter, myBag)){
             printf("Sauvegarde chargée avec succès !\n");
             sleep(1);
             system("clear");

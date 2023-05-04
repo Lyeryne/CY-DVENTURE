@@ -7,24 +7,32 @@
 #include <string.h>
 
 #include "Stdtcreate.h"
-#include "displayTXT.h"
+#include "DisplayTXT.h"
+#include "structures.h"
+
+struct Stdt;
+struct Bag;
 
 
 void displayStat(Stdt a){
     char* txt1 = "Stat actuel de votre personnage : \n\n";
     int size1 = strlen(txt1);
     displayTxt(size1, txt1);
+    printf("[%s %s]\n", a.sname, a.name);
     printf("Reputation : %d\n", a.fame);
     printf("Intelligence : %d\n", a.intellect);
     printf("Force : %d\n", a.power);
     printf("Mental : %d\n", a.wellness);
 }
+
 void displayBag(Bag b){
+
   Bag myBag[] = {Pencil, Book, Computer, Knife, Knuckles, Sunglasses, Jacket, Girlfriend};
   int numItems = sizeof(myBag) / sizeof(myBag[0]);
 
   printf("Bag items:\n");
   for(int i = 0; i < numItems; i++) {
+char* enum2string(Bag bag);
     printf("- %s\n", enum2string(myBag[i]));
   }
 }
@@ -47,12 +55,12 @@ void fight(Stdt a, Stdt b){
     printf("---- ROUND %d ----\n", rounds);
     //a=attacker b=defender
     //get random value between 0.00 and 1.00
-    float randomValue = (rand()%101)/100.0;
+    int randomValue = rand()%101;
         //check if b dodges
         if(randomValue>b.dodge){
             //the defender takes damages
             //damages are reduced
-            float dmg = a.power - b.defence;
+            int dmg = a.power - b.defence;
             if(dmg<0){
                 dmg = 0;
             } 
