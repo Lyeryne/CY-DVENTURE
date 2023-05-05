@@ -17,10 +17,10 @@ struct Stdt;
 struct Bag;
 
 
-Stdt createStudent()
+Stdt createMainCharacter()
 {
 //VARIABLES
-    Stdt x, y, z, w, t;
+    Stdt x;
     int num1, num2;
 //CREATE STUDENT
     printf("Saisir le nom de l'eleve :");
@@ -66,7 +66,7 @@ Stdt createStudent()
         j++;
     }
     
-    //main Student
+    //Pre-stat Student
     x.power = 50 + rand()%51;
     x.fame = 50;
     x.intellect = 50 + rand()%51;
@@ -74,48 +74,25 @@ Stdt createStudent()
     x.health = 1000;
     x.dodge = 50 + rand()%51;
     x.defence = 50 + rand()%51;
-//FIGHTERS
-    //fighter 1
-    strcpy(y.name, "Boris");
-    strcpy(y.sname, "Jackson");
-    y.power = 50 + rand()%51;
-    y.fame = 50;
-    y.intellect = 50 + rand()%51;
-    y.wellness = 100;
-    y.health = 1000;
-    y.dodge = 50 + rand()%51;
-    y.defence = 50 + rand()%51;
-    //fighter 2
-    strcpy(z.name, "Adama");
-    strcpy(z.sname, "Younga");
-    z.power = 50 + rand()%51;
-    z.fame = 50;
-    z.intellect = 50 + rand()%51;
-    z.wellness = 100;
-    z.health = 1000;
-    z.dodge = 50 + rand()%51;
-    z.defence = 50 + rand()%51;
-    //fighter 3
-    strcpy(w.name, "Etienne");
-    strcpy(w.sname, "Wojdilot");
-    w.power = 50 + rand()%51;
-    w.fame = 50;
-    w.intellect = 50 + rand()%51;
-    w.wellness = 100;
-    w.health = 1000;
-    w.dodge = 50 + rand()%51;
-    w.defence = 50 + rand()%51;
-    //fighter 4
-    strcpy(t.name, "Lucas");
-    strcpy(t.sname, "Traoré");
-    t.power = 50 + rand()%51;
-    t.fame = 50;
-    t.intellect = 50 + rand()%51;
-    t.wellness = 100;
-    t.health = 1000;
-    t.dodge = 50 + rand()%51;
-    t.defence = 50 + rand()%51;
-return x, y, z, w, t;
+
+return x;
+
+}
+
+Stdt createFighter(char name[SIZE_NAMES], char sname[SIZE_NAMES]){
+    Stdt fighter;
+
+    strncpy(fighter.name, name, SIZE_NAMES);
+    strncpy(fighter.sname, sname, SIZE_NAMES);
+    fighter.power = 50 + rand()%51;
+    fighter.fame = 50;
+    fighter.intellect = 50 + rand()%51;
+    fighter.wellness = 100;
+    fighter.health = 1000;
+    fighter.dodge = 50 + rand()%51;
+    fighter.defence = 50 + rand()%51;
+
+    return fighter;
 }
 
 Bag string2enum(const char* str) 

@@ -11,11 +11,7 @@
 #include "Robust.h"
 #include "structures.h"
 
-struct Choice;
-struct chapter;
-struct SaveData;
-struct Stdt;
-struct Bag;
+
 
 int main()
 {
@@ -24,56 +20,41 @@ int main()
     int choice1;
     int verif = 1;
     int pourcentage;
-    Stdt mainCharacter, fighter1, fighter2, fighter3, fighter4;
+    Stdt mainCharacter;
+    /*Stdt fighter1 = createFighter("Boris", "Jackson");
+    Stdt fighter2 = createFighter("Adama", "Younga");
+    Stdt fighter3 = createFighter("Etienne", "Wojdilot");
+    Stdt fighter4 = createFighter("Lucas", "Traoré");*/
+
     Bag myBag[] = {Pencil, Book, Computer, Knife, Knuckles, Sunglasses, Jacket, Girlfriend};
     int numItems = sizeof(myBag) / sizeof(myBag[0]);
     int start = 0;
+    char* next_chap;
     //CREATION DE FICHIER
-    FILE* fp1 = fopen("txt/DebutJeu.txt", "r");
+    start = pre_game();
+   
+    /*FILE* fp1 = fopen("ProjetV2/txt/DebutJeu.txt", "r");
     char intro[SIZE];
     if(fp1 == NULL){
         printf("Erreur on fopen\n");
         exit(1);
-    }
-    //PRE-GAME
-    system("clear");
-    printf("Webtoon MI5\n");
-    sleep(1);
-    char* txt = "Produit par\n-> Louaye SAGHIR\n-> Clement PRIMOLI\n-> Roman BOULLIER\n\n";
-    int size = strlen(txt);
-    displayTxt(size, txt);  
-    sleep(1);
-    system("clear");
-    //Choix de partie
-    printf("=== MENU ===\n");//ASCI ART
-    printf("1 - Nouvelle Partie\n");//ASCI ART
-    printf("2 - Reprendre Partie\n");//ASCI ART
-    printf("3 - Quitter le Jeu\n\n");//ASCI ART
-	printf("Choix :");
-	scanf("%d", &start);
-    while(start < 1 && start > 3){
-        printf("Entrez votre choix : ");
-        scanf("%d", &start);
-    }
-    sleep(1);
-    system("clear");
+    }*/
     //Choix d'une "Nouvelle Partie"
     if(start == 1)
     {
+	
+      displayLoading();
     //affichage de %tage en temps réelle
-    for(pourcentage = 0; pourcentage <= 100; pourcentage+=20) {
-        printf("LANCEMENT DU JEU... %d%%\r", pourcentage); // \r permet de revenir en début de ligne
-        fflush(stdout); // force l'affichage immédiat du texte
-        usleep(100000); // suspend l'exécution du programme pendant 100000 microsecondes (0,1 seconde)
-    }
-    printf("Chargement fini !\n");
-    sleep(1);
-    system("clear");
-        while(fgets(intro, SIZE, fp1) != NULL){ 
+      chapter intro = create_chapter("DebutJeu");
+      next_chap = displayChapter(intro);
+
+      chapter introduction = create_chapter(next_chap);
+      next_chap = displayChapter(introduction);  
+        /*while(fgets(intro, SIZE, fp1) != NULL){ 
             int size1 = strlen(intro);
             displayTxt(size1, intro);
         }
-        fclose(fp1);
+        fclose(fp1);*/
 	sleep(2);
         system("clear");
         //CREATE STUDENTS
@@ -81,7 +62,7 @@ int main()
         int size2 = strlen(txt1);
         displayTxt(size2, txt1);//Affichage de Txt1   
 
-        mainCharacter = createStudent();
+        mainCharacter = createMainCharacter();
         system("clear");
         displayStat(mainCharacter);
         sleep(2);
@@ -134,12 +115,7 @@ int main()
             if(start == 1){ //"Nouvelle Partie"
                 system("clear");
                 //affichage de %tage en temps réelle
-                for(pourcentage = 0; pourcentage <= 100; pourcentage+=20) {
-                    printf("LANCEMENT DU JEU... %d%%\r", pourcentage); // \r permet de revenir en début de ligne
-                    fflush(stdout); // force l'affichage immédiat du texte
-                    usleep(100000); // suspend l'exécution du programme pendant 100000 microsecondes (0,1 seconde)
-                }
-                printf("Chargement fini !\n");
+                displayLoading();
                 sleep(1);
                 system("clear");
                 //GAME

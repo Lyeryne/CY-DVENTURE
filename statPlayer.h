@@ -84,13 +84,21 @@ void fight(Stdt a, Stdt b){
     }
     printf("\n");
 }
-void displayBeforeFight(Stdt n){
-    printf("[%s %s]\n", n.name, n.sname);
-    printf("ATK = %d\n", n.power);
-    printf(" DEF = %d\n", n.defence);
-    printf(" DODGE = %d\n", n.dodge);
-    printf(" LIFE POINT = %d\n", n.health);
+void displayBeforeFight(Stdt fighter, Stdt main){
+    printf("Personnage Principal :\n");
+    printf("[%s %s]\n", main.name, main.sname);
+    printf("ATK = %d\n", main.power);
+    printf(" DEF = %d\n", main.defence);
+    printf(" DODGE = %d\n", main.dodge);
+    printf(" LIFE POINT = %d\n", main.health);
     printf("\n\n");
+    printf("Adversaire :\n");
+    printf("[%s %s]\n", fighter.name, fighter.sname);
+    printf("ATK = %d\n", fighter.power);
+    printf(" DEF = %d\n", fighter.defence);
+    printf(" DODGE = %d\n", fighter.dodge);
+    printf(" LIFE POINT = %d\n", fighter.health);
+    printf("\n\n\n");
 }
 
 #endif

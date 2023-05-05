@@ -15,7 +15,33 @@ struct Choice;
 struct chapter;
 struct SaveData;
 
+ int pre_game(){
+   int start, lu;
+    system("clear");
+    printf("Webtoon MI5\n");
+    sleep(1);
+    char* txt = "Produit par\n-> Louaye SAGHIR\n-> Clement PREMOLI\n-> Roman BOULLIER\n\n";
+    int size = strlen(txt);
+    displayTxt(size, txt);  
+    sleep(1);
+    system("clear");
+    //Choix de partie
+    printf("========= MENU ========\n");//ASCI ART
+    printf(" 1 -> Nouvelle Partie\n");//ASCI ART
+    printf(" 2 -> Reprendre Partie\n");//ASCI ART
+    printf(" 3 -> Quitter le Jeu\n\n");//ASCI ART
+	printf("Choix :");
+	lu = scanf("%d", &start);
+    while(start < 1 && start > 3 && lu == 0){
+        fflush(stdin);
+        printf("Entrez votre choix : ");
+        scanf("%d", &start);
+    }
+    sleep(1);
+    system("clear");
 
+  return start;
+ }
 char *set_text_property(char *buf, char *value)
 //=>permet de remplir une propriété de type char * (%s) d'une structure de manière dynamique
 {
