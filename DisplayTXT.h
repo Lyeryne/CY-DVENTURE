@@ -10,7 +10,7 @@
 void displayTxt(int size, char* txt)
 {
 //afficher .txt lettre par lettre avec un petit délai entre chaque lettre, ~> impression de temps réel
-	int delay1 = 0;//simuler l'effet de défilement(en ms) 
+	int delay1 = 25;//simuler l'effet de défilement(en ms) 
 	for(int i=0; i<size; i++){
 		printf("%c", txt[i]);
 		fflush(stdout);//force l'affichage du caractère sur la sortie standard avant de passer à la lettre suivante
@@ -27,7 +27,7 @@ void displayLoading()
         fflush(stdout); // force l'affichage immédiat du texte
         usleep(100000); // suspend l'exécution du programme pendant 100000 microsecondes (0,1 seconde)
     }
-	printf("Chargement fini !\n");
+    printf("Chargement fini !\n");
     sleep(1);
     system("clear");
 }

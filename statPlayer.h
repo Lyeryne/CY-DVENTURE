@@ -30,11 +30,12 @@ void displayBag(Bag b){
   Bag myBag[] = {Pencil, Book, Computer, Knife, Knuckles, Sunglasses, Jacket, Girlfriend};
   int numItems = sizeof(myBag) / sizeof(myBag[0]);
 
-  printf("Bag items:\n");
+  printf("\nVotre Sac :\n");
   for(int i = 0; i < numItems; i++) {
 char* enum2string(Bag bag);
     printf("- %s\n", enum2string(myBag[i]));
   }
+printf("\n");
 }
 
 void in_de_creaseStat(Stdt* student, int fame, int health, int power, int intellect, int wellness, int sign){

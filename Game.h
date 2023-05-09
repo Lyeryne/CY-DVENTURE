@@ -14,17 +14,19 @@ static const char part_seperator[] = "###";
 struct Choice;
 struct chapter;
 struct SaveData;
+struct Stdt;
+struct Bag;
 
  int pre_game(){
    int start, lu;
     system("clear");
-    printf("Webtoon MI5\n");
+    /*printf("Webtoon MI5\n");
     sleep(1);
     char* txt = "Produit par\n-> Louaye SAGHIR\n-> Clement PREMOLI\n-> Roman BOULLIER\n\n";
     int size = strlen(txt);
     displayTxt(size, txt);  
     sleep(1);
-    system("clear");
+    system("clear");*/
     //Choix de partie
     printf("========= MENU ========\n");//ASCI ART
     printf(" 1 -> Nouvelle Partie\n");//ASCI ART
@@ -193,6 +195,7 @@ chapter create_chapter(char *chapter_name)
 
 char* displayChapter(chapter chap)
 {
+    Bag b;
     int lu;
     int user_choice = 0, count = 0;
     printf("%s", chap.description);
@@ -201,7 +204,7 @@ char* displayChapter(chapter chap)
     {
         printf("\n%s", chap.choices[i].text);
     }
-    //Event
+    //event
     do
     {
         printf("Choix : ");

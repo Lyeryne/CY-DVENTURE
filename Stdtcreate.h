@@ -130,7 +130,7 @@ char* enum2string(Bag bag)
         case Knife:
             return "Opinel";
         case Knuckles:
-            return "Knuckles";
+            return "Poing américain";
         case Sunglasses:
             return "Lunette de soleil";
         case Jacket:
