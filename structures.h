@@ -36,17 +36,19 @@ typedef enum
 
 typedef struct
 {
-    char *description;
-    char *event;
-    struct choice *choices;
-    int choice_count;
-} chapter;
-
-typedef struct choice
-{
     char *text;
     char *nextChapter;
 } Choice;
+
+typedef struct
+{
+    char *description;
+    char *event;
+    Choice *choices;
+    int choice_count;
+} chapter;
+
+
 
 typedef struct 
 {
