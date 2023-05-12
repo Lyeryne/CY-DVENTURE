@@ -1,8 +1,9 @@
 #include "DisplayTXT.h"
+
 void displayTxt(int size, char* txt)
 {
 //afficher .txt lettre par lettre avec un petit délai entre chaque lettre, ~> impression de temps réel
-	int delay1 = 25;//simuler l'effet de défilement(en ms) 
+	int delay1 = 20;//simuler l'effet de défilement(en ms) 
 	for(int i=0; i<size; i++){
 		printf("%c", txt[i]);
 		fflush(stdout);//force l'affichage du caractère sur la sortie standard avant de passer à la lettre suivante

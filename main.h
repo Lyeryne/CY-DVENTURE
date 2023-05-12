@@ -13,5 +13,7 @@
 #include "Game.h"
 #include "Robust.h"
 #include "structures.h"
+
 int main();
+
 #endif

@@ -1,4 +1,5 @@
 #include "Game.h"
+
 int pre_game(){
    int start, lu;
     system("clear");
@@ -11,12 +12,32 @@ int pre_game(){
     system("clear");*/
     //Choix de partie
     printf("========= MENU ========\n");//ASCI ART
-    printf(" 1 -> Nouvelle Partie Louaye il aime les gros bangalas\n");//ASCI ART
+    printf(" 1 -> Nouvelle Partie\n");//ASCI ART
     printf(" 2 -> Reprendre Partie\n");//ASCI ART
     printf(" 3 -> Quitter le Jeu\n\n");//ASCI ART
 	printf("Choix :");
 	lu = scanf("%d", &start);
     while(start < 1 && start > 3 && lu == 0){
+        fflush(stdin);
+        printf("Entrez votre choix : ");
+        scanf("%d", &start);
+    }
+    sleep(1);
+    system("clear");
+
+  return start;
+ }
+
+int no_game(){
+   int start, lu;
+    system("clear");
+    printf("========= MENU ==========\n");//ASCI ART
+    printf("1 -> Nouvelle Partie\n");//ASCI ART
+    printf("~~ ACCES NON-AUTORISER ~~\n");//ASCI ART
+    printf("2 -> Quitter le Jeu\n\n");//ASCI ART
+	printf("Choix :");
+	lu = scanf("%d", &start);
+    while(start < 1 && start > 2 && lu == 0){
         fflush(stdin);
         printf("Entrez votre choix : ");
         scanf("%d", &start);
@@ -58,27 +79,9 @@ void ProcessDescription(chapter *chap, char *value)
     //=> assigner une description(avec la valeur de 'value') à un chapitre
 }
 
-void ProcessEvent(chapter *chap, char *value, int counter)
+void ProcessEvent(chapter *chap, char *value)
 {
-    
-	switch(counter)
-	{
-		case 0:
-			chap->event->type_event = value;
-			break;
-
-		case 1:
-			chap->event->fighter = value;
-			break;
-		
-		case 2:
-			chap->event->stat = value;
-			break;
-		
-		case 3:
-			chap->event->statation = value;
-			break;
-	}
+    chap->event = set_text_property(chap->event, value);
     // remplit event de la struct chapter avec la %s 'value' en utilisant 'fill_text_property'
     //=> ajouter des événements
 }
@@ -134,7 +137,7 @@ chapter create_chapter(char *chapter_name)
 {
     // VARIABLES
     char line[SIZE_LINE];
-	int count;
+
     int currentPart = 0;
     char *path = (char *)malloc((strlen("txt/") + strlen(chapter_name) + strlen(".txt")) * sizeof(char) + 1);
     //~~> contien le chemin d'accès au fichier txt que nous voulons ouvrir
@@ -177,8 +180,7 @@ chapter create_chapter(char *chapter_name)
                 ProcessDescription(&chap, line);
                 break;
             case 1:
-                ProcessEvent(&chap, line, count);
-				count ++;
+                ProcessEvent(&chap, line);
                 break;
 
             // on est dans la part 2 : décrit l'événement du chapitre
@@ -211,16 +213,6 @@ char *displayChapter(chapter chap)
     {
         printf("\n%s", chap.choices[i].text);
     }
-
-	/*switch(chap.event.type_event){
-		case 0:
-			//c'est un ptn de monstre
-		fight(*/
-
-
-
-
-
     do
     {
         printf("Choix :\n");

@@ -17,8 +17,10 @@ struct chapter;
 struct SaveData;
 struct Stdt;
 struct Bag;
+struct Event;
 
 int pre_game();
+int no_game();
 char *set_text_property(char *buf, char *value);
 void ProcessDescription(chapter *chap, char *value);
 void ProcessEvent(chapter *chap, char *value, int counter);
