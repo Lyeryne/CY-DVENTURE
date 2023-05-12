@@ -1,3 +1,4 @@
+#include "Stdtcreate.h"
 Stdt createMainCharacter()
 {
 //VARIABLES

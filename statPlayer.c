@@ -1,3 +1,4 @@
+#include "statPlayer.h"
 void displayStat(Stdt a){
     char* txt1 = "Stat actuel de votre personnage : \n\n";
     int size1 = strlen(txt1);

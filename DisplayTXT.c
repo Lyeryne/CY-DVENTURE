@@ -1,3 +1,4 @@
+#include "DisplayTXT.h"
 void displayTxt(int size, char* txt)
 {
 //afficher .txt lettre par lettre avec un petit délai entre chaque lettre, ~> impression de temps réel
