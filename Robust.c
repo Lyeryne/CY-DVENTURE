@@ -1,3 +1,4 @@
+#include "Robust.h"
 //Renvoie la lettre en majuscule
 char toUpper(char c){
     return c-32;

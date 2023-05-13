@@ -1,3 +1,4 @@
+#include "Save.h"
 void SaveGame(SaveData data){
     FILE* fp = fopen("txt/save.txt", "w");
     if(fp == NULL){

@@ -1,17 +1,4 @@
-#include <stdlib.h>
-#include <stdio.h>
-#include <unistd.h>
-#include <string.h>
-
-#include "Save.h"
-#include "Stdtcreate.h"
-#include "DisplayTXT.h"
-#include "statPlayer.h"
-#include "Game.h"
-#include "Robust.h"
-#include "structures.h"
-
-
+#include "main.h"
 
 int main()
 {
@@ -40,10 +27,10 @@ int main()
 
 	Bag myBag[] = {Pencil, Book, Computer, Knife, Knuckles, Sunglasses, Jacket, Girlfriend};
 	int numItems = sizeof(myBag) / sizeof(myBag[0]);
-	int start;
+	int start1, start2;
 	char* next_chap;
 //CREATION DE FICHIER
-	start = pre_game();
+	start1 = pre_game();
 
 	/*FILE* fp1 = fopen("ProjetV2/txt/DebutJeu.txt", "r");
 	char intro[SIZE];
@@ -52,11 +39,11 @@ int main()
 	exit(1);
 	}*/
 	//Choix d'une "Nouvelle Partie"
-	if(start == 1)
+	if(start1 == 1)
 	{
 		displayLoading();
 		//affichage de %tage en temps réelle
-		chapter intro = create_chapter("DebutJeu");
+		chapter intro = create_chapter("Debutjeu");
 		next_chap = displayChapter(intro);
 
 		chapter introduction = create_chapter(next_chap);
@@ -96,7 +83,7 @@ int main()
 			ch = create_chapter(next_chap);
 		}
 		}//ferme boucle de start == 1
-		else if(start == 2){ //"Reprendre partie"
+		else if(start1 == 2){ //"Reprendre partie"
 			//affichage de %tage en temps réelle
 			for(pourcentage = 0; pourcentage <= 100; pourcentage+=20) {
 			printf("CHARGEMENT DE PARTIE... %d%%\r", pourcentage); // \r permet de revenir en début de ligne
@@ -107,7 +94,7 @@ int main()
 			sleep(1);
 			system("clear");
 
-			if(loadGame(&mainCharacter, myBag)){
+			if(loadGame(&mainCharacter, myBag) == 1){
 				printf("Sauvegarde chargée avec succès !\n");
 				sleep(1);
 				system("clear");
@@ -119,13 +106,9 @@ int main()
 
 			} else {
 				printf("Impossible de charger la sauvegarde!\n\n");
+				start2 = no_game();
 				printf("1 - Nouvelle Partie\n");
 				printf("2 - quitter le Jeu\n");
-				int start = 0;
-				while(start != 1 || start != 2){
-					printf("Entrez votre choix : ");
-					scanf("%d", &start);
-				}
 				if(start == 1){ //"Nouvelle Partie"
 					system("clear");
 					//affichage de %tage en temps réelle

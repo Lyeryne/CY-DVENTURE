@@ -1,3 +1,5 @@
+#include "Game.h"
+
 int pre_game(){
    int start, lu;
     system("clear");
@@ -16,6 +18,26 @@ int pre_game(){
 	printf("Choix :");
 	lu = scanf("%d", &start);
     while(start < 1 && start > 3 && lu == 0){
+        fflush(stdin);
+        printf("Entrez votre choix : ");
+        scanf("%d", &start);
+    }
+    sleep(1);
+    system("clear");
+
+  return start;
+ }
+
+int no_game(){
+   int start, lu;
+    system("clear");
+    printf("========= MENU ==========\n");//ASCI ART
+    printf("1 -> Nouvelle Partie\n");//ASCI ART
+    printf("~~ ACCES NON-AUTORISER ~~\n");//ASCI ART
+    printf("2 -> Quitter le Jeu\n\n");//ASCI ART
+	printf("Choix :");
+	lu = scanf("%d", &start);
+    while(start < 1 && start > 2 && lu == 0){
         fflush(stdin);
         printf("Entrez votre choix : ");
         scanf("%d", &start);
