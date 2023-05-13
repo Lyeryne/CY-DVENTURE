@@ -8,13 +8,14 @@ Chaque rencontre déterminera votre réussite puisque ces rencontres vous apport
 
 Voici comment cela fonctionne : 
 
-l’intelligence te permettra de répondre plus facilement aux devoirs surveillés, et donc d’avoir de meilleure note. 
-L’attaque, la défense et les points de vie te permettront d’éviter de te faire agresser.
-Le mental t’aidera dans tes révisions, mais si tu tombes à 0, tu perdras. (._.)
+La SMRT te permettra de répondre plus facilement aux devoirs surveillés, et donc d’avoir de meilleure note. 
+L’ATK et la DEF te permettront d’éviter de te faire agresser.
+La FAM te permettra de booster tes stats grâce aux rencontres.
+L'HPY constituera ton niveau de moral, gare à le garder assez haut ou tu perdras (._.)
 
 La seule solution : Être un très bon élève ! ¯\_(ツ)_/¯
 
 ###
 Appuyer sur 1
 ###
-1- Continuer_1
+1- Continuer_06
