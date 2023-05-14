@@ -9,6 +9,6 @@ Est-ce que je devrais y aller ?
 -1 (EVENT)
 ###
 
-1 - Oui, pourquoi pas !_1
-2 - Non, c'est pour les nullos_2
+1 - Oui, pourquoi pas !_01
+2 - Non, c'est pour les nullos_02
 

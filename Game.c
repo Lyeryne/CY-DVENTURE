@@ -81,7 +81,6 @@ void ProcessDescription(chapter *chap, char *value)
 
 void ProcessEvent(chapter *chap, char *value, int counter)
 {
-    chap->event = set_text_property(chap->event, value);
 
     //utiiser la fonction de louaye qui transforme un char en int et faire le switch avec
     switch(counter){
@@ -102,8 +101,8 @@ void ProcessEvent(chapter *chap, char *value, int counter)
             chap->event->type_stat = set_text_property(chap->event->type_stat, value);
             break;
         case 5:
-            chap->event->n_stat = (char *)malloc(2 * sizeof(char));
-            chap->event->n_stat = set_text_property(chap->event->n_stat, value);
+	    	int a = atoi(value);
+            chap->event->n_stat = a;
             break; 
     }
     // remplit event de la struct chapter avec la %s 'value' en utilisant 'fill_text_property'
@@ -170,7 +169,7 @@ chapter create_chapter(char *chapter_name)
     strcat(path, chapter_name); // suivie de 'chapter_name'(concaténation)
     strcat(path, ".txt");       // et de '.txt'
 
-    FILE *file = fopen(path, "rb");
+    FILE *file = fopen(path, "r");
     // crée un chemin vers le fichier txt à partir du nom du chapitre et stocke dans 'path'
 
     // FILE *file = fopen("../txt/Event1.txt", "r");

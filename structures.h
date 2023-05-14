@@ -42,11 +42,13 @@ typedef struct
 
 typedef struct
 {
-	char *type_event;
-	char *fighter;
-	char *stat;
-	char* statation;
-} Event;
+    char *type_event;
+    char *n_monster;
+    char *id_object;
+    char *type_stat;
+    int n_stat;
+    char *positive_or_negative;
+}Event;
 
 typedef struct
 {
@@ -55,8 +57,6 @@ typedef struct
     Choice *choices;
     int choice_count;
 } chapter;
-
-
 
 typedef struct 
 {
@@ -67,3 +67,4 @@ typedef struct
 
 
 #endif
+

@@ -43,11 +43,14 @@ int main()
 	{
 		displayLoading();
 		//affichage de %tage en temps réelle
-		chapter intro = create_chapter("Debutjeu");
-		next_chap = displayChapter(intro);
+		
 
-		chapter introduction = create_chapter(next_chap);
-		next_chap = displayChapter(introduction);  
+									/*chapter intro = create_chapter("DebutJeu");
+									next_chap = displayChapter(intro);
+									chapter introduction = create_chapter(next_chap);
+									next_chap = displayChapter(introduction);*/
+
+
 		/*while(fgets(intro, SIZE, fp1) != NULL){ 
 		int size1 = strlen(intro);
 		displayTxt(size1, intro);
@@ -79,8 +82,8 @@ int main()
 //GAME
 		while (game == 1)
 		{
-			next_chap= displayChapter(ch);
-			ch = create_chapter(next_chap);
+						next_chap= displayChapter(ch);
+						ch = create_chapter(next_chap);
 		}
 		}//ferme boucle de start == 1
 		else if(start1 == 2){ //"Reprendre partie"
@@ -109,7 +112,7 @@ int main()
 				start2 = no_game();
 				printf("1 - Nouvelle Partie\n");
 				printf("2 - quitter le Jeu\n");
-				if(start == 1){ //"Nouvelle Partie"
+				if(start2 == 1){ //"Nouvelle Partie"
 					system("clear");
 					//affichage de %tage en temps réelle
 					displayLoading();
