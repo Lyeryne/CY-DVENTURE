@@ -21,7 +21,7 @@ Cependant, ce sont des etudiants engages et serieux qui t'apporteront forces men
 ###
 Avec qui veux-tu te mettre ?
 ###
-1 - Amir, Mohammed et Charles_3
-2 - Youssef, Mahmoud et Lyeryne_4
-3 - Mamadou, Francis et Leo_5
+1 - Amir, Mohammed et Charles_03
+2 - Youssef, Mahmoud et Lyeryne_04
+3 - Mamadou, Francis et Leo_05
 
