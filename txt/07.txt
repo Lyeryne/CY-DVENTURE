@@ -24,10 +24,13 @@ Toi – Y’a pas de soucis, passe une bonne journée, fait attention à toi !
 
 Elle – C’est mignon merci ! 
 
+Tu récupères tes affaires et tu te rends à X TECH
+
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~XTECH DVENTURE~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 ###
-1 //(+5 mentale et -5 force)Stat
+1 //(+5 HPY)Stat
+//Gagne le stylo et le cahier\\
 ###
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~XTECH DVENTURE~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
