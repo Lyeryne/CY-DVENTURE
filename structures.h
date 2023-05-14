@@ -47,6 +47,7 @@ typedef struct
     char *id_object;
     char *type_stat;
     int n_stat;
+	char *add_or_remove_bag;
     char *positive_or_negative;
 }Event;
 

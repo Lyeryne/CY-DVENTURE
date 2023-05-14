@@ -143,6 +143,7 @@ void removeItem(Bag* bag, Bag item)
         bag[numItems-1] = Vide;// Mettre le dernier élément à 'Vide'
     }
 }
+
 void addItem(Bag* bag, Bag item)
 {
     int numItems = sizeof(*bag) / sizeof(bag[0]);

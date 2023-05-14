@@ -103,7 +103,10 @@ void ProcessEvent(chapter *chap, char *value, int counter)
         case 5:
 	    	int a = atoi(value);
             chap->event->n_stat = a;
-            break; 
+            break;
+		case 6: 
+			chap->event->add_or_remove_bag = (char *)malloc(1 * sizeof(char));
+			break;
     }
     // remplit event de la struct chapter avec la %s 'value' en utilisant 'fill_text_property'
     //=> ajouter des événements
@@ -227,8 +230,27 @@ chapter create_chapter(char *chapter_name)
     return chap;
 }
 
-char *displayChapter(chapter chap)
+char *displayChapter(chapter chap, Stdt main_character, Bag MyBag)
 {
+    
+    //fighter1
+	char name1[SIZE_NAMES] = "Boris";
+	char sname1[SIZE_NAMES] = "Jackson";
+	Stdt fighter1 = createFighter(name1, sname1);
+	//fighter2
+	char name2[SIZE_NAMES] = "Adama";
+	char sname2[SIZE_NAMES] = "Younga";
+	Stdt fighter2 = createFighter(name2, sname2);
+	//fighter3
+	char name3[SIZE_NAMES] = "Etienne";
+	char sname3[SIZE_NAMES] = "Wojdilot";
+	Stdt fighter3 = createFighter(name3, sname3);
+	//fighter4
+	char name4[SIZE_NAMES] = "Lucas";
+	char sname4[SIZE_NAMES] = "Traoré";
+	Stdt fighter4 = createFighter(name4, sname4);
+
+    Stdt tab_fighter[4] = {fighter1, fighter2, fighter3, fighter4};
     int lu;
     int user_choice = 0, count = 0;
     //printf("%s", chap.description);
@@ -238,6 +260,110 @@ char *displayChapter(chapter chap)
     {
         printf("\n%s", chap.choices[i].text);
     }
+    
+//EVENT DU JEU   
+    switch(chap.event->type_event){
+        case 1:
+        //combat contre un monstre
+			
+            fight(main_character, tab_fighter[chap.event->n_monster]);   
+            break;
+
+        case 2:
+        //modification de stat
+            switch(chap.event->type_stat){
+                case 1:
+                //fame
+                if(chap.event->positive_or_negative == "1"){
+                //c'est un malus de stat
+                    main_character.fame -= chap.event->n_stat;
+					//Si une Stat inf à 0 alors remit à 0
+					if(main_character.fame<0){
+						main_character.fame = 0;
+                	}
+				}
+                else{
+                //c'est un bonus de stat
+                    main_character.fame += chap.event->n_stat;
+					//Si une Stat sup à 100 alors remit à 100
+					if(main_character.fame > 100){
+						main_character.fame = 100;
+                	}
+                }
+                break;
+
+                case 2:
+                //intellect
+                if(chap.event->positive_or_negative == "1"){
+                //c'est un malus de stat
+                    main_character.intellect -= chap.event->n_stat;
+					//Si une Stat inf à 0 alors remit à 0
+					if(main_character.intellect < 0){
+						main_character.intellect = 0;
+                	}
+                }
+                else{
+                //c'est un bonus de stat
+					main_character.intellect += chap.event->n_stat;
+					//Si une Stat sup à 100 alors remit à 100
+					if(main_character.fame > 100){
+						main_character.fame = 100;
+                	}
+                }
+                break;
+                case 3:
+                //power
+                if(chap.event->positive_or_negative == "1"){
+                //c'est un malus de stat
+                    main_character.power -= chap.event->n_stat;
+					//Si une Stat inf à 0 alors remit à 0
+					if(main_character.intellect < 0){
+						main_character.intellect = 0;
+                	}
+                }
+                else{
+                //c'est un bonus de stat
+                    main_character.power += chap.event->n_stat;
+					//Si une Stat sup à 100 alors remit à 100
+					if(main_character.fame > 100){
+						main_character.fame = 100;
+                	}
+                }
+                break;
+				case 4:
+				if(chap.event->positive_or_negative == "1"){
+                //c'est un malus de stat
+                    main_character.wellness -= chap.event->n_stat;
+					//Si une Stat inf à 0 alors remit à 0
+					if(main_character.intellect < 0){
+						main_character.intellect = 0;
+                	}
+                }
+                else{
+                //c'est un bonus de stat
+                    main_character.wellness += chap.event->n_stat;
+					//Si une Stat sup à 100 alors remit à 100
+					if(main_character.fame > 100){
+						main_character.fame = 100;
+                	}
+                }
+		
+            }
+        case 3:
+        //modification inventaire
+		if(chap.event->add_or_remove_bag == "1"){
+                //c'est un malus de stat
+                    main_character.power -= chap.event->n_stat;
+                }
+                else{
+                //c'est un bonus de stat
+                    main_character.power += chap.event->n_stat;
+                }
+                break;
+
+    }
+
+//CHOIX DU JEU
     do
     {
         printf("Choix :\n");
