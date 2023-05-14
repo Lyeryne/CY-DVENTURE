@@ -1,6 +1,6 @@
 #include "Save.h"
 void SaveGame(SaveData data){
-    FILE* fp = fopen("txt/save.txt", "w");
+    FILE* fp = fopen("txt/save.txt", "wb");
     if(fp == NULL){
         printf("Erreur fopen (file Save)\n");
         exit(1);
@@ -29,7 +29,7 @@ void SaveGame(SaveData data){
 }
 
 int loadGame(Stdt* main, Bag* b) {
-    FILE* fp = fopen("txt/save.txt", "r");
+    FILE* fp = fopen("txt/save.txt", "rb");
     if (fp == NULL) {
         printf("Erreur fopen (file LoadSave)\n");
         exit(1);

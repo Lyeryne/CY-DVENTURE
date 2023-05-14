@@ -3,13 +3,13 @@
 int pre_game(){
    int start, lu;
     system("clear");
-    /*printf("Webtoon MI5\n");
+    printf("Webtoon MI5\n");
     sleep(1);
     char* txt = "Produit par\n-> Louaye SAGHIR\n-> Clement PREMOLI\n-> Roman BOULLIER\n\n";
     int size = strlen(txt);
     displayTxt(size, txt);  
     sleep(1);
-    system("clear");*/
+    system("clear");
     //Choix de partie
     printf("========= MENU ========\n");//ASCI ART
     printf(" 1 -> Nouvelle Partie\n");//ASCI ART
@@ -82,6 +82,7 @@ void ProcessDescription(chapter *chap, char *value)
 void ProcessEvent(chapter *chap, char *value)
 {
     chap->event = set_text_property(chap->event, value);
+
     // remplit event de la struct chapter avec la %s 'value' en utilisant 'fill_text_property'
     //=> ajouter des événements
 }
@@ -146,7 +147,7 @@ chapter create_chapter(char *chapter_name)
     strcat(path, chapter_name); // suivie de 'chapter_name'(concaténation)
     strcat(path, ".txt");       // et de '.txt'
 
-    FILE *file = fopen(path, "r");
+    FILE *file = fopen(path, "rb");
     // crée un chemin vers le fichier txt à partir du nom du chapitre et stocke dans 'path'
 
     // FILE *file = fopen("../txt/Event1.txt", "r");
