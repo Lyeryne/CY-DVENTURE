@@ -79,10 +79,33 @@ void ProcessDescription(chapter *chap, char *value)
     //=> assigner une description(avec la valeur de 'value') à un chapitre
 }
 
-void ProcessEvent(chapter *chap, char *value)
+void ProcessEvent(chapter *chap, char *value, int counter)
 {
     chap->event = set_text_property(chap->event, value);
 
+    //utiiser la fonction de louaye qui transforme un char en int et faire le switch avec
+    switch(counter){
+        case 1:
+            chap->event->type_event = (char *)malloc(1 * sizeof(char));
+            chap->event->type_event = set_text_property(chap->event->type_event, value);
+            break;
+        case 2:
+            chap->event->id_object = (char *)malloc(1 * sizeof(char));
+            chap->event->id_object = set_text_property(chap->event->id_object, value);
+            break;
+        case 3:
+            chap->event->n_monster = (char *)malloc(1 * sizeof(char));
+            chap->event->n_monster = set_text_property(chap->event->n_monster, value);
+            break;
+        case 4:
+            chap->event->type_stat = (char *)malloc(1 * sizeof(char));
+            chap->event->type_stat = set_text_property(chap->event->type_stat, value);
+            break;
+        case 5:
+            chap->event->n_stat = (char *)malloc(2 * sizeof(char));
+            chap->event->n_stat = set_text_property(chap->event->n_stat, value);
+            break; 
+    }
     // remplit event de la struct chapter avec la %s 'value' en utilisant 'fill_text_property'
     //=> ajouter des événements
 }
@@ -138,7 +161,7 @@ chapter create_chapter(char *chapter_name)
 {
     // VARIABLES
     char line[SIZE_LINE];
-
+    int current_line_event = 0;
     int currentPart = 0;
     char *path = (char *)malloc((strlen("txt/") + strlen(chapter_name) + strlen(".txt")) * sizeof(char) + 1);
     //~~> contien le chemin d'accès au fichier txt que nous voulons ouvrir
@@ -181,7 +204,9 @@ chapter create_chapter(char *chapter_name)
                 ProcessDescription(&chap, line);
                 break;
             case 1:
-                ProcessEvent(&chap, line);
+                ProcessEvent(&chap, line, current_line_event);
+                current_line_event ++;
+
                 break;
 
             // on est dans la part 2 : décrit l'événement du chapitre

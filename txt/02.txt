@@ -1,9 +1,10 @@
-Je ne sais pas, qu'est ce que ça va reellement m'apporter ? 
-Faudrait mieux que j’étudie un peu à la bibliothèque avant la rentrée.
+Avant de commencer les cours, il faut que tu ailles récupérer tes affaires à la bibliothèque.
 
                     ~~ DIRECTION LA BIBLIOTHEQUE ~~~
 
-Tu vis au loin, une jeune fille marchant vite suivie par un homme un peu assistant qui tente de la rizz, elle lui disa de la laisser tranquille mais l’homme continua. C’est alors que tu interviens :
+Tu vois au loin, une jeune fille marchant vite suivie par un homme un peu assistant qui tente de la rizz, elle lui dit de la laisser tranquille mais l’homme continue. 
+
+C’est alors que tu interviens :
 
 Toi – Eh ! Tu as pas compris qu’elle veut pas !  (ART ENERVER)
 
@@ -16,7 +17,7 @@ L’individu – Vsy viens tu vas faire quoi !
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~XTECH DVENTURE~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 ###
-1 //(display les attaquant)
+1 //(display les attaquants)
 2 //(display fight)
 ###
 Appuyer sur 1
