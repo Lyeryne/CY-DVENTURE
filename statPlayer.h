@@ -16,7 +16,6 @@ struct Bag;
 
 void displayStat(Stdt a);
 void displayBag(Bag b);
-void in_de_creaseStat(Stdt* student, int fame, int health, int power, int intellect, int wellness, int sign);
 void fight(Stdt a, Stdt b);
 void displayBeforeFight(Stdt fighter, Stdt main);
 

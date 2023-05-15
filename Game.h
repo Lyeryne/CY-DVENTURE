@@ -26,7 +26,7 @@ void ProcessDescription(chapter *chap, char *value);
 void ProcessEvent(chapter *chap, char *value, int counter);
 void ProcessChoice(chapter *chap, char *value);
 chapter create_chapter(char *chapter_name);
-char *displayChapter(chapter chap);
+char *displayChapter(chapter chap, Stdt main_character, Bag *MyBag);
 
 
 

@@ -1,4 +1,5 @@
 #include "statPlayer.h"
+
 void displayStat(Stdt a){
     char* txt1 = "Stat actuel de votre personnage : \n\n";
     int size1 = strlen(txt1);
@@ -23,13 +24,6 @@ char* enum2string(Bag bag);
 printf("\n");
 }
 
-void in_de_creaseStat(Stdt* student, int fame, int health, int power, int intellect, int wellness, int sign){
-  student->fame += abs(fame) * sign;
-  student->health += abs(health) * sign;
-  student->power += abs(power) * sign;
-  student->intellect += abs(intellect) * sign;
-  student->wellness += abs(wellness) * sign;
-}
 
 void fight(Stdt a, Stdt b){
   Stdt tmp;

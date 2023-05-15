@@ -10,8 +10,8 @@ int main()
 	Stdt mainCharacter;
 	
 
-	Bag myBag[] = {Pencil, Book, Computer, Knife, Knuckles, Sunglasses, Jacket, Girlfriend};
-	int numItems = sizeof(myBag) / sizeof(myBag[0]);
+	Bag MyBag[MAX_BAG_SIZE] = {Pencil, Book, Computer, Knife, Knuckles, Sunglasses, Jacket, Girlfriend};
+	int numItems = sizeof(MyBag) / sizeof(MyBag[0]);
 	int start1, start2;
 	char* next_chap;
 //CREATION DE FICHIER
@@ -28,11 +28,14 @@ int main()
 	{
 		displayLoading();
 		//affichage de %tage en temps réelle
-		chapter intro = create_chapter("Debutjeu");
-		next_chap = displayChapter(intro);
+		
 
-		chapter introduction = create_chapter(next_chap);
-		next_chap = displayChapter(introduction);  
+								      chapter intro = create_chapter("DebutJeu");
+									next_chap = displayChapter(intro, mainCharacter, MyBag);
+									chapter introduction = create_chapter(next_chap);
+									next_chap = displayChapter(introduction, mainCharacter, MyBag);
+
+
 		/*while(fgets(intro, SIZE, fp1) != NULL){ 
 		int size1 = strlen(intro);
 		displayTxt(size1, intro);
@@ -64,8 +67,8 @@ int main()
 //GAME
 		while (game == 1)
 		{
-			next_chap= displayChapter(ch);
-			ch = create_chapter(next_chap);
+						next_chap= displayChapter(ch, mainCharacter, MyBag);
+						ch = create_chapter(next_chap);
 		}
 		}//ferme boucle de start == 1
 		else if(start1 == 2){ //"Reprendre partie"
@@ -79,22 +82,22 @@ int main()
 			sleep(1);
 			system("clear");
 
-			if(loadGame(&mainCharacter, myBag) == 1){
+			if(loadGame(&mainCharacter, MyBag) == 1){
 				printf("Sauvegarde chargée avec succès !\n");
 				sleep(1);
 				system("clear");
 				//VARIABLES 
 				char* next_chap;
-				chapter ch = create_chapter("Event1");
+				/*chapter ch = create_chapter("Event1");
 				next_chap= displayChapter(ch);
-				ch = create_chapter(next_chap);
+				ch = create_chapter(next_chap);*/
 
 			} else {
 				printf("Impossible de charger la sauvegarde!\n\n");
 				start2 = no_game();
 				printf("1 - Nouvelle Partie\n");
 				printf("2 - quitter le Jeu\n");
-				if(start == 1){ //"Nouvelle Partie"
+				if(start2 == 1){ //"Nouvelle Partie"
 					system("clear");
 					//affichage de %tage en temps réelle
 					displayLoading();
@@ -108,7 +111,11 @@ int main()
 					while (game == 1)
 					{
 						//strcpy(next_chap, displayChapter(ch));
+<<<<<<< HEAD
 						next_chap= displayChapter(ch, mainCharacter);
+=======
+						next_chap= displayChapter(ch, mainCharacter, MyBag);
+>>>>>>> d7e34d6b1e2a6b12b30668b7007ee75c8dff8e66
 						ch = create_chapter(next_chap);
 
 					}
