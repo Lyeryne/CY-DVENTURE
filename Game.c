@@ -85,27 +85,28 @@ void ProcessEvent(chapter *chap, char *value, int counter)
     //utiiser la fonction de louaye qui transforme un char en int et faire le switch avec
     switch(counter){
         case 1:
-            chap->event->type_event = (char *)malloc(1 * sizeof(char));
-            chap->event->type_event = set_text_property(chap->event->type_event, value);
+			int a = atoi(value);
+            chap->event->type_event = a;
             break;
         case 2:
             chap->event->id_object = (char *)malloc(1 * sizeof(char));
             chap->event->id_object = set_text_property(chap->event->id_object, value);
             break;
         case 3:
-            chap->event->n_monster = (char *)malloc(1 * sizeof(char));
-            chap->event->n_monster = set_text_property(chap->event->n_monster, value);
+			int b = atoi(value);
+            chap->event->n_monster = b;
             break;
         case 4:
-            chap->event->type_stat = (char *)malloc(1 * sizeof(char));
-            chap->event->type_stat = set_text_property(chap->event->type_stat, value);
+			int c = atoi(value);
+            chap->event->type_stat = c;
             break;
         case 5:
-	    	int a = atoi(value);
-            chap->event->n_stat = a;
+	    	int d = atoi(value);
+            chap->event->n_stat = d;
             break;
 		case 6: 
 			chap->event->add_or_remove_bag = (char *)malloc(1 * sizeof(char));
+            chap->event->add_or_remove_bag = set_text_property(chap->event->add_or_remove_bag, value);
 			break;
     }
     // remplit event de la struct chapter avec la %s 'value' en utilisant 'fill_text_property'
@@ -230,9 +231,9 @@ chapter create_chapter(char *chapter_name)
     return chap;
 }
 
-char *displayChapter(chapter chap, Stdt main_character, Bag MyBag)
+char *displayChapter(chapter chap, Stdt main_character, Bag *MyBag)
 {
-    
+    MyBag[MAX_BAG_SIZE] = Pencil, Book, Computer, Knife, Knuckles, Sunglasses, Jacket, Girlfriend ;
     //fighter1
 	char name1[SIZE_NAMES] = "Boris";
 	char sname1[SIZE_NAMES] = "Jackson";

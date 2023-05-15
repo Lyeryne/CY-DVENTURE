@@ -25,8 +25,8 @@ int main()
 	char sname4[SIZE_NAMES] = "Traoré";
 	Stdt fighter4 = createFighter(name4, sname4);
 
-	Bag myBag[] = {Pencil, Book, Computer, Knife, Knuckles, Sunglasses, Jacket, Girlfriend};
-	int numItems = sizeof(myBag) / sizeof(myBag[0]);
+	Bag MyBag[MAX_BAG_SIZE] = {Pencil, Book, Computer, Knife, Knuckles, Sunglasses, Jacket, Girlfriend};
+	int numItems = sizeof(MyBag) / sizeof(MyBag[0]);
 	int start1, start2;
 	char* next_chap;
 //CREATION DE FICHIER
@@ -45,10 +45,10 @@ int main()
 		//affichage de %tage en temps réelle
 		
 
-									/*chapter intro = create_chapter("DebutJeu");
-									next_chap = displayChapter(intro);
+								      chapter intro = create_chapter("DebutJeu");
+									next_chap = displayChapter(intro, mainCharacter, MyBag);
 									chapter introduction = create_chapter(next_chap);
-									next_chap = displayChapter(introduction);*/
+									next_chap = displayChapter(introduction, mainCharacter, MyBag);
 
 
 		/*while(fgets(intro, SIZE, fp1) != NULL){ 
@@ -82,7 +82,7 @@ int main()
 //GAME
 		while (game == 1)
 		{
-						next_chap= displayChapter(ch);
+						next_chap= displayChapter(ch, mainCharacter, MyBag);
 						ch = create_chapter(next_chap);
 		}
 		}//ferme boucle de start == 1
@@ -97,15 +97,15 @@ int main()
 			sleep(1);
 			system("clear");
 
-			if(loadGame(&mainCharacter, myBag) == 1){
+			if(loadGame(&mainCharacter, MyBag) == 1){
 				printf("Sauvegarde chargée avec succès !\n");
 				sleep(1);
 				system("clear");
 				//VARIABLES 
 				char* next_chap;
-				chapter ch = create_chapter("Event1");
+				/*chapter ch = create_chapter("Event1");
 				next_chap= displayChapter(ch);
-				ch = create_chapter(next_chap);
+				ch = create_chapter(next_chap);*/
 
 			} else {
 				printf("Impossible de charger la sauvegarde!\n\n");
@@ -126,7 +126,7 @@ int main()
 					while (game == 1)
 					{
 						//strcpy(next_chap, displayChapter(ch));
-						next_chap= displayChapter(ch);
+						next_chap= displayChapter(ch, mainCharacter, MyBag);
 						ch = create_chapter(next_chap);
 
 					}

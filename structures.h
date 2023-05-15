@@ -42,12 +42,12 @@ typedef struct
 
 typedef struct
 {
-    char *type_event;
-    char *n_monster;
-    char *id_object;
-    char *type_stat;
+    int type_event;
+    int n_monster;
+    int type_stat;
     int n_stat;
 	char *add_or_remove_bag;
+	char *id_object;
     char *positive_or_negative;
 }Event;
 
