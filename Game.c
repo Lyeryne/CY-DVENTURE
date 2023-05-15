@@ -100,9 +100,13 @@ void ProcessEvent(chapter *chap, char *value, int counter)
             chap->event->type_stat = set_text_property(chap->event->type_stat, value);
             break;
         case 5:
-            chap->event->n_stat = (char *)malloc(2 * sizeof(char));
-            chap->event->n_stat = set_text_property(chap->event->n_stat, value);
+            int a = atoi(value);
+            chap->event->n_stat = (int )malloc(1 * sizeof(int));
+            chap->event->n_stat = a;
             break; 
+        case 6: 
+            chap->event->positive_or_negative = (char *)malloc(1 * sizeof(char));
+            chap->event->positive_or_negative = set_text_property(chap->event->positive_or_negative, value);
     }
     // remplit event de la struct chapter avec la %s 'value' en utilisant 'fill_text_property'
     //=> ajouter des événements
@@ -226,8 +230,26 @@ chapter create_chapter(char *chapter_name)
     return chap;
 }
 
-char *displayChapter(chapter chap)
+char *displayChapter(chapter chap, Stdt main_character)
 {
+
+    //fighter1
+	char name1[SIZE_NAMES] = "Boris";
+	char sname1[SIZE_NAMES] = "Jackson";
+	Stdt fighter1 = createFighter(name1, sname1);
+	//fighter2
+	char name2[SIZE_NAMES] = "Adama";
+	char sname2[SIZE_NAMES] = "Younga";
+	Stdt fighter2 = createFighter(name2, sname2);
+	//fighter3
+	char name3[SIZE_NAMES] = "Etienne";
+	char sname3[SIZE_NAMES] = "Wojdilot";
+	Stdt fighter3 = createFighter(name3, sname3);
+	//fighter4
+	char name4[SIZE_NAMES] = "Lucas";
+	char sname4[SIZE_NAMES] = "Traoré";
+	Stdt fighter4 = createFighter(name4, sname4);
+    Stdt tab_fighter[4] = {fighter1, fighter2, fighter3, fighter4};
     int lu;
     int user_choice = 0, count = 0;
     //printf("%s", chap.description);
@@ -237,6 +259,61 @@ char *displayChapter(chapter chap)
     {
         printf("\n%s", chap.choices[i].text);
     }
+
+    switch(chap.event->type_event){
+        case 1:
+        //combat contre un monstre
+            fight(main_character, tab_fighter[chap.event->n_monster]);
+            break;
+
+        case 2:
+        //modification de stat
+            switch(chap.event->type_stat){
+                case 1:
+                //fame
+                if(chap.event->positive_or_negative == 1){
+                //c'est un malus de stat
+                    main_character.fame -= chap.event->n_stat;
+                }
+                else{
+                //c'est un bonus de stat
+                    main_character.fame += chap.event->n_stat;
+                }
+                break;
+                case 2:
+                //intellect
+                if(chap.event->positive_or_negative == 1){
+                //c'est un malus de stat
+                    main_character.intellect -= chap.event->n_stat;
+                }
+                else{
+                //c'est un bonus de stat
+                    main_character.intellect += chap.event->n_stat;
+                }
+                break;
+                case 3:
+                //power
+                if(chap.event->positive_or_negative == 1){
+                //c'est un malus de stat
+                    main_character.power -= chap.event->n_stat;
+                }
+                else{
+                //c'est un bonus de stat
+                    main_character.power += chap.event->n_stat;
+                }
+                break;
+            }
+        case 3:
+        //modification inventaire
+        
+
+
+
+    }
+
+
+
+
     do
     {
         printf("Choix :\n");

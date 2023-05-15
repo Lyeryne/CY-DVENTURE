@@ -8,22 +8,7 @@ int main()
 	int verif = 1;
 	int pourcentage;
 	Stdt mainCharacter;
-	//fighter1
-	char name1[SIZE_NAMES] = "Boris";
-	char sname1[SIZE_NAMES] = "Jackson";
-	Stdt fighter1 = createFighter(name1, sname1);
-	//fighter2
-	char name2[SIZE_NAMES] = "Adama";
-	char sname2[SIZE_NAMES] = "Younga";
-	Stdt fighter2 = createFighter(name2, sname2);
-	//fighter3
-	char name3[SIZE_NAMES] = "Etienne";
-	char sname3[SIZE_NAMES] = "Wojdilot";
-	Stdt fighter3 = createFighter(name3, sname3);
-	//fighter4
-	char name4[SIZE_NAMES] = "Lucas";
-	char sname4[SIZE_NAMES] = "Traoré";
-	Stdt fighter4 = createFighter(name4, sname4);
+	
 
 	Bag myBag[] = {Pencil, Book, Computer, Knife, Knuckles, Sunglasses, Jacket, Girlfriend};
 	int numItems = sizeof(myBag) / sizeof(myBag[0]);
@@ -123,7 +108,7 @@ int main()
 					while (game == 1)
 					{
 						//strcpy(next_chap, displayChapter(ch));
-						next_chap= displayChapter(ch);
+						next_chap= displayChapter(ch, mainCharacter);
 						ch = create_chapter(next_chap);
 
 					}
