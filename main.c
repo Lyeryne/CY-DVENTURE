@@ -8,25 +8,10 @@ int main()
 	int verif = 1;
 	int pourcentage;
 	Stdt mainCharacter;
-	//fighter1
-	char name1[SIZE_NAMES] = "Boris";
-	char sname1[SIZE_NAMES] = "Jackson";
-	Stdt fighter1 = createFighter(name1, sname1);
-	//fighter2
-	char name2[SIZE_NAMES] = "Adama";
-	char sname2[SIZE_NAMES] = "Younga";
-	Stdt fighter2 = createFighter(name2, sname2);
-	//fighter3
-	char name3[SIZE_NAMES] = "Etienne";
-	char sname3[SIZE_NAMES] = "Wojdilot";
-	Stdt fighter3 = createFighter(name3, sname3);
-	//fighter4
-	char name4[SIZE_NAMES] = "Lucas";
-	char sname4[SIZE_NAMES] = "Traoré";
-	Stdt fighter4 = createFighter(name4, sname4);
+	
 
-	Bag myBag[] = {Pencil, Book, Computer, Knife, Knuckles, Sunglasses, Jacket, Girlfriend};
-	int numItems = sizeof(myBag) / sizeof(myBag[0]);
+	Bag MyBag[MAX_BAG_SIZE] = {Pencil, Book, Computer, Knife, Knuckles, Sunglasses, Jacket, Girlfriend};
+	int numItems = sizeof(MyBag) / sizeof(MyBag[0]);
 	int start1, start2;
 	char* next_chap;
 //CREATION DE FICHIER
@@ -43,11 +28,14 @@ int main()
 	{
 		displayLoading();
 		//affichage de %tage en temps réelle
-		chapter intro = create_chapter("Debutjeu");
-		next_chap = displayChapter(intro);
+		
 
-		chapter introduction = create_chapter(next_chap);
-		next_chap = displayChapter(introduction);  
+								      chapter intro = create_chapter("DebutJeu");
+									next_chap = displayChapter(intro, mainCharacter, MyBag);
+									chapter introduction = create_chapter(next_chap);
+									next_chap = displayChapter(introduction, mainCharacter, MyBag);
+
+
 		/*while(fgets(intro, SIZE, fp1) != NULL){ 
 		int size1 = strlen(intro);
 		displayTxt(size1, intro);
@@ -79,8 +67,8 @@ int main()
 //GAME
 		while (game == 1)
 		{
-			next_chap= displayChapter(ch);
-			ch = create_chapter(next_chap);
+						next_chap= displayChapter(ch, mainCharacter, MyBag);
+						ch = create_chapter(next_chap);
 		}
 		}//ferme boucle de start == 1
 		else if(start1 == 2){ //"Reprendre partie"
@@ -94,15 +82,15 @@ int main()
 			sleep(1);
 			system("clear");
 
-			if(loadGame(&mainCharacter, myBag) == 1){
+			if(loadGame(&mainCharacter, MyBag) == 1){
 				printf("Sauvegarde chargée avec succès !\n");
 				sleep(1);
 				system("clear");
 				//VARIABLES 
 				char* next_chap;
-				chapter ch = create_chapter("Event1");
+				/*chapter ch = create_chapter("Event1");
 				next_chap= displayChapter(ch);
-				ch = create_chapter(next_chap);
+				ch = create_chapter(next_chap);*/
 
 			} else {
 				printf("Impossible de charger la sauvegarde!\n\n");
@@ -123,7 +111,7 @@ int main()
 					while (game == 1)
 					{
 						//strcpy(next_chap, displayChapter(ch));
-						next_chap= displayChapter(ch, mainCharacter);
+						next_chap= displayChapter(ch, mainCharacter, MyBag);
 						ch = create_chapter(next_chap);
 
 					}
