@@ -111,11 +111,7 @@ int main()
 					while (game == 1)
 					{
 						//strcpy(next_chap, displayChapter(ch));
-<<<<<<< HEAD
-						next_chap= displayChapter(ch, mainCharacter);
-=======
 						next_chap= displayChapter(ch, mainCharacter, MyBag);
->>>>>>> d7e34d6b1e2a6b12b30668b7007ee75c8dff8e66
 						ch = create_chapter(next_chap);
 
 					}
