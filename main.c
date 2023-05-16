@@ -8,7 +8,6 @@ int main()
 	int verif = 1;
 	int pourcentage;
 	Stdt mainCharacter;
-	
 
 	Bag MyBag[MAX_BAG_SIZE] = {Pencil, Book, Computer, Knife, Knuckles, Sunglasses, Jacket, Girlfriend};
 	int numItems = sizeof(MyBag) / sizeof(MyBag[0]);
@@ -28,20 +27,7 @@ int main()
 	{
 		displayLoading();
 		//affichage de %tage en temps réelle
-		
-
-								      chapter intro = create_chapter("DebutJeu");
-									next_chap = displayChapter(intro, mainCharacter, MyBag);
-									chapter introduction = create_chapter(next_chap);
-									next_chap = displayChapter(introduction, mainCharacter, MyBag);
-
-
-		/*while(fgets(intro, SIZE, fp1) != NULL){ 
-		int size1 = strlen(intro);
-		displayTxt(size1, intro);
-		}
-		fclose(fp1);*/
-		sleep(2);
+				sleep(2);
 		system("clear");
 		//CREATE STUDENTS
 		char* txt1 = "Avant de commencer a jouer, vous allez saisir votre personnage principal\n\n";
@@ -59,6 +45,16 @@ int main()
 		displayTxt(size3, txt2);
 		sleep(2);
 		system("clear");
+
+next_chap = displayChapter(create_chapter("DebutJeu"), mainCharacter, MyBag);
+next_chap = displayChapter(create_chapter(next_chap), mainCharacter, MyBag);
+
+		/*while(fgets(intro, SIZE, fp1) != NULL){ 
+		int size1 = strlen(intro);
+		displayTxt(size1, intro);
+		}
+		fclose(fp1);*/
+
 		//VARIABLES 
 		int game = 1;
 		char* next_chap;
@@ -95,14 +91,15 @@ int main()
 			} else {
 				printf("Impossible de charger la sauvegarde!\n\n");
 				start2 = no_game();
-				printf("1 - Nouvelle Partie\n");
-				printf("2 - quitter le Jeu\n");
 				if(start2 == 1){ //"Nouvelle Partie"
 					system("clear");
+
 					//affichage de %tage en temps réelle
 					displayLoading();
 					sleep(1);
 					system("clear");
+next_chap = displayChapter(create_chapter("DebutJeu"), mainCharacter, MyBag);
+next_chap = displayChapter(create_chapter(next_chap), mainCharacter, MyBag);
 					//GAME
 					int game = 1;
 					char* next_chap;

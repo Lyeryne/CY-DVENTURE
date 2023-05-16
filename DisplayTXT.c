@@ -27,11 +27,8 @@ void displayLoading()
 
 void WaitPress()
 {
-	char e;// stocke la touche pressée par l'utilisateur
-	printf("\n\n~~ Appuyez sur entree pour continuer ~~ ");
-	while (e != '\n' && e  != '\r') {// tant que la touche pressée n'est pas Entrée  
-		e = getchar();//lit un caractère depuis l'entrée standard (clavier)
-	}
+    printf("Press Enter to continue...\n");
+    while (getchar() != '\n');
 }
 
 

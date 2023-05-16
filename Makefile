@@ -16,7 +16,7 @@ Stdtcreate.o : Stdtcreate.c Stdtcreate.h
 	gcc -c Stdtcreate.c -o Stdtcreate.o
 
 main.o : main.c main.h
-	gcc -c main.c -o main.h
+	gcc -c main.c -o main.o
 
 statPlayer.o : statPlayer.h statPlayer.c
 	gcc -c statPlayer.c -o statPlayer.o

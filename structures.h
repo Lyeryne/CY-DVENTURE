@@ -57,6 +57,7 @@ typedef struct
     Event *event;
     Choice *choices;
     int choice_count;
+	char *after_description;
 } chapter;
 
 typedef struct 
