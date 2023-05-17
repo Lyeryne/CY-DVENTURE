@@ -11,6 +11,7 @@
 #include "statPlayer.h"
 #include "structures.h"
 
+
 static const char part_seperator[] = "###";
 struct Choice;
 struct chapter;
@@ -18,6 +19,7 @@ struct SaveData;
 struct Stdt;
 struct Bag;
 struct Event;
+
 
 int pre_game();
 

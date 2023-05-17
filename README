@@ -1,0 +1,8 @@
+~~> MUSIQUE :
+
+Assurez-vous d'avoir installé la bibliothèque SDL sur votre système :
+sudo apt-get install libsdl2-dev
+
+Vérifiez que la bibliothèque SDL est bien installée en exécutant la commande suivante :
+
+sdl2-config --cflags --libs

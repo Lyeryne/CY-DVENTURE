@@ -4,19 +4,18 @@ int pre_game()
 {
     int start, lu;
     system("clear");
-    printf("Webtoon MI5\n");
-    sleep(1);
+    printf("X TECH - ADVENTURE\n");
     char *txt = "Produit par\n-> Louaye SAGHIR\n-> Clement PREMOLI\n-> Roman BOULLIER\n\n";
     int size = strlen(txt);
     displayTxt(size, txt);
-    sleep(1);
+	sleep(1);
     system("clear");
     // Choix de partie
     printf("========= MENU ========\n"); // ASCI ART
     printf(" 1 -> Nouvelle Partie\n");   // ASCI ART
     printf(" 2 -> Reprendre Partie\n");  // ASCI ART
     printf(" 3 -> Quitter le Jeu\n\n");  // ASCI ART
-    printf("Choix :");
+    printf("Choix : ");
     lu = scanf("%d", &start);
     while (start < 1 && start > 3 && lu == 0)
     {
@@ -269,7 +268,7 @@ char *displayChapter(chapter chap, Stdt main_character, Bag *MyBag)
 	// printf("%s", chap.description);
 	displayTxt(strlen(chap.description), chap.description);
 	printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~XTECH DVENTURE~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
-
+	printf("\n");
 	// EVENT DU JEU
 	switch (chap.event->type_event)
 	{
@@ -279,7 +278,7 @@ char *displayChapter(chapter chap, Stdt main_character, Bag *MyBag)
     	break;
 	case 1:
 		// combat contre un monstre
-
+		displayBeforeFight(tab_fighter[chap.event->n_monster], main_character);
 		fight(main_character, tab_fighter[chap.event->n_monster]);
 		break;
 
@@ -392,6 +391,8 @@ char *displayChapter(chapter chap, Stdt main_character, Bag *MyBag)
 			main_character.power += chap.event->n_stat;
 		}
 		break;
+	case 4:
+		displayStat(main_character);
 	}
 
 	if (chap.choice_count != 1)
@@ -403,7 +404,7 @@ char *displayChapter(chapter chap, Stdt main_character, Bag *MyBag)
 		// CHOIX DU JEU
 		do
 		{
-			printf("Choix :\n");
+			printf("Choix : \n");
 			lu = scanf("%d", &user_choice);
 			fflush(stdin);
 			if (user_choice < 1 || user_choice > chap.choice_count)

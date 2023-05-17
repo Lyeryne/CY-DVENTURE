@@ -25,4 +25,4 @@ structures.o : structures.h structures.c
 	gcc -c structures.c -o structures.o
 
 Projet : Robust.o DisplayTXT.o Game.o Save.o Stdtcreate.o main.o statPlayer.o structures.o
-	gcc Robust.o DisplayTXT.o Game.o Save.o Stdtcreate.o main.o statPlayer.o structures.o -o Projet
+	gcc Robust.o DisplayTXT.o Game.o Save.o Stdtcreate.o main.o statPlayer.o structures.o -o Projet -lSDL2

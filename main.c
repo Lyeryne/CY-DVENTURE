@@ -27,7 +27,7 @@ int main()
 	{
 		displayLoading();
 		//affichage de %tage en temps réelle
-				sleep(2);
+		WaitPress();
 		system("clear");
 		//CREATE STUDENTS
 		char* txt1 = "Avant de commencer a jouer, vous allez saisir votre personnage principal\n\n";
@@ -37,17 +37,17 @@ int main()
 		mainCharacter = createMainCharacter();
 		system("clear");
 		displayStat(mainCharacter);
-		sleep(2);
+		WaitPress();
 		system("clear");
 
 		char* txt2 = "Commençons...\n";
 		int size3 = strlen(txt2);
 		displayTxt(size3, txt2);
-		sleep(2);
+		sleep(1);
 		system("clear");
 
-next_chap = displayChapter(create_chapter("DebutJeu"), mainCharacter, MyBag);
-next_chap = displayChapter(create_chapter(next_chap), mainCharacter, MyBag);
+		next_chap = displayChapter(create_chapter("DebutJeu"), mainCharacter, MyBag);
+		next_chap = displayChapter(create_chapter(next_chap), mainCharacter, MyBag);
 
 		/*while(fgets(intro, SIZE, fp1) != NULL){ 
 		int size1 = strlen(intro);
@@ -63,8 +63,8 @@ next_chap = displayChapter(create_chapter(next_chap), mainCharacter, MyBag);
 //GAME
 		while (game == 1)
 		{
-						next_chap= displayChapter(ch, mainCharacter, MyBag);
-						ch = create_chapter(next_chap);
+			next_chap= displayChapter(ch, mainCharacter, MyBag);
+			ch = create_chapter(next_chap);
 		}
 		}//ferme boucle de start == 1
 		else if(start1 == 2){ //"Reprendre partie"
@@ -93,9 +93,21 @@ next_chap = displayChapter(create_chapter(next_chap), mainCharacter, MyBag);
 				start2 = no_game();
 				if(start2 == 1){ //"Nouvelle Partie"
 					system("clear");
-
 					//affichage de %tage en temps réelle
 					displayLoading();
+					char* txt1 = "Avant de commencer a jouer, vous allez saisir votre personnage principal\n\n";
+					int size2 = strlen(txt1);
+					displayTxt(size2, txt1);//Affichage de Txt1   
+
+					mainCharacter = createMainCharacter();
+					system("clear");
+					displayStat(mainCharacter);
+					WaitPress();
+					system("clear");
+
+					char* txt2 = "Commençons...\n";
+					int size3 = strlen(txt2);
+					displayTxt(size3, txt2);
 					sleep(1);
 					system("clear");
 next_chap = displayChapter(create_chapter("DebutJeu"), mainCharacter, MyBag);
