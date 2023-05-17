@@ -11,6 +11,7 @@ Stdt createMainCharacter()
     //vérifie que la nom saisi est assez court et est une string
     while(num1>=SIZE_NAMES || (is_char(x.name)==0)){
         printf("\nMauvaise saisie ou saisie trop longue !\n");
+	system("clear");
         printf("Saisir a nouveau le nom de l'eleve :");
         scanf("%s", x.name);
         num1 = strlen(x.name);
@@ -32,6 +33,7 @@ Stdt createMainCharacter()
     num2 = strlen(x.sname);
     while(num2>SIZE_NAMES || is_char(x.sname) == 0){//ROBUST
         printf("\nMauvaise saisie ou saisie trop longue !\n");
+	system("clear");
         printf("Saisir à nouveau le nom de famille l'eleve :");
         scanf("%s", x.sname);
         num2 = strlen(x.sname);
@@ -53,9 +55,9 @@ Stdt createMainCharacter()
     x.fame = 50;
     x.intellect = 50 + rand()%51;
     x.wellness = 100;
-    x.health = 400;
+    x.health = 300;
     x.dodge = rand()%16;
-    x.defence = rand()%51;
+    x.defence = 10 + rand()%51;
 
 return x;
 
@@ -70,9 +72,9 @@ Stdt createFighter(char name[SIZE_NAMES], char sname[SIZE_NAMES]){
     fighter.fame = 50;
     fighter.intellect = 50 + rand()%51;
     fighter.wellness = 100;
-    fighter.health = 400;
+    fighter.health = 300;
     fighter.dodge = rand()%16;
-    fighter.defence = rand()%51;
+    fighter.defence = 10 + rand()%51;
 
     return fighter;
 }

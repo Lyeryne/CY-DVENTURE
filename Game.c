@@ -129,6 +129,7 @@ void ProcessEvent(chapter *chap, char *value, int counter)
 void ProcessChoice(chapter *chap, char *value)
 // =>Ce code est une fonction qui ajoute une option de choix à un chapitre d'une histoire interactive
 {
+
     if (chap->choices == NULL)
     { // gère la mémoire allouée pour stocker les choix dans la structure chapter
         // Si la liste des choix est vide (== NULL)
@@ -170,6 +171,7 @@ void ProcessChoice(chapter *chap, char *value)
     // ajoutons le choix 'ch' à la liste des choix dans le chapter actuel 'chap' en l'ajoutant à l'ind 'chap->choice_count' de la liste
     chap->choices[chap->choice_count] = ch; // incrémenter la valeur de 'chap->choice_count'
     chap->choice_count++;
+WaitPress();
 }
 
 chapter create_chapter(char *chapter_name)
@@ -221,14 +223,12 @@ chapter create_chapter(char *chapter_name)
             case 1:
                 ProcessEvent(&chap, line, current_line_event);
                 current_line_event++;
-
                 break;
 
             // on est dans la part 2 : décrit l'événement du chapitre
             case 2:
                 ProcessChoice(&chap, line);
                 //~~> affiche l'événement en cours et les choix disponibles.
-
                 break;
 
             case 3:
@@ -423,7 +423,6 @@ char *displayChapter(chapter chap, Stdt main_character, Bag *MyBag)
 	}
 	else
 	{
-    	WaitPress();
 		return chap.choices[0].nextChapter;
 	}
 	

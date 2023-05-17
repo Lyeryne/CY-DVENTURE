@@ -27,7 +27,7 @@ void displayLoading()
 
 void WaitPress()
 {
-    printf("Press Enter to continue...\n");
+    printf("Press ENTER pour continuer...\n");
     while (getchar() != '\n');
 }
 

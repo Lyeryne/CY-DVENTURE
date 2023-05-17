@@ -1,28 +1,30 @@
-all : Projet
+OBJ_DIR := fichiers.o
 
-Robust.o : Robust.c Robust.h
-	gcc -c Robust.c -o Robust.o
+all: Projet
 
-DisplayTXT.o : DisplayTXT.c DisplayTXT.h
-	gcc -c DisplayTXT.c -o DisplayTXT.o
+$(OBJ_DIR)/Robust.o: Robust.c Robust.h
+	gcc -c Robust.c -o $(OBJ_DIR)/Robust.o
 
-Game.o : Game.c Game.h
-	gcc -c Game.c -o Game.o
+$(OBJ_DIR)/DisplayTXT.o: DisplayTXT.c DisplayTXT.h
+	gcc -c DisplayTXT.c -o $(OBJ_DIR)/DisplayTXT.o
 
-Save.o : Save.c Save.h
-	gcc -c Save.c -o Save.o
+$(OBJ_DIR)/Game.o: Game.c Game.h
+	gcc -c Game.c -o $(OBJ_DIR)/Game.o
 
-Stdtcreate.o : Stdtcreate.c Stdtcreate.h
-	gcc -c Stdtcreate.c -o Stdtcreate.o
+$(OBJ_DIR)/Save.o: Save.c Save.h
+	gcc -c Save.c -o $(OBJ_DIR)/Save.o
 
-main.o : main.c main.h
-	gcc -c main.c -o main.o
+$(OBJ_DIR)/Stdtcreate.o: Stdtcreate.c Stdtcreate.h
+	gcc -c Stdtcreate.c -o $(OBJ_DIR)/Stdtcreate.o
 
-statPlayer.o : statPlayer.h statPlayer.c
-	gcc -c statPlayer.c -o statPlayer.o
+$(OBJ_DIR)/main.o: main.c main.h
+	gcc -c main.c -o $(OBJ_DIR)/main.o
 
-structures.o : structures.h structures.c
-	gcc -c structures.c -o structures.o
+$(OBJ_DIR)/statPlayer.o: statPlayer.c statPlayer.h
+	gcc -c statPlayer.c -o $(OBJ_DIR)/statPlayer.o
 
-Projet : Robust.o DisplayTXT.o Game.o Save.o Stdtcreate.o main.o statPlayer.o structures.o
-	gcc Robust.o DisplayTXT.o Game.o Save.o Stdtcreate.o main.o statPlayer.o structures.o -o Projet -lSDL2
+$(OBJ_DIR)/structures.o: structures.c structures.h
+	gcc -c structures.c -o $(OBJ_DIR)/structures.o
+
+Projet: $(OBJ_DIR)/Robust.o $(OBJ_DIR)/DisplayTXT.o $(OBJ_DIR)/Game.o $(OBJ_DIR)/Save.o $(OBJ_DIR)/Stdtcreate.o $(OBJ_DIR)/main.o $(OBJ_DIR)/statPlayer.o $(OBJ_DIR)/structures.o
+	gcc $(OBJ_DIR)/Robust.o $(OBJ_DIR)/DisplayTXT.o $(OBJ_DIR)/Game.o $(OBJ_DIR)/Save.o $(OBJ_DIR)/Stdtcreate.o $(OBJ_DIR)/main.o $(OBJ_DIR)/statPlayer.o $(OBJ_DIR)/structures.o -o Projet
