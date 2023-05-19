@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 Tu décides d'aller passer un moment romantique avce ta copine. 
 Vous vous rendez au restaurant, puis vous allez admirer le coucher du soleil dans le parc, 
 et vous rentrez chez toi pour la fin de la soirée.
@@ -7,4 +8,15 @@ Tu te lèves à contrecoeur le lendemain pour te rendre au DS.
 ###
 ###
 
+=======
+Tu décides d'aller passer un moment romantique avce ta copine. 
+Vous vous rendez au restaurant, puis vous allez admirer le coucher du soleil dans le parc, 
+et vous rentrez chez toi pour la fin de la soirée.
+
+Tu te lèves à contrecoeur le lendemain pour te rendre au DS.
+
+###
+###
+
+>>>>>>> a4478b96ea9464db03bfd293e53d51f5c4dd41e0
 1- DS_29

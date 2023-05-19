@@ -1,7 +1,16 @@
+<<<<<<< HEAD
 Maintenant, tu as le choix. Soit tu vas dans une salle pour aller réviser avec tes amis, soit tu vas sortir avec ta copine.
 
 ###
 ###
 
 1- Réviser_13A
+=======
+Maintenant, tu as le choix. Soit tu vas dans une salle pour aller réviser avec tes amis, soit tu vas sortir avec ta copine.
+
+###
+###
+
+1- Réviser_13A
+>>>>>>> a4478b96ea9464db03bfd293e53d51f5c4dd41e0
 2- Sortir_13B

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 Un prof passe à côté de toi.
 Tu t'efforces de paraitre naturel, et ça marche. Il s'éloigne sans te regarder.
 
@@ -5,3 +6,12 @@ Tu t'efforces de paraitre naturel, et ça marche. Il s'éloigne sans te regarder
 ###
 
 1- Réussis_25A
+=======
+Un prof passe à côté de toi.
+Tu t'efforces de paraitre naturel, et ça marche. Il s'éloigne sans te regarder.
+
+###
+###
+
+1- Réussis_25A
+>>>>>>> a4478b96ea9464db03bfd293e53d51f5c4dd41e0

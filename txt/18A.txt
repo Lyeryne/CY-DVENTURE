@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 Tu te retrouve avec ses amis après le contrôle de mathématiques. Vous discutez à voix basse, frustrés par leurs résultats.
 
 Toi - Ce prof de maths est un idiot complet ! Il ne sait m^me pas enseigner
@@ -16,4 +17,24 @@ Tu acquiesces, conscient de tes torts, tandis que le professeur de français s'�
 //(-1 FAM)Stat
 ###
 
+=======
+Tu te retrouve avec ses amis après le contrôle de mathématiques. Vous discutez à voix basse, frustrés par leurs résultats.
+
+Toi - Ce prof de maths est un idiot complet ! Il ne sait m^me pas enseigner
+
+Le professeur de français, qui passait par là, entend les paroles de Marc et s'approche rapidement.
+
+Professeur de français - Insulter un professeur est inadmissible, Marc !
+
+Tu baisses la tête, honteux de te faire afficher devant tout le monde.
+
+Professeur de français - Tu dois t'excuser et réfléchir à ton attitude envers tes enseignants.
+
+Tu acquiesces, conscient de tes torts, tandis que le professeur de français s'éloigne.
+
+###
+//(-1 FAM)Stat
+###
+
+>>>>>>> a4478b96ea9464db03bfd293e53d51f5c4dd41e0
 1- Continuer_19

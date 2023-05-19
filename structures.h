@@ -1,3 +1,4 @@
+
 #ifndef STRUCTURES_H
 #define STRUCTURES_H
 
@@ -42,11 +43,14 @@ typedef struct
 
 typedef struct
 {
-	char *type_event;
-	char *fighter;
-	char *stat;
-	char* statation;
-} Event;
+    int type_event;
+    int n_fighter;
+    int type_stat;
+    int n_stat;
+	char *id_object;
+	char *add_or_remove_bag;
+    char *positive_or_negative;
+}Event;
 
 typedef struct
 {
@@ -54,9 +58,8 @@ typedef struct
     Event *event;
     Choice *choices;
     int choice_count;
+	char *after_description;
 } chapter;
-
-
 
 typedef struct 
 {

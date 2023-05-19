@@ -1,6 +1,14 @@
+<<<<<<< HEAD
 Tu as raté ce DS, pas de jeton.
 
 ###
 ###
 
+=======
+Tu as raté ce DS, pas de jeton.
+
+###
+###
+
+>>>>>>> a4478b96ea9464db03bfd293e53d51f5c4dd41e0
 1- Continue_33

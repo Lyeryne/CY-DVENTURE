@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 Après le cours, tu décides d'aller réviser dans une sallle de l'école.
 Vous récapitulez le cours avec tes amis : une structure permet de rassembler différentes variables sous le même nom.
 Par exemple, 
@@ -15,3 +16,22 @@ Tu te sent enfin près pour le DS
 ###
 
 1- DS_29
+=======
+Après le cours, tu décides d'aller réviser dans une sallle de l'école.
+Vous récapitulez le cours avec tes amis : une structure permet de rassembler différentes variables sous le même nom.
+Par exemple, 
+struct Personne {
+   char nom[50];
+   int age;
+   float taille;
+};
+
+est une structure.
+
+Tu te sent enfin près pour le DS
+
+###
+###
+
+1- DS_29
+>>>>>>> a4478b96ea9464db03bfd293e53d51f5c4dd41e0

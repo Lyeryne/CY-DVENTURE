@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 Le DS porte sur les structures. La question est :
 
 Laquelle n'est pas une structure : 
@@ -33,3 +34,40 @@ Laquelle n'est pas une structure :
 2- Continue_32A
 3- Continue_32B
 4- Continue_32A
+=======
+Le DS porte sur les structures. La question est :
+
+Laquelle n'est pas une structure : 
+
+1)  struct Voiture {        
+   char marque[50];
+   int annee;
+   float prix;
+};
+
+2)  struct Etudiant {
+   char nom[50];
+   int age;
+   float moyenne;
+};
+
+3)  strut Voiture {        
+   char marque[50];
+   int annee;
+   float prix;
+};
+
+4)  struct Client {
+   char nom[50];
+   int age;
+   char ville [100];
+};
+
+###
+###
+
+1- Continue_32A
+2- Continue_32A
+3- Continue_32B
+4- Continue_32A
+>>>>>>> a4478b96ea9464db03bfd293e53d51f5c4dd41e0

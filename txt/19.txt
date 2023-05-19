@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 Avant que le prochain cours ne comence, tu as quelques jours de repos. 
 Que veux tu faire ?
 
@@ -8,4 +9,16 @@ Aller en recherche d'objets, aller étudier chez un ami ou aller faire du sport.
 
 1- Objet_20A
 2- Etude_20B
+=======
+Avant que le prochain cours ne comence, tu as quelques jours de repos. 
+Que veux tu faire ?
+
+Aller en recherche d'objets, aller étudier chez un ami ou aller faire du sport.
+
+###
+###
+
+1- Objet_20A
+2- Etude_20B
+>>>>>>> a4478b96ea9464db03bfd293e53d51f5c4dd41e0
 3- Sport_20C

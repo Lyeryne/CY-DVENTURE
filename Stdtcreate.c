@@ -11,6 +11,7 @@ Stdt createMainCharacter()
     //vérifie que la nom saisi est assez court et est une string
     while(num1>=SIZE_NAMES || (is_char(x.name)==0)){
         printf("\nMauvaise saisie ou saisie trop longue !\n");
+	system("clear");
         printf("Saisir a nouveau le nom de l'eleve :");
         scanf("%s", x.name);
         num1 = strlen(x.name);
@@ -32,6 +33,7 @@ Stdt createMainCharacter()
     num2 = strlen(x.sname);
     while(num2>SIZE_NAMES || is_char(x.sname) == 0){//ROBUST
         printf("\nMauvaise saisie ou saisie trop longue !\n");
+	system("clear");
         printf("Saisir à nouveau le nom de famille l'eleve :");
         scanf("%s", x.sname);
         num2 = strlen(x.sname);
@@ -52,10 +54,10 @@ Stdt createMainCharacter()
     x.power = 50 + rand()%51;
     x.fame = 50;
     x.intellect = 50 + rand()%51;
-    x.wellness = 100;
-    x.health = 1000;
-    x.dodge = 50 + rand()%51;
-    x.defence = 50 + rand()%51;
+    x.wellness = 50;
+    x.health = 300;
+    x.dodge = rand()%16;
+    x.defence = 10 + rand()%51;
 
 return x;
 
@@ -69,10 +71,10 @@ Stdt createFighter(char name[SIZE_NAMES], char sname[SIZE_NAMES]){
     fighter.power = 50 + rand()%51;
     fighter.fame = 50;
     fighter.intellect = 50 + rand()%51;
-    fighter.wellness = 100;
-    fighter.health = 1000;
-    fighter.dodge = 50 + rand()%51;
-    fighter.defence = 50 + rand()%51;
+    fighter.wellness = 50;
+    fighter.health = 300;
+    fighter.dodge = rand()%16;
+    fighter.defence = 10 + rand()%51;
 
     return fighter;
 }
@@ -143,6 +145,7 @@ void removeItem(Bag* bag, Bag item)
         bag[numItems-1] = Vide;// Mettre le dernier élément à 'Vide'
     }
 }
+
 void addItem(Bag* bag, Bag item)
 {
     int numItems = sizeof(*bag) / sizeof(bag[0]);

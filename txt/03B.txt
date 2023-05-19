@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 Cela ne va rien t'apporter, non ?
 A la place, il faudrait mieux aller récupérer des affaires à la bibliothèque.
 
@@ -8,3 +9,15 @@ A la place, il faudrait mieux aller récupérer des affaires à la bibliothèque
 1 - Continuer_04B
 
 
+=======
+Cela ne va rien t'apporter, non ?
+A la place, il faudrait mieux aller récupérer des affaires à la bibliothèque.
+
+###
+
+###
+
+1 - Continuer_04B
+
+
+>>>>>>> a4478b96ea9464db03bfd293e53d51f5c4dd41e0
