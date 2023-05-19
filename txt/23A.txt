@@ -1,0 +1,10 @@
+Tu utilises ton antisèche. 
+Pour voir si tu réussis, tape un nombre entre 1 et 3.
+
+###
+//Perds Antisèche\\
+###
+
+1- Try1_241
+2- Try2_241
+3- Try3_242

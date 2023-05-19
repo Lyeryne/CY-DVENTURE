@@ -1,28 +1,14 @@
-Avant de commencer les cours, il faut que tu ailles récupérer tes affaires à la bibliothèque.
 
-                    ~~ DIRECTION LA BIBLIOTHEQUE ~~~
 
-Tu vois au loin, une jeune fille marchant vite suivie par un homme un peu assistant qui tente de la rizz, elle lui dit de la laisser tranquille mais l’homme continue. 
+Séjour au cours duquel les élèves du BDE organisent l’intégration de la promotion entrante !
 
-C’est alors que tu interviens :
+Réveil à 7h, c'est la rentrée ! Une année ne peut commencer sans un petit weekend d’intégration !
 
-Toi – Eh ! Tu as pas compris qu’elle veut pas !  (ART ENERVER)
-
-L’individu – Ferme là bouffon, qui t’a sonnée ?
-
-Toi – Tu vas vite bouger d’ici si tu veux pas que je m’énerve !(ART ENERVER)
-
-L’individu – Vsy viens tu vas faire quoi !
-
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~XTECH DVENTURE~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Est-ce que je devrais y aller ?
+###
 
 ###
-1 //(display les attaquants)
-2 //(display fight)
-###
-Appuyer sur 1
-###
-1- Continuer_07
 
-
+1 - Oui, pourquoi pas !_03A
+2 - Non, c'est pour les nullos_03B
 

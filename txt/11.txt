@@ -1,0 +1,19 @@
+Aujourd'hui, 1er cours de maths avec tes amis. Tu t'asseoies à côté d'eux. Le professeur de maths se tient devant le tableau.
+
+Prof - La notion essentielle d'aujourd'hui est  la multiplication des matrices. Elle permet de représenter des transformations et des relations linéaires entre les vecteurs.
+
+Les étudiants acquiescent, attentifs.
+
+Prof - On combine les lignes d'une matrice avec les colonnes d'une autre pour obtenir de nouvelles valeurs. Cela donne de nouvelles matrices. 
+Par exemple,    (1  2) x (3  4) donne (11  10)
+                (2  1)   (4  3)       (10  11)
+Ton voisin prend des notes rapidement, captivé.
+
+Un élève - Ça semble vraiment utile pour nos projets futurs.
+
+Le professeur sourit, satisfait de leur intérêt.
+
+###
+###
+
+1- Continuer_12

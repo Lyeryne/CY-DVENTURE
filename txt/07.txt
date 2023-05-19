@@ -1,34 +1,9 @@
-Fille – Ca va aller ?
-
-Toi – Oh t’inquiètes, le principal c’est que tu es saine et sauf(ART GENER)
-
-Fille – (ART ROUGIS) Tu t’appelles comment ?
-
-Toi - %s (fSEEK) et toi ?
-
-Fille -%s (prénom déjà ecris dans le programme)
-
-Toi- Beau prénom, tu as quel age au juste car j’ai l’impression qu’on a le meme age.
-
-Elle- 18 ans et toi ?
-
-Toi – Ah moi aussi ! Tu es dans quel école ?
-
-Elle – à X TECH, je sais pas si tu connais ?
-
-Toi – (ART SURPRIS) oh tu me crois si je te dis qu’on est à la meme école ! 
-
-Elle – Mais non incroyable ! On se verra pendant les cours alors !
-
-Toi – Y’a pas de soucis, passe une bonne journée, fait attention à toi !
-
-Elle – C’est mignon merci ! 
+Ta première journée s'est bien passée, tu t'es fait de nouveaux amis et tu as augmenté tes statistiques.
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~XTECH DVENTURE~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-###
-1 //(+5 mentale et -5 force)Stat
-###
+EVENT 2 - TERMINER : FIN DE LA RENTRER DES CLASSES 
 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~XTECH DVENTURE~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-EVENT 1 - TERMINER : FIN DU WEEKEND D'INTEGRATION 
+###
+display stats
+###

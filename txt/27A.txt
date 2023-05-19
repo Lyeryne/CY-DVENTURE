@@ -1,0 +1,24 @@
+Tu décides de te rendre en cours tout de même. 
+C'est bien d'être studieux.
+
+Le cours du jour est un cours d'informatique.
+
+Professeur - Bonjour à tous ! Aujourd'hui, nous allons voir les structures en langage C. Elles permettent de regrouper différentes variables sous un même nom.
+
+Toi : Pouvez-vous donner un exemple concret, monsieur ?
+
+Professeur - Bien sûr ! Imaginons que nous souhaitons représenter les informations d'un étudiant, comme son nom, son âge et sa note. Nous pouvons utiliser une structure pour cela.
+
+Le professeur écrit au tableau :
+
+struct Etudiant {
+   char nom[50];
+   int age;
+   float note;
+};
+Professeur - Voici une structure nommée "Etudiant". Elle contient les membres "nom", "age" et "note" de types différents.
+
+###
+###
+
+1- Continuer_28A

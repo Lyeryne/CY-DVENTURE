@@ -1,0 +1,7 @@
+Maintenant, tu as le choix. Soit tu vas dans une salle pour aller réviser avec tes amis, soit tu vas sortir avec ta copine.
+
+###
+###
+
+1- Réviser_13A
+2- Sortir_13B
