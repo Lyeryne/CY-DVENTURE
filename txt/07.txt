@@ -1,0 +1,9 @@
+Ta première journée s'est bien passée, tu t'es fait de nouveaux amis et tu as augmenté tes statistiques.
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~XTECH DVENTURE~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+EVENT 2 - TERMINER : FIN DE LA RENTRER DES CLASSES 
+
+###
+display stats
+###

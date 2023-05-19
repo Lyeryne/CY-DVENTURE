@@ -1,0 +1,11 @@
+Tu récupères la veste,
+et tu retournes àtes révisions.
+Le prochain DS portera sur les matrices. 
+Dans le cours, il y a marqué :  (1  2) x (3  4) donne (11  10)
+                                (2  1)   (4  3)       (10  11)
+
+###
+//Gagne la veste\\
+###
+
+1- Continuer_15

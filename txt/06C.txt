@@ -19,7 +19,9 @@ Moi - Ok merci ! On se voit tous apres les cours ?
 
 Le groupe - Oui, pas de soucis !
 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~XTECH DVENTURE~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+###
+//(+2 ATK)Stat
+//(+2 DEF)Stat
+###
 
-EVENT 2 - TERMINER : FIN DE LA RENTRER DES CLASSES 
-
+1- Continuer_07

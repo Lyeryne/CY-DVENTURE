@@ -1,0 +1,24 @@
+Alors que tu sors de la salle du DS, tu bouscules quelqu'un devant toi.
+Lui - Hé, fais attention où tu vas !
+
+Toi - Excuse-moi, je suis vraiment désolé, je ne l'ai pas fait exprès.
+
+Lui - Tu pourrais faire attention, tu as failli renverser mon café et abîmer mon livre !
+
+Toi - Je te dis que c'était accidentel, je m'excuse encore une fois. Pas besoin de s'énerver pour si peu.
+
+Lui - Accidentel ou non, ça ne te donne pas le droit de me bousculer impunément !
+
+La tension monte alors que vos deux voix se font de plus en plus fortes.
+
+Toi - tu veux te battre, c'est ça. 
+Lui - Amène toi, vas-y.
+
+###
+1 //(display les attaquants)
+2 //(display fight)
+###
+Si tu n'as plus d'HPY, appuie sur 1. Sinon, appuie sur 2
+
+1- Mort_F2
+2- Continue_34

@@ -28,7 +28,9 @@ Moi - Oh non, oublions...
 Bon, on se parle apres les cours ?
 
 Le groupe - vsy, pas de soucis !
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~XTECH DVENTURE~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-EVENT 2 - TERMINER : FIN DE LA RENTRER DES CLASSES 
+###
+//(+2 SMRT)Stat
+###
 
+1- Continuer_07

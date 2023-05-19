@@ -1,0 +1,9 @@
+Avant de te rendre en cours, tu n'oublies pas de prendre tes affaires.
+Tu récupères ton cahier et ton stylo, et tu te rends en cours.
+
+###
+FAM +0.2
+//Gagne le stylo et le cahier\\
+###
+
+1- Continuer_05

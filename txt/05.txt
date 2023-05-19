@@ -1,9 +1,9 @@
-EVENT 2 - LA RENTRER DES CLASSES (ASCI ART)
 
-Ce matin, tu as cours d’Analyse avec Mr Bihtata. 
+
+Ce matin, tu te rends à X TECH pour ton premier cours. 
 L'un des trois groupes t'interpellent pour que tu te mettes a cote d'eux !
 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~XTECH DVENTURE~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 
 1/ - Amir, Mohammed et Charles : (▀¯▀)
 ~> les surdouees = Souvent ce sont les étudiants isoles, studieux et peu intéressés par les activites sociales.
@@ -21,7 +21,7 @@ Cependant, ce sont des etudiants engages et serieux qui t'apporteront forces men
 ###
 Avec qui veux-tu te mettre ?
 ###
-1 - Amir, Mohammed et Charles_03
-2 - Youssef, Mahmoud et Lyeryne_04
-3 - Mamadou, Francis et Leo_05
+1 - Amir, Mohammed et Charles_06A
+2 - Youssef, Mahmoud et Lyeryne_06B
+3 - Mamadou, Francis et Leo_06C
 

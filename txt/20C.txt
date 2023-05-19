@@ -1,0 +1,9 @@
+Tu vas faire du sport, et un de tes amis t'accompagne. 
+Vous passez l'après midi à la salle de sport.
+
+###
+//(+4 ATK)Stat
+//(+4 DEF)Stat
+###
+
+1-Continuer_21

@@ -1,14 +1,14 @@
 Fille – Ca va aller ?
 
-Toi – Oh t’inquiètes, le principal c’est que tu es saine et sauf(ART GENER)
+Toi – Oh t’inquiètes, le principal c’est que tu es saine et sauf
 
-Fille – (ART ROUGIS) Tu t’appelles comment ?
+Fille –  Tu t’appelles comment ?
 
 Toi - %s (fSEEK) et toi ?
 
-Fille -%s (prénom déjà ecris dans le programme)
+Fille -Lisa
 
-Toi- Beau prénom, tu as quel age au juste car j’ai l’impression qu’on a le meme age.
+Toi- J'aime bien, tu as quel age au juste car j’ai l’impression qu’on a le meme age.
 
 Elle- 18 ans et toi ?
 
@@ -26,12 +26,9 @@ Elle – C’est mignon merci !
 
 Tu récupères tes affaires et tu te rends à X TECH
 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~XTECH DVENTURE~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
 ###
 1 //(+5 HPY)Stat
 //Gagne le stylo et le cahier\\
 ###
 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~XTECH DVENTURE~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-EVENT 1 - TERMINER : FIN DU WEEKEND D'INTEGRATION 
+1- Continuer_05

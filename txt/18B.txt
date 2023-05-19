@@ -1,0 +1,16 @@
+Tu sors de la salle de contrôle, fanfaronnant après ta réussite. Un professeur l'interpelle d'un ton sévère.
+
+
+Le prof - Arrête immédiatement de fanfaronner devant tout le monde!
+
+Tu te figes, surpris par l'intervention du professeur.
+
+Le prof - Il faut que tu apprennes la modestie, cela te servira dans le futur.
+
+Tu aquiesces, honteux.
+
+###
+//(-1 FAM)Stat
+###
+
+1- Continuer_19

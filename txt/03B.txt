@@ -1,12 +1,10 @@
-T'es vraiment pas drôle, tu v'as t'amuser et rencontrer des gens, 
-Arrête de toucher les octets solo et va voir du monde. 
-(Et profites en pour aérer ta chambre là parce que jouer aux jeux vidéos ça te fait suer, là ça chlingue.)
-
+Cela ne va rien t'apporter, non ?
+A la place, il faudrait mieux aller récupérer des affaires à la bibliothèque.
 
 ###
-Joue pas à ça c'est infini
+
 ###
 
-1 - Retour aux choix_06
+1 - Continuer_04B
 
 

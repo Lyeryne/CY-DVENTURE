@@ -1,4 +1,4 @@
-EVENT 1	- WEEKEND D'INTEGRATION (ASCI ART)
+
 
 Séjour au cours duquel les élèves du BDE organisent l’intégration de la promotion entrante !
 
@@ -9,6 +9,6 @@ Est-ce que je devrais y aller ?
 
 ###
 
-1 - Oui, pourquoi pas !_01
-2 - Non, c'est pour les nullos_08
+1 - Oui, pourquoi pas !_03A
+2 - Non, c'est pour les nullos_03B
 
