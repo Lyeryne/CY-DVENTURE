@@ -40,7 +40,7 @@ int main()
 		sleep(1);
 		system("clear");
 
-		next_chap = displayChapter(create_chapter("DebutJeu"), mainCharacter, MyBag);
+		next_chap = displayChapter(create_chapter("01"), mainCharacter, MyBag);
 		next_chap = displayChapter(create_chapter(next_chap), mainCharacter, MyBag);
 
 		/*while(fgets(intro, SIZE, fp1) != NULL){ 
@@ -52,7 +52,7 @@ int main()
 		//VARIABLES 
 		int game = 1;
 		char* next_chap;
-		chapter ch = create_chapter("Event1");
+		chapter ch = create_chapter("02");
 
 //GAME
 		while (game == 1)
@@ -132,6 +132,7 @@ next_chap = displayChapter(create_chapter(next_chap), mainCharacter, MyBag);
 	}
 return 0;
 }
+
 
 
 
