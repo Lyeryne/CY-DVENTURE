@@ -54,7 +54,7 @@ Stdt createMainCharacter()
     x.power = 50 + rand()%51;
     x.fame = 50;
     x.intellect = 50 + rand()%51;
-    x.wellness = 100;
+    x.wellness = 50;
     x.health = 300;
     x.dodge = rand()%16;
     x.defence = 10 + rand()%51;
@@ -71,7 +71,7 @@ Stdt createFighter(char name[SIZE_NAMES], char sname[SIZE_NAMES]){
     fighter.power = 50 + rand()%51;
     fighter.fame = 50;
     fighter.intellect = 50 + rand()%51;
-    fighter.wellness = 100;
+    fighter.wellness = 50;
     fighter.health = 300;
     fighter.dodge = rand()%16;
     fighter.defence = 10 + rand()%51;

@@ -97,6 +97,8 @@ void ProcessEvent(chapter *chap, char *value, int counter)
 }
     switch (counter)
     {
+    case 0:
+        break;
     case 1:
         a = atoi(value);
         chap->event->type_event = a;
@@ -107,7 +109,7 @@ void ProcessEvent(chapter *chap, char *value, int counter)
         break;
     case 3:
         b = atoi(value);
-        chap->event->n_monster = b;
+        chap->event->n_fighter = b;
         break;
     case 4:
         c = atoi(value);
@@ -232,14 +234,12 @@ chapter create_chapter(char *chapter_name)
                 break;
 
             case 3:
-
                 ProcessDescription(&chap, line);
                 break;
             }
         }
     }
     fclose(file);
-
     return chap;
 }
 
@@ -272,14 +272,10 @@ char *displayChapter(chapter chap, Stdt main_character, Bag *MyBag)
 	// EVENT DU JEU
 	switch (chap.event->type_event)
 	{
-
-	case 0:
-        WaitPress();
-    	break;
 	case 1:
 		// combat contre un monstre
-		displayBeforeFight(tab_fighter[chap.event->n_monster], main_character);
-		fight(main_character, tab_fighter[chap.event->n_monster]);
+		displayBeforeFight(tab_fighter[chap.event->n_fighter], main_character);
+		fight(main_character, tab_fighter[chap.event->n_fighter]);
 		break;
 
 	case 2:
@@ -297,6 +293,7 @@ char *displayChapter(chapter chap, Stdt main_character, Bag *MyBag)
 				{
 					main_character.fame = 0;
 				}
+                printf("Vous avez perdu %d de fame !\n", chap.event->n_stat);
 			}
 			else
 			{
@@ -307,6 +304,7 @@ char *displayChapter(chapter chap, Stdt main_character, Bag *MyBag)
 				{
 					main_character.fame = 100;
 				}
+                printf("Vous avez gagné %d de fame !\n", chap.event->n_stat);
 			}
 			break;
 
@@ -321,16 +319,18 @@ char *displayChapter(chapter chap, Stdt main_character, Bag *MyBag)
 				{
 					main_character.intellect = 0;
 				}
+                printf("Vous avez perdu %d d'intelligence !\n", chap.event->n_stat);
 			}
 			else 
 			{
 				// c'est un bonus de stat
 				main_character.intellect += chap.event->n_stat;
 				// Si une Stat sup à 100 alors remit à 100
-				if (main_character.fame > 100)
+				if (main_character.intellect > 100)
 				{
-					main_character.fame = 100;
+					main_character.intellect = 100;
 				}
+                printf("Vous avez gagné %d d'intelligence !\n", chap.event->n_stat);
 			}
 			break;
 		case 3:
@@ -340,10 +340,11 @@ char *displayChapter(chapter chap, Stdt main_character, Bag *MyBag)
 				// c'est un malus de stat
 				main_character.power -= chap.event->n_stat;
 				// Si une Stat inf à 0 alors remit à 0
-				if (main_character.intellect < 0)
+				if (main_character.power < 0)
 				{
-					main_character.intellect = 0;
+					main_character.power = 0;
 				}
+                printf("Vous avez perdu %d de force !\n", chap.event->n_stat);
 			}
 			else
 			{
@@ -354,6 +355,7 @@ char *displayChapter(chapter chap, Stdt main_character, Bag *MyBag)
 				{
 					main_character.fame = 100;
 				}
+                printf("Vous avez gagné %d de force !\n", chap.event->n_stat);
 			}
 			break;
 		case 4:
@@ -362,20 +364,22 @@ char *displayChapter(chapter chap, Stdt main_character, Bag *MyBag)
 				// c'est un malus de stat
 				main_character.wellness -= chap.event->n_stat;
 				// Si une Stat inf à 0 alors remit à 0
-				if (main_character.intellect < 0)
+				if (main_character.wellness < 0)
 				{
-					main_character.intellect = 0;
+					main_character.wellness = 0;
 				}
+                printf("Vous avez perdu %d de mental !\n", chap.event->n_stat);
 			}
 			else
 			{
 				// c'est un bonus de stat
 				main_character.wellness += chap.event->n_stat;
 				// Si une Stat sup à 100 alors remit à 100
-				if (main_character.fame > 100)
+				if (main_character.wellness > 100)
 				{
-					main_character.fame = 100;
+					main_character.wellness = 100;
 				}
+                printf("Vous avez gagné %d de mental !\n", chap.event->n_stat);
 			}
 		}
 	case 3:
@@ -383,17 +387,17 @@ char *displayChapter(chapter chap, Stdt main_character, Bag *MyBag)
 		if (chap.event->add_or_remove_bag == "1")
 		{
 			// c'est un malus de stat
-			main_character.power -= chap.event->n_stat;
+			removeItem(MyBag, Knife);
 		}
 		else
 		{
 			// c'est un bonus de stat
-			main_character.power += chap.event->n_stat;
+			addItem(MyBag, Knife);
 		}
 		break;
-	case 4:
-		displayStat(main_character);
-	}
+    }
+
+    displayStat(main_character);
 
 	if (chap.choice_count != 1)
 	{

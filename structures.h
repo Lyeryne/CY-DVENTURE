@@ -1,3 +1,4 @@
+
 #ifndef STRUCTURES_H
 #define STRUCTURES_H
 
@@ -43,7 +44,7 @@ typedef struct
 typedef struct
 {
     int type_event;
-    int n_monster;
+    int n_fighter;
     int type_stat;
     int n_stat;
 	char *id_object;

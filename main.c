@@ -15,19 +15,12 @@ int main()
 	char* next_chap;
 //CREATION DE FICHIER
 	start1 = pre_game();
-
-	/*FILE* fp1 = fopen("ProjetV2/txt/DebutJeu.txt", "r");
 	char intro[SIZE];
-	if(fp1 == NULL){
-	printf("Erreur on fopen\n");
-	exit(1);
-	}*/
 	//Choix d'une "Nouvelle Partie"
 	if(start1 == 1)
 	{
 		displayLoading();
 		//affichage de %tage en temps réelle
-		WaitPress();
 		system("clear");
 		//CREATE STUDENTS
 		char* txt1 = "Avant de commencer a jouer, vous allez saisir votre personnage principal\n\n";
@@ -37,10 +30,11 @@ int main()
 		mainCharacter = createMainCharacter();
 		system("clear");
 		displayStat(mainCharacter);
-		WaitPress();
+		sleep(1);
 		system("clear");
 
 		char* txt2 = "Commençons...\n";
+		sleep(1);
 		int size3 = strlen(txt2);
 		displayTxt(size3, txt2);
 		sleep(1);
