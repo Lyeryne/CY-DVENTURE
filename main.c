@@ -10,6 +10,7 @@ int main()
 	Stdt mainCharacter;
 
 	Bag MyBag[MAX_BAG_SIZE] = {Pencil, Book, Computer, Knife, Knuckles, Sunglasses, Jacket, Girlfriend};
+	
 	int numItems = sizeof(MyBag) / sizeof(MyBag[0]);
 	int start1, start2;
 	char* next_chap;
@@ -34,7 +35,6 @@ int main()
 		system("clear");
 
 		char* txt2 = "Commençons...\n";
-		sleep(1);
 		int size3 = strlen(txt2);
 		displayTxt(size3, txt2);
 		sleep(1);

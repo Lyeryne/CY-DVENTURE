@@ -21,12 +21,8 @@ Stdt createMainCharacter();
 
 Stdt createFighter(char name[SIZE_NAMES], char sname[SIZE_NAMES]);
 
-Bag string2enum(const char* str); 
+void removeItem(Stdt* main_character, const char* item);
 
-char* enum2string(Bag bag);
-
-void removeItem(Bag* bag, Bag item);
-
-void addItem(Bag* bag, Bag item);
+void addItem(Stdt* main_character, const char* item);
 
 #endif

@@ -242,9 +242,8 @@ chapter create_chapter(char *chapter_name)
 	return chap;
 }
 
-char *displayChapter(chapter chap, Stdt main_character, Bag *MyBag)
+char *displayChapter(chapter chap, Stdt main_character)
 {
-	 MyBag[MAX_BAG_SIZE] = Pencil, Book, Computer, Knife, Knuckles, Sunglasses, Jacket, Girlfriend;
 	// fighter1
 	char name1[SIZE_NAMES] = "Boris";
 	char sname1[SIZE_NAMES] = "Jackson";
@@ -388,12 +387,14 @@ char *displayChapter(chapter chap, Stdt main_character, Bag *MyBag)
 		if (chap.event->add_or_remove_bag == "1")
 		{
 			// c'est un malus de stat
-			removeItem(MyBag, Knife);
+			removeItem(&main_character, "Stylot");
+			displayBag(&main_character);
 		}
 		else
 		{
 			// c'est un bonus de stat
-			addItem(MyBag, Knife);
+			addItem(&main_character, "Cahier");
+			displayBag(&main_character);
 		}
 		break;
     }

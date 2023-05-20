@@ -19,21 +19,9 @@ typedef struct
 	int wellness;
 	int dodge;
 	int defence;
+	char Bag[MAX_BAG_SIZE][SIZE_NAMES];
+	int bag_size;
 } Stdt; // Main character
-
-typedef enum
-{
-  //intellect stuff
-  Pencil, Book, Computer,
-  //power stuff
-  Knife, Knuckles, 
-  //fame stuff
-  Sunglasses, Jacket,
-  //wellness stuff
-  Girlfriend,
-  //empty
-  Vide  
-} Bag; // Items
 
 typedef struct
 {
@@ -63,8 +51,7 @@ typedef struct
 
 typedef struct 
 {
-    Stdt a;
-    Bag b;
+    Stdt main_character;
     int selected_choice;//stocke l'option de choix sélectionnée par l'utilisateur
 } SaveData;
 

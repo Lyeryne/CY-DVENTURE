@@ -79,84 +79,59 @@ Stdt createFighter(char name[SIZE_NAMES], char sname[SIZE_NAMES]){
     return fighter;
 }
 
-Bag string2enum(const char* str) 
+void removeItem(Stdt* main_character, const char* item)
 {
-    if (strcmp(str, "Stylot") == 0) {
-        return Pencil;
-    } else if (strcmp(str, "Cahier") == 0) {
-        return Book;
-    } else if (strcmp(str, "PC") == 0) {
-        return Computer;
-    } else if (strcmp(str, "Opinel") == 0) {
-        return Knife;
-    } else if (strcmp(str, "Knuckles") == 0) {
-        return Knuckles;
-    } else if (strcmp(str, "Lunette de soleil") == 0) {
-        return Sunglasses;
-    } else if (strcmp(str, "Veste") == 0) {
-        return Jacket;
-    } else if (strcmp(str, "Petite amie") == 0) {
-        return Girlfriend;
-    } else if (strcmp(str, "Vide") == 0) {
-        return Vide;
-    } 
-}
-
-char* enum2string(Bag bag)
-{
-    switch(bag){
-        case Pencil:
-            return "Stylot";
-        case Book:
-            return "Cahier";
-        case Computer:
-            return "PC";
-        case Knife:
-            return "Opinel";
-        case Knuckles:
-            return "Poing américain";
-        case Sunglasses:
-            return "Lunette de soleil";
-        case Jacket:
-            return "Veste";
-        case Girlfriend:
-            return "Petite amie";
-        case Vide:
-            return "Vide";
+	int removed = 0;
+	//Vérifier si l'élèment est déjà présent dans le sac
+	for(int i=0; i < main_character->bag_size; i++)
+	{
+		//Si l'objet est dans le sac, le supprimer en décalant vers la Gauche
+		if(strcmp(main_character->Bag[i], item) == 0)
+		{
+			for(int j=i; j < main_character->bag_size -1; j++)
+			{
+				strcpy(main_character->Bag[j], main_character->Bag[j+1]);
+			}
+			main_character->bag_size--;
+			removed = 1;
+			break;
+		}
+	}
+	
+	//Robust
+	if(removed == 1)
+	{
+		printf("~%s~ a été supprimé du sac.\n", item);
+	} 
+	else {
+		printf("~%s~ n'a pas été trouvé dans le sac.\n", item);
     }
 }
 
-void removeItem(Bag* bag, Bag item)
+void addItem(Stdt* main_character, const char* item)
 {
-    int numItems = sizeof(*bag) / sizeof(bag[0]);
-    int itemIndex = -1;
+	//Robust
+	if(main_character->bag_size >= MAX_BAG_SIZE)
+	{
+		printf("Votre sac est plein : ~8/8~\n");
+		return;
+	}
+	
+	//Verifier si l'element est déjà présent dans le sac
+	for(int i=0; i < main_character->bag_size; i++)
+	{
+		if(strcmp(main_character->Bag[i], item) == 0)
+		{
+			printf("~%s~ est déjà présent dans votre sac.\n", item);
+			return;
+		}
+	}
+	
+	strcpy(main_character->Bag[main_character->bag_size], item);
+	main_character->bag_size++;
+	
+	printf("~%s~ a été ajouté dans le sac.\n", item);
+	
+} 
 
-    for(int i = 0; i<numItems; i++){ // Cherche l'index de l'objet dans le sac
-        if(bag[i] == item){
-            itemIndex = i;
-            break; 
-        }
-    }
-
-    if(itemIndex>=0){// Si l'objet est dans le sac, le supprimer
-        for(int i = itemIndex; i<numItems-1; i++){ // Décaler tous les éléments suivants d'un index vers la gauche
-            bag[i] = bag[i+1];
-        }
-        bag[numItems-1] = Vide;// Mettre le dernier élément à 'Vide'
-    }
-}
-
-void addItem(Bag* bag, Bag item)
-{
-    int numItems = sizeof(*bag) / sizeof(bag[0]);
-
-    //vérifie si le sac est plein
-    if(numItems >= MAX_BAG_SIZE){
-        printf("le sac est déjà plein -8/8- \n");
-        return;
-    }
-
-    //ajoute l'objet à la fin du Sac
-    bag[numItems] = item;
-}
 

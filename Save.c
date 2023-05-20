@@ -7,28 +7,28 @@ void SaveGame(SaveData data){
     }
 
     //STAT
-    fprintf(fp, "%d\n", data.a.fame);
-    fprintf(fp, "%d\n", data.a.power);
-    fprintf(fp, "%d\n", data.a.intellect);
-    fprintf(fp, "%d\n", data.a.wellness);
-    fprintf(fp, "%d\n", data.a.health);
-    fprintf(fp, "%d\n", data.a.dodge);
-    fprintf(fp, "%d\n", data.a.defence);
+    fprintf(fp, "%d\n", data.main_character.fame);
+    fprintf(fp, "%d\n", data.main_character.power);
+    fprintf(fp, "%d\n", data.main_character.intellect);
+    fprintf(fp, "%d\n", data.main_character.wellness);
+    fprintf(fp, "%d\n", data.main_character.health);
+    fprintf(fp, "%d\n", data.main_character.dodge);
+    fprintf(fp, "%d\n", data.main_character.defence);
     //BAG
-    Bag myBag[] = {Pencil, Book, Computer, Knife, Knuckles, Sunglasses, Jacket, Girlfriend};
+    /*Bag myBag[] = {Pencil, Book, Computer, Knife, Knuckles, Sunglasses, Jacket, Girlfriend};
     int numItems = sizeof(myBag) / sizeof(myBag[0]);
 
     fprintf(fp, "Bag items:\n");
     for(int i = 0; i < numItems; i++) {
         fprintf(fp, "- %s\n", enum2string(myBag[i]));
-    }
+    }*/
     //CHOICES
     fprintf(fp, "selected_choice:%d\n", data.selected_choice);
 
     fclose(fp);
 }
 
-int loadGame(Stdt* main, Bag* b) {
+int loadGame(Stdt* main_character) {
     FILE* fp = fopen("txt/save.txt", "rb");
     if (fp == NULL) {
         printf("Erreur fopen (file LoadSave)\n");
@@ -36,20 +36,20 @@ int loadGame(Stdt* main, Bag* b) {
     }
 
     //STAT
-    if (fscanf(fp, "%d", &(main->fame)) != 1 ||
-        fscanf(fp, "%d", &(main->power)) != 1 ||
-        fscanf(fp, "%d", &(main->intellect)) != 1 ||
-        fscanf(fp, "%d", &(main->wellness)) != 1 || 
-        fscanf(fp, "%d", &(main->health)) != 1 ||
-        fscanf(fp, "%d", &(main->dodge)) != 1 ||
-        fscanf(fp, "%d", &(main->defence)) != 1) {
+    if (fscanf(fp, "%d", &(main_character->fame)) != 1 ||
+        fscanf(fp, "%d", &(main_character->power)) != 1 ||
+        fscanf(fp, "%d", &(main_character->intellect)) != 1 ||
+        fscanf(fp, "%d", &(main_character->wellness)) != 1 || 
+        fscanf(fp, "%d", &(main_character->health)) != 1 ||
+        fscanf(fp, "%d", &(main_character->dodge)) != 1 ||
+        fscanf(fp, "%d", &(main_character->defence)) != 1) {
         printf("Erreur de lecture des données de stat\n");
         fclose(fp);
         return 0;
     }
 
     //BAG
-    char line1[128];
+    /*char line1[128];
     if (fgets(line1, sizeof(line1), fp) == NULL ||
         strcmp(line1, "Bag items:\n") != 0) {
         printf("Erreur de lecture de l'en-tête de la liste de sac\n");
@@ -68,7 +68,7 @@ int loadGame(Stdt* main, Bag* b) {
             return 0;
         }
         b[i++]= item;
-    }
+    }*/
 
 
     /*char line2[1000];

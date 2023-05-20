@@ -11,17 +11,19 @@ void displayStat(Stdt a){
     printf("Mental : %d\n", a.wellness);
 }
 
-void displayBag(Bag b){
-
-  Bag myBag[] = {Pencil, Book, Computer, Knife, Knuckles, Sunglasses, Jacket, Girlfriend};
-  int numItems = sizeof(myBag) / sizeof(myBag[0]);
-
-  printf("\nVotre Sac :\n");
-  for(int i = 0; i < numItems; i++) {
-char* enum2string(Bag bag);
-    printf("- %s\n", enum2string(myBag[i]));
+void displayBag(const Stdt* main_character){
+  printf("Contenu de votre sac :\n");
+  
+  if(main_character->bag_size == 0)
+  {
+  	printf("Votre sac est vide ~0/8~\n");
+  	return;
   }
-printf("\n");
+  
+  for(int i=0; i < main_character->bag_size; i++)
+  {
+  	printf("%s\n", main_character->Bag[i]);
+  }
 }
 
 

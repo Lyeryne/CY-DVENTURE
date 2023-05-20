@@ -19,6 +19,6 @@ struct SaveData;
 
 
 void SaveGame(SaveData data);
-int loadGame(Stdt* main, Bag* b);
+int loadGame(Stdt* main_character);
 
 #endif
