@@ -1,12 +1,5 @@
-<<<<<<< HEAD
 En commission disciplinaire, le verdict est sans appel : tu est renvoyé de l'école.
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~XTECH DVENTURE~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-=======
-En commission disciplinaire, le verdict est sans appel : tu est renvoyé de l'école.
-
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~XTECH DVENTURE~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
->>>>>>> a4478b96ea9464db03bfd293e53d51f5c4dd41e0
                                             FIN

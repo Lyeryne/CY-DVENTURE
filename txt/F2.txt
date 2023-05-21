@@ -1,16 +1,7 @@
-<<<<<<< HEAD
 Tu t'effondres, alors que tu te dis que tu n'aurais jamais dû accepter ce combat. 
 Tu entends des voix tout autour, tandis que ta vision s'éteint. 
 Tu décèdes alors que les secours sont en train d'arriver .
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~XTECH DVENTURE~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-=======
-Tu t'effondres, alors que tu te dis que tu n'aurais jamais dû accepter ce combat. 
-Tu entends des voix tout autour, tandis que ta vision s'éteint. 
-Tu décèdes alors que les secours sont en train d'arriver .
-
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~XTECH DVENTURE~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
->>>>>>> a4478b96ea9464db03bfd293e53d51f5c4dd41e0
                                             FIN

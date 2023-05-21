@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 Avant de commencer les cours, il faut que tu ailles récupérer tes affaires à la bibliothèque.
 
 Tu vois au loin, une jeune fille marchant vite suivie par un homme un peu assistant qui tente de la rizz, elle lui dit de la laisser tranquille mais l’homme continue. 
@@ -24,30 +23,3 @@ Appuyer sur 1
 
 
 
-=======
-Avant de commencer les cours, il faut que tu ailles récupérer tes affaires à la bibliothèque.
-
-Tu vois au loin, une jeune fille marchant vite suivie par un homme un peu assistant qui tente de la rizz, elle lui dit de la laisser tranquille mais l’homme continue. 
-
-C’est alors que tu interviens :
-
-Toi – Eh ! Tu as pas compris qu’elle veut pas !  (ART ENERVER)
-
-L’individu – Ferme là bouffon, qui t’a sonnée ?
-
-Toi – Tu vas vite bouger d’ici si tu veux pas que je m’énerve !(ART ENERVER)
-
-L’individu – Vsy viens tu vas faire quoi !
-
-###
-1 //(display les attaquants)
-2 //(display fight)
-###
-Appuyer sur 1
-###
-1- Continuer_004B
-
-
-
-
->>>>>>> a4478b96ea9464db03bfd293e53d51f5c4dd41e0

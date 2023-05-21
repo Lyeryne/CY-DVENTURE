@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 Bien joué, tu as réussi.
 Voici ton jeton DS. 
 Plus qu'un seul pour réussir l'année.
@@ -7,14 +6,4 @@ Plus qu'un seul pour réussir l'année.
 //Gagne un JetonDS\\
 ###
 
-=======
-Bien joué, tu as réussi.
-Voici ton jeton DS. 
-Plus qu'un seul pour réussir l'année.
-
-###
-//Gagne un JetonDS\\
-###
-
->>>>>>> a4478b96ea9464db03bfd293e53d51f5c4dd41e0
 1- Continuer_18B

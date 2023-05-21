@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 Un prof passe à côté de toi.
 Tu t'efforces de paraitre naturel, mais il s'arrête et apperçois ton antisèche. 
 Il te demande de sortir de la salle, et tu te rends en commission disciplinaire.
@@ -6,13 +5,4 @@ Il te demande de sortir de la salle, et tu te rends en commission disciplinaire.
 ###
 ###
 
-=======
-Un prof passe à côté de toi.
-Tu t'efforces de paraitre naturel, mais il s'arrête et apperçois ton antisèche. 
-Il te demande de sortir de la salle, et tu te rends en commission disciplinaire.
-
-###
-###
-
->>>>>>> a4478b96ea9464db03bfd293e53d51f5c4dd41e0
 1- Continue_F1

@@ -1,4 +1,3 @@
-<<<<<<< HEAD
                                                         ~~ Synopsis ~~ 
 
 Vous suivrez la première année de cycle préparatoire d'un élève accepté via Parcoursup à X TECH, une école d'ingénieur.♥‿♥  
@@ -24,25 +23,3 @@ La seule solution : Être un très bon élève ! ¯\_(ツ)_/¯
 3
 ###
 1-_02
-=======
-                                                        ~~ Synopsis ~~ 
-
-Vous suivrez la première année de cycle préparatoire d'un élève accepté via Parcoursup à X TECH, une école d'ingénieur.♥‿♥  
-
-Le but est de réussir à faire valider son année en réussissant ses Devoirs Surveillés. Dans cette école, vous rencontrerez de nombreuses personnes. 
-
-Chaque rencontre déterminera votre réussite puisque ces rencontres vous apporteront intelligence, réputation et force ou bien un échec assuré ! 
-
-Voici comment cela fonctionne : 
-
-La SMRT te permettra de répondre plus facilement aux devoirs surveillés, et donc d’avoir de meilleure note. 
-L’ATK et la DEF te permettront d’éviter de te faire agresser.
-La FAM te permettra de booster tes stats grâce aux rencontres.
-L'HPY constituera ton niveau de moral, gare à le garder assez haut ou tu perdras (._.)
-
-La seule solution : Être un très bon élève ! ¯\_(ツ)_/¯
-###
-0
-###
-1-_02
->>>>>>> aae9c5ac66478464d340a6d00c904b42465a159b

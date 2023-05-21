@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 Tu est assis à une table dans un café, attendant ton amie, Lisa. Elle arrive en souriant et s'assoit en face de toi.
 
 Lisa - Salut toi, contente de te voir !
@@ -15,22 +14,4 @@ Lisa - Moi aussi ... Je n'osas pas te le dire, mais j'éprouve la même chose.
 
 Vous vous embrassez.
 
-=======
-Tu est assis à une table dans un café, attendant ton amie, Lisa. Elle arrive en souriant et s'assoit en face de toi.
-
-Lisa - Salut toi, contente de te voir !
-Toi - Salut lisa, toi aussi tu es là. J'ai quelque chose à te dire...
-
-Lisa t'observe, curieuse.
-
-Lisa - Qu'est-ce qui se passe ?
-Toi - Je pense que tu es plus qu'une simple amie pour moi, je crois que je t'aime.
-
-Lisa reste silencieuse, puis un sourire radieux illumine son visage.
-
-Lisa - Moi aussi ... Je n'osas pas te le dire, mais j'éprouve la même chose.
-
-Vous vous embrassez.
-
->>>>>>> a4478b96ea9464db03bfd293e53d51f5c4dd41e0
 1- Continuer_15

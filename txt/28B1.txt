@@ -1,16 +1,7 @@
-<<<<<<< HEAD
 Tu décides de sortir avec tes amis.
 Vous allez faire la fête dans une boite de nuit près de l'école, 
 en pensant à vos pauvres camarades studieux qui doivent encore réviser pour le DS de demain.
 
 ###
 ###
-=======
-Tu décides de sortir avec tes amis.
-Vous allez faire la fête dans une boite de nuit près de l'école, 
-en pensant à vos pauvres camarades studieux qui doivent encore réviser pour le DS de demain.
-
-###
-###
->>>>>>> a4478b96ea9464db03bfd293e53d51f5c4dd41e0
 1- DS_29

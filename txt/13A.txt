@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 Vous entrez dans une salle de révision calme. Des tables sont disposées, chacun trouve un endroit pour s'installer. Mais quelque chose attire ton attention au fond de la salle. Trois objets étranges sont posés sur une table : un ordinateur portable, des poings américains et une veste.
 
 
@@ -21,27 +20,3 @@ Quel objet veux-tu prendre ?
 
 
 
-=======
-Vous entrez dans une salle de révision calme. Des tables sont disposées, chacun trouve un endroit pour s'installer. Mais quelque chose attire ton attention au fond de la salle. Trois objets étranges sont posés sur une table : un ordinateur portable, des poings américains et une veste.
-
-
-Toi - Regardez ça, qu'est-ce que c'est ?
-Amis - Des poings américains ? C'est étrange de les trouver ici.
-Toi - Et cette veste... Elle semble abandonnée. Peut-être que quelqu'un les a oubliés ?
-Amis - Ces poings américains pourraient être utiles, ils pourraient nous donner de la force.
-Amis - Je pense que cette veste est trop belle pour être laissée là.
-Amis - Mais cet ordinateur, il pourrait nous permettre d'méliorer nos révisions.
-
-###
-Quel objet veux-tu prendre ?
-###
-
-1- Les poings_141
-2- La veste_142
-3- L'ordinateur_143
-
-
-
-
-
->>>>>>> a4478b96ea9464db03bfd293e53d51f5c4dd41e0

@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 Avant de te rendre en cours, tu n'oublies pas de prendre tes affaires.
 Tu récupères ton cahier et ton stylo, et tu te rends en cours.
 
@@ -8,14 +7,3 @@ FAM +0.2
 ###
 
 1- Continuer_05
-=======
-Avant de te rendre en cours, tu n'oublies pas de prendre tes affaires.
-Tu récupères ton cahier et ton stylo, et tu te rends en cours.
-
-###
-FAM +0.2
-//Gagne le stylo et le cahier\\
-###
-
-1- Continuer_05
->>>>>>> a4478b96ea9464db03bfd293e53d51f5c4dd41e0

@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 Plutôt que d'aller en cours, tu préfères profiter de la fin de l'année.
 Avec qui veux tu en profiter : 
 Tes amis ou ta copine si tu en as une.
@@ -8,14 +7,3 @@ Tes amis ou ta copine si tu en as une.
 
 1- Amis_28B1
 2- Copine_28B2
-=======
-Plutôt que d'aller en cours, tu préfères profiter de la fin de l'année.
-Avec qui veux tu en profiter : 
-Tes amis ou ta copine si tu en as une.
-
-###
-###
-
-1- Amis_28B1
-2- Copine_28B2
->>>>>>> a4478b96ea9464db03bfd293e53d51f5c4dd41e0

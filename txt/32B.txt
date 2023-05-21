@@ -1,16 +1,7 @@
-<<<<<<< HEAD
 Tu réussis ce DS, et tu obtiens le dernier jeton DS.
 
 ###
 //Gagne JetonDS\\
 ###
 
-=======
-Tu réussis ce DS, et tu obtiens le dernier jeton DS.
-
-###
-//Gagne JetonDS\\
-###
-
->>>>>>> a4478b96ea9464db03bfd293e53d51f5c4dd41e0
 1- Continue_33

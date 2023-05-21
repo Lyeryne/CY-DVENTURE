@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 C'est l'heure du DS.
 Tu t'asseoies à ta place.
 Le sujet est en train d'être distribué.
@@ -9,16 +8,4 @@ Tu peux utiliser une antisèche si tu en as une.
 ###
 
 1- Utilises_23A
-=======
-C'est l'heure du DS.
-Tu t'asseoies à ta place.
-Le sujet est en train d'être distribué.
-
-Tu peux utiliser une antisèche si tu en as une.
-
-###
-###
-
-1- Utilises_23A
->>>>>>> a4478b96ea9464db03bfd293e53d51f5c4dd41e0
 2- Laisse_23B
