@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 Tu reçois le sujet. 
 Le DS va commencer.
 
@@ -6,4 +7,14 @@ display stats
 ###
 
 1- Si tu as plus de 15 de SMRT_24A
+=======
+Tu reçois le sujet. 
+Le DS va commencer.
+
+###
+display stats
+###
+
+1- Si tu as plus de 15 de SMRT_24A
+>>>>>>> a4478b96ea9464db03bfd293e53d51f5c4dd41e0
 2- Si tu as moins de 15 de SMRT_24B

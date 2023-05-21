@@ -1,6 +1,14 @@
+<<<<<<< HEAD
 Tu as échoué, mais il reste un DS. Accroche toi.
 
 ###
 ###
 
+=======
+Tu as échoué, mais il reste un DS. Accroche toi.
+
+###
+###
+
+>>>>>>> a4478b96ea9464db03bfd293e53d51f5c4dd41e0
 1- Continue_26

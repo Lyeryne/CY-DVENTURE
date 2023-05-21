@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 C'est désormais l'heure du DS.
 Tu te rends dans l'amphitéatre où il a lieu, et tu te places comme indiqué.
 
@@ -10,4 +11,18 @@ display stats
 ###
 
 1- Si tu as plus de 15 de SMRT_16A
+=======
+C'est désormais l'heure du DS.
+Tu te rends dans l'amphitéatre où il a lieu, et tu te places comme indiqué.
+
+Les professeurs expliquent le fonctionnement du DS : 
+
+Vous devrez répondre à une question, et ceux qui répondront correctement obtiendront un jetonDS
+
+###
+display stats
+###
+
+1- Si tu as plus de 15 de SMRT_16A
+>>>>>>> a4478b96ea9464db03bfd293e53d51f5c4dd41e0
 2- Si tu as moins de 15 de SMRT_16B

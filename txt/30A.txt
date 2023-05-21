@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 Tu utilises ton antisèche. 
 Pour voir si tu réussis, tape un nombre entre 1 et 3.
 
@@ -7,4 +8,15 @@ Pour voir si tu réussis, tape un nombre entre 1 et 3.
 
 1- Try1_311
 2- Try2_242
+=======
+Tu utilises ton antisèche. 
+Pour voir si tu réussis, tape un nombre entre 1 et 3.
+
+###
+//Perds Antisèche\\
+###
+
+1- Try1_311
+2- Try2_242
+>>>>>>> a4478b96ea9464db03bfd293e53d51f5c4dd41e0
 3- Try3_311

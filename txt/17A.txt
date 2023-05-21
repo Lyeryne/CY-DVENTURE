@@ -1,7 +1,16 @@
+<<<<<<< HEAD
 Désolé, il semblerait que tu n'aies pas la bonne réponse.
 Ce n'est pas grave, il y a 3 DS et il te faut seulement 2 jetons pour valider l'année.
 
 ###
 ###
 
+=======
+Désolé, il semblerait que tu n'aies pas la bonne réponse.
+Ce n'est pas grave, il y a 3 DS et il te faut seulement 2 jetons pour valider l'année.
+
+###
+###
+
+>>>>>>> a4478b96ea9464db03bfd293e53d51f5c4dd41e0
 1- Continuer_18A
