@@ -16,15 +16,13 @@ int pre_game()
     printf(" 2 -> Reprendre Partie\n");  // ASCI ART
     printf(" 3 -> Quitter le Jeu\n\n");  // ASCI ART
     printf("Choix : ");
-    int test = scanf("%d\n", &start); 
-    robust(test);
-    /*lu = scanf("%d", &start);
+    lu = scanf("%d", &start);
     while (start < 1 || start > 3 && lu == 0)
     {
         fflush(stdin);
         printf("Entrez votre choix : ");
         scanf("%d", &start);
-    }*/
+    }
     sleep(1);
     system("clear");
 
@@ -78,6 +76,13 @@ char *set_text_property(char *buf, char *value)
 	}
 
 	return buf;
+}
+
+char *set_text_tab(char *buf, char *value){
+    int len = strlen(value) + 1;
+    buf = (char*)malloc(len*sizeof(char*));
+    strcpy(buf, value);
+    return buf;
 }
 
 void ProcessDescription(chapter *chap, char *value)

@@ -21,7 +21,7 @@ Stdt createMainCharacter();
 
 Stdt createFighter(char name[SIZE_NAMES], char sname[SIZE_NAMES]);
 
-Stdt createBag(Stdt main_character);
+void createBag(Stdt *main_character);
 
 void removeItem(Stdt* main_character, const int item);
 

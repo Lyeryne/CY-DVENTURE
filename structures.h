@@ -37,7 +37,7 @@ typedef struct
     int n_fighter;
     int type_stat;
     int n_stat;
-	int id_object;
+    int id_object;
 	char *add_or_remove_bag;
     char *positive_or_negative;
 }Event;
@@ -54,7 +54,7 @@ typedef struct
 typedef struct 
 {
     Stdt main_character;
-    int selected_choice;//stocke l'option de choix sélectionnée par l'utilisateur
+    chapter saveEvent;//stocke l'option de choix sélectionnée par l'utilisateur
 } SaveData;
 
 

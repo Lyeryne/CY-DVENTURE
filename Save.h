@@ -18,7 +18,7 @@ struct chapter;
 struct SaveData;
 
 
-void SaveGame(SaveData data);
-int loadGame(Stdt* main_character);
+void SaveGame(SaveData* data);
+SaveData loadGame();
 
 #endif

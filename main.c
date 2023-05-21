@@ -3,14 +3,15 @@
 int main()
 {
 //VALUES
-	srand(time(NULL));
-	int choice1;
-	int verif = 1;
-	int pourcentage;
-	Stdt mainCharacter = createBag(mainCharacter);
-	mainCharacter.bag_size = 2;
-	int start1, start2;
-	char* next_chap;
+    srand(time(NULL));
+    int choice1;
+    int verif = 1;
+    int pourcentage;
+    Stdt mainCharacter; 
+    int bag_size = 0;
+    createBag(&mainCharacter);
+    int start1, start2;
+    char* next_chap;
 //CREATION DE FICHIER
 	start1 = pre_game();
 	char intro[SIZE];
@@ -68,8 +69,10 @@ int main()
 			printf("Chargement fini !\n");
 			sleep(1);
 			system("clear");
-
-			if(loadGame(&mainCharacter) == 1){
+			
+			
+			SaveData loadedData = loadGame();
+			if(loadedData.saveEvent.choice_count == 1){
 				printf("Sauvegarde chargée avec succès !\n");
 				sleep(1);
 				system("clear");
