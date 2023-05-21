@@ -12,7 +12,7 @@ void displayStat(Stdt a){
 }
 
 void displayBag(const Stdt* main_character){
-  printf("Contenu de votre sac :\n");
+  printf("\nContenu de votre sac :\n");
   
   if(main_character->bag_size == 0)
   {
@@ -22,7 +22,7 @@ void displayBag(const Stdt* main_character){
   
   for(int i=0; i < main_character->bag_size; i++)
   {
-  	printf("%s\n", main_character->Bag[i]);
+  	printf("%s\n\n", main_character->Bag[i]);
   }
 }
 

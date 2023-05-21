@@ -14,6 +14,8 @@ char toLower(char c);
 
 int is_char(char* chaine);
 
+int robust(int integer);
 int choice(int size);
+
 
 #endif

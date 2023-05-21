@@ -79,59 +79,69 @@ Stdt createFighter(char name[SIZE_NAMES], char sname[SIZE_NAMES]){
     return fighter;
 }
 
-void removeItem(Stdt* main_character, const char* item)
+Stdt createBag(Stdt main_character)
+{
+    const char *TabBag[MAX_BAG_SIZE] = {"Stylo", "Cahier", "Poing américain", "Ordinateur", "Veste", "Opinel", "Manuel", "Antisèche"};
+
+    for (int i = 0; i < MAX_BAG_SIZE; i++)
+    {
+        strncpy(main_character.Bag[i], TabBag[i], SIZE_NAMES - 1);
+        main_character.Bag[i][SIZE_NAMES - 1] = '\0'; // Assurez-vous de terminer la chaîne avec un caractère nul
+    }
+
+    main_character.bag_size = MAX_BAG_SIZE;
+
+    return main_character;
+}
+
+void removeItem(Stdt* main_character, const int item)
 {
 	int removed = 0;
 	//Vérifier si l'élèment est déjà présent dans le sac
 	for(int i=0; i < main_character->bag_size; i++)
 	{
-		//Si l'objet est dans le sac, le supprimer en décalant vers la Gauche
-		if(strcmp(main_character->Bag[i], item) == 0)
+		//Si l'objet est dans le sac, le supprimer en décalant vers la Gauche	
+		if(main_character->Bag[i] == main_character->ref_bag[item])
 		{
-			for(int j=i; j < main_character->bag_size -1; j++)
+			for(int j = i; j < main_character->bag_size -1 ; j++)
 			{
-				strcpy(main_character->Bag[j], main_character->Bag[j+1]);
+				main_character->Bag[j] = main_character->Bag[i+1];		
 			}
 			main_character->bag_size--;
-			removed = 1;
-			break;
+			printf("\n~%s~ a été supprimé du sac.\n", main_character->ref_bag[item]);
+			return;
 		}
 	}
-	
 	//Robust
-	if(removed == 1)
-	{
-		printf("~%s~ a été supprimé du sac.\n", item);
-	} 
-	else {
-		printf("~%s~ n'a pas été trouvé dans le sac.\n", item);
-    }
+	printf("\n~%s~ n'a pas été trouvé dans le sac.\n", main_character->ref_bag[item]);
 }
 
-void addItem(Stdt* main_character, const char* item)
+void addItem(Stdt* main_character, const int item)
 {
+	int add = 0;
 	//Robust
 	if(main_character->bag_size >= MAX_BAG_SIZE)
 	{
 		printf("Votre sac est plein : ~8/8~\n");
 		return;
-	}
+	} 
 	
-	//Verifier si l'element est déjà présent dans le sac
-	for(int i=0; i < main_character->bag_size; i++)
+	else
 	{
-		if(strcmp(main_character->Bag[i], item) == 0)
+		for(int i=0; i < main_character->bag_size; i++)
 		{
-			printf("~%s~ est déjà présent dans votre sac.\n", item);
-			return;
+			if(main_character->Bag[i] == main_character->ref_bag[item])
+			{
+				printf("~%s~ est déjà dans le sac.\n", main_character->ref_bag[item]);  
+				return; 				
+			} 
 		}
-	}
-	
-	strcpy(main_character->Bag[main_character->bag_size], item);
-	main_character->bag_size++;
-	
-	printf("~%s~ a été ajouté dans le sac.\n", item);
-	
+		
+
+
+	main_character->Bag[main_character->bag_size] = main_character->ref_bag[item];
+	printf("~%s~ a bien été ajouté dans le sac.\n", main_character->ref_bag[item]);							
+	}		
 } 
 
 

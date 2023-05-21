@@ -16,13 +16,15 @@ int pre_game()
     printf(" 2 -> Reprendre Partie\n");  // ASCI ART
     printf(" 3 -> Quitter le Jeu\n\n");  // ASCI ART
     printf("Choix : ");
-    lu = scanf("%d", &start);
-    while (start < 1 && start > 3 && lu == 0)
+    int test = scanf("%d\n", &start); 
+    robust(test);
+    /*lu = scanf("%d", &start);
+    while (start < 1 || start > 3 && lu == 0)
     {
         fflush(stdin);
         printf("Entrez votre choix : ");
         scanf("%d", &start);
-    }
+    }*/
     sleep(1);
     system("clear");
 
@@ -38,13 +40,15 @@ int no_game()
     printf("~~ ACCES NON-AUTORISER ~~\n"); // ASCI ART
     printf("2 -> Quitter le Jeu\n\n");     // ASCI ART
     printf("Choix :");
-    lu = scanf("%d", &start);
-    while (start < 1 && start > 2 && lu == 0)
+    int test = scanf("%d\n", &start); 
+    robust(test);
+    /*lu = scanf("%d", &start);
+    while (start < 1 || start > 2 && lu == 0)
     {
         fflush(stdin);
         printf("Entrez votre choix : ");
         scanf("%d", &start);
-    }
+    }*/
     sleep(1);
     system("clear");
 
@@ -89,7 +93,7 @@ void ProcessAfterDescription(chapter *chap, char *value)
 }
 void ProcessEvent(chapter *chap, char *value, int counter)
 {
-	int a, b, c, d;
+	int a, b, c, d, e;
 	if(counter == 1){
 		chap->event = malloc(2 * sizeof(Event));
 	}
@@ -101,20 +105,20 @@ void ProcessEvent(chapter *chap, char *value, int counter)
 		chap->event->type_event = a;
 		break;
 	case 2:
-		chap->event->id_object = (char *)malloc(1 * sizeof(char));
-		chap->event->id_object = set_text_property(chap->event->id_object, value);
+		b = atoi(value);
+		chap->event->id_object = b;
 		break;
 	case 3:
-		b = atoi(value);
-		chap->event->n_fighter = b;
+		c = atoi(value);
+		chap->event->n_fighter = c;
 		break;
 	case 4:
-		c = atoi(value);
-		chap->event->type_stat = c;
+		d = atoi(value);
+		chap->event->type_stat = d;
 		break;
 	case 5:
-		d = atoi(value);
-		chap->event->n_stat = d;
+		e = atoi(value);
+		chap->event->n_stat = e;
 		break;
 	case 6:
 		chap->event->add_or_remove_bag = (char *)malloc(1 * sizeof(char));
@@ -244,6 +248,9 @@ chapter create_chapter(char *chapter_name)
 
 char *displayChapter(chapter chap, Stdt main_character)
 {
+	//Sac
+	char Bag[MAX_BAG_SIZE][SIZE_NAMES];
+	main_character.bag_size = 0;
 	// fighter1
 	char name1[SIZE_NAMES] = "Boris";
 	char sname1[SIZE_NAMES] = "Jackson";
@@ -383,17 +390,18 @@ char *displayChapter(chapter chap, Stdt main_character)
 			}
 		}
 	case 3:
+		
 		// modification inventaire
 		if (chap.event->add_or_remove_bag == "1")
 		{
 			// c'est un malus de stat
-			removeItem(&main_character, "Stylot");
+			removeItem(&main_character, chap.event->id_object);
 			displayBag(&main_character);
 		}
 		else
 		{
 			// c'est un bonus de stat
-			addItem(&main_character, "Cahier");
+			addItem(&main_character, chap.event->id_object);
 			displayBag(&main_character);
 		}
 		break;

@@ -18,6 +18,24 @@ int is_char(char* chaine) {
     return 1;
 }
 
+int robust(int integer)
+{
+	int choice;
+	
+	do{
+	if(scanf("%d", &choice) != 1)
+	{
+		printf("Saisie incorrect ! Saisir à nouveau :\n");
+		scanf("%*[^\n]");
+		scanf("%*c");
+		choice = -1;
+	}
+	}while(choice < 1 || choice > (integer) || choice == -1);
+return choice;
+} 
+
+
+
 int choice(int size){
     /*Cette fonction a pour but de proposer un choix sur size propositions,
     Elle vérifie également que les valeurs retournées par l'utilisateurs 

@@ -7,11 +7,8 @@ int main()
 	int choice1;
 	int verif = 1;
 	int pourcentage;
-	Stdt mainCharacter;
-
-	Bag MyBag[MAX_BAG_SIZE] = {Pencil, Book, Computer, Knife, Knuckles, Sunglasses, Jacket, Girlfriend};
-	
-	int numItems = sizeof(MyBag) / sizeof(MyBag[0]);
+	Stdt mainCharacter = createBag(mainCharacter);
+	mainCharacter.bag_size = 2;
 	int start1, start2;
 	char* next_chap;
 //CREATION DE FICHIER
@@ -40,8 +37,8 @@ int main()
 		sleep(1);
 		system("clear");
 
-		next_chap = displayChapter(create_chapter("01"), mainCharacter, MyBag);
-		next_chap = displayChapter(create_chapter(next_chap), mainCharacter, MyBag);
+		next_chap = displayChapter(create_chapter("01"), mainCharacter);
+		next_chap = displayChapter(create_chapter(next_chap), mainCharacter);
 
 		/*while(fgets(intro, SIZE, fp1) != NULL){ 
 		int size1 = strlen(intro);
@@ -57,7 +54,7 @@ int main()
 //GAME
 		while (game == 1)
 		{
-			next_chap= displayChapter(ch, mainCharacter, MyBag);
+			next_chap= displayChapter(ch, mainCharacter);
 			ch = create_chapter(next_chap);
 		}
 		}//ferme boucle de start == 1
@@ -72,7 +69,7 @@ int main()
 			sleep(1);
 			system("clear");
 
-			if(loadGame(&mainCharacter, MyBag) == 1){
+			if(loadGame(&mainCharacter) == 1){
 				printf("Sauvegarde chargée avec succès !\n");
 				sleep(1);
 				system("clear");
@@ -104,8 +101,8 @@ int main()
 					displayTxt(size3, txt2);
 					sleep(1);
 					system("clear");
-next_chap = displayChapter(create_chapter("DebutJeu"), mainCharacter, MyBag);
-next_chap = displayChapter(create_chapter(next_chap), mainCharacter, MyBag);
+next_chap = displayChapter(create_chapter("DebutJeu"), mainCharacter);
+next_chap = displayChapter(create_chapter(next_chap), mainCharacter);
 					//GAME
 					int game = 1;
 					char* next_chap;
@@ -114,7 +111,7 @@ next_chap = displayChapter(create_chapter(next_chap), mainCharacter, MyBag);
 					while (game == 1)
 					{
 						//strcpy(next_chap, displayChapter(ch));
-						next_chap= displayChapter(ch, mainCharacter, MyBag);
+						next_chap= displayChapter(ch, mainCharacter);
 						ch = create_chapter(next_chap);
 
 					}

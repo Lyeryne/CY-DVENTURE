@@ -19,8 +19,10 @@ typedef struct
 	int wellness;
 	int dodge;
 	int defence;
-	char Bag[MAX_BAG_SIZE][SIZE_NAMES];
+	char *Bag[MAX_BAG_SIZE];
 	int bag_size;
+	char *ref_bag[MAX_BAG_SIZE];
+	
 } Stdt; // Main character
 
 typedef struct
@@ -35,7 +37,7 @@ typedef struct
     int n_fighter;
     int type_stat;
     int n_stat;
-	char *id_object;
+	int id_object;
 	char *add_or_remove_bag;
     char *positive_or_negative;
 }Event;
