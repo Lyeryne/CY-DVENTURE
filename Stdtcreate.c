@@ -1,8 +1,7 @@
 #include "Stdtcreate.h"
-Stdt createMainCharacter()
+Stdt createMainCharacter(Stdt x)
 {
 //VARIABLES
-    Stdt x;
     int num1, num2;
 //CREATE STUDENT
     printf("Saisir le nom de l'eleve :");

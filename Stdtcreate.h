@@ -17,7 +17,7 @@ struct Stdt;
 struct Bag;
 
 
-Stdt createMainCharacter();
+Stdt createMainCharacter(Stdt x);
 
 Stdt createFighter(char name[SIZE_NAMES], char sname[SIZE_NAMES]);
 

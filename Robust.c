@@ -21,16 +21,17 @@ int is_char(char* chaine) {
 int robust(int integer)
 {
 	int choice;
+    char fget[100];
 	
 	do{
-	if(scanf("%d", &choice) != 1)
-	{
-		printf("Saisie incorrect ! Saisir à nouveau :\n");
-		scanf("%*[^\n]");
-		scanf("%*c");
+	fgets(fget, sizeof(fget), stdin);
+    if (sscanf(fget, "%d", &choice) != 1 || choice < 1 || choice > (integer) )
+    {
+		printf("Saisie incorrect ! Saisir à nouveau : ");
 		choice = -1;
 	}
-	}while(choice < 1 || choice > (integer) || choice == -1);
+	}while(choice == -1);
+    
 return choice;
 } 
 

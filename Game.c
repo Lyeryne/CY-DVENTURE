@@ -2,60 +2,48 @@
 
 int pre_game()
 {
-    int start, lu;
-    system("clear");
-    printf("X TECH - ADVENTURE\n");
-    char *txt = "Produit par\n-> Louaye SAGHIR\n-> Clement PREMOLI\n-> Roman BOULLIER\n\n";
-    int size = strlen(txt);
-    displayTxt(size, txt);
+	int start, lu, count;
+	system("clear");
+	printf("X TECH - ADVENTURE\n");
+	char *txt = "Produit par\n-> Louaye SAGHIR\n-> Clement PREMOLI\n-> Roman BOULLIER\n\n";
+	int size = strlen(txt);
+	displayTxt(size, txt);
 	sleep(1);
-    system("clear");
-    // Choix de partie
-    printf("========= MENU ========\n"); // ASCI ART
-    printf(" 1 -> Nouvelle Partie\n");   // ASCI ART
-    printf(" 2 -> Reprendre Partie\n");  // ASCI ART
-    printf(" 3 -> Quitter le Jeu\n\n");  // ASCI ART
-    printf("Choix : ");
-    lu = scanf("%d", &start);
-    while (start < 1 || start > 3 && lu == 0)
-    {
-        fflush(stdin);
-        printf("Entrez votre choix : ");
-        scanf("%d", &start);
-    }
-    sleep(1);
-    system("clear");
+	system("clear");
+	// Choix de partie
+	printf("========= MENU ========\n"); // ASCI ART
+	printf(" 1 -> Nouvelle Partie\n");	 // ASCI ART
+	printf(" 2 -> Reprendre Partie\n");	 // ASCI ART
+	printf(" 3 -> Quitter le Jeu\n\n");	 // ASCI ART
+	printf("Choix :\n");
 
-    return start;
+	start = robust(3);
+
+	return start;
 }
 
 int no_game()
 {
-    int start, lu;
-    system("clear");
-    printf("========= MENU ==========\n"); // ASCI ART
-    printf("1 -> Nouvelle Partie\n");      // ASCI ART
-    printf("~~ ACCES NON-AUTORISER ~~\n"); // ASCI ART
-    printf("2 -> Quitter le Jeu\n\n");     // ASCI ART
-    printf("Choix :");
-    int test = scanf("%d\n", &start); 
-    robust(test);
-    /*lu = scanf("%d", &start);
-    while (start < 1 || start > 2 && lu == 0)
-    {
-        fflush(stdin);
-        printf("Entrez votre choix : ");
-        scanf("%d", &start);
-    }*/
-    sleep(1);
-    system("clear");
+	int start, lu;
+	system("clear");
+	printf("========= MENU ==========\n"); // ASCI ART
+	printf("1 -> Nouvelle Partie\n");	   // ASCI ART
+	printf("~~ ACCES NON-AUTORISER ~~\n"); // ASCI ART
+	printf("2 -> Quitter le Jeu\n\n");	   // ASCI ART
+	printf("Choix :");
+	
+	start = robust(2);
 
-    return start;
+	return start;
 }
 
 char *set_text_tab(char *buf, char *value){
 	int len = strlen(value) + 1;
 	buf = (char *)malloc(len * sizeof(char));
+	if(buf == NULL){
+		printf("Quelque chose ne vas pas avec buf(text_tab)");
+		exit(34647);
+	}
 	strcpy(buf, value);
 	return buf;
 }
@@ -68,10 +56,11 @@ char *set_text_property(char *buf, char *value)
 	{
 		length = strlen(value) + 1;
 		buf = (char *)malloc(length * sizeof(char)); // allocation pour stocker 'value' et copie cette valeur dans 'buf'
-		if(buf == NULL){
+		if (buf == NULL)
+		{
 			exit(1);
 		}
-		strcpy(buf, value);							 // copier la %s 'value' dans le tampon 'buf'
+		strcpy(buf, value); // copier la %s 'value' dans le tampon 'buf'
 	}
 	else
 	{ // propriété est déjà initialisée
@@ -90,14 +79,14 @@ char *set_text_property(char *buf, char *value)
 
 void ProcessDescription(chapter *chap, char *value)
 {
-	//ROBUST
-	if(chap == NULL)
+	// ROBUST
+	if (chap == NULL)
 	{
 		printf("Quelque chose ne vas pas avec chap(ProcessDescription)\n");
 		exit(6);
 	}
-	//ROBUST
-	if(value == NULL)
+	// ROBUST
+	if (value == NULL)
 	{
 		printf("Quelque chose ne vas pas avec value(ProcessDescription)\n");
 		exit(7);
@@ -109,14 +98,14 @@ void ProcessDescription(chapter *chap, char *value)
 
 void ProcessAfterDescription(chapter *chap, char *value)
 {
-	//ROBUST
-	if(chap == NULL)
+	// ROBUST
+	if (chap == NULL)
 	{
 		printf("Quelque chose ne vas pas avec chap(ProcessAfterDescription)\n");
 		exit(8);
 	}
-	//ROBUST
-	if(value == NULL)
+	// ROBUST
+	if (value == NULL)
 	{
 		printf("Quelque chose ne vas pas avec value(ProcessAfterDescription)\n");
 		exit(9);
@@ -125,20 +114,21 @@ void ProcessAfterDescription(chapter *chap, char *value)
 }
 void ProcessEvent(chapter *chap, char *value, int counter)
 {
-	//ROBUST
-	if(chap == NULL)
+	// ROBUST
+	if (chap == NULL)
 	{
 		printf("Quelque chose ne vas pas avec chap(ProcessEvent)\n");
 		exit(10);
 	}
-	//ROBUST
-	if(value == NULL)
+	// ROBUST
+	if (value == NULL)
 	{
 		printf("Quelque chose ne vas pas avec value(ProcessEvent)\n");
 		exit(11);
 	}
 	int a;
-	if(counter == 1){
+	if (counter == 1)
+	{
 		chap->event = malloc(2 * sizeof(Event));
 	}
 	// utiiser la fonction de louaye qui transforme un char en int et faire le switch avec
@@ -168,7 +158,7 @@ void ProcessEvent(chapter *chap, char *value, int counter)
 		a = atoi(value);
 		chap->event->add_or_remove_bag = a;
 		break;
-	case 7: 
+	case 7:
 		a = atoi(value);
 		chap->event->positive_or_negative = a;
 	}
@@ -176,27 +166,42 @@ void ProcessEvent(chapter *chap, char *value, int counter)
 	//=> ajouter des événements
 }
 
+char *Corrigation_de_ProcessChoice(char *value) {
+	if (value == NULL) {
+		printf("ca va pas dans corrigaiton de process choice");
+		exit(345);
+	}
+	for (int i = strlen(value) - 1; i >= 0; i--) {
+		char bonjour = value[i]; // Correction : retirer l'opérateur * ici
+		if (bonjour == '\n' || bonjour == '\r') { // Correction : utiliser des simples quotes pour les caractères
+			value[i] = '\0';
+			break;
+		}
+	}
+	return value;
+}
 void ProcessChoice(chapter *chap, char *value)
 // =>Ce code est une fonction qui ajoute une option de choix à un chapitre d'une histoire interactive
 {
-	//ROBUST
-	if(chap == NULL)
+	// ROBUST
+	if (chap == NULL)
 	{
 		printf("Quelque chose ne vas pas avec chap(ProcessChoice)\n");
 		exit(12);
 	}
-	//ROBUST
-	if(value == NULL)
+	// ROBUST
+	if (value == NULL)
 	{
 		printf("Quelque chose ne vas pas avec value(ProcessChoice)\n");
 		exit(13);
 	}
-	//ROBUST
+	// ROBUST
 	if (chap->choices == NULL)
 	{ // gère la mémoire allouée pour stocker les choix dans la structure chapter
 		// Si la liste des choix est vide (== NULL)
 		chap->choices = (Choice *)malloc(1 * sizeof(Choice)); // alors un choix est alloué
-		if(chap->choices == NULL){
+		if (chap->choices == NULL)
+		{
 			printf("pb la ca va pas");
 			exit(456);
 		}
@@ -204,12 +209,12 @@ void ProcessChoice(chapter *chap, char *value)
 	}
 	else
 	{
-		Choice *temp = NULL;
-		//ROBUST
-		if(temp == NULL)
+		Choice *temp = (Choice *)realloc(chap->choices, (chap->choice_count + 1) * sizeof(Choice));
+		// ROBUST
+		if (temp == NULL)
 		{
 			printf("Quelque chose ne vas pas avec temp(ProcessChoice)\n");
-			temp = (Choice *)realloc(chap->choices, (chap->choice_count + 1) * sizeof(Choice));
+			exit(346);
 		}
 		// Sinon, un choix supplémentaire est alloué avec 'realloc' pour augmenter la taille de la liste des choix.
 		if (temp != NULL)
@@ -218,11 +223,13 @@ void ProcessChoice(chapter *chap, char *value)
 		}
 	}
 	Choice ch = {0};
-	if(ch.nextChapter != NULL){
+	if (ch.nextChapter != NULL)
+	{
 		printf("Y'a un truc qi va pas dans create_chapter");
 		exit(45);
 	}
-	if(ch.text != NULL){
+	if (ch.text != NULL)
+	{
 		printf("Y'a un truc qui va pas encore dans create_chapter");
 		exit(67);
 	}
@@ -240,7 +247,7 @@ void ProcessChoice(chapter *chap, char *value)
 		}
 		else
 		{ // nous créons un nouveau chapitre en utilisant la sous-chaîne courante
-			cutteds[strlen(cutteds)-1] = '\0';
+			cutteds = Corrigation_de_ProcessChoice(cutteds);
 			ch.nextChapter = set_text_property(ch.nextChapter, cutteds);
 			// ch.nextChapter = create_chapter(cutteds);
 		}
@@ -252,7 +259,6 @@ void ProcessChoice(chapter *chap, char *value)
 	chap->choices[chap->choice_count] = ch; // incrémenter la valeur de 'chap->choice_count'
 	chap->choice_count++;
 }
-
 
 chapter create_chapter(char *chapter_name)
 {
@@ -266,6 +272,7 @@ chapter create_chapter(char *chapter_name)
 	char line[SIZE_LINE];
 	int current_line_event = 1;
 	int currentPart = 0;
+
 	char *path = NULL;
 	//ROBUST
 	if(path != NULL)
@@ -291,7 +298,9 @@ chapter create_chapter(char *chapter_name)
 	chapter chap = {}; // {malloc(1), malloc(0), malloc(0)};
 	char first_line_chars[4];
 
+
 	// GAME
+
 	while (fgets(line, SIZE_LINE, file) != NULL)
 	{
 		*first_line_chars = '\0';
@@ -335,11 +344,9 @@ chapter create_chapter(char *chapter_name)
 	return chap;
 }
 
+
 char *displayChapter(chapter chap, Stdt main_character)
 {
-	//Sac
-	char Bag[MAX_BAG_SIZE][SIZE_NAMES];
-	main_character.bag_size = 0;
 	// fighter1
 	char name1[SIZE_NAMES] = "Boris";
 	char sname1[SIZE_NAMES] = "Jackson";
@@ -389,7 +396,7 @@ char *displayChapter(chapter chap, Stdt main_character)
 				{
 					main_character.fame = 0;
 				}
-                printf("Vous avez perdu %d de fame !\n", chap.event->n_stat);
+				printf("Vous avez perdu %d de fame !\n", chap.event->n_stat);
 			}
 			else
 			{
@@ -400,7 +407,7 @@ char *displayChapter(chapter chap, Stdt main_character)
 				{
 					main_character.fame = 100;
 				}
-                printf("Vous avez gagné %d de fame !\n", chap.event->n_stat);
+				printf("Vous avez gagné %d de fame !\n", chap.event->n_stat);
 			}
 			break;
 
@@ -415,9 +422,9 @@ char *displayChapter(chapter chap, Stdt main_character)
 				{
 					main_character.intellect = 0;
 				}
-                printf("Vous avez perdu %d d'intelligence !\n", chap.event->n_stat);
+				printf("Vous avez perdu %d d'intelligence !\n", chap.event->n_stat);
 			}
-			else 
+			else
 			{
 				// c'est un bonus de stat
 				main_character.intellect += chap.event->n_stat;
@@ -426,7 +433,7 @@ char *displayChapter(chapter chap, Stdt main_character)
 				{
 					main_character.intellect = 100;
 				}
-                printf("Vous avez gagné %d d'intelligence !\n", chap.event->n_stat);
+				printf("Vous avez gagné %d d'intelligence !\n", chap.event->n_stat);
 			}
 			break;
 		case 3:
@@ -440,7 +447,7 @@ char *displayChapter(chapter chap, Stdt main_character)
 				{
 					main_character.power = 0;
 				}
-                printf("Vous avez perdu %d de force !\n", chap.event->n_stat);
+				printf("Vous avez perdu %d de force !\n", chap.event->n_stat);
 			}
 			else
 			{
@@ -451,7 +458,7 @@ char *displayChapter(chapter chap, Stdt main_character)
 				{
 					main_character.fame = 100;
 				}
-                printf("Vous avez gagné %d de force !\n", chap.event->n_stat);
+				printf("Vous avez gagné %d de force !\n", chap.event->n_stat);
 			}
 			break;
 		case 4:
@@ -464,7 +471,7 @@ char *displayChapter(chapter chap, Stdt main_character)
 				{
 					main_character.wellness = 0;
 				}
-                printf("Vous avez perdu %d de mental !\n", chap.event->n_stat);
+				printf("Vous avez perdu %d de mental !\n", chap.event->n_stat);
 			}
 			else
 			{
@@ -475,11 +482,11 @@ char *displayChapter(chapter chap, Stdt main_character)
 				{
 					main_character.wellness = 100;
 				}
-                printf("Vous avez gagné %d de mental !\n", chap.event->n_stat);
+				printf("Vous avez gagné %d de mental !\n", chap.event->n_stat);
 			}
 		}
 	case 3:
-		
+
 		// modification inventaire
 		if (chap.event->add_or_remove_bag == 1)
 		{
@@ -494,10 +501,10 @@ char *displayChapter(chapter chap, Stdt main_character)
 			displayBag(&main_character);
 		}
 		break;
-    }
+	}
 
-    displayStat(main_character);
-	
+	displayStat(main_character);
+
 	if (chap.choice_count != 1)
 	{
 		for (int i = 0; i < chap.choice_count; i++)

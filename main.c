@@ -27,7 +27,7 @@ int main()
 		int size2 = strlen(txt1);
 		displayTxt(size2, txt1);//Affichage de Txt1   
 
-		mainCharacter = createMainCharacter();
+		mainCharacter = createMainCharacter(mainCharacter);
 		system("clear");
 		displayStat(mainCharacter);
 		sleep(1);
@@ -41,12 +41,6 @@ int main()
 
 		next_chap = displayChapter(create_chapter("01"), mainCharacter);
 		next_chap = displayChapter(create_chapter(next_chap), mainCharacter);
-
-		/*while(fgets(intro, SIZE, fp1) != NULL){ 
-		int size1 = strlen(intro);
-		displayTxt(size1, intro);
-		}
-		fclose(fp1);*/
 
 		//VARIABLES 
 		int game = 1;
@@ -100,7 +94,7 @@ int main()
 					int size2 = strlen(txt1);
 					displayTxt(size2, txt1);//Affichage de Txt1   
 
-					mainCharacter = createMainCharacter();
+					mainCharacter = createMainCharacter(mainCharacter);
 					system("clear");
 					displayStat(mainCharacter);
 					WaitPress();

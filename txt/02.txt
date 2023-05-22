@@ -10,4 +10,3 @@ Est-ce que je devrais y aller ?
 ###
 1 - Oui, pourquoi pas !_03A
 2 - Non, c'est pour les nullos_03B
-

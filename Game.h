@@ -29,6 +29,8 @@ char *set_text_property(char *buf, char *value);
 
 char *set_text_tab(char *buf, char *value);
 
+char *Corrigation_de_ProcessChoice(char *value);
+
 void ProcessDescription(chapter *chap, char *value);
 
 void ProcessAfterDescription(chapter *chap, char *value);

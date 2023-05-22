@@ -11,7 +11,7 @@ void displayStat(Stdt a){
     printf("Mental : %d\n", a.wellness);
 }
 
-void displayBag(const Stdt* main_character){
+void displayBag(Stdt* main_character){
   //ROBUST
 	if(main_character == NULL)
 	{
@@ -28,7 +28,7 @@ void displayBag(const Stdt* main_character){
   
   for(int i=0; i < main_character->bag_size; i++)
   {
-  	printf("%s\n\n", main_character->Bag[i]);
+  	printf("%s\n", main_character->Bag[i]);
   }
 }
 

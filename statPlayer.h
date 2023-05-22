@@ -16,7 +16,7 @@ struct Bag;
 
 void displayStat(Stdt a);
 
-void displayBag(const Stdt* student);
+void displayBag(Stdt* main_character);
 
 void fight(Stdt a, Stdt b);
 
