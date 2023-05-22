@@ -8,10 +8,11 @@ int main()
     int verif = 1;
     int pourcentage;
     Stdt mainCharacter; 
-    int bag_size = 0;
+	SaveData save;
+    mainCharacter.bag_size = 0;
     createBag(&mainCharacter);
     int start1, start2;
-    char* next_chap;
+    char* next_chap = NULL;
 //CREATION DE FICHIER
 	start1 = pre_game();
 	char intro[SIZE];
@@ -49,7 +50,6 @@ int main()
 
 		//VARIABLES 
 		int game = 1;
-		char* next_chap;
 		chapter ch = create_chapter("02");
 
 //GAME
@@ -57,6 +57,7 @@ int main()
 		{
 			next_chap= displayChapter(ch, mainCharacter);
 			ch = create_chapter(next_chap);
+			SaveGame(&save);
 		}
 		}//ferme boucle de start == 1
 		else if(start1 == 2){ //"Reprendre partie"
@@ -78,9 +79,15 @@ int main()
 				system("clear");
 				//VARIABLES 
 				char* next_chap;
-				/*chapter ch = create_chapter("Event1");
-				next_chap= displayChapter(ch);
-				ch = create_chapter(next_chap);*/
+				//ROBUST
+				if(next_chap == NULL)
+				{
+					printf("Quelque chose ne vas pas avec next_chap(main/Charger partie)\n");
+					exit(10);
+				}
+				chapter ch = create_chapter("02");
+				next_chap= displayChapter(ch, mainCharacter);
+				ch = create_chapter(next_chap);
 
 			} else {
 				printf("Impossible de charger la sauvegarde!\n\n");
@@ -109,6 +116,12 @@ next_chap = displayChapter(create_chapter(next_chap), mainCharacter);
 					//GAME
 					int game = 1;
 					char* next_chap;
+					//ROBUST
+					if(next_chap == NULL)
+					{
+						printf("Quelque chose ne vas pas avec next_chap\n");
+						exit(100);
+					}
 					chapter ch = create_chapter("Event1");
 					//GAME
 					while (game == 1)

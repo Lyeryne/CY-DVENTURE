@@ -12,8 +12,14 @@ void displayStat(Stdt a){
 }
 
 void displayBag(const Stdt* main_character){
+  //ROBUST
+	if(main_character == NULL)
+	{
+		printf("Quelque chose ne vas pas avec main_character(displayBag)\n");
+		exit(13);
+	}
+
   printf("\nContenu de votre sac :\n");
-  
   if(main_character->bag_size == 0)
   {
   	printf("Votre sac est vide ~0/8~\n");

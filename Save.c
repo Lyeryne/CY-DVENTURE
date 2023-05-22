@@ -3,7 +3,7 @@ void SaveGame(SaveData* data){
     FILE* fp = fopen("txt/save.txt", "w");
     if(fp == NULL){
         printf("Erreur fopen (file Save)\n");
-        exit(1);
+        exit(11);
     }
 
     //STAT
@@ -32,8 +32,8 @@ SaveData loadGame() {
 	SaveData data;
     FILE* fp = fopen("txt/save.txt", "r");
     if (fp == NULL) {
-        printf("Erreur fopen (file LoadSave)\n");
-        exit(1);
+        printf("Erreur fopen (file LoadGame)\n");
+        exit(111);
     }
 
     //STAT

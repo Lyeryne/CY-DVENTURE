@@ -53,6 +53,13 @@ int no_game()
     return start;
 }
 
+char *set_text_tab(char *buf, char *value){
+	int len = strlen(value) + 1;
+	buf = (char *)malloc(len * sizeof(char));
+	strcpy(buf, value);
+	return buf;
+}
+
 char *set_text_property(char *buf, char *value)
 //=>permet de remplir une propriété de type char * (%s) d'une structure de manière dynamique
 {
@@ -61,6 +68,9 @@ char *set_text_property(char *buf, char *value)
 	{
 		length = strlen(value) + 1;
 		buf = (char *)malloc(length * sizeof(char)); // allocation pour stocker 'value' et copie cette valeur dans 'buf'
+		if(buf == NULL){
+			exit(1);
+		}
 		strcpy(buf, value);							 // copier la %s 'value' dans le tampon 'buf'
 	}
 	else
@@ -78,15 +88,20 @@ char *set_text_property(char *buf, char *value)
 	return buf;
 }
 
-char *set_text_tab(char *buf, char *value){
-    int len = strlen(value) + 1;
-    buf = (char*)malloc(len*sizeof(char*));
-    strcpy(buf, value);
-    return buf;
-}
-
 void ProcessDescription(chapter *chap, char *value)
 {
+	//ROBUST
+	if(chap == NULL)
+	{
+		printf("Quelque chose ne vas pas avec chap(ProcessDescription)\n");
+		exit(6);
+	}
+	//ROBUST
+	if(value == NULL)
+	{
+		printf("Quelque chose ne vas pas avec value(ProcessDescription)\n");
+		exit(7);
+	}
 	chap->description = set_text_property(chap->description, value);
 	// remplit une chaîne de caractères tout en s'assurant que la mémoire allouée est suffisante
 	//=> assigner une description(avec la valeur de 'value') à un chapitre
@@ -94,11 +109,35 @@ void ProcessDescription(chapter *chap, char *value)
 
 void ProcessAfterDescription(chapter *chap, char *value)
 {
+	//ROBUST
+	if(chap == NULL)
+	{
+		printf("Quelque chose ne vas pas avec chap(ProcessAfterDescription)\n");
+		exit(8);
+	}
+	//ROBUST
+	if(value == NULL)
+	{
+		printf("Quelque chose ne vas pas avec value(ProcessAfterDescription)\n");
+		exit(9);
+	}
 	chap->after_description = set_text_property(chap->after_description, value);
 }
 void ProcessEvent(chapter *chap, char *value, int counter)
 {
-	int a, b, c, d, e;
+	//ROBUST
+	if(chap == NULL)
+	{
+		printf("Quelque chose ne vas pas avec chap(ProcessEvent)\n");
+		exit(10);
+	}
+	//ROBUST
+	if(value == NULL)
+	{
+		printf("Quelque chose ne vas pas avec value(ProcessEvent)\n");
+		exit(11);
+	}
+	int a;
 	if(counter == 1){
 		chap->event = malloc(2 * sizeof(Event));
 	}
@@ -110,25 +149,28 @@ void ProcessEvent(chapter *chap, char *value, int counter)
 		chap->event->type_event = a;
 		break;
 	case 2:
-		b = atoi(value);
-		chap->event->id_object = b;
+		a = atoi(value);
+		chap->event->id_object = a;
 		break;
 	case 3:
-		c = atoi(value);
-		chap->event->n_fighter = c;
+		a = atoi(value);
+		chap->event->n_fighter = a;
 		break;
 	case 4:
-		d = atoi(value);
-		chap->event->type_stat = d;
+		a = atoi(value);
+		chap->event->type_stat = a;
 		break;
 	case 5:
-		e = atoi(value);
-		chap->event->n_stat = e;
+		a = atoi(value);
+		chap->event->n_stat = a;
 		break;
 	case 6:
-		chap->event->add_or_remove_bag = (char *)malloc(1 * sizeof(char));
-		chap->event->add_or_remove_bag = set_text_property(chap->event->add_or_remove_bag, value);
+		a = atoi(value);
+		chap->event->add_or_remove_bag = a;
 		break;
+	case 7: 
+		a = atoi(value);
+		chap->event->positive_or_negative = a;
 	}
 	// remplit event de la struct chapter avec la %s 'value' en utilisant 'fill_text_property'
 	//=> ajouter des événements
@@ -137,22 +179,53 @@ void ProcessEvent(chapter *chap, char *value, int counter)
 void ProcessChoice(chapter *chap, char *value)
 // =>Ce code est une fonction qui ajoute une option de choix à un chapitre d'une histoire interactive
 {
+	//ROBUST
+	if(chap == NULL)
+	{
+		printf("Quelque chose ne vas pas avec chap(ProcessChoice)\n");
+		exit(12);
+	}
+	//ROBUST
+	if(value == NULL)
+	{
+		printf("Quelque chose ne vas pas avec value(ProcessChoice)\n");
+		exit(13);
+	}
+	//ROBUST
 	if (chap->choices == NULL)
 	{ // gère la mémoire allouée pour stocker les choix dans la structure chapter
 		// Si la liste des choix est vide (== NULL)
 		chap->choices = (Choice *)malloc(1 * sizeof(Choice)); // alors un choix est alloué
+		if(chap->choices == NULL){
+			printf("pb la ca va pas");
+			exit(456);
+		}
 		chap->choice_count = 0;
 	}
 	else
 	{
-		Choice *temp = (Choice *)realloc(chap->choices, (chap->choice_count + 1) * sizeof(Choice));
+		Choice *temp = NULL;
+		//ROBUST
+		if(temp == NULL)
+		{
+			printf("Quelque chose ne vas pas avec temp(ProcessChoice)\n");
+			temp = (Choice *)realloc(chap->choices, (chap->choice_count + 1) * sizeof(Choice));
+		}
 		// Sinon, un choix supplémentaire est alloué avec 'realloc' pour augmenter la taille de la liste des choix.
 		if (temp != NULL)
 		{
 			chap->choices = temp;
 		}
 	}
-	Choice ch = {};
+	Choice ch = {0};
+	if(ch.nextChapter != NULL){
+		printf("Y'a un truc qi va pas dans create_chapter");
+		exit(45);
+	}
+	if(ch.text != NULL){
+		printf("Y'a un truc qui va pas encore dans create_chapter");
+		exit(67);
+	}
 	// analyse la chaîne de caractères value en utilisant le délimiteur '_' et extrait chaque partie de la %s
 	char delim[] = "_";
 	char *cutteds = strtok(value, delim); // séparer la chaîne value en sous-chaînes en utilisant ces délimiteurs
@@ -180,27 +253,38 @@ void ProcessChoice(chapter *chap, char *value)
 	chap->choice_count++;
 }
 
+
 chapter create_chapter(char *chapter_name)
 {
+	//ROBUST
+	if(chapter_name == NULL)
+	{
+		printf("Quelque chose ne vas pas avec chapter_name(create_chapter)\n");
+		exit(14);
+	}
 	// VARIABLES
 	char line[SIZE_LINE];
 	int current_line_event = 1;
 	int currentPart = 0;
-	char *path = (char *)malloc((strlen("txt/") + strlen(chapter_name) + strlen(".txt")) * sizeof(char) + 1);
+	char *path = NULL;
+	//ROBUST
+	if(path != NULL)
+	{
+		printf("Quelque chose ne vas pas avec path(create_chapter)\n");
+		exit(15);
+	}	
+	path = (char *)malloc((strlen("txt/") + strlen(chapter_name) + strlen(".txt")) * sizeof(char) + 1);
 	//~~> contien le chemin d'accès au fichier txt que nous voulons ouvrir
-
-	strcpy(path, "txt/");		// copie la chaîne 'txt' dans chaîne 'path'
+	strcpy(path, "txt/");
 	strcat(path, chapter_name); // suivie de 'chapter_name'(concaténation)
 	strcat(path, ".txt");		// et de '.txt'
 
 	FILE *file = fopen(path, "r");
 	// crée un chemin vers le fichier txt à partir du nom du chapitre et stocke dans 'path'
-
-	// FILE *file = fopen("../txt/Event1.txt", "r");
 	if (file == NULL)
 	{
 		printf("\nErreur fopen (file 1)\n");
-		exit(1);
+		exit(1111);
 	}
 
 	// char buf[10] = "";
@@ -296,7 +380,7 @@ char *displayChapter(chapter chap, Stdt main_character)
 		{
 		case 1:
 			// fame
-			if (chap.event->positive_or_negative == "1")
+			if (chap.event->positive_or_negative == 1)
 			{
 				// c'est un malus de stat
 				main_character.fame -= chap.event->n_stat;
@@ -322,7 +406,7 @@ char *displayChapter(chapter chap, Stdt main_character)
 
 		case 2:
 			// intellect
-			if (chap.event->positive_or_negative == "1")
+			if (chap.event->positive_or_negative == 1)
 			{
 				// c'est un malus de stat
 				main_character.intellect -= chap.event->n_stat;
@@ -347,7 +431,7 @@ char *displayChapter(chapter chap, Stdt main_character)
 			break;
 		case 3:
 			// power
-			if (chap.event->positive_or_negative == "1")
+			if (chap.event->positive_or_negative == 1)
 			{
 				// c'est un malus de stat
 				main_character.power -= chap.event->n_stat;
@@ -371,7 +455,7 @@ char *displayChapter(chapter chap, Stdt main_character)
 			}
 			break;
 		case 4:
-			if (chap.event->positive_or_negative == "1")
+			if (chap.event->positive_or_negative == 1)
 			{
 				// c'est un malus de stat
 				main_character.wellness -= chap.event->n_stat;
@@ -397,7 +481,7 @@ char *displayChapter(chapter chap, Stdt main_character)
 	case 3:
 		
 		// modification inventaire
-		if (chap.event->add_or_remove_bag == "1")
+		if (chap.event->add_or_remove_bag == 1)
 		{
 			// c'est un malus de stat
 			removeItem(&main_character, chap.event->id_object);
@@ -405,7 +489,7 @@ char *displayChapter(chapter chap, Stdt main_character)
 		}
 		else
 		{
-			// c'est un bonus de stat
+			// c'est un ajout d'objet dans l'inventaire
 			addItem(&main_character, chap.event->id_object);
 			displayBag(&main_character);
 		}
@@ -413,7 +497,7 @@ char *displayChapter(chapter chap, Stdt main_character)
     }
 
     displayStat(main_character);
-
+	
 	if (chap.choice_count != 1)
 	{
 		for (int i = 0; i < chap.choice_count; i++)
@@ -444,6 +528,4 @@ char *displayChapter(chapter chap, Stdt main_character)
 	{
 		return chap.choices[0].nextChapter;
 	}
-	
-
 }

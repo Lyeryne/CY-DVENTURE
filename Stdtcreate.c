@@ -33,7 +33,7 @@ Stdt createMainCharacter()
     num2 = strlen(x.sname);
     while(num2>SIZE_NAMES || is_char(x.sname) == 0){//ROBUST
         printf("\nMauvaise saisie ou saisie trop longue !\n");
-	system("clear");
+	    system("clear");
         printf("Saisir à nouveau le nom de famille l'eleve :");
         scanf("%s", x.sname);
         num2 = strlen(x.sname);
@@ -82,18 +82,38 @@ Stdt createFighter(char name[SIZE_NAMES], char sname[SIZE_NAMES]){
 void createBag(Stdt *main_character)
 {
     char *TabBag[MAX_BAG_SIZE] = {"Stylo", "Cahier", "Poing américain", "Ordinateur", "Veste", "Opinel", "Manuel", "Antisèche"};
-
-    for (int i = 0; i < MAX_BAG_SIZE; i++)
-    {
-		main_character->ref_bag[i] = set_text_tab(main_character->ref_bag[i], TabBag[i]);
+    //ROBUST
+    if(TabBag == NULL)
+	{
+		printf("Quelque chose ne vas pas avec TabBag(createBag)\n");
+		exit(17);
+	}
+    //ROBUST
+    if(main_character == NULL)
+	{
+		printf("Quelque chose ne vas pas avec main_character(createBag)\n");	
+        exit(4);
     }
-	main_character->bag_size=0;
-	addItem(main_character, 0);
-	addItem(main_character, 1);
+    else
+    {
+        for (int i = 0; i < MAX_BAG_SIZE; i++)
+        {
+            main_character->ref_bag[i] = set_text_tab(main_character->ref_bag[i], TabBag[i]);
+        }
+        main_character->bag_size=0;
+        addItem(main_character, 0);
+        addItem(main_character, 1);
+    }
 }
 
 void removeItem(Stdt* main_character, const int item)
 {
+    //ROBUST
+    if(main_character == NULL)
+	{
+		printf("Quelque chose ne vas pas avec main_character(removeItem)\n");
+		exit(18);
+	}
     //Vérifier si l'élèment est déjà présent dans le sac
     for(int i=0; i < main_character->bag_size; i++)
     {
@@ -115,6 +135,13 @@ void removeItem(Stdt* main_character, const int item)
 
 void addItem(Stdt* main_character, const int item)
 {
+    //ROBUST
+    if(main_character == NULL)
+	{
+		printf("Quelque chose ne vas pas avec main_character(addItem)\n");
+		exit(19);
+	}
+
     //Robust
     if(main_character->bag_size >= MAX_BAG_SIZE)
     {

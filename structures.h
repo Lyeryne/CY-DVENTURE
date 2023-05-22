@@ -38,8 +38,8 @@ typedef struct
     int type_stat;
     int n_stat;
     int id_object;
-	char *add_or_remove_bag;
-    char *positive_or_negative;
+	int add_or_remove_bag;
+    int positive_or_negative;
 }Event;
 
 typedef struct
@@ -56,6 +56,5 @@ typedef struct
     Stdt main_character;
     chapter saveEvent;//stocke l'option de choix sélectionnée par l'utilisateur
 } SaveData;
-
 
 #endif
