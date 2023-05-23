@@ -1,3 +1,4 @@
+                                                        Chapitre 5
 
 
 Ce matin, tu te rends à X TECH pour ton premier cours. 
@@ -18,10 +19,10 @@ Cependant, certains sont très engagee dans leurs etudes, tout en ayant une vie 
 ~> les sportifs = A part leur forces, ce sont les types d'etudiants qui ne se concentre que sur le sport, au détriment de leurs etudes.
 Cependant, ce sont des etudiants engages et serieux qui t'apporteront forces mentales et physiques que tu as besoins durant cette annee !
 
-###
 Avec qui veux-tu te mettre ?
+###
+0
 ###
 1 - Amir, Mohammed et Charles_06A
 2 - Youssef, Mahmoud et Lyeryne_06B
 3 - Mamadou, Francis et Leo_06C
-

@@ -1,16 +1,11 @@
-EVENT 1 ~ LE WEEKEND D'INTEGRATION
+                                                        Chapitre 2
 
 Séjour au cours duquel les élèves du BDE organisent l’intégration de la promotion entrante !
 Réveil à 7h, c'est la pré-rentrée ! Une année ne peut commencer sans un petit weekend d’intégration !
 
 Est-ce que je devrais y aller ?
 ###
-1
-1
-1
-1
-1
-3
+0
 ###
-1-Oui, pourquoi pas !_03
+1-Oui, pourquoi pas !_03A
 2-Non, c'est pour les nullos_03B

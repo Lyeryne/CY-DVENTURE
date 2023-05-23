@@ -1,3 +1,6 @@
+                                                        Chapitre 6
+
+
 
 Le groupe - Oh notre proteine, viens t'asseoir !
 
@@ -20,8 +23,12 @@ Moi - Ok merci ! On se voit tous apres les cours ?
 Le groupe - Oui, pas de soucis !
 
 ###
-//(+2 ATK)Stat
-//(+2 DEF)Stat
+2
+0
+0
+3
+4
+0
+2
 ###
-
 1- Continuer_07

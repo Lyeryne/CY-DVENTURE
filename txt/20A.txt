@@ -1,7 +1,15 @@
+                                                        Chapitre 16
+
+
 Alors que tu parcours l'école à la recherche d'objets, tu tombes sur une antisèche pour un prochain contrôle.
 (Règle de l'antisèche : tu peux l'utiliser pendant un contrôle pour avoir la bonne réponse, mais si tu te fais prendre, tu perds le jeu et tu te fais exclure de l'école).
 
 ###
-//Gagne l'antisèche\\
+3
+8
+0
+0
+0
+2
 ###
 1- Continue_21

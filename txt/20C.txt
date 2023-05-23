@@ -1,9 +1,16 @@
+                                                        Chapitre 16
+
+
 Tu vas faire du sport, et un de tes amis t'accompagne. 
 Vous passez l'après midi à la salle de sport.
 
 ###
-//(+4 ATK)Stat
-//(+4 DEF)Stat
+2
+0
+0
+3
+4
+0
+2
 ###
-
 1-Continuer_21

@@ -1,3 +1,6 @@
+                                                        Chapitre 10
+
+
 Vous entrez dans une salle de révision calme. Des tables sont disposées, chacun trouve un endroit pour s'installer. Mais quelque chose attire ton attention au fond de la salle. Trois objets étranges sont posés sur une table : un ordinateur portable, des poings américains et une veste.
 
 
@@ -8,15 +11,10 @@ Amis - Ces poings américains pourraient être utiles, ils pourraient nous donne
 Amis - Je pense que cette veste est trop belle pour être laissée là.
 Amis - Mais cet ordinateur, il pourrait nous permettre d'méliorer nos révisions.
 
-###
 Quel objet veux-tu prendre ?
 ###
-
+0
+###
 1- Les poings_141
 2- La veste_142
 3- L'ordinateur_143
-
-
-
-
-

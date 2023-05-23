@@ -5,6 +5,8 @@
 #include <stdlib.h>
 #include <string.h>
 #include <stdbool.h>
+#include <math.h>
+
 
 #include "Robust.h"
 #include "Stdtcreate.h"

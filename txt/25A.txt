@@ -1,8 +1,17 @@
+                                                        Chapitre 21
+
+
 Bravo, tu as réussi le DS. 
 Tu obtiens un jeton DS.
 
 ###
-//Gagne un JetonDS\\
+0
+0
+0
+0
+0
+0
+0
+1
 ###
-
 1- Continue_26

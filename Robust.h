@@ -5,6 +5,7 @@
 #include<stdlib.h>
 #include<unistd.h>
 #include<string.h>
+#include<math.h>
 
 struct Stdt;
 struct Bag;
@@ -15,7 +16,6 @@ char toLower(char c);
 int is_char(char* chaine);
 
 int robust(int integer);
-int choice(int size);
 
 void getWord(char* buffer);
 

@@ -1,6 +1,9 @@
+                                                        Chapitre 14
+
+
 Tu te retrouve avec ses amis après le contrôle de mathématiques. Vous discutez à voix basse, frustrés par leurs résultats.
 
-Toi - Ce prof de maths est un idiot complet ! Il ne sait m^me pas enseigner
+Toi - Ce prof de maths est un idiot complet ! Il ne sait même pas enseigner
 
 Le professeur de français, qui passait par là, entend les paroles de Marc et s'approche rapidement.
 
@@ -13,7 +16,12 @@ Professeur de français - Tu dois t'excuser et réfléchir à ton attitude enver
 Tu acquiesces, conscient de tes torts, tandis que le professeur de français s'éloigne.
 
 ###
-//(-1 FAM)Stat
+2
+0
+0
+1
+5
+0
+1
 ###
-
 1- Continuer_19

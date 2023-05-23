@@ -1,4 +1,4 @@
-OBJ_DIR := fichiers.o
+OBJ_DIR := fichiers_o
 
 all: Projet
 

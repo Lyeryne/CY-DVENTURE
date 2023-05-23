@@ -50,13 +50,13 @@ Stdt createMainCharacter(Stdt x)
     }
     
     //Pre-stat Student
-    x.power = 50 + rand()%51;
-    x.fame = 50;
-    x.intellect = 50 + rand()%51;
-    x.wellness = 50;
-    x.health = 300;
-    x.dodge = rand()%16;
-    x.defence = 10 + rand()%51;
+    x.power = 10;
+    x.fame = 1.0;
+    x.intellect = 10;
+    x.wellness = 10;
+    x.health = 20;
+    x.dodge = 10;
+    x.defence = 5;
 
 return x;
 
@@ -67,20 +67,20 @@ Stdt createFighter(char name[SIZE_NAMES], char sname[SIZE_NAMES]){
 
     strncpy(fighter.name, name, SIZE_NAMES);
     strncpy(fighter.sname, sname, SIZE_NAMES);
-    fighter.power = 50 + rand()%51;
-    fighter.fame = 50;
+    fighter.power = 15;
+    fighter.fame = 1;
     fighter.intellect = 50 + rand()%51;
     fighter.wellness = 50;
-    fighter.health = 300;
-    fighter.dodge = rand()%16;
-    fighter.defence = 10 + rand()%51;
+    fighter.health = 30;
+    fighter.dodge = 10;
+    fighter.defence = 7;
 
     return fighter;
 }
 
 void createBag(Stdt *main_character)
 {
-    char *TabBag[MAX_BAG_SIZE] = {"Stylo", "Cahier", "Poing américain", "Ordinateur", "Veste", "Opinel", "Manuel", "Antisèche"};
+    char *TabBag[MAX_BAG_SIZE] = {"Stylo", "Cahier", "Poing américain", "Ordinateur", "Veste", "Girlfriend", "Antisèche"};
     //ROBUST
     if(TabBag == NULL)
 	{

@@ -1,3 +1,6 @@
+                                                        Chapitre 4
+
+
 Avant de commencer les cours, il faut que tu ailles récupérer tes affaires à la bibliothèque.
 
 Tu vois au loin, une jeune fille marchant vite suivie par un homme un peu assistant qui tente de la rizz, elle lui dit de la laisser tranquille mais l’homme continue. 
@@ -13,13 +16,8 @@ Toi – Tu vas vite bouger d’ici si tu veux pas que je m’énerve !(ART ENERV
 L’individu – Vsy viens tu vas faire quoi !
 
 ###
-1 //(display les attaquants)
-2 //(display fight)
-###
-Appuyer sur 1
+1
+0
+1
 ###
 1- Continuer_004B
-
-
-
-

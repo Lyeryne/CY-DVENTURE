@@ -1,14 +1,14 @@
 #include "statPlayer.h"
 
 void displayStat(Stdt a){
-    char* txt1 = "Stat actuel de votre personnage : \n\n";
-    int size1 = strlen(txt1);
-    displayTxt(size1, txt1);
-    printf("[%s %s]\n", a.sname, a.name);
-    printf("Reputation : %d\n", a.fame);
-    printf("Intelligence : %d\n", a.intellect);
-    printf("Force : %d\n", a.power);
-    printf("Mental : %d\n", a.wellness);
+  char* txt1 = "Stat actuel de votre personnage : \n\n";
+  int size1 = strlen(txt1);
+  displayTxt(size1, txt1);
+  printf("[%s %s]\n", a.sname, a.name);
+  printf("Reputation : %d\n", a.fame);
+  printf("Intelligence : %d\n", a.intellect);
+  printf("Force : %d\n", a.power);
+  printf("Mental : %d\n", a.wellness);
 }
 
 void displayBag(Stdt* main_character){
@@ -31,7 +31,6 @@ void displayBag(Stdt* main_character){
   	printf("%s\n", main_character->Bag[i]);
   }
 }
-
 
 void fight(Stdt a, Stdt b)
 {

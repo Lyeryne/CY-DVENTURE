@@ -1,3 +1,6 @@
+                                                        Chapitre 23
+
+
 Tu décides de te rendre en cours tout de même. 
 C'est bien d'être studieux.
 
@@ -19,6 +22,6 @@ struct Etudiant {
 Professeur - Voici une structure nommée "Etudiant". Elle contient les membres "nom", "age" et "note" de types différents.
 
 ###
+0
 ###
-
 1- Continuer_28A

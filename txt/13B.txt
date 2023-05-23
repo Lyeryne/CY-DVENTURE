@@ -1,3 +1,6 @@
+                                                        Chapitre 10
+
+
 Tu est assis à une table dans un café, attendant ton amie, Lisa. Elle arrive en souriant et s'assoit en face de toi.
 
 Lisa - Salut toi, contente de te voir !
@@ -13,5 +16,7 @@ Lisa reste silencieuse, puis un sourire radieux illumine son visage.
 Lisa - Moi aussi ... Je n'osas pas te le dire, mais j'éprouve la même chose.
 
 Vous vous embrassez.
-
+###
+0
+###
 1- Continuer_15

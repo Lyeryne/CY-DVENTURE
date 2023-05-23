@@ -1,10 +1,10 @@
+                                                        Chapitre 12
+
+
 Tu commences le DS :
 
 Combien font    (1  2) x (3  4)  ?
                 (2  1)   (4  3) 
-
-###
-###
 
 1-  (10  11)_17A
     (11  10)
@@ -17,3 +17,10 @@ Combien font    (1  2) x (3  4)  ?
 
 4-  (10  10)_17A
     (11  11)
+###
+0
+###
+Réponse 1_17A
+Réponse 2_17B
+Réponse 3_17A
+Réponse 4_17A

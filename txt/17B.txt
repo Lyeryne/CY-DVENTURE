@@ -1,9 +1,18 @@
+                                                        Chapitre 13
+
+
 Bien joué, tu as réussi.
 Voici ton jeton DS. 
 Plus qu'un seul pour réussir l'année.
 
 ###
-//Gagne un JetonDS\\
+0
+0
+0
+0
+0
+0
+0
+1
 ###
-
 1- Continuer_18B

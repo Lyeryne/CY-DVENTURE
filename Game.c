@@ -308,9 +308,7 @@ chapter create_chapter(char *chapter_name)
 	chapter chap = {}; // {malloc(1), malloc(0), malloc(0)};
 	char first_line_chars[4];
 
-
 	// GAME
-
 	while (fgets(line, SIZE_LINE, file) != NULL)
 	{
 		*first_line_chars = '\0';
@@ -332,18 +330,15 @@ chapter create_chapter(char *chapter_name)
 			case 1:
 				ProcessEvent(&chap, line, current_line_event);
 				current_line_event++;
-
 				break;
 
 			// on est dans la part 2 : décrit l'événement du chapitre
 			case 2:
 				ProcessChoice(&chap, line);
 				//~~> affiche l'événement en cours et les choix disponibles.
-
 				break;
 
 			case 3:
-
 				ProcessAfterDescription(&chap, line);
 				break;
 			}
@@ -363,17 +358,14 @@ char *displayChapter(chapter chap, Stdt main_character)
 	Stdt fighter1 = createFighter(name1, sname1);
 	// fighter2
 	char name2[SIZE_NAMES] = "Adama";
-	char sname2[SIZE_NAMES] = "";
+	char sname2[SIZE_NAMES] = "Younga";
 	Stdt fighter2 = createFighter(name2, sname2);
-	// fighter3Younga
-	char name3[SIZE_NAMES] = "Etienne";
-	char sname3[SIZE_NAMES] = "Wojdilot";
+	// fighter3
+	char name3[SIZE_NAMES] = "Lucas";
+	char sname3[SIZE_NAMES] = "Traoré";
 	Stdt fighter3 = createFighter(name3, sname3);
-	// fighter4
-	char name4[SIZE_NAMES] = "Lucas";
-	char sname4[SIZE_NAMES] = "Traoré";
-	Stdt fighter4 = createFighter(name4, sname4);
-	Stdt tab_fighter[4] = {fighter1, fighter2, fighter3, fighter4};
+	Stdt tab_fighter[3] = {fighter1, fighter2, fighter3};
+
 	int lu;
 	int user_choice = 0, count = 0;
 	// printf("%s", chap.description);
@@ -413,10 +405,10 @@ char *displayChapter(chapter chap, Stdt main_character)
 			{
 				// c'est un bonus de stat
 				main_character.fame += chap.event->n_stat;
-				// Si une Stat sup à 100 alors remit à 100
-				if (main_character.fame > 100)
+				// Si une Stat sup à 20 alors remit à 20
+				if (main_character.fame > 20)
 				{
-					main_character.fame = 100;
+					main_character.fame = 20;
 				}
 				printf("Vous avez gagné %d de fame !\n", chap.event->n_stat);
 			}
@@ -427,7 +419,7 @@ char *displayChapter(chapter chap, Stdt main_character)
 			if (chap.event->positive_or_negative == 1)
 			{
 				// c'est un malus de stat
-				main_character.intellect -= chap.event->n_stat;
+				main_character.intellect -= chap.event->n_stat * (main_character.fame / 10);
 				// Si une Stat inf à 0 alors remit à 0
 				if (main_character.intellect < 0)
 				{
@@ -438,11 +430,11 @@ char *displayChapter(chapter chap, Stdt main_character)
 			else
 			{
 				// c'est un bonus de stat
-				main_character.intellect += chap.event->n_stat;
-				// Si une Stat sup à 100 alors remit à 100
-				if (main_character.intellect > 100)
+				main_character.intellect += chap.event->n_stat * (main_character.fame / 10);
+				// Si une Stat sup à 20 alors remit à 20
+				if (main_character.intellect > 20)
 				{
-					main_character.intellect = 100;
+					main_character.intellect = 20;
 				}
 				printf("Vous avez gagné %d d'intelligence !\n", chap.event->n_stat);
 			}
@@ -452,7 +444,7 @@ char *displayChapter(chapter chap, Stdt main_character)
 			if (chap.event->positive_or_negative == 1)
 			{
 				// c'est un malus de stat
-				main_character.power -= chap.event->n_stat;
+				main_character.power -= chap.event->n_stat * (main_character.fame / 10);
 				// Si une Stat inf à 0 alors remit à 0
 				if (main_character.power < 0)
 				{
@@ -463,11 +455,11 @@ char *displayChapter(chapter chap, Stdt main_character)
 			else
 			{
 				// c'est un bonus de stat
-				main_character.power += chap.event->n_stat;
-				// Si une Stat sup à 100 alors remit à 100
-				if (main_character.fame > 100)
+				main_character.power += chap.event->n_stat * (main_character.fame / 10);
+				// Si une Stat sup à 20 alors remit à 20
+				if (main_character.power > 20)
 				{
-					main_character.fame = 100;
+					main_character.power = 20;
 				}
 				printf("Vous avez gagné %d de force !\n", chap.event->n_stat);
 			}
@@ -476,7 +468,7 @@ char *displayChapter(chapter chap, Stdt main_character)
 			if (chap.event->positive_or_negative == 1)
 			{
 				// c'est un malus de stat
-				main_character.wellness -= chap.event->n_stat;
+				main_character.wellness -= chap.event->n_stat * (main_character.fame / 10);
 				// Si une Stat inf à 0 alors remit à 0
 				if (main_character.wellness < 0)
 				{
@@ -487,11 +479,11 @@ char *displayChapter(chapter chap, Stdt main_character)
 			else
 			{
 				// c'est un bonus de stat
-				main_character.wellness += chap.event->n_stat;
-				// Si une Stat sup à 100 alors remit à 100
-				if (main_character.wellness > 100)
+				main_character.wellness += chap.event->n_stat * (main_character.fame / 10);
+				// Si une Stat sup à 20 alors remit à 20
+				if (main_character.wellness > 20)
 				{
-					main_character.wellness = 100;
+					main_character.wellness = 20;
 				}
 				printf("Vous avez gagné %d de mental !\n", chap.event->n_stat);
 			}
@@ -512,8 +504,12 @@ char *displayChapter(chapter chap, Stdt main_character)
 			displayBag(&main_character);
 		}
 		break;
+	
+	case 4:
+		displayStat(main_character);
+		break;
 	}
-	displayStat(main_character);
+	
 	if(chap.event->add_token == 1){
 		main_character.token ++;
 	}

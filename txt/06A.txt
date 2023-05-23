@@ -1,3 +1,6 @@
+                                                        Chapitre 6
+
+
 Le groupe - psst, viens t'asseoir.
 
 Moi - Salut les gars ? Vous etes qui au juste ? 
@@ -30,7 +33,12 @@ Bon, on se parle apres les cours ?
 Le groupe - vsy, pas de soucis !
 
 ###
-//(+2 SMRT)Stat
+2
+0
+0
+2
+2
+0
+2
 ###
-
 1- Continuer_07

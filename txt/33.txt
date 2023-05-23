@@ -1,3 +1,6 @@
+                                                        Chapitre 29
+
+
 Alors que tu sors de la salle du DS, tu bouscules quelqu'un devant toi.
 Lui - Hé, fais attention où tu vas !
 
@@ -14,11 +17,11 @@ La tension monte alors que vos deux voix se font de plus en plus fortes.
 Toi - tu veux te battre, c'est ça. 
 Lui - Amène toi, vas-y.
 
-###
-1 //(display les attaquants)
-2 //(display fight)
-###
 Si tu n'as plus d'HPY, appuie sur 1. Sinon, appuie sur 2
-
+###
+1
+0
+1
+###
 1- Mort_F2
 2- Continue_34

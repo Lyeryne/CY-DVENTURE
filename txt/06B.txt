@@ -1,3 +1,6 @@
+                                                        Chapitre 6
+
+
 Le groupe - Eh mon gars, viens t'asseoir !
 
 Moi - Salut les gars ? Vous etes qui au juste ? 
@@ -19,8 +22,12 @@ Moi - Ok merci ! On se voit tous après les cours ?
 Le groupe - Oui, pas de soucis !
 
 ###
-//(+1 FAM)Stat
+2
+0
+0
+1
+2
+0
+2
 ###
-
 1- Continuer_07
-

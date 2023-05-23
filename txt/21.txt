@@ -1,3 +1,6 @@
+                                                        Chapitre 17
+
+
 Ce matin, cours de physique avec tes meilleurs amis.
 Tu t'installe, et le professeur démarre le cours.
 
@@ -9,6 +12,6 @@ Les étudiants prennent des notes rapidement, absorbant les informations.
 Prof - Cette formule nous permet de comprendre comment la vitesse d'un objet change en fonction du temps et des paramètres B, y, t et t0.
 
 ###
+0
 ###
-
 1-Continue_22

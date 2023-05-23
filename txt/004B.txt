@@ -1,3 +1,6 @@
+                                                        Chapitre 4
+
+
 Fille – Ca va aller ?
 
 Toi – Oh t’inquiètes, le principal c’est que tu es saine et sauf
@@ -27,8 +30,12 @@ Elle – C’est mignon merci !
 Tu récupères tes affaires et tu te rends à X TECH
 
 ###
-1 //(+5 HPY)Stat
-//Gagne le stylo et le cahier\\
+2
+0
+0
+4
+2
+0
+2
 ###
-
 1- Continuer_05

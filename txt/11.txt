@@ -1,3 +1,6 @@
+                                                        Chapitre 8
+
+
 Aujourd'hui, 1er cours de maths avec tes amis. Tu t'asseoies à côté d'eux. Le professeur de maths se tient devant le tableau.
 
 Prof - La notion essentielle d'aujourd'hui est  la multiplication des matrices. Elle permet de représenter des transformations et des relations linéaires entre les vecteurs.
@@ -14,6 +17,6 @@ Un élève - Ça semble vraiment utile pour nos projets futurs.
 Le professeur sourit, satisfait de leur intérêt.
 
 ###
+0
 ###
-
 1- Continuer_12

@@ -1,7 +1,16 @@
+                                                        Chapitre 28
+
+
 Tu réussis ce DS, et tu obtiens le dernier jeton DS.
 
 ###
-//Gagne JetonDS\\
+0
+0
+0
+0
+0
+0
+0
+1
 ###
-
 1- Continue_33
