@@ -15,7 +15,6 @@ int pre_game()
 	printf(" 1 -> Nouvelle Partie\n");	 // ASCI ART
 	printf(" 2 -> Reprendre Partie\n");	 // ASCI ART
 	printf(" 3 -> Quitter le Jeu\n\n");	 // ASCI ART
-	printf("Choix :\n");
 
 	start = robust(3);
 
@@ -30,7 +29,6 @@ int no_game()
 	printf("1 -> Nouvelle Partie\n");	   // ASCI ART
 	printf("~~ ACCES NON-AUTORISER ~~\n"); // ASCI ART
 	printf("2 -> Quitter le Jeu\n\n");	   // ASCI ART
-	printf("Choix :");
 	
 	start = robust(2);
 
@@ -52,6 +50,12 @@ char *set_text_property(char *buf, char *value)
 //=>permet de remplir une propriété de type char * (%s) d'une structure de manière dynamique
 {
 	int length;
+
+	if(value == NULL){
+		printf("Value is NULL !!\n");
+		exit(9);
+	}
+
 	if (buf == NULL) // propriété n'est pas initialisée
 	{
 		length = strlen(value) + 1;
@@ -161,6 +165,9 @@ void ProcessEvent(chapter *chap, char *value, int counter)
 	case 7:
 		a = atoi(value);
 		chap->event->positive_or_negative = a;
+	case 8:
+		a = atoi(value);
+		chap->event->add_token = a;
 	}
 	// remplit event de la struct chapter avec la %s 'value' en utilisant 'fill_text_property'
 	//=> ajouter des événements
@@ -171,7 +178,7 @@ char *Corrigation_de_ProcessChoice(char *value) {
 		printf("ca va pas dans corrigaiton de process choice");
 		exit(345);
 	}
-	for (int i = strlen(value) - 1; i >= 0; i--) {
+	for (int i = 0; i <strlen(value) ; i++) {
 		char bonjour = value[i]; // Correction : retirer l'opérateur * ici
 		if (bonjour == '\n' || bonjour == '\r') { // Correction : utiliser des simples quotes pour les caractères
 			value[i] = '\0';
@@ -249,6 +256,7 @@ void ProcessChoice(chapter *chap, char *value)
 		{ // nous créons un nouveau chapitre en utilisant la sous-chaîne courante
 			cutteds = Corrigation_de_ProcessChoice(cutteds);
 			ch.nextChapter = set_text_property(ch.nextChapter, cutteds);
+			printf("next chapter ptr = %p", ch.nextChapter);
 			// ch.nextChapter = create_chapter(cutteds);
 		}
 		cutteds = strtok(NULL, delim);
@@ -280,8 +288,10 @@ chapter create_chapter(char *chapter_name)
 		printf("Quelque chose ne vas pas avec path(create_chapter)\n");
 		exit(15);
 	}	
+	//strlen("txt/") + 
 	path = (char *)malloc((strlen("txt/") + strlen(chapter_name) + strlen(".txt")) * sizeof(char) + 1);
 	//~~> contien le chemin d'accès au fichier txt que nous voulons ouvrir
+
 	strcpy(path, "txt/");
 	strcat(path, chapter_name); // suivie de 'chapter_name'(concaténation)
 	strcat(path, ".txt");		// et de '.txt'
@@ -353,9 +363,9 @@ char *displayChapter(chapter chap, Stdt main_character)
 	Stdt fighter1 = createFighter(name1, sname1);
 	// fighter2
 	char name2[SIZE_NAMES] = "Adama";
-	char sname2[SIZE_NAMES] = "Younga";
+	char sname2[SIZE_NAMES] = "";
 	Stdt fighter2 = createFighter(name2, sname2);
-	// fighter3
+	// fighter3Younga
 	char name3[SIZE_NAMES] = "Etienne";
 	char sname3[SIZE_NAMES] = "Wojdilot";
 	Stdt fighter3 = createFighter(name3, sname3);
@@ -367,9 +377,10 @@ char *displayChapter(chapter chap, Stdt main_character)
 	int lu;
 	int user_choice = 0, count = 0;
 	// printf("%s", chap.description);
+	system("clear");
 	displayTxt(strlen(chap.description), chap.description);
-	printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~XTECH DVENTURE~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
 	printf("\n");
+	WaitPress();
 	// EVENT DU JEU
 	switch (chap.event->type_event)
 	{
@@ -502,37 +513,31 @@ char *displayChapter(chapter chap, Stdt main_character)
 		}
 		break;
 	}
-
 	displayStat(main_character);
+	if(chap.event->add_token == 1){
+		main_character.token ++;
+	}
 
-	if (chap.choice_count != 1)
+	if (chap.choice_count > 1)
 	{
 		for (int i = 0; i < chap.choice_count; i++)
 		{
 			printf("\n%s", chap.choices[i].text);
 		}
 		// CHOIX DU JEU
-		do
-		{
-			printf("Choix : \n");
-			lu = scanf("%d", &user_choice);
-			fflush(stdin);
-			if (user_choice < 1 || user_choice > chap.choice_count)
-			{
-				printf("Veuillez saisir une reponse valide : ");
-			}
-			else
-			{
-				count = 1;
-			}
-		} while (lu == 0 || count == 0);
-
+		user_choice = robust(chap.choice_count);
 		system("clear");
-		displayTxt(strlen(chap.after_description), chap.after_description);
+		if(chap.after_description != NULL){
+			displayTxt(strlen(chap.after_description), chap.after_description);
+		}
+		printf("indx = %d\n", user_choice-1);
+		printf("PTR = %p\n", chap.choices[user_choice-1].nextChapter);
+		fflush(stdout);
 		return chap.choices[user_choice - 1].nextChapter;
 	}
 	else
 	{
+		WaitPress();
 		return chap.choices[0].nextChapter;
 	}
 }

@@ -64,6 +64,7 @@ void fight(Stdt a, Stdt b)
     tmp = a; 
     a = b;
     b = tmp;
+    WaitPress();
   }
   // Display winner
   if(a.health > 0){
@@ -73,6 +74,7 @@ void fight(Stdt a, Stdt b)
     a.health = 0;
 	printf("\n");
     printf("~~> %s a mis KO %s avec %d HP restant!\n", b.name, a.name, b.health);
+    WaitPress();
   }
   printf("\n");
 }
@@ -91,5 +93,6 @@ void displayBeforeFight(Stdt fighter, Stdt main){
     printf("Defense = %d\n", fighter.defence);
     printf("Esquive = %d\n", fighter.dodge);
     printf("\n\n\n");
+    WaitPress();
 }
 

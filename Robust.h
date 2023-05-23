@@ -17,5 +17,6 @@ int is_char(char* chaine);
 int robust(int integer);
 int choice(int size);
 
+void getWord(char* buffer);
 
 #endif

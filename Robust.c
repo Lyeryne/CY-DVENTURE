@@ -18,22 +18,37 @@ int is_char(char* chaine) {
     return 1;
 }
 
+void getWord(char* buffer){
+    int ret = 0;
+
+    if(buffer == NULL){
+        printf("getWord buffer is NULL \n");
+        exit(10);
+    }
+
+    do{
+        ret = scanf("%s", buffer);
+        while(getchar() != '\n');
+    } while (ret != 1);
+
+}
+
 int robust(int integer)
 {
 	int choice;
-    char fget[100];
 	
-	do{
-	fgets(fget, sizeof(fget), stdin);
-    if (sscanf(fget, "%d", &choice) != 1 || choice < 1 || choice > (integer) )
-    {
-		printf("Saisie incorrect ! Saisir à nouveau : ");
-		choice = -1;
-	}
-	}while(choice == -1);
-    
-return choice;
-} 
+	do {
+        printf("\nChoix : ");
+		if (scanf("%d", &choice) != 1 || choice < 1 || choice > integer) {
+			printf("Saisie incorrecte ! Saisir à nouveau :\n");
+			scanf("%*[^\n]"); // Vider le flux d'entrée
+			scanf("%*c");
+			choice = -1;
+		}
+	} while (choice == -1);
+
+	return choice;
+}
 
 
 

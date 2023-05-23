@@ -22,6 +22,7 @@ typedef struct
 	char *Bag[MAX_BAG_SIZE];
 	int bag_size;
 	char *ref_bag[MAX_BAG_SIZE];
+	int token;
 	
 } Stdt; // Main character
 
@@ -40,6 +41,7 @@ typedef struct
     int id_object;
 	int add_or_remove_bag;
     int positive_or_negative;
+	int add_token;
 }Event;
 
 typedef struct

@@ -4,6 +4,11 @@ Résultat :
 Après avoir passé un bon week-end d'integration (peut-être un peu trop arrosé), c'est enfin ta première semaine de cours... 
 Tu ne te souviens de rien, mais tu vois juste à ton reveil que tu as un groupe WhatsApp avec des noms dans ton portable.
 ###
-0
+1
+1
+1
+1
+1
+3
 ###
-1 - Continuer_04A
+1-Continuer_04A

@@ -5,14 +5,14 @@ Stdt createMainCharacter(Stdt x)
     int num1, num2;
 //CREATE STUDENT
     printf("Saisir le nom de l'eleve :");
-    scanf("%s", x.name);
+    getWord(x.name);
     num1 = strlen(x.name);
     //vérifie que la nom saisi est assez court et est une string
     while(num1>=SIZE_NAMES || (is_char(x.name)==0)){
         printf("\nMauvaise saisie ou saisie trop longue !\n");
 	system("clear");
         printf("Saisir a nouveau le nom de l'eleve :");
-        scanf("%s", x.name);
+        getWord(x.name);
         num1 = strlen(x.name);
     }
     //DISPLAY BETTER NAME
@@ -27,14 +27,14 @@ Stdt createMainCharacter(Stdt x)
         j++;
     }
 
-    printf("Saisir le nom de famille de l'eleve :");
-    scanf("%s", x.sname);
+    printf("\n\nSaisir le nom de famille de l'eleve :");
+    getWord(x.sname);
     num2 = strlen(x.sname);
     while(num2>SIZE_NAMES || is_char(x.sname) == 0){//ROBUST
         printf("\nMauvaise saisie ou saisie trop longue !\n");
 	    system("clear");
         printf("Saisir à nouveau le nom de famille l'eleve :");
-        scanf("%s", x.sname);
+        getWord(x.sname);
         num2 = strlen(x.sname);
     }
     //DISPLAY BETTER SNAME

@@ -10,6 +10,7 @@ int main()
     Stdt mainCharacter; 
 	SaveData save;
     mainCharacter.bag_size = 0;
+
     createBag(&mainCharacter);
     int start1, start2;
     char* next_chap = NULL;
@@ -39,19 +40,19 @@ int main()
 		sleep(1);
 		system("clear");
 
-		next_chap = displayChapter(create_chapter("01"), mainCharacter);
-		next_chap = displayChapter(create_chapter(next_chap), mainCharacter);
-
 		//VARIABLES 
 		int game = 1;
-		chapter ch = create_chapter("02");
+		chapter ch = create_chapter("01");
 
 //GAME
 		while (game == 1)
 		{
-			next_chap= displayChapter(ch, mainCharacter);
+			next_chap = displayChapter(ch, mainCharacter);
 			ch = create_chapter(next_chap);
 			SaveGame(&save);
+			if(next_chap == "F1" || next_chap == "F2" || next_chap == "F3" || next_chap == "F4"){
+				game = 0;
+			}
 		}
 		}//ferme boucle de start == 1
 		else if(start1 == 2){ //"Reprendre partie"
