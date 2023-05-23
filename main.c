@@ -16,7 +16,6 @@ int main()
     char* next_chap = NULL;
 //CREATION DE FICHIER
 	start1 = pre_game();
-	char intro[SIZE];
 	//Choix d'une "Nouvelle Partie"
 	if(start1 == 1)
 	{
@@ -31,6 +30,7 @@ int main()
 		mainCharacter = createMainCharacter(mainCharacter);
 		system("clear");
 		displayStat(mainCharacter);
+		WaitPress();
 		sleep(1);
 		system("clear");
 

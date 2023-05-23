@@ -93,6 +93,7 @@ void createBag(Stdt *main_character)
 		printf("Quelque chose ne vas pas avec main_character(createBag)\n");	
         exit(4);
     }
+    
     else
     {
         for (int i = 0; i < MAX_BAG_SIZE; i++)

@@ -29,16 +29,18 @@ int no_game()
 	printf("1 -> Nouvelle Partie\n");	   // ASCI ART
 	printf("~~ ACCES NON-AUTORISER ~~\n"); // ASCI ART
 	printf("2 -> Quitter le Jeu\n\n");	   // ASCI ART
-	
+
 	start = robust(2);
 
 	return start;
 }
 
-char *set_text_tab(char *buf, char *value){
+char *set_text_tab(char *buf, char *value)
+{
 	int len = strlen(value) + 1;
 	buf = (char *)malloc(len * sizeof(char));
-	if(buf == NULL){
+	if (buf == NULL)
+	{
 		printf("Quelque chose ne vas pas avec buf(text_tab)");
 		exit(34647);
 	}
@@ -51,7 +53,8 @@ char *set_text_property(char *buf, char *value)
 {
 	int length;
 
-	if(value == NULL){
+	if (value == NULL)
+	{
 		printf("Value is NULL !!\n");
 		exit(9);
 	}
@@ -173,14 +176,18 @@ void ProcessEvent(chapter *chap, char *value, int counter)
 	//=> ajouter des événements
 }
 
-char *Corrigation_de_ProcessChoice(char *value) {
-	if (value == NULL) {
+char *Corrigation_de_ProcessChoice(char *value)
+{
+	if (value == NULL)
+	{
 		printf("ca va pas dans corrigaiton de process choice");
 		exit(345);
 	}
-	for (int i = 0; i <strlen(value) ; i++) {
+	for (int i = 0; i < strlen(value); i++)
+	{
 		char bonjour = value[i]; // Correction : retirer l'opérateur * ici
-		if (bonjour == '\n' || bonjour == '\r') { // Correction : utiliser des simples quotes pour les caractères
+		if (bonjour == '\n' || bonjour == '\r')
+		{ // Correction : utiliser des simples quotes pour les caractères
 			value[i] = '\0';
 			break;
 		}
@@ -270,8 +277,8 @@ void ProcessChoice(chapter *chap, char *value)
 
 chapter create_chapter(char *chapter_name)
 {
-	//ROBUST
-	if(chapter_name == NULL)
+	// ROBUST
+	if (chapter_name == NULL)
 	{
 		printf("Quelque chose ne vas pas avec chapter_name(create_chapter)\n");
 		exit(14);
@@ -282,13 +289,13 @@ chapter create_chapter(char *chapter_name)
 	int currentPart = 0;
 
 	char *path = NULL;
-	//ROBUST
-	if(path != NULL)
+	// ROBUST
+	if (path != NULL)
 	{
 		printf("Quelque chose ne vas pas avec path(create_chapter)\n");
 		exit(15);
-	}	
-	//strlen("txt/") + 
+	}
+	// strlen("txt/") +
 	path = (char *)malloc((strlen("txt/") + strlen(chapter_name) + strlen(".txt")) * sizeof(char) + 1);
 	//~~> contien le chemin d'accès au fichier txt que nous voulons ouvrir
 
@@ -349,7 +356,6 @@ chapter create_chapter(char *chapter_name)
 	return chap;
 }
 
-
 char *displayChapter(chapter chap, Stdt main_character)
 {
 	// fighter1
@@ -379,7 +385,7 @@ char *displayChapter(chapter chap, Stdt main_character)
 	case 0:
 		break;
 	case 1:
-		// combat contre un monstre
+		// combat contre un fighter
 		displayBeforeFight(tab_fighter[chap.event->n_fighter], main_character);
 		fight(main_character, tab_fighter[chap.event->n_fighter]);
 		break;
@@ -504,16 +510,19 @@ char *displayChapter(chapter chap, Stdt main_character)
 			displayBag(&main_character);
 		}
 		break;
-	
+
 	case 4:
 		displayStat(main_character);
 		break;
 	}
-	
-	if(chap.event->add_token == 1){
-		main_character.token ++;
-	}
 
+	if (&chap.event->add_token != NULL)
+	{
+		if (chap.event->add_token == 1)
+		{
+			main_character.token++;
+		}
+	}
 	if (chap.choice_count > 1)
 	{
 		for (int i = 0; i < chap.choice_count; i++)
@@ -523,17 +532,25 @@ char *displayChapter(chapter chap, Stdt main_character)
 		// CHOIX DU JEU
 		user_choice = robust(chap.choice_count);
 		system("clear");
-		if(chap.after_description != NULL){
+		if (chap.after_description != NULL)
+		{
 			displayTxt(strlen(chap.after_description), chap.after_description);
 		}
-		printf("indx = %d\n", user_choice-1);
-		printf("PTR = %p\n", chap.choices[user_choice-1].nextChapter);
+		printf("indx = %d\n", user_choice - 1);
+		printf("PTR = %p\n", chap.choices[user_choice - 1].nextChapter);
 		fflush(stdout);
 		return chap.choices[user_choice - 1].nextChapter;
 	}
 	else
 	{
-		WaitPress();
+		if (&chap.event->type_event != NULL)
+		{
+			if (chap.event->type_event != 0)
+			{
+				WaitPress();
+			}
+		}
+
 		return chap.choices[0].nextChapter;
 	}
 }

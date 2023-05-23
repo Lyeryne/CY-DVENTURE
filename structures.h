@@ -3,7 +3,7 @@
 #define STRUCTURES_H
 
 #define SIZE_NAMES 100
-#define MAX_BAG_SIZE 9
+#define MAX_BAG_SIZE 7
 #define SIZE_LINE 10000
 #define MAX_CHOICE 10
 #define SIZE 100000
