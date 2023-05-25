@@ -3,6 +3,7 @@
 int main()
 {
 //VALUES
+	//system("cvlc lyeryne/snap/vlc/3078/Clairo.mp3");
     srand(time(NULL));
     int choice1;
     int verif = 1;
@@ -30,7 +31,6 @@ int main()
 		mainCharacter = createMainCharacter(mainCharacter);
 		system("clear");
 		displayStat(mainCharacter);
-		WaitPress();
 		sleep(1);
 		system("clear");
 
@@ -47,11 +47,20 @@ int main()
 //GAME
 		while (game == 1)
 		{
-			next_chap = displayChapter(ch, mainCharacter);
+			next_chap = displayChapter(ch, &mainCharacter);
+			save.main_character = mainCharacter;
+			if(save.nxt_chap == NULL){
+				save.nxt_chap = (char *)malloc(strlen(next_chap) * sizeof(char));
+			}
+			save.nxt_chap = next_chap;
 			ch = create_chapter(next_chap);
+			printf("%d", save.main_character.fame);
+			fflush(stdout);
 			SaveGame(&save);
+			free(save.nxt_chap);
 			if(next_chap == "F1" || next_chap == "F2" || next_chap == "F3" || next_chap == "F4"){
 				game = 0;
+				system("killall -9 vlc");
 			}
 		}
 		}//ferme boucle de start == 1
@@ -68,23 +77,19 @@ int main()
 			
 			
 			SaveData loadedData = loadGame();
-			if(loadedData.saveEvent.choice_count == 1){
+			loadedData.nxt_chap = Corrigation_de_ProcessChoice(loadedData.nxt_chap);
+			if(is_txt_null != 0){
 				printf("Sauvegarde chargée avec succès !\n");
 				sleep(1);
-				system("clear");
-				//VARIABLES 
-				char* next_chap;
-				//ROBUST
-				if(next_chap == NULL)
-				{
-					printf("Quelque chose ne vas pas avec next_chap(main/Charger partie)\n");
-					exit(10);
-				}
-				chapter ch = create_chapter("02");
-				next_chap= displayChapter(ch, mainCharacter);
-				ch = create_chapter(next_chap);
+				system("clear"); 
 
-			} else {
+				chapter ch = create_chapter(loadedData.nxt_chap);
+				next_chap = displayChapter(ch, &mainCharacter);
+				save.main_character = mainCharacter;
+				ch = create_chapter(next_chap);
+			} 
+			else 
+			{
 				printf("Impossible de charger la sauvegarde!\n\n");
 				start2 = no_game();
 				if(start2 == 1){ //"Nouvelle Partie"
@@ -106,8 +111,8 @@ int main()
 					displayTxt(size3, txt2);
 					sleep(1);
 					system("clear");
-next_chap = displayChapter(create_chapter("DebutJeu"), mainCharacter);
-next_chap = displayChapter(create_chapter(next_chap), mainCharacter);
+next_chap = displayChapter(create_chapter("DebutJeu"), &mainCharacter);
+next_chap = displayChapter(create_chapter(next_chap), &mainCharacter);
 					//GAME
 					int game = 1;
 					char* next_chap;
@@ -122,7 +127,7 @@ next_chap = displayChapter(create_chapter(next_chap), mainCharacter);
 					while (game == 1)
 					{
 						//strcpy(next_chap, displayChapter(ch));
-						next_chap= displayChapter(ch, mainCharacter);
+						next_chap= displayChapter(ch, &mainCharacter);
 						ch = create_chapter(next_chap);
 
 					}
@@ -134,7 +139,7 @@ next_chap = displayChapter(create_chapter(next_chap), mainCharacter);
 				  	}
 			}
 		}
-	else {//"Quitter le Jeu"
+	else {//"
 		system("clear");
 		return 0;
 	}

@@ -4,7 +4,7 @@ void displayStat(Stdt a){
   char* txt1 = "Stat actuel de votre personnage : \n\n";
   int size1 = strlen(txt1);
   displayTxt(size1, txt1);
-  printf("[%s %s]\n", a.sname, a.name);
+  printf("[%s %s]\n", a.name, a.sname);
   printf("Reputation : %d\n", a.fame);
   printf("Intelligence : %d\n", a.intellect);
   printf("Force : %d\n", a.power);

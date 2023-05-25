@@ -4,13 +4,13 @@ Stdt createMainCharacter(Stdt x)
 //VARIABLES
     int num1, num2;
 //CREATE STUDENT
-    printf("Saisir le nom de l'eleve :");
+    printf("Saisir le prénom de l'eleve :");
     getWord(x.name);
     num1 = strlen(x.name);
     //vérifie que la nom saisi est assez court et est une string
     while(num1>=SIZE_NAMES || (is_char(x.name)==0)){
         printf("\nMauvaise saisie ou saisie trop longue !\n");
-	system("clear");
+	    system("clear");
         printf("Saisir a nouveau le nom de l'eleve :");
         getWord(x.name);
         num1 = strlen(x.name);
@@ -85,13 +85,13 @@ void createBag(Stdt *main_character)
     if(TabBag == NULL)
 	{
 		printf("Quelque chose ne vas pas avec TabBag(createBag)\n");
-		exit(17);
+		exit(1);
 	}
     //ROBUST
     if(main_character == NULL)
 	{
 		printf("Quelque chose ne vas pas avec main_character(createBag)\n");	
-        exit(4);
+        exit(2);
     }
     
     else
@@ -112,7 +112,7 @@ void removeItem(Stdt* main_character, const int item)
     if(main_character == NULL)
 	{
 		printf("Quelque chose ne vas pas avec main_character(removeItem)\n");
-		exit(18);
+		exit(3);
 	}
     //Vérifier si l'élèment est déjà présent dans le sac
     for(int i=0; i < main_character->bag_size; i++)
@@ -139,7 +139,7 @@ void addItem(Stdt* main_character, const int item)
     if(main_character == NULL)
 	{
 		printf("Quelque chose ne vas pas avec main_character(addItem)\n");
-		exit(19);
+		exit(4);
 	}
 
     //Robust

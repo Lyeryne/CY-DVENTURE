@@ -15,6 +15,7 @@ void displayTxt(int size, char *txt)
 void displayLoading()
 {
   int pourcentage = 0;
+  system("clear");
   for(pourcentage = 0; pourcentage <= 100; pourcentage+=20) {
         printf("LANCEMENT DU JEU... %d%%\r", pourcentage); // \r permet de revenir en début de ligne
         fflush(stdout); // force l'affichage immédiat du texte

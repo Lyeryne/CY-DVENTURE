@@ -43,7 +43,7 @@ void ProcessChoice(chapter *chap, char *value);
 
 chapter create_chapter(char *chapter_name);
 
-char *displayChapter(chapter chap, Stdt main_character);
+char *displayChapter(chapter chap, Stdt *main_character);
 
 
 

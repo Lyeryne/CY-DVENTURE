@@ -28,7 +28,8 @@ void getWord(char* buffer){
 
     do{
         ret = scanf("%s", buffer);
-        while(getchar() != '\n');
+        scanf("%*[^\n]"); // Vider le flux d'entrée
+		scanf("%*c");
     } while (ret != 1);
 
 }
@@ -50,4 +51,34 @@ int robust(int integer)
 	return choice;
 }
 
+long is_txt_null(char *file_name)
+{
+    if (file_name == NULL)
+    {
+        printf("Il n'y a pas de nom de fichier\n");
+        exit(123);
+    }
+
+    char *path = (char *)malloc((strlen("txt/") + strlen(file_name) + strlen(".txt")) * sizeof(char) + 1);
+	//~~> contien le chemin d'accès au fichier txt que nous voulons ouvrir
+
+	strcpy(path, "txt/");
+	strcat(path, file_name); // suivie de 'chapter_name'(concaténation)
+	strcat(path, ".txt");		// et de '.txt'
+
+    FILE *fp = fopen(path, "r");
+    if(fp == NULL)
+    {
+        printf("erreur fopen (file2)\n");
+        exit(125);
+    }
+
+    fseek(fp, 0, SEEK_END);
+
+    long result = ftell(fp);
+
+    fclose(fp);
+
+return result;
+}
 

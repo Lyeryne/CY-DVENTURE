@@ -56,7 +56,8 @@ typedef struct
 typedef struct 
 {
     Stdt main_character;
-    chapter saveEvent;//stocke l'option de choix sélectionnée par l'utilisateur
+    char *nxt_chap;
+	int load;
 } SaveData;
 
 #endif

@@ -19,4 +19,6 @@ int robust(int integer);
 
 void getWord(char* buffer);
 
+long is_txt_null(char *file_name);
+
 #endif

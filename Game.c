@@ -35,12 +35,10 @@ int no_game()
 	return start;
 }
 
-char *set_text_tab(char *buf, char *value)
-{
+char *set_text_tab(char *buf, char *value){
 	int len = strlen(value) + 1;
 	buf = (char *)malloc(len * sizeof(char));
-	if (buf == NULL)
-	{
+	if(buf == NULL){
 		printf("Quelque chose ne vas pas avec buf(text_tab)");
 		exit(34647);
 	}
@@ -53,8 +51,7 @@ char *set_text_property(char *buf, char *value)
 {
 	int length;
 
-	if (value == NULL)
-	{
+	if(value == NULL){
 		printf("Value is NULL !!\n");
 		exit(9);
 	}
@@ -82,6 +79,22 @@ char *set_text_property(char *buf, char *value)
 	}
 
 	return buf;
+}
+
+char *Corrigation_de_ProcessChoice(char *value) {
+	if (value == NULL) {
+		printf("ca va pas dans corrigaiton de process choice");
+		exit(345);
+	}
+	for (int i = 0; i <strlen(value) ; i++) {
+		char bonjour = value[i]; // Correction : retirer l'opérateur * ici
+		if (bonjour == '\n' || bonjour == '\r') { // Correction : utiliser des simples quotes pour les caractères
+			value[i] = '\0';
+			break;
+		}
+	}
+	return value;
+	
 }
 
 void ProcessDescription(chapter *chap, char *value)
@@ -119,6 +132,7 @@ void ProcessAfterDescription(chapter *chap, char *value)
 	}
 	chap->after_description = set_text_property(chap->after_description, value);
 }
+
 void ProcessEvent(chapter *chap, char *value, int counter)
 {
 	// ROBUST
@@ -176,24 +190,6 @@ void ProcessEvent(chapter *chap, char *value, int counter)
 	//=> ajouter des événements
 }
 
-char *Corrigation_de_ProcessChoice(char *value)
-{
-	if (value == NULL)
-	{
-		printf("ca va pas dans corrigaiton de process choice");
-		exit(345);
-	}
-	for (int i = 0; i < strlen(value); i++)
-	{
-		char bonjour = value[i]; // Correction : retirer l'opérateur * ici
-		if (bonjour == '\n' || bonjour == '\r')
-		{ // Correction : utiliser des simples quotes pour les caractères
-			value[i] = '\0';
-			break;
-		}
-	}
-	return value;
-}
 void ProcessChoice(chapter *chap, char *value)
 // =>Ce code est une fonction qui ajoute une option de choix à un chapitre d'une histoire interactive
 {
@@ -263,7 +259,7 @@ void ProcessChoice(chapter *chap, char *value)
 		{ // nous créons un nouveau chapitre en utilisant la sous-chaîne courante
 			cutteds = Corrigation_de_ProcessChoice(cutteds);
 			ch.nextChapter = set_text_property(ch.nextChapter, cutteds);
-			printf("next chapter ptr = %p", ch.nextChapter);
+			//printf("next chapter ptr = %s", ch.nextChapter);
 			// ch.nextChapter = create_chapter(cutteds);
 		}
 		cutteds = strtok(NULL, delim);
@@ -277,8 +273,8 @@ void ProcessChoice(chapter *chap, char *value)
 
 chapter create_chapter(char *chapter_name)
 {
-	// ROBUST
-	if (chapter_name == NULL)
+	//ROBUST
+	if(chapter_name == NULL)
 	{
 		printf("Quelque chose ne vas pas avec chapter_name(create_chapter)\n");
 		exit(14);
@@ -289,13 +285,13 @@ chapter create_chapter(char *chapter_name)
 	int currentPart = 0;
 
 	char *path = NULL;
-	// ROBUST
-	if (path != NULL)
+	//ROBUST
+	if(path != NULL)
 	{
 		printf("Quelque chose ne vas pas avec path(create_chapter)\n");
 		exit(15);
-	}
-	// strlen("txt/") +
+	}	
+	//strlen("txt/") + 
 	path = (char *)malloc((strlen("txt/") + strlen(chapter_name) + strlen(".txt")) * sizeof(char) + 1);
 	//~~> contien le chemin d'accès au fichier txt que nous voulons ouvrir
 
@@ -356,8 +352,12 @@ chapter create_chapter(char *chapter_name)
 	return chap;
 }
 
-char *displayChapter(chapter chap, Stdt main_character)
+char *displayChapter(chapter chap, Stdt *main_character)
 {
+	if(main_character == NULL){
+		printf("main_character est nul (game.c)");
+		exit(1);
+	}
 	// fighter1
 	char name1[SIZE_NAMES] = "Boris";
 	char sname1[SIZE_NAMES] = "Jackson";
@@ -377,7 +377,8 @@ char *displayChapter(chapter chap, Stdt main_character)
 	// printf("%s", chap.description);
 	system("clear");
 	displayTxt(strlen(chap.description), chap.description);
-	printf("\n");
+	printf("\n\n");
+	displayStat(*(main_character));
 	WaitPress();
 	// EVENT DU JEU
 	switch (chap.event->type_event)
@@ -386,8 +387,8 @@ char *displayChapter(chapter chap, Stdt main_character)
 		break;
 	case 1:
 		// combat contre un fighter
-		displayBeforeFight(tab_fighter[chap.event->n_fighter], main_character);
-		fight(main_character, tab_fighter[chap.event->n_fighter]);
+		displayBeforeFight(tab_fighter[chap.event->n_fighter], *(main_character));
+		fight(*(main_character), tab_fighter[chap.event->n_fighter]);
 		break;
 
 	case 2:
@@ -399,22 +400,22 @@ char *displayChapter(chapter chap, Stdt main_character)
 			if (chap.event->positive_or_negative == 1)
 			{
 				// c'est un malus de stat
-				main_character.fame -= chap.event->n_stat;
+				main_character->fame -= chap.event->n_stat;
 				// Si une Stat inf à 0 alors remit à 0
-				if (main_character.fame < 0)
+				if (main_character->fame < 0)
 				{
-					main_character.fame = 0;
+					main_character->fame = 0;
 				}
 				printf("Vous avez perdu %d de fame !\n", chap.event->n_stat);
 			}
 			else
 			{
 				// c'est un bonus de stat
-				main_character.fame += chap.event->n_stat;
+				main_character->fame += chap.event->n_stat;
 				// Si une Stat sup à 20 alors remit à 20
-				if (main_character.fame > 20)
+				if (main_character->fame > 20)
 				{
-					main_character.fame = 20;
+					main_character->fame = 20;
 				}
 				printf("Vous avez gagné %d de fame !\n", chap.event->n_stat);
 			}
@@ -425,22 +426,22 @@ char *displayChapter(chapter chap, Stdt main_character)
 			if (chap.event->positive_or_negative == 1)
 			{
 				// c'est un malus de stat
-				main_character.intellect -= chap.event->n_stat * (main_character.fame / 10);
+				main_character->intellect -= chap.event->n_stat * (main_character->fame / 10);
 				// Si une Stat inf à 0 alors remit à 0
-				if (main_character.intellect < 0)
+				if (main_character->intellect < 0)
 				{
-					main_character.intellect = 0;
+					main_character->intellect = 0;
 				}
 				printf("Vous avez perdu %d d'intelligence !\n", chap.event->n_stat);
 			}
 			else
 			{
 				// c'est un bonus de stat
-				main_character.intellect += chap.event->n_stat * (main_character.fame / 10);
+				main_character->intellect += chap.event->n_stat * (main_character->fame / 10);
 				// Si une Stat sup à 20 alors remit à 20
-				if (main_character.intellect > 20)
+				if (main_character->intellect > 20)
 				{
-					main_character.intellect = 20;
+					main_character->intellect = 20;
 				}
 				printf("Vous avez gagné %d d'intelligence !\n", chap.event->n_stat);
 			}
@@ -450,22 +451,22 @@ char *displayChapter(chapter chap, Stdt main_character)
 			if (chap.event->positive_or_negative == 1)
 			{
 				// c'est un malus de stat
-				main_character.power -= chap.event->n_stat * (main_character.fame / 10);
+				main_character->power -= chap.event->n_stat * (main_character->fame / 10);
 				// Si une Stat inf à 0 alors remit à 0
-				if (main_character.power < 0)
+				if (main_character->power < 0)
 				{
-					main_character.power = 0;
+					main_character->power = 0;
 				}
 				printf("Vous avez perdu %d de force !\n", chap.event->n_stat);
 			}
 			else
 			{
 				// c'est un bonus de stat
-				main_character.power += chap.event->n_stat * (main_character.fame / 10);
+				main_character->power += chap.event->n_stat * (main_character->fame / 10);
 				// Si une Stat sup à 20 alors remit à 20
-				if (main_character.power > 20)
+				if (main_character->power > 20)
 				{
-					main_character.power = 20;
+					main_character->power = 20;
 				}
 				printf("Vous avez gagné %d de force !\n", chap.event->n_stat);
 			}
@@ -474,22 +475,22 @@ char *displayChapter(chapter chap, Stdt main_character)
 			if (chap.event->positive_or_negative == 1)
 			{
 				// c'est un malus de stat
-				main_character.wellness -= chap.event->n_stat * (main_character.fame / 10);
+				main_character->wellness -= chap.event->n_stat * (main_character->fame / 10);
 				// Si une Stat inf à 0 alors remit à 0
-				if (main_character.wellness < 0)
+				if (main_character->wellness < 0)
 				{
-					main_character.wellness = 0;
+					main_character->wellness = 0;
 				}
 				printf("Vous avez perdu %d de mental !\n", chap.event->n_stat);
 			}
 			else
 			{
 				// c'est un bonus de stat
-				main_character.wellness += chap.event->n_stat * (main_character.fame / 10);
+				main_character->wellness += chap.event->n_stat * (main_character->fame / 10);
 				// Si une Stat sup à 20 alors remit à 20
-				if (main_character.wellness > 20)
+				if (main_character->wellness > 20)
 				{
-					main_character.wellness = 20;
+					main_character->wellness = 20;
 				}
 				printf("Vous avez gagné %d de mental !\n", chap.event->n_stat);
 			}
@@ -500,29 +501,26 @@ char *displayChapter(chapter chap, Stdt main_character)
 		if (chap.event->add_or_remove_bag == 1)
 		{
 			// c'est un malus de stat
-			removeItem(&main_character, chap.event->id_object);
-			displayBag(&main_character);
+			removeItem(main_character, chap.event->id_object);
+			displayBag(main_character);
 		}
 		else
 		{
 			// c'est un ajout d'objet dans l'inventaire
-			addItem(&main_character, chap.event->id_object);
-			displayBag(&main_character);
+			addItem(main_character, chap.event->id_object);
+			displayBag(main_character);
 		}
 		break;
-
+	
 	case 4:
-		displayStat(main_character);
+		displayStat(*(main_character));
 		break;
 	}
-
-	if (&chap.event->add_token != NULL)
-	{
-		if (chap.event->add_token == 1)
-		{
-			main_character.token++;
-		}
+	
+	if(chap.event->add_token == 1){
+		main_character->token ++;
 	}
+
 	if (chap.choice_count > 1)
 	{
 		for (int i = 0; i < chap.choice_count; i++)
@@ -532,25 +530,18 @@ char *displayChapter(chapter chap, Stdt main_character)
 		// CHOIX DU JEU
 		user_choice = robust(chap.choice_count);
 		system("clear");
-		if (chap.after_description != NULL)
-		{
+		if(chap.after_description != NULL){
 			displayTxt(strlen(chap.after_description), chap.after_description);
 		}
-		printf("indx = %d\n", user_choice - 1);
-		printf("PTR = %p\n", chap.choices[user_choice - 1].nextChapter);
-		fflush(stdout);
+		//printf("indx = %d\n", user_choice-1);
 		return chap.choices[user_choice - 1].nextChapter;
 	}
 	else
 	{
-		if (&chap.event->type_event != NULL)
-		{
-			if (chap.event->type_event != 0)
-			{
-				WaitPress();
-			}
+		if(chap.choice_count != 1){
+			WaitPress();
 		}
-
+		
+	}
 		return chap.choices[0].nextChapter;
 	}
-}
