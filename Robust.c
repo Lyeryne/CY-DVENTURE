@@ -8,6 +8,22 @@ char toLower(char c){
     return c+32;
 }
 
+char *Remove_carriage_return(char *value) {
+	if (value == NULL) {
+		printf("quelque chose ne vas pas avec value(Remove_carriage_return/Robust.c)\n");
+		exit(345);
+	}
+	for (int i = 0; i <strlen(value) ; i++) {
+		char bonjour = value[i]; // Correction : retirer l'opérateur * ici
+		if (bonjour == '\n' || bonjour == '\r') { // Correction : utiliser des simples quotes pour les caractères
+			value[i] = '\0';
+			break;
+		}
+	}
+	return value;
+	
+}
+
 //vérifie si toutes les valeurs de la chaine sont des lettres
 int is_char(char* chaine) {
     for(int i=0; i < strlen(chaine);i++){

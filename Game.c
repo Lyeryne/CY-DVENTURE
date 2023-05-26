@@ -3,11 +3,11 @@
 int pre_game()
 {
 	int start, lu, count;
-	system("clear");
+	system("clear"); //efface tout sur la page
 	printf("X TECH - ADVENTURE\n");
 	char *txt = "Produit par\n-> Louaye SAGHIR\n-> Clement PREMOLI\n-> Roman BOULLIER\n\n";
-	int size = strlen(txt);
-	displayTxt(size, txt);
+	int size = strlen(txt);//prépare l'affichage caractère par caractère
+	displayTxt(size, txt);//affiche le texte caractère par caractère
 	sleep(1);
 	system("clear");
 	// Choix de partie
@@ -16,7 +16,7 @@ int pre_game()
 	printf(" 2 -> Reprendre Partie\n");	 // ASCI ART
 	printf(" 3 -> Quitter le Jeu\n\n");	 // ASCI ART
 
-	start = robust(3);
+	start = robust(3); 
 
 	return start;
 }
@@ -81,21 +81,6 @@ char *set_text_property(char *buf, char *value)
 	return buf;
 }
 
-char *Corrigation_de_ProcessChoice(char *value) {
-	if (value == NULL) {
-		printf("ca va pas dans corrigaiton de process choice");
-		exit(345);
-	}
-	for (int i = 0; i <strlen(value) ; i++) {
-		char bonjour = value[i]; // Correction : retirer l'opérateur * ici
-		if (bonjour == '\n' || bonjour == '\r') { // Correction : utiliser des simples quotes pour les caractères
-			value[i] = '\0';
-			break;
-		}
-	}
-	return value;
-	
-}
 
 void ProcessDescription(chapter *chap, char *value)
 {
@@ -257,7 +242,7 @@ void ProcessChoice(chapter *chap, char *value)
 		}
 		else
 		{ // nous créons un nouveau chapitre en utilisant la sous-chaîne courante
-			cutteds = Corrigation_de_ProcessChoice(cutteds);
+			cutteds = Remove_carriage_return(cutteds);
 			ch.nextChapter = set_text_property(ch.nextChapter, cutteds);
 			//printf("next chapter ptr = %s", ch.nextChapter);
 			// ch.nextChapter = create_chapter(cutteds);
@@ -270,6 +255,7 @@ void ProcessChoice(chapter *chap, char *value)
 	chap->choices[chap->choice_count] = ch; // incrémenter la valeur de 'chap->choice_count'
 	chap->choice_count++;
 }
+
 
 chapter create_chapter(char *chapter_name)
 {
@@ -352,25 +338,26 @@ chapter create_chapter(char *chapter_name)
 	return chap;
 }
 
-char *displayChapter(chapter chap, Stdt *main_character)
+char *displayChapter(chapter chap, Stdt *main_character, char *next_chapter)
 {
+	if(next_chapter == NULL){
+		printf("next_chapter est nul(game.c)");
+		exit(4);
+	}
 	if(main_character == NULL){
 		printf("main_character est nul (game.c)");
 		exit(1);
 	}
 	// fighter1
-	char name1[SIZE_NAMES] = "Boris";
-	char sname1[SIZE_NAMES] = "Jackson";
+	char name1[SIZE_NAMES] = "Romuald";
+	char sname1[SIZE_NAMES] = "Grignon";
 	Stdt fighter1 = createFighter(name1, sname1);
 	// fighter2
-	char name2[SIZE_NAMES] = "Adama";
-	char sname2[SIZE_NAMES] = "Younga";
+	char name2[SIZE_NAMES] = "Eva";
+	char sname2[SIZE_NAMES] = "Ansermin";
 	Stdt fighter2 = createFighter(name2, sname2);
-	// fighter3
-	char name3[SIZE_NAMES] = "Lucas";
-	char sname3[SIZE_NAMES] = "Traoré";
-	Stdt fighter3 = createFighter(name3, sname3);
-	Stdt tab_fighter[3] = {fighter1, fighter2, fighter3};
+	
+	Stdt tab_fighter[2] = {fighter1, fighter2};
 
 	int lu;
 	int user_choice = 0, count = 0;
@@ -378,6 +365,8 @@ char *displayChapter(chapter chap, Stdt *main_character)
 	system("clear");
 	displayTxt(strlen(chap.description), chap.description);
 	printf("\n\n");
+	scanf("%*[^\n]"); // Vider le flux d'entrée
+	scanf("%*c");
 	displayStat(*(main_character));
 	WaitPress();
 	// EVENT DU JEU
@@ -389,6 +378,10 @@ char *displayChapter(chapter chap, Stdt *main_character)
 		// combat contre un fighter
 		displayBeforeFight(tab_fighter[chap.event->n_fighter], *(main_character));
 		fight(*(main_character), tab_fighter[chap.event->n_fighter]);
+		if(main_character->health == 0){
+			return chap.choices[0].nextChapter;
+		}
+		return chap.choices[1].nextChapter;
 		break;
 
 	case 2:
@@ -521,6 +514,13 @@ char *displayChapter(chapter chap, Stdt *main_character)
 		main_character->token ++;
 	}
 
+	if(strcmp("15", next_chapter) == 0|| strcmp("23B", next_chapter) || strcmp("31B", next_chapter) ){
+		if(main_character->fame < 15){
+			return chap.choices[1].nextChapter;
+		}
+		return chap.choices[0].nextChapter;
+	}
+
 	if (chap.choice_count > 1)
 	{
 		for (int i = 0; i < chap.choice_count; i++)
@@ -534,12 +534,34 @@ char *displayChapter(chapter chap, Stdt *main_character)
 			displayTxt(strlen(chap.after_description), chap.after_description);
 		}
 		//printf("indx = %d\n", user_choice-1);
+		
 		return chap.choices[user_choice - 1].nextChapter;
 	}
 	else
 	{
 		if(chap.choice_count != 1){
 			WaitPress();
+		}
+		if((strcmp(chap.choices[0].nextChapter, "33") == 0) && main_character->health == 0){
+			char *rep;
+			rep = (char *)malloc(3 * sizeof(char));
+			if(rep == NULL){
+				printf("l'allocation du chapitre pour le combat final a pas marchée (game.c)\n");
+				exit(45);
+			}
+			strcpy(rep, "F2");
+			
+			return rep;
+		}
+		else if((strcmp(chap.choices[0].nextChapter, "33") == 0) && main_character->health > 0){
+			char *rep;
+			rep = (char *)malloc(3 * sizeof(char));
+			if(rep == NULL){
+				printf("l'allocation du chapitre pour le combat final a pas marchée (game.c)\n");
+				exit(45);
+			}
+			strcpy(rep, "34");
+			return rep;
 		}
 		
 	}

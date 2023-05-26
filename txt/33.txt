@@ -1,7 +1,8 @@
                                                         Chapitre 29
 
 
-Alors que tu sors de la salle du DS, tu bouscules quelqu'un devant toi.
+Alors que tu sors de la salle du DS, tu bouscules quelqu'un devant toi : 
+
 Lui - Hé, fais attention où tu vas !
 
 Toi - Excuse-moi, je suis vraiment désolé, je ne l'ai pas fait exprès.
@@ -15,13 +16,12 @@ Lui - Accidentel ou non, ça ne te donne pas le droit de me bousculer impunémen
 La tension monte alors que vos deux voix se font de plus en plus fortes.
 
 Toi - tu veux te battre, c'est ça. 
-Lui - Amène toi, vas-y.
 
-Si tu n'as plus d'HPY, appuie sur 1. Sinon, appuie sur 2
+Lui - Amène toi, vas-y.
 ###
 1
 0
 1
 ###
 1- Mort_F2
-2- Continue_34
+2-_34

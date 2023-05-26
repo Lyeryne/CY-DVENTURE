@@ -7,5 +7,5 @@ Le DS va commencer.
 ###
 4
 ###
-1- Si tu as plus de 15 de SMRT_24A
-2- Si tu as moins de 15 de SMRT_24B
+1-_24A
+2-_24B

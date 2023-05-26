@@ -1,15 +1,14 @@
-0
-10
-10
-10
-20
-10
-5
-5
 3
+10
+10
+10
+30
+10
+5
+-758484256
+2
 Stylo
 Cahier
-Poing américain
 Stylo
 Cahier
 Poing américain
@@ -17,4 +16,4 @@ Ordinateur
 Veste
 Girlfriend
 Antisèche
-20A
+15

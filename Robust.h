@@ -14,7 +14,7 @@ char toUpper(char c);
 char toLower(char c);
 
 int is_char(char* chaine);
-
+char *Remove_carriage_return(char *value);
 int robust(int integer);
 
 void getWord(char* buffer);

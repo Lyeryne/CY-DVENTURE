@@ -6,7 +6,6 @@
 #include <string.h>
 #include <unistd.h>
 
-
 #include "Save.h"
 #include "structures.h"
 #include "Stdtcreate.h"
@@ -14,6 +13,8 @@
 #include "statPlayer.h"
 #include "Game.h"
 #include "Robust.h"
+
+extern int stopProgram;
 
 int main();
 

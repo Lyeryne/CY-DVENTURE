@@ -51,10 +51,10 @@ Stdt createMainCharacter(Stdt x)
     
     //Pre-stat Student
     x.power = 10;
-    x.fame = 1.0;
+    x.fame = 1;
     x.intellect = 10;
     x.wellness = 10;
-    x.health = 20;
+    x.health = 30;
     x.dodge = 10;
     x.defence = 5;
 
@@ -67,10 +67,10 @@ Stdt createFighter(char name[SIZE_NAMES], char sname[SIZE_NAMES]){
 
     strncpy(fighter.name, name, SIZE_NAMES);
     strncpy(fighter.sname, sname, SIZE_NAMES);
-    fighter.power = 15;
+    fighter.power = 12;
     fighter.fame = 1;
-    fighter.intellect = 50 + rand()%51;
-    fighter.wellness = 50;
+    fighter.intellect = 10;
+    fighter.wellness = 10;
     fighter.health = 30;
     fighter.dodge = 10;
     fighter.defence = 7;
@@ -92,8 +92,7 @@ void createBag(Stdt *main_character)
 	{
 		printf("Quelque chose ne vas pas avec main_character(createBag)\n");	
         exit(2);
-    }
-    
+    }  
     else
     {
         for (int i = 0; i < MAX_BAG_SIZE; i++)

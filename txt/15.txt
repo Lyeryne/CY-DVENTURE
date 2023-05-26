@@ -8,9 +8,6 @@ Les professeurs expliquent le fonctionnement du DS :
 
 Vous devrez répondre à une question, et ceux qui répondront correctement obtiendront un jetonDS
 
-Si tu as plus de 15 de SMRT PRESS 1
-Si tu as moins de 15 de SMRT PRESS 2
-
 ###
 4
 ###

@@ -99,6 +99,7 @@ void SaveGame(SaveData* data){
 SaveData loadGame() {
     SaveData data = {0};
     char buffer[256];
+    char buffer2[340];
     data.load = 0;
     FILE* fp = fopen("Save/save.txt", "r");
     if (fp == NULL) {
@@ -108,49 +109,52 @@ SaveData loadGame() {
 
     //STAT STDT
     int ret1 = fscanf(fp, "%d\n", &(data.main_character.fame));
-    if(ret1 == 1)
+    if(ret1 < 0 )
     {
         printf("quelque chose ne vas pas avec fscanf de data.main_character.fame(loadGame)\n");
         exit(112);
     }
     int ret2 = fscanf(fp, "%d\n", &(data.main_character.power));
-    if(ret2 == 1)
+    if(ret2 < 0)
     {
         printf("quelque chose ne vas pas avec fscanf de data.main_character.power(loadGame)\n");
         exit(113);
     }
     int ret3 = fscanf(fp, "%d\n", &(data.main_character.intellect));
-    if(ret3 == 1)
+    if(ret3  < 0)
     {
         printf("quelque chose ne vas pas avec fscanf de data.main_character.intellect(loadGame)\n");
         exit(114);
     } 
     int ret4 = fscanf(fp, "%d\n", &(data.main_character.wellness));
-    if(ret4 == 1)
+    if(ret4  < 0)
     {
         printf("quelque chose ne vas pas avec fscanf de data.main_character.wellness(loadGame)\n");
         exit(115);
     }
     int ret5 = fscanf(fp, "%d\n", &(data.main_character.health));
-    if(ret5 == 1)
+    if(ret5  < 0)
     {
         printf("quelque chose ne vas pas avec fscanf de data.main_character.health(loadGame)\n");
         exit(116);
     }
     int ret6 = fscanf(fp, "%d\n", &(data.main_character.dodge));
-    if(ret6 == 1)
+    if(ret6  < 0)
     {
         printf("quelque chose ne vas pas avec fscanf de data.main_character.dodge(loadGame)\n");
         exit(117);
     }
     int ret7 = fscanf(fp, "%d\n", &(data.main_character.defence));
-    if(ret7 == 1)
+    if(ret7  < 0)
     {
         printf("quelque chose ne vas pas avec fscanf de data.main_character.defence(loadGame)\n");
         exit(118);
     }
     int ret8 = fscanf(fp, "%d\n", &(data.main_character.token));
-    if(ret8 == 1)
+    if(data.main_character.token < 0 || data.main_character.token > 3){
+        data.main_character.token = 0;
+    }
+    if(ret8  < 0)
     {
         printf("quelque chose ne vas pas avec fscanf de data.main_character.token(loadGame)\n");
         exit(120);
@@ -158,7 +162,7 @@ SaveData loadGame() {
 
     //BAG
     int ret9 = fscanf(fp, "%d\n", &(data.main_character.bag_size));
-    if(ret9 == 1)
+    if(ret9  < 0)
     {
         printf("quelque chose ne vas pas avec fscanf de data.main_character.bag_size(loadGame)\n");
         exit(119);
@@ -190,7 +194,7 @@ SaveData loadGame() {
     }
     else{
         fscanf(fp, "%s\n", buffer);
-        data.nxt_chap = (char *)malloc((strlen(buffer) + 1 )* sizeof(char));
+        data.nxt_chap = (char *)malloc((strlen(buffer))* sizeof(char));
         if(data.nxt_chap == NULL){
             printf("allocation échouée pour data.nxt_chap(loadGame)\n");
             exit(124);

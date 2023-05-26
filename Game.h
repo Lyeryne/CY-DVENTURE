@@ -31,8 +31,6 @@ char *set_text_property(char *buf, char *value);
 
 char *set_text_tab(char *buf, char *value);
 
-char *Corrigation_de_ProcessChoice(char *value);
-
 void ProcessDescription(chapter *chap, char *value);
 
 void ProcessAfterDescription(chapter *chap, char *value);
@@ -43,7 +41,7 @@ void ProcessChoice(chapter *chap, char *value);
 
 chapter create_chapter(char *chapter_name);
 
-char *displayChapter(chapter chap, Stdt *main_character);
+char *displayChapter(chapter chap, Stdt *main_character, char *next_chapter);
 
 
 
