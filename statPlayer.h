@@ -19,7 +19,7 @@ void displayStat(Stdt a);
 
 void displayBag(Stdt* main_character);
 
-void fight(Stdt a, Stdt b);
+void fight(Stdt *a, Stdt *b);
 
 void displayBeforeFight(Stdt fighter, Stdt main);
 

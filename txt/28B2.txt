@@ -9,8 +9,15 @@ Vous vous rendez au restaurant, puis vous allez admirer le coucher du soleil dan
 et vous rentrez chez toi pour la fin de la soirée.
 
 Tu te lèves à contrecoeur le lendemain pour te rendre au DS.
+Au moment de partir, elle te donne un petit papier que tu glisses dans ta poche.
+Tu obtiens une Antisèche.
 
 ###
+3
+6
 0
+0
+0
+2
 ###
 1- DS_29

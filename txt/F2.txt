@@ -9,3 +9,7 @@ Tu décèdes alors que les secours sont en train d'arriver .
                                     █████   ██ ██ ██  ██ 
                                     ██      ██ ██  ██ ██ 
                                     ██      ██ ██   ████ 
+###
+0
+###
+1-_F5

@@ -12,7 +12,6 @@ Les professeurs expliquent le fonctionnement du DS :
 Vous devrez répondre à une question, et ceux qui répondront correctement obtiendront un jetonDS
 
 ###
-4
+0
 ###
-1-_16A
-2-_16B
+1-Répondre à la question_16A

@@ -6,13 +6,13 @@
 
 Tu vas faire du sport, et un de tes amis t'accompagne. 
 Vous passez l'après midi à la salle de sport.
+Là-bas, tu découvres un papier sous la machine à push-ups
 
 ###
-2
-0
-0
 3
-4
+6
+0
+0
 0
 2
 ###

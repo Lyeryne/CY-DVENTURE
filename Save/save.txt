@@ -1,14 +1,17 @@
-1
+Fr
+Gt
+7
 10
+12
 10
-10
-20
+30
 10
 5
-0
-2
+1
+3
 Stylo
 Cahier
+Girlfriend
 Stylo
 Cahier
 Poing américain
@@ -16,4 +19,4 @@ Ordinateur
 Veste
 Girlfriend
 Antisèche
-02
+F1

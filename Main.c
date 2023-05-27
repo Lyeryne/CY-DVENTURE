@@ -1,7 +1,8 @@
-#include <time.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <unistd.h>
+#include <time.h>
 
 #define SIZE_NAMES 100
 #define MAX_BAG_SIZE 7
@@ -61,8 +62,20 @@ typedef struct
 	int load;
 } SaveData;
 
+void WaitPress()
+{
+    printf("Appuyez sur entrée");
+    scanf("%*[^\n]"); // Vider le flux d'entrée
+	scanf("%*c");
+}
 
-//vérifie si toutes les valeurs de la chaine sont des lettres
+char toUpper(char c){
+    return c-32;
+}
+//Renvoie la lettre en minuscule
+char toLower(char c){
+    return c+32;
+}
 int is_char(char* chaine) {
     for(int i=0; i < strlen(chaine);i++){
         if(chaine[i] < 65 || (chaine[i]>90 && chaine[i]<97) || chaine[i]>122){
@@ -71,13 +84,6 @@ int is_char(char* chaine) {
     }
     return 1;
 }
-char toUpper(char c){
-    return c-32;
-}
-//Renvoie la lettre en minuscule
-char toLower(char c){
-    return c+32;
-}
 
 char *Remove_carriage_return(char *value) {
 	if (value == NULL) {
@@ -85,19 +91,14 @@ char *Remove_carriage_return(char *value) {
 		exit(345);
 	}
 	for (int i = 0; i <strlen(value) ; i++) {
-		char bonjour = value[i]; // Correction : retirer l'opérateur * ici
-		if (bonjour == '\n' || bonjour == '\r') { // Correction : utiliser des simples quotes pour les caractères
+		char carriage = value[i]; // Correction : retirer l'opérateur * ici
+		if (carriage == '\n' || carriage == '\r') { // Correction : utiliser des simples quotes pour les caractères
 			value[i] = '\0';
 			break;
 		}
 	}
 	return value;
 	
-}
-void WaitPress()
-{
-    printf("Press ENTER pour continuer...\n");
-    while (getchar() != '\n');
 }
 void getWord(char* buffer){
     int ret = 0;
@@ -114,6 +115,7 @@ void getWord(char* buffer){
     } while (ret != 1);
 
 }
+
 char *set_text_tab(char *buf, char *value){
 	int len = strlen(value) + 1;
 	buf = (char *)malloc(len * sizeof(char));
@@ -213,13 +215,13 @@ Stdt createMainCharacter(Stdt x)
 //VARIABLES
     int num1, num2;
 //CREATE STUDENT
-    printf("Saisir le nom de l'eleve :");
+    printf("Saisir le prénom de l'eleve :");
     getWord(x.name);
     num1 = strlen(x.name);
     //vérifie que la nom saisi est assez court et est une string
     while(num1>=SIZE_NAMES || (is_char(x.name)==0)){
         printf("\nMauvaise saisie ou saisie trop longue !\n");
-	system("clear");
+	    system("clear");
         printf("Saisir a nouveau le nom de l'eleve :");
         getWord(x.name);
         num1 = strlen(x.name);
@@ -260,10 +262,10 @@ Stdt createMainCharacter(Stdt x)
     
     //Pre-stat Student
     x.power = 10;
-    x.fame = 1.0;
+    x.fame = 10;
     x.intellect = 10;
     x.wellness = 10;
-    x.health = 20;
+    x.health = 30;
     x.dodge = 10;
     x.defence = 5;
 
@@ -276,10 +278,10 @@ Stdt createFighter(char name[SIZE_NAMES], char sname[SIZE_NAMES]){
 
     strncpy(fighter.name, name, SIZE_NAMES);
     strncpy(fighter.sname, sname, SIZE_NAMES);
-    fighter.power = 15;
-    fighter.fame = 1;
-    fighter.intellect = 50 + rand()%51;
-    fighter.wellness = 50;
+    fighter.power = 12;
+    fighter.fame = 10;
+    fighter.intellect = 10;
+    fighter.wellness = 10;
     fighter.health = 30;
     fighter.dodge = 10;
     fighter.defence = 7;
@@ -358,32 +360,51 @@ void displayBag(Stdt* main_character){
   }
 }
 
-void fight(Stdt a, Stdt b)
+void fight(Stdt *a, Stdt *b)
 {
-  Stdt tmp;
+  Stdt *tmp;
+  tmp = (Stdt *)malloc(1 * sizeof(Stdt));
   int rounds = 0;
-  //while ninjas are still alive
-  while(a.health>0 && b.health>0){
+  a->health = 30;
+  b->health = 30;
+  //while warriors (ninjas) are still alive
+  while(a->health>0 && b->health>0){
     rounds = rounds + 1;
     printf("---- ROUND %d ----\n", rounds);
     //a=attacker b=defender
     int randomValue = rand()%101;
         //check if b dodges
-        if(randomValue > b.dodge){
+        if(randomValue > b->dodge){
             //the defender takes damages
             //damages are reduced
-            int dmg = a.power - b.defence;
+            int dmg = a->power - b->defence;
+            if(a->Bag != NULL){
+              for(int i=0; i < a->bag_size; i++){
+                if(strcmp(a->Bag[i], a->ref_bag[2])==0)
+                {
+                  dmg += 3;
+                } 
+              }
+            }
+            if(b->Bag != NULL){
+              for(int i=0; i < b->bag_size; i++){
+                if(strcmp(b->Bag[i], b->ref_bag[4])==0)
+                {
+                  dmg -= 3;
+                } 
+              }
+            }
             if(dmg < 0){
                 dmg = 0;
             } 
-            b.health = b.health - dmg;
-			if(b.health < 0){
-				b.health = 0;
+            b->health = b->health - dmg;
+			if(b->health < 0){
+				b->health = 0;
 			}
-            printf("%s prend %d dommages de %s\n", b.name, dmg, a.name);
-            printf("%s a %d HP restant\n", b.name, b.health);
+            printf("%s prend %d dommages de %s\n", b->name, dmg, a->name);
+            printf("%s a %d HP restant\n", b->name, b->health);
         } else {
-            printf("%s esquive l'attaque de %s\n", b.name, a.name);
+            printf("%s esquive l'attaque de %s\n", b->name, a->name);
         }
     //swap attacker and defender
     tmp = a; 
@@ -392,18 +413,18 @@ void fight(Stdt a, Stdt b)
     WaitPress();
   }
   // Display winner
-  if(a.health > 0){
-    printf("%s a vaincu %s !\n", a.name, b.name);
-    printf("%s a %d HP restant\n", a.name, a.health);
+  if(a->health > 0){
+    printf("%s a vaincu %s !\n", a->name, b->name);
+    printf("%s a %d HP restant\n", a->name, a->health);
   } else {
-    a.health = 0;
-	printf("\n");
-    printf("~~> %s a mis KO %s avec %d HP restant!\n", b.name, a.name, b.health);
+    a->health = 0;
+	  printf("\n");
+    printf("~~> %s a mis KO %s avec %d HP restant!\n", b->name, a->name, b->health);
     WaitPress();
   }
   printf("\n");
 }
-
+//affichage du vainqueur du combat
 void displayBeforeFight(Stdt fighter, Stdt main){
     printf("Personnage Principal :\n");
     printf("[%s %s]\n", main.name, main.sname);
@@ -431,9 +452,18 @@ void SaveGame(SaveData* data){
         printf("Erreur fopen (file Save)\n");
         exit(11);
     }
-    
+    fclose(fp);
+    fp = fopen("Save/save.txt", "w");
+    if(fp == NULL){
+        printf("Erreur fopen (file Save)\n");
+        exit(11);
+    }
+    //STAT STDT
 
-    //STAT
+        fprintf(fp, "%s\n", data->main_character.sname);
+
+        fprintf(fp, "%s\n", data->main_character.name);
+    //QUE DE LA ROBUSTESSE
     int ret1 = fprintf(fp, "%d\n", data->main_character.fame);
     if(ret1 < 0)   
     {
@@ -487,7 +517,7 @@ void SaveGame(SaveData* data){
     //BAG
     int ret9 = fprintf(fp, "%d\n", data->main_character.bag_size);
     if(ret9 < 0)
-    {
+    {//ROBUST
         printf("quelque chose ne vas pas avec fprintf de data->main_character.bag_size(SaveGame)\n");
         exit(121);
     }
@@ -502,6 +532,7 @@ void SaveGame(SaveData* data){
     }
 
     //CHOICES
+    //ROBUST
     if(data->nxt_chap == NULL){
         printf("pas de nxt_chap");
         exit(54);
@@ -530,6 +561,10 @@ SaveData loadGame() {
     }
 
     //STAT STDT
+        fscanf(fp, "%s\n", data.main_character.sname);
+
+        fscanf(fp, "%s\n", data.main_character.name);
+
     int ret1 = fscanf(fp, "%d\n", &(data.main_character.fame));
     if(ret1 < 0 )
     {
@@ -601,7 +636,7 @@ SaveData loadGame() {
     } 
 
     for(int i = 0; i < MAX_BAG_SIZE; i++){
-        fscanf(fp, "%s\n", buffer);
+        fscanf(fp, "%[^\n]\n", buffer);
         data.main_character.ref_bag[i] = (char *)malloc((strlen(buffer)+1) * sizeof(char));
         if(data.main_character.ref_bag[i] == NULL){
             printf("Allocation data.main_character.ref_bag a pas marché(loadGame)\n");
@@ -610,13 +645,13 @@ SaveData loadGame() {
         strcpy(data.main_character.ref_bag[i], buffer);
     }
     //CHOICES
-    if(data.nxt_chap != NULL){
+	if(data.nxt_chap != NULL){
         printf("quelque chose ne vas pas avec data.nxt_chap(loadGame)\n");
         exit(123);
     }
     else{
         fscanf(fp, "%s\n", buffer);
-        data.nxt_chap = (char *)malloc((strlen(buffer))* sizeof(char));
+        data.nxt_chap = (char *)malloc((strlen(buffer) + 1)* sizeof(char));
         if(data.nxt_chap == NULL){
             printf("allocation échouée pour data.nxt_chap(loadGame)\n");
             exit(124);
@@ -628,7 +663,6 @@ SaveData loadGame() {
 
     return data;
 }
-
 int robust(int integer)
 {
 	int choice;
@@ -747,7 +781,6 @@ void ProcessDescription(chapter *chap, char *value)
 	// remplit une chaîne de caractères tout en s'assurant que la mémoire allouée est suffisante
 	//=> assigner une description(avec la valeur de 'value') à un chapitre
 }
-
 void ProcessAfterDescription(chapter *chap, char *value)
 {
 	// ROBUST
@@ -820,7 +853,6 @@ void ProcessEvent(chapter *chap, char *value, int counter)
 	// remplit event de la struct chapter avec la %s 'value' en utilisant 'fill_text_property'
 	//=> ajouter des événements
 }
-
 void ProcessChoice(chapter *chap, char *value)
 // =>Ce code est une fonction qui ajoute une option de choix à un chapitre d'une histoire interactive
 {
@@ -926,21 +958,25 @@ chapter create_chapter(char *chapter_name)
 	path = (char *)malloc((strlen("txt/") + strlen(chapter_name) + strlen(".txt")) * sizeof(char) + 1);
 	//~~> contien le chemin d'accès au fichier txt que nous voulons ouvrir
 
+	//chemin d'accès au chapitre
 	strcpy(path, "txt/");
 	strcat(path, chapter_name); // suivie de 'chapter_name'(concaténation)
 	strcat(path, ".txt");		// et de '.txt'
 
 	FILE *file = fopen(path, "r");
 	// crée un chemin vers le fichier txt à partir du nom du chapitre et stocke dans 'path'
+	
+	//ROBUST
 	if (file == NULL)
 	{
-		printf("\nErreur fopen (file 1)\n");
+		printf("\nErreur fopen (path\\Game.c)\n");
 		exit(1111);
 	}
 
 	// char buf[10] = "";
 	chapter chap = {0}; // {malloc(1), malloc(0), malloc(0)};
 	char first_line_chars[4];
+	//vérifie les 3 premiers charactères de chaque ligne
 
 	// GAME
 	while (fgets(line, SIZE_LINE, file) != NULL)
@@ -957,7 +993,7 @@ chapter create_chapter(char *chapter_name)
 		{
 			switch (currentPart)
 			{
-			// on est dans la part 1 : décrit la description du chapitre
+			// on est dans la part 1 : écrit la description du chapitre
 			case 0:
 				ProcessDescription(&chap, line);
 				break;
@@ -966,12 +1002,12 @@ chapter create_chapter(char *chapter_name)
 				current_line_event++;
 				break;
 
-			// on est dans la part 2 : décrit l'événement du chapitre
+			// on est dans la part 2 : écrit l'événement du chapitre
 			case 2:
 				ProcessChoice(&chap, line);
 				//~~> affiche l'événement en cours et les choix disponibles.
 				break;
-
+			//après l'evenement, affiche une description supplémentaire si besoin
 			case 3:
 				ProcessAfterDescription(&chap, line);
 				break;
@@ -985,35 +1021,47 @@ chapter create_chapter(char *chapter_name)
 
 char *displayChapter(chapter chap, Stdt *main_character, char *next_chapter)
 {
+	//ROBUST
 	if(next_chapter == NULL){
 		printf("next_chapter est nul(game.c)");
 		exit(4);
 	}
+	//ROBUST
 	if(main_character == NULL){
 		printf("main_character est nul (game.c)");
 		exit(1);
 	}
+
+	printf("%s", next_chapter);
 	// fighter1
 	char name1[SIZE_NAMES] = "Adama";
 	char sname1[SIZE_NAMES] = "Younga";
 	Stdt fighter1 = createFighter(name1, sname1);
 	// fighter2
-	char name2[SIZE_NAMES] = "Eva";
-	char sname2[SIZE_NAMES] = "Ansermin";
+	char name2[SIZE_NAMES] = "Lucas";
+	char sname2[SIZE_NAMES] = "Traoré";
 	Stdt fighter2 = createFighter(name2, sname2);
 	
 	Stdt tab_fighter[2] = {fighter1, fighter2};
-
+	//créée et trie les 2 méchants très très méchants du jeu
+	
 	int lu;
+	int countAntiseche = 0;
 	int user_choice = 0, count = 0;
 	// printf("%s", chap.description);
 	system("clear");
 	displayTxt(strlen(chap.description), chap.description);
-	printf("\n\n");
-	scanf("%*[^\n]"); // Vider le flux d'entrée
-	scanf("%*c");
-	displayStat(*(main_character));
+	//printf("\n\n");
+	if(strcmp(next_chapter, "F1" ) == 0 || strcmp(next_chapter, "F2" )== 0 || strcmp(next_chapter, "F3" )== 0||strcmp(next_chapter, "F4" )== 0){
+		printf("\n\n");
+		return chap.choices[0].nextChapter;
+	}
+	char c;
+	while((c=getchar())!='\n' &&  c != EOF);
 	WaitPress();
+	displayStat(*(main_character));
+	//affiche le texte du fichier
+	
 	// EVENT DU JEU
 	switch (chap.event->type_event)
 	{
@@ -1022,12 +1070,14 @@ char *displayChapter(chapter chap, Stdt *main_character, char *next_chapter)
 	case 1:
 		// combat contre un fighter
 		displayBeforeFight(tab_fighter[chap.event->n_fighter], *(main_character));
-		fight(*(main_character), tab_fighter[chap.event->n_fighter]);
+		fight(main_character, &(tab_fighter[chap.event->n_fighter]));
+		//lance le combat
 		if(main_character->health == 0){
 			return chap.choices[0].nextChapter;
 		}
 		return chap.choices[1].nextChapter;
 		break;
+		//lance le chapitre dédié en fonction de l'issue du combat
 
 	case 2:
 		// modification de stat
@@ -1044,7 +1094,7 @@ char *displayChapter(chapter chap, Stdt *main_character, char *next_chapter)
 				{
 					main_character->fame = 0;
 				}
-				printf("Vous avez perdu %d de fame !\n", chap.event->n_stat);
+				printf("Vous avez perdu %d de réputation !\n", chap.event->n_stat);
 			}
 			else
 			{
@@ -1055,7 +1105,7 @@ char *displayChapter(chapter chap, Stdt *main_character, char *next_chapter)
 				{
 					main_character->fame = 20;
 				}
-				printf("Vous avez gagné %d de fame !\n", chap.event->n_stat);
+				printf("Vous avez gagné %d de réputation !\n", chap.event->n_stat);
 			}
 			break;
 
@@ -1134,12 +1184,13 @@ char *displayChapter(chapter chap, Stdt *main_character, char *next_chapter)
 			}
 			break;
 		}
+		break;
 	case 3:
 
 		// modification inventaire
 		if (chap.event->add_or_remove_bag == 1)
 		{
-			// c'est un malus de stat
+			// c'est un retrait d'item
 			removeItem(main_character, chap.event->id_object);
 			displayBag(main_character);
 		}
@@ -1154,18 +1205,45 @@ char *displayChapter(chapter chap, Stdt *main_character, char *next_chapter)
 	case 4:
 		displayStat(*(main_character));
 		break;
+		//affiche les stats au moments propices
 	}
-	
+
 	if(chap.event->add_token == 1){
 		main_character->token ++;
 	}
+	//ajoute les jetons pour terminer le jeu
 
-	if(strcmp("15", next_chapter) == 0|| strcmp("23B", next_chapter) == 0|| strcmp("31B", next_chapter)== 0 ){
-		if(main_character->fame < 15){
+	if(strcmp("15", next_chapter) == 0|| strcmp("23B", next_chapter) == 0|| strcmp("3B", next_chapter) == 0){
+		if(main_character->intellect < 15){
 			return chap.choices[1].nextChapter;
 		}
 		return chap.choices[0].nextChapter;
 	}
+	//empêche la triche aux DS
+
+	if(strcmp("34", next_chapter) == 0){
+		if(main_character->token < 2){
+			return chap.choices[1].nextChapter;
+		}
+		return chap.choices[0].nextChapter;
+	}
+	//empêche la triche à la fin du jeu
+
+	if(strcmp("22", next_chapter) == 0|| strcmp("29", next_chapter) == 0){
+		for(int i=0; i < main_character->bag_size; i++)
+			{
+				if(strcmp(main_character->Bag[i], main_character->ref_bag[6])==0)
+				{
+					countAntiseche ++;
+				} 
+			
+			}
+			if (countAntiseche != 1){
+				return chap.choices[1].nextChapter;
+			}	
+	}
+
+	//empêche la triche pendant l'utilisation de l'antisèche
 
 	if (chap.choice_count > 1)
 	{
@@ -1173,8 +1251,11 @@ char *displayChapter(chapter chap, Stdt *main_character, char *next_chapter)
 		{
 			printf("\n%s", chap.choices[i].text);
 		}
+		//affichage des choix
+
 		// CHOIX DU JEU
 		user_choice = robust(chap.choice_count);
+		//vérifie que l'utilisateur sélectionne un nombre correct
 		system("clear");
 		if(chap.after_description != NULL){
 			displayTxt(strlen(chap.after_description), chap.after_description);
@@ -1182,37 +1263,19 @@ char *displayChapter(chapter chap, Stdt *main_character, char *next_chapter)
 		//printf("indx = %d\n", user_choice-1);
 		
 		return chap.choices[user_choice - 1].nextChapter;
+		//retourne le prochain chapitre choisi
 	}
-	else
+	else if(chap.choice_count == 1)
 	{
-		if(chap.choice_count != 1){
 			WaitPress();
-		}
-		if((strcmp(chap.choices[0].nextChapter, "33") == 0) && main_character->health == 0){
-			char *rep;
-			rep = (char *)malloc(3 * sizeof(char));
-			if(rep == NULL){
-				printf("l'allocation du chapitre pour le combat final a pas marchée (game.c)\n");
-				exit(45);
-			}
-			strcpy(rep, "F2");
-			
-			return rep;
-		}
-		else if((strcmp(chap.choices[0].nextChapter, "33") == 0) && main_character->health > 0){
-			char *rep;
-			rep = (char *)malloc(3 * sizeof(char));
-			if(rep == NULL){
-				printf("l'allocation du chapitre pour le combat final a pas marchée (game.c)\n");
-				exit(45);
-			}
-			strcpy(rep, "34");
-			return rep;
-		}
-		
+		//lance le prochain chapitre si pas de choix à la fin du chapitre
+	}
+	else{
+		return "oui";
 	}
 		return chap.choices[0].nextChapter;
 	}
+
 
 int main()
 {
@@ -1256,22 +1319,32 @@ int main()
 		else if(start1 == 2){ //"Reprendre partie"
 			//affichage de %tage en temps réelle
 			displayLoading();
-				
+			free(next_chap);
 			if(is_save_txt_null() != 0){
 				printf("Sauvegarde chargée avec succès !\n");
-				sleep(1);
-				system("clear"); 
+				system("clear");
 
 				SaveData loadedData = loadGame();
-				next_chap = Remove_carriage_return(loadedData.nxt_chap);
+				mainCharacter = loadedData.main_character;
+				next_chap = (char *)malloc(strlen(loadedData.nxt_chap) + 1);
+				if(next_chap == NULL){
+					printf("l'Allocation next_chap à échoué\n");
+					exit(23);
+				}
+				strcpy(next_chap, loadedData.nxt_chap);
 				ch = create_chapter(next_chap);
-
 			} 
 			else 
 			{
 				printf("Impossible de charger la sauvegarde!\n\n");
 				start2 = no_game();
-				if(start2 == 1){ //"Nouvelle Partie"
+
+				//affichage de l'écran de départ 
+				//libère l'espace du chapitre
+				//retouve l'ancienne sauvegarde et la charge				
+				//charge toutes les informations de la sauvegarde précédente//ROBUST
+				//continue l'aventure là où elle était lancée	//sauvegarde inexistante				
+ 			if(start2 == 1){ //"Nouvelle Partie"
 					displayLoading();
 					//affichage de %tage en temps réelle
 					system("clear");
@@ -1280,7 +1353,7 @@ int main()
 					int size2 = strlen(txt1);
 					displayTxt(size2, txt1);//Affichage de Txt1   
 
-					mainCharacter = createMainCharacter(mainCharacter);//créée le personnage principal
+					mainCharacter = createMainCharacter(mainCharacter);//crée le personnage principal
 					mainCharacter.token = 0;
 					system("clear");
 					displayStat(mainCharacter);//affiche les stats du personnage principal
@@ -1299,14 +1372,18 @@ int main()
 			return 0;
 		}
 		while (game == 1){
-			next_chap = displayChapter(ch, &mainCharacter, next_chap);
+			strcpy(next_chap, displayChapter(ch, &mainCharacter, next_chap));
+			if(strcmp(next_chap, "F5") == 0){
+				game = 0;
+				break;
+			}
 			free(ch.description);
 			free(ch.after_description);
 			save.main_character = mainCharacter;//actualisation du fichier de sauvegarde
 			if(save.nxt_chap == NULL){
 				save.nxt_chap = (char *)malloc(strlen(next_chap) * sizeof(char));
 				if(save.nxt_chap == NULL){
-					printf("allocation de save.nxt_chap échouée'main.c)");
+					printf("alocation de save.nxt_chap échouée(main.c)");
 					exit(5);
 				}
 			}
@@ -1314,12 +1391,6 @@ int main()
 			ch = create_chapter(next_chap);
 			SaveGame(&save);
 			free(save.nxt_chap);
-
-			if(next_chap == "F1" || next_chap == "F2" || next_chap == "F3" || next_chap == "F4"){
-				game = 0;
-			}
 		}
-
-
 		return 0;
 }

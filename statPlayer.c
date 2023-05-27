@@ -10,6 +10,7 @@ void displayStat(Stdt a){
   printf("Force : %d\n", a.power);
   printf("Mental : %d\n", a.wellness);
 }
+//affichage des statistiques
 
 void displayBag(Stdt* main_character){
   //ROBUST
@@ -31,33 +32,53 @@ void displayBag(Stdt* main_character){
   	printf("%s\n", main_character->Bag[i]);
   }
 }
+//affichage du sac
 
-void fight(Stdt a, Stdt b)
+void fight(Stdt *a, Stdt *b)
 {
-  Stdt tmp;
+  Stdt *tmp;
+  tmp = (Stdt *)malloc(1 * sizeof(Stdt));
   int rounds = 0;
-  //while ninjas are still alive
-  while(a.health>0 && b.health>0){
+  a->health = 30;
+  b->health = 30;
+  //while warriors (ninjas) are still alive
+  while(a->health>0 && b->health>0){
     rounds = rounds + 1;
     printf("---- ROUND %d ----\n", rounds);
     //a=attacker b=defender
     int randomValue = rand()%101;
         //check if b dodges
-        if(randomValue > b.dodge){
+        if(randomValue > b->dodge){
             //the defender takes damages
             //damages are reduced
-            int dmg = a.power - b.defence;
+            int dmg = a->power - b->defence;
+            if(a->Bag != NULL){
+              for(int i=0; i < a->bag_size; i++){
+                if(strcmp(a->Bag[i], a->ref_bag[2])==0)
+                {
+                  dmg += 3;
+                } 
+              }
+            }
+            if(b->Bag != NULL){
+              for(int i=0; i < b->bag_size; i++){
+                if(strcmp(b->Bag[i], b->ref_bag[4])==0)
+                {
+                  dmg -= 3;
+                } 
+              }
+            }
             if(dmg < 0){
                 dmg = 0;
             } 
-            b.health = b.health - dmg;
-			if(b.health < 0){
-				b.health = 0;
+            b->health = b->health - dmg;
+			if(b->health < 0){
+				b->health = 0;
 			}
-            printf("%s prend %d dommages de %s\n", b.name, dmg, a.name);
-            printf("%s a %d HP restant\n", b.name, b.health);
+            printf("%s prend %d dommages de %s\n", b->name, dmg, a->name);
+            printf("%s a %d HP restant\n", b->name, b->health);
         } else {
-            printf("%s esquive l'attaque de %s\n", b.name, a.name);
+            printf("%s esquive l'attaque de %s\n", b->name, a->name);
         }
     //swap attacker and defender
     tmp = a; 
@@ -66,20 +87,22 @@ void fight(Stdt a, Stdt b)
     WaitPress();
   }
   // Display winner
-  if(a.health > 0){
-    printf("%s a vaincu %s !\n", a.name, b.name);
-    printf("%s a %d HP restant\n", a.name, a.health);
+  if(a->health > 0){
+    printf("%s a vaincu %s !\n", a->name, b->name);
+    printf("%s a %d HP restant\n", a->name, a->health);
   } else {
-    a.health = 0;
-	printf("\n");
-    printf("~~> %s a mis KO %s avec %d HP restant!\n", b.name, a.name, b.health);
+    a->health = 0;
+	  printf("\n");
+    printf("~~> %s a mis KO %s avec %d HP restant!\n", b->name, a->name, b->health);
     WaitPress();
   }
   printf("\n");
 }
+//affichage du vainqueur du combat
+
 
 void displayBeforeFight(Stdt fighter, Stdt main){
-    printf("Personnage Principal :\n");
+    printf("\n\nPersonnage Principal :\n");
     printf("[%s %s]\n", main.name, main.sname);
     printf("Attaque = %d\n", main.power);
     printf("Defense = %d\n", main.defence);
@@ -94,4 +117,4 @@ void displayBeforeFight(Stdt fighter, Stdt main){
     printf("\n\n\n");
     WaitPress();
 }
-
+//affiche les stats des deux combattants

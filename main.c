@@ -42,22 +42,32 @@ int main()
 		else if(start1 == 2){ //"Reprendre partie"
 			//affichage de %tage en temps réelle
 			displayLoading();
-				
+			free(next_chap);
 			if(is_save_txt_null() != 0){
 				printf("Sauvegarde chargée avec succès !\n");
-				sleep(1);
-				system("clear"); 
+				system("clear");
 
 				SaveData loadedData = loadGame();
-				next_chap = Remove_carriage_return(loadedData.nxt_chap);
+				mainCharacter = loadedData.main_character;
+				next_chap = (char *)malloc(strlen(loadedData.nxt_chap) + 1);
+				if(next_chap == NULL){
+					printf("l'Allocation next_chap à échoué\n");
+					exit(23);
+				}
+				strcpy(next_chap, loadedData.nxt_chap);
 				ch = create_chapter(next_chap);
-
 			} 
 			else 
 			{
 				printf("Impossible de charger la sauvegarde!\n\n");
 				start2 = no_game();
-				if(start2 == 1){ //"Nouvelle Partie"
+
+				//affichage de l'écran de départ 
+				//libère l'espace du chapitre
+				//retouve l'ancienne sauvegarde et la charge				
+				//charge toutes les informations de la sauvegarde précédente//ROBUST
+				//continue l'aventure là où elle était lancée	//sauvegarde inexistante				
+ 			if(start2 == 1){ //"Nouvelle Partie"
 					displayLoading();
 					//affichage de %tage en temps réelle
 					system("clear");
@@ -66,7 +76,7 @@ int main()
 					int size2 = strlen(txt1);
 					displayTxt(size2, txt1);//Affichage de Txt1   
 
-					mainCharacter = createMainCharacter(mainCharacter);//créée le personnage principal
+					mainCharacter = createMainCharacter(mainCharacter);//crée le personnage principal
 					mainCharacter.token = 0;
 					system("clear");
 					displayStat(mainCharacter);//affiche les stats du personnage principal
@@ -86,13 +96,17 @@ int main()
 		}
 		while (game == 1){
 			next_chap = displayChapter(ch, &mainCharacter, next_chap);
+			if(strcmp(next_chap, "F5") == 0){
+				game = 0;
+				break;
+			}
 			free(ch.description);
 			free(ch.after_description);
 			save.main_character = mainCharacter;//actualisation du fichier de sauvegarde
 			if(save.nxt_chap == NULL){
 				save.nxt_chap = (char *)malloc(strlen(next_chap) * sizeof(char));
 				if(save.nxt_chap == NULL){
-					printf("allocation de save.nxt_chap échouée'main.c)");
+					printf("alocation de save.nxt_chap échouée(main.c)");
 					exit(5);
 				}
 			}
@@ -100,13 +114,7 @@ int main()
 			ch = create_chapter(next_chap);
 			SaveGame(&save);
 			free(save.nxt_chap);
-
-			if(next_chap == "F1" || next_chap == "F2" || next_chap == "F3" || next_chap == "F4"){
-				game = 0;
-			}
 		}
-
-
 		return 0;
 }
 

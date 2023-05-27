@@ -3,11 +3,10 @@
                             ||__||||__||||__||||__||||__||||__||||__||||__||||_______||||__||
                             |/__\||/__\||/__\||/__\||/__\||/__\||/__\||/__\||/_______\||/__\|
 
-
 Cela ne va rien t'apporter, non ?
 A la place, il faudrait mieux aller récupérer des affaires à la bibliothèque.
 
 ###
 0
 ###
-1 - Continuer_04B
+1-Continuer_04B

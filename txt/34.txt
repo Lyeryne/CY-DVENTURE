@@ -6,8 +6,6 @@
 
 
 C'est maintenant l'heure du verdict du jury.
-Si tu as deux ou plus de jeton DS, appuie sur 1 sinon, appuie sur 2.
-
 ###
 0
 ###

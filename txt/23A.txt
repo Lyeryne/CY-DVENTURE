@@ -9,7 +9,7 @@ Pour voir si tu réussis, tape un nombre entre 1 et 3.
 
 ###
 3
-8
+6
 0
 0
 0

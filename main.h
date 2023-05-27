@@ -14,8 +14,6 @@
 #include "Game.h"
 #include "Robust.h"
 
-extern int stopProgram;
-
 int main();
 
 #endif

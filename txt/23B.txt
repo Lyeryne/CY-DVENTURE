@@ -8,7 +8,7 @@ Tu reçois le sujet.
 Le DS va commencer.
 
 ###
-4
+0
 ###
-1-_24A
-2-_24B
+1-DS_24A
+2-DS_24B

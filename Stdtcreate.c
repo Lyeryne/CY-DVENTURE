@@ -26,6 +26,7 @@ Stdt createMainCharacter(Stdt x)
         }
         j++;
     }
+   
 
     printf("\n\nSaisir le nom de famille de l'eleve :");
     getWord(x.sname);
@@ -49,9 +50,9 @@ Stdt createMainCharacter(Stdt x)
         j++;
     }
     
-    //Pre-stat Student
+    //Pre-stat Student/stats de base
     x.power = 10;
-    x.fame = 1;
+    x.fame = 10;
     x.intellect = 10;
     x.wellness = 10;
     x.health = 30;
@@ -68,7 +69,7 @@ Stdt createFighter(char name[SIZE_NAMES], char sname[SIZE_NAMES]){
     strncpy(fighter.name, name, SIZE_NAMES);
     strncpy(fighter.sname, sname, SIZE_NAMES);
     fighter.power = 12;
-    fighter.fame = 1;
+    fighter.fame = 10;
     fighter.intellect = 10;
     fighter.wellness = 10;
     fighter.health = 30;
@@ -77,6 +78,8 @@ Stdt createFighter(char name[SIZE_NAMES], char sname[SIZE_NAMES]){
 
     return fighter;
 }
+//structures des combattants
+
 
 void createBag(Stdt *main_character)
 {
@@ -99,11 +102,11 @@ void createBag(Stdt *main_character)
         {
             main_character->ref_bag[i] = set_text_tab(main_character->ref_bag[i], TabBag[i]);
         }
-        main_character->bag_size=0;
         addItem(main_character, 0);
         addItem(main_character, 1);
     }
 }
+//créée le sac objet par objet et rempli les items de départ
 
 void removeItem(Stdt* main_character, const int item)
 {
@@ -128,7 +131,7 @@ void removeItem(Stdt* main_character, const int item)
             return;
         }
     }
-    //Robust
+    //Pas l'objet dans le sac
     printf("\n~%s~ n'a pas été trouvé dans le sac.\n", main_character->ref_bag[item]);
 }
 
@@ -158,11 +161,12 @@ void addItem(Stdt* main_character, const int item)
                 return;
             } 
         }
+    //vérifie que l'objet n'est pas déjà dans le sac
 
 	main_character->Bag[main_character->bag_size] = set_text_tab(main_character->Bag[main_character->bag_size], main_character->ref_bag[item]);
     printf("~%s~ a bien été ajouté dans le sac.\n", main_character->ref_bag[item]);
 	main_character->bag_size ++;
-    }
+    }//ajoute l'objet dans le sac
 } 
 
 

@@ -4,7 +4,7 @@
                             |/__\||/__\||/__\||/__\||/__\||/__\||/__\||/__\||/_______\||/__\|
 
 
-Après le cours, tu décides d'aller réviser dans une sallle de l'école.
+Après le cours, tu décides d'aller réviser dans une salle de l'école.
 Vous récapitulez le cours avec tes amis : une structure permet de rassembler différentes variables sous le même nom.
 Par exemple, 
 struct Personne {

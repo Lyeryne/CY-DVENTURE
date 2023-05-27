@@ -9,9 +9,18 @@ void SaveGame(SaveData* data){
         printf("Erreur fopen (file Save)\n");
         exit(11);
     }
-    
+    fclose(fp);
+    fp = fopen("Save/save.txt", "w");
+    if(fp == NULL){
+        printf("Erreur fopen (file Save)\n");
+        exit(11);
+    }
+    //STAT STDT
 
-    //STAT
+        fprintf(fp, "%s\n", data->main_character.sname);
+
+        fprintf(fp, "%s\n", data->main_character.name);
+    //QUE DE LA ROBUSTESSE
     int ret1 = fprintf(fp, "%d\n", data->main_character.fame);
     if(ret1 < 0)   
     {
@@ -65,7 +74,7 @@ void SaveGame(SaveData* data){
     //BAG
     int ret9 = fprintf(fp, "%d\n", data->main_character.bag_size);
     if(ret9 < 0)
-    {
+    {//ROBUST
         printf("quelque chose ne vas pas avec fprintf de data->main_character.bag_size(SaveGame)\n");
         exit(121);
     }
@@ -80,6 +89,7 @@ void SaveGame(SaveData* data){
     }
 
     //CHOICES
+    //ROBUST
     if(data->nxt_chap == NULL){
         printf("pas de nxt_chap");
         exit(54);
@@ -108,6 +118,10 @@ SaveData loadGame() {
     }
 
     //STAT STDT
+        fscanf(fp, "%s\n", data.main_character.sname);
+
+        fscanf(fp, "%s\n", data.main_character.name);
+
     int ret1 = fscanf(fp, "%d\n", &(data.main_character.fame));
     if(ret1 < 0 )
     {
@@ -179,7 +193,7 @@ SaveData loadGame() {
     } 
 
     for(int i = 0; i < MAX_BAG_SIZE; i++){
-        fscanf(fp, "%s\n", buffer);
+        fscanf(fp, "%[^\n]\n", buffer);
         data.main_character.ref_bag[i] = (char *)malloc((strlen(buffer)+1) * sizeof(char));
         if(data.main_character.ref_bag[i] == NULL){
             printf("Allocation data.main_character.ref_bag a pas marché(loadGame)\n");
@@ -188,13 +202,13 @@ SaveData loadGame() {
         strcpy(data.main_character.ref_bag[i], buffer);
     }
     //CHOICES
-    if(data.nxt_chap != NULL){
+	if(data.nxt_chap != NULL){
         printf("quelque chose ne vas pas avec data.nxt_chap(loadGame)\n");
         exit(123);
     }
     else{
         fscanf(fp, "%s\n", buffer);
-        data.nxt_chap = (char *)malloc((strlen(buffer))* sizeof(char));
+        data.nxt_chap = (char *)malloc((strlen(buffer) + 1)* sizeof(char));
         if(data.nxt_chap == NULL){
             printf("allocation échouée pour data.nxt_chap(loadGame)\n");
             exit(124);

@@ -29,5 +29,6 @@ void displayLoading()
 void WaitPress()
 {
     printf("\n\nAppuyez sur entrée\n");
-    while (getchar() != '\n');
+    scanf("%*[^\n]"); // Vider le flux d'entrée
+	scanf("%*c");
 }

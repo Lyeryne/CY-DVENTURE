@@ -1,4 +1,4 @@
-En commission disciplinaire, le verdict est sans appel : tu est renvoyé de l'école.
+En commission disciplinaire, le verdict est sans appel : tu es renvoyé de l'école pour fraude.
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~XTECH DVENTURE~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -7,3 +7,7 @@ En commission disciplinaire, le verdict est sans appel : tu est renvoyé de l'é
                                     █████   ██ ██ ██  ██ 
                                     ██      ██ ██  ██ ██ 
                                     ██      ██ ██   ████ 
+###
+0
+###
+1-_F5
