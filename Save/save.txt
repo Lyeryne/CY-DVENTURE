@@ -1,11 +1,11 @@
-3
+1
 10
 10
 10
-30
+20
 10
 5
--758484256
+0
 2
 Stylo
 Cahier
@@ -16,4 +16,4 @@ Ordinateur
 Veste
 Girlfriend
 Antisèche
-15
+02

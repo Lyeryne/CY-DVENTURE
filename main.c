@@ -43,11 +43,7 @@ int main()
 			//affichage de %tage en temps réelle
 			displayLoading();
 				
-			char *file;
-			file = (char *)malloc((strlen("Save") + strlen(".txt")) * sizeof(char) +1);
-			strcpy(file, "Save");
-			strcat(file, ".txt");
-			if(is_txt_null(file) != 0){
+			if(is_save_txt_null() != 0){
 				printf("Sauvegarde chargée avec succès !\n");
 				sleep(1);
 				system("clear"); 
@@ -71,6 +67,7 @@ int main()
 					displayTxt(size2, txt1);//Affichage de Txt1   
 
 					mainCharacter = createMainCharacter(mainCharacter);//créée le personnage principal
+					mainCharacter.token = 0;
 					system("clear");
 					displayStat(mainCharacter);//affiche les stats du personnage principal
 					WaitPress(); //attends une action de l'utilisateur (ENTREE) pour afficher la suite
@@ -89,16 +86,21 @@ int main()
 		}
 		while (game == 1){
 			next_chap = displayChapter(ch, &mainCharacter, next_chap);
+			free(ch.description);
+			free(ch.after_description);
 			save.main_character = mainCharacter;//actualisation du fichier de sauvegarde
 			if(save.nxt_chap == NULL){
 				save.nxt_chap = (char *)malloc(strlen(next_chap) * sizeof(char));
+				if(save.nxt_chap == NULL){
+					printf("allocation de save.nxt_chap échouée'main.c)");
+					exit(5);
+				}
 			}
 			save.nxt_chap = next_chap;
 			ch = create_chapter(next_chap);
-			printf("%d", save.main_character.fame);
-			fflush(stdout);
 			SaveGame(&save);
 			free(save.nxt_chap);
+
 			if(next_chap == "F1" || next_chap == "F2" || next_chap == "F3" || next_chap == "F4"){
 				game = 0;
 			}
@@ -107,3 +109,4 @@ int main()
 
 		return 0;
 }
+

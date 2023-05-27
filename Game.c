@@ -11,10 +11,10 @@ int pre_game()
 	sleep(1);
 	system("clear");
 	// Choix de partie
-	printf("========= MENU ========\n"); // ASCI ART
-	printf(" 1 -> Nouvelle Partie\n");	 // ASCI ART
-	printf(" 2 -> Reprendre Partie\n");	 // ASCI ART
-	printf(" 3 -> Quitter le Jeu\n\n");	 // ASCI ART
+	printf("========= MENU ========\n");
+	printf(" 1 -> Nouvelle Partie\n");	 
+	printf(" 2 -> Reprendre Partie\n");	 
+	printf(" 3 -> Quitter le Jeu\n\n");	 
 
 	start = robust(3); 
 
@@ -294,7 +294,7 @@ chapter create_chapter(char *chapter_name)
 	}
 
 	// char buf[10] = "";
-	chapter chap = {}; // {malloc(1), malloc(0), malloc(0)};
+	chapter chap = {0}; // {malloc(1), malloc(0), malloc(0)};
 	char first_line_chars[4];
 
 	// GAME
@@ -349,8 +349,8 @@ char *displayChapter(chapter chap, Stdt *main_character, char *next_chapter)
 		exit(1);
 	}
 	// fighter1
-	char name1[SIZE_NAMES] = "Romuald";
-	char sname1[SIZE_NAMES] = "Grignon";
+	char name1[SIZE_NAMES] = "Adama";
+	char sname1[SIZE_NAMES] = "Younga";
 	Stdt fighter1 = createFighter(name1, sname1);
 	// fighter2
 	char name2[SIZE_NAMES] = "Eva";
@@ -365,9 +365,9 @@ char *displayChapter(chapter chap, Stdt *main_character, char *next_chapter)
 	system("clear");
 	displayTxt(strlen(chap.description), chap.description);
 	printf("\n\n");
-	scanf("%*[^\n]"); // Vider le flux d'entrée
-	scanf("%*c");
 	displayStat(*(main_character));
+	//scanf("%*[^\n]"); // Vider le flux d'entrée
+	//scanf("%*c");
 	WaitPress();
 	// EVENT DU JEU
 	switch (chap.event->type_event)
@@ -487,6 +487,7 @@ char *displayChapter(chapter chap, Stdt *main_character, char *next_chapter)
 				}
 				printf("Vous avez gagné %d de mental !\n", chap.event->n_stat);
 			}
+			break;
 		}
 	case 3:
 
@@ -509,12 +510,12 @@ char *displayChapter(chapter chap, Stdt *main_character, char *next_chapter)
 		displayStat(*(main_character));
 		break;
 	}
-	
+
 	if(chap.event->add_token == 1){
 		main_character->token ++;
 	}
 
-	if(strcmp("15", next_chapter) == 0|| strcmp("23B", next_chapter) || strcmp("31B", next_chapter) ){
+	if(strcmp("15", next_chapter) == 0|| strcmp("23B", next_chapter) == 0|| strcmp("31B", next_chapter) == 0){
 		if(main_character->fame < 15){
 			return chap.choices[1].nextChapter;
 		}
@@ -539,7 +540,7 @@ char *displayChapter(chapter chap, Stdt *main_character, char *next_chapter)
 	}
 	else
 	{
-		if(chap.choice_count != 1){
+		if(chap.choice_count == 1){
 			WaitPress();
 		}
 		if((strcmp(chap.choices[0].nextChapter, "33") == 0) && main_character->health == 0){

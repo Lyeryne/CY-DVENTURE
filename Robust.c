@@ -67,19 +67,12 @@ int robust(int integer)
 	return choice;
 }
 
-long is_txt_null(char *file_name)
+long is_save_txt_null()
 {
-    if (file_name == NULL)
-    {
-        printf("Il n'y a pas de nom de fichier\n");
-        exit(123);
-    }
-
-    char *path = (char *)malloc((strlen("txt/") + strlen(file_name) + strlen(".txt")) * sizeof(char) + 1);
+    char *path = (char *)malloc((strlen("Save/save") + strlen(".txt")) * sizeof(char) + 1);
 	//~~> contien le chemin d'accès au fichier txt que nous voulons ouvrir
 
-	strcpy(path, "txt/");
-	strcat(path, file_name); // suivie de 'chapter_name'(concaténation)
+	strcpy(path, "Save/save"); // suivie de 'chapter_name'(concaténation)
 	strcat(path, ".txt");		// et de '.txt'
 
     FILE *fp = fopen(path, "r");

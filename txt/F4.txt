@@ -1,6 +1,6 @@
 Monsieur,
 
- Nous souhaiterions vousinformer des résultats de votre année d'études à l'école d'ingénieur, et malheureusement, vous devons vous annoncer que vous n'avez pas réussi votre année.
+Nous souhaiterions vousinformer des résultats de votre année d'études à l'école d'ingénieur, et malheureusement, vous devons vous annoncer que vous n'avez pas réussi votre année.
 
 Nous comprenons que cette nouvelle puisse être décevante et difficile à accepter. Nous tenons à souligner que nous apprécions les efforts que vous avez déployés tout au long de l'année académique, ainsi que votre engagement envers vos études et votre volonté de réussir.
 
@@ -18,4 +18,8 @@ Le Groupe X TECH
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~XTECH DVENTURE~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-                                            FIN
+                                    ███████ ██ ███    ██ 
+                                    ██      ██ ████   ██ 
+                                    █████   ██ ██ ██  ██ 
+                                    ██      ██ ██  ██ ██ 
+                                    ██      ██ ██   ████ 

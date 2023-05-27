@@ -188,7 +188,7 @@ SaveData loadGame() {
         strcpy(data.main_character.ref_bag[i], buffer);
     }
     //CHOICES
-    if(data.nxt_chap == NULL){
+    if(data.nxt_chap != NULL){
         printf("quelque chose ne vas pas avec data.nxt_chap(loadGame)\n");
         exit(123);
     }

@@ -3,7 +3,6 @@
 #include <stdlib.h>
 #include <string.h>
 
-
 #define SIZE_NAMES 100
 #define MAX_BAG_SIZE 7
 #define SIZE_LINE 10000
@@ -58,7 +57,8 @@ typedef struct
 typedef struct 
 {
     Stdt main_character;
-    chapter saveEvent;//stocke l'option de choix sélectionnée par l'utilisateur
+    char *nxt_chap;
+	int load;
 } SaveData;
 
 
@@ -78,6 +78,22 @@ char toUpper(char c){
 char toLower(char c){
     return c+32;
 }
+
+char *Remove_carriage_return(char *value) {
+	if (value == NULL) {
+		printf("quelque chose ne vas pas avec value(Remove_carriage_return/Robust.c)\n");
+		exit(345);
+	}
+	for (int i = 0; i <strlen(value) ; i++) {
+		char bonjour = value[i]; // Correction : retirer l'opérateur * ici
+		if (bonjour == '\n' || bonjour == '\r') { // Correction : utiliser des simples quotes pour les caractères
+			value[i] = '\0';
+			break;
+		}
+	}
+	return value;
+	
+}
 void WaitPress()
 {
     printf("Press ENTER pour continuer...\n");
@@ -93,7 +109,8 @@ void getWord(char* buffer){
 
     do{
         ret = scanf("%s", buffer);
-        while(getchar() != '\n');
+        scanf("%*[^\n]"); // Vider le flux d'entrée
+		scanf("%*c");
     } while (ret != 1);
 
 }
@@ -107,6 +124,30 @@ char *set_text_tab(char *buf, char *value){
 	strcpy(buf, value);
 	return buf;
 }
+long is_save_txt_null()
+{
+    char *path = (char *)malloc((strlen("Save/save") + strlen(".txt")) * sizeof(char) + 1);
+	//~~> contien le chemin d'accès au fichier txt que nous voulons ouvrir
+
+	strcpy(path, "Save/save"); // suivie de 'chapter_name'(concaténation)
+	strcat(path, ".txt");		// et de '.txt'
+
+    FILE *fp = fopen(path, "r");
+    if(fp == NULL)
+    {
+        printf("erreur fopen (file2)\n");
+        exit(125);
+    }
+
+    fseek(fp, 0, SEEK_END);
+
+    long result = ftell(fp);
+
+    fclose(fp);
+
+return result;
+}
+
 
 void removeItem(Stdt* main_character, const int item)
 {
@@ -273,9 +314,17 @@ void createBag(Stdt *main_character)
     }
 }
 
-
-
-
+void displayTxt(int size, char *txt)
+{
+//afficher .txt lettre par lettre avec un petit délai entre chaque lettre, ~> impression de temps réel
+	int delay1 = 0;//simuler l'effet de défilement(en ms) 
+	for(int i=0; i<size; i++){
+		printf("%c", txt[i]);
+		fflush(stdout);//force l'affichage du caractère sur la sortie standard avant de passer à la lettre suivante
+		struct timespec attente ={0, delay1*1000000};//attendre le délai spécifié entre chaque lettre
+		nanosleep(&attente, NULL);// permet de mettre en pause l'exécution du programme pendant une durée donnée(ici en delay1)
+	}
+}
 
 void displayStat(Stdt a){
   char* txt1 = "Stat actuel de votre personnage : \n\n";
@@ -372,69 +421,213 @@ void displayBeforeFight(Stdt fighter, Stdt main){
     WaitPress();
 }
 
-
-
 void SaveGame(SaveData* data){
-    FILE* fp = fopen("txt/save.txt", "w");
+    if(data == NULL){
+        printf("y'a pas de sauvegarde mon sauce");
+        exit(22);
+    }
+    FILE* fp = fopen("Save/save.txt", "w");
     if(fp == NULL){
         printf("Erreur fopen (file Save)\n");
         exit(11);
     }
+    
 
     //STAT
-    fprintf(fp, "%d\n", data->main_character.fame);
-    fprintf(fp, "%d\n", data->main_character.power);
-    fprintf(fp, "%d\n", data->main_character.intellect);
-    fprintf(fp, "%d\n", data->main_character.wellness);
-    fprintf(fp, "%d\n", data->main_character.health);
-    fprintf(fp, "%d\n", data->main_character.dodge);
-    fprintf(fp, "%d\n", data->main_character.defence);
+    int ret1 = fprintf(fp, "%d\n", data->main_character.fame);
+    if(ret1 < 0)   
+    {
+        printf("quelque chose ne vas pas avec fprintf de data->main_character.fame(SaveGame)\n");
+        exit(112);
+    }
+    int ret2 = fprintf(fp, "%d\n", data->main_character.power);
+    if(ret2 < 0)
+    {
+        printf("quelque chose ne vas pas avec fprintf de data->main_character.power(SaveGame)\n");
+        exit(113);
+    }
+    int ret3 = fprintf(fp, "%d\n", data->main_character.intellect);
+    if(ret3 < 0)
+    {
+        printf("quelque chose ne vas pas avec fprintf de data->main_character.intellect(SaveGame)\n");
+        exit(114);
+    } 
+    int ret4 = fprintf(fp, "%d\n", data->main_character.wellness);
+    if(ret4 < 0)
+    {
+        printf("quelque chose ne vas pas avec fprintf de data->main_character.wellness(SaveGame)\n");
+        exit(115);
+    }
+    int ret5 = fprintf(fp, "%d\n", data->main_character.health);
+    if(ret5 < 0)
+    {
+        printf("quelque chose ne vas pas avec fprintf de data->main_character.health(SaveGame)\n");
+        exit(116);
+    }
+    int ret6 = fprintf(fp, "%d\n", data->main_character.dodge);
+    if(ret6 < 0)
+    {
+        printf("quelque chose ne vas pas avec fprintf de data->main_character.dodge(SaveGame)\n");
+        exit(117);
+    }
+    int ret7 = fprintf(fp, "%d\n", data->main_character.defence);
+    if(ret7 < 0)
+    {
+        printf("quelque chose ne vas pas avec fprintf de data->main_character.defence(SaveGame)\n");
+        exit(118);
+    }
+    int ret8 = fprintf(fp, "%d\n", data->main_character.token);
+    if(ret8 < 0)
+    {
+        printf("quelque chose ne vas pas avec fprintf de data->main_character.token(SaveGame)\n");
+        exit(120);
+    }
+
     
     //BAG
-    fprintf(fp, "%d\n", data->main_character.bag_size);
-    for (int i = 0; i < data->main_character.bag_size; i++)
+    int ret9 = fprintf(fp, "%d\n", data->main_character.bag_size);
+    if(ret9 < 0)
     {
-    	fprintf(fp, "Votre Sac : %s\n", data->main_character.Bag[i]);
+        printf("quelque chose ne vas pas avec fprintf de data->main_character.bag_size(SaveGame)\n");
+        exit(121);
+    }
+    for (int i = 0; i < data->main_character.bag_size; i++)
+    {				 
+
+    	fprintf(fp, "%s\n", data->main_character.Bag[i]);
     } 
 
+    for(int i = 0; i < MAX_BAG_SIZE; i++){
+        fprintf(fp, "%s\n", data->main_character.ref_bag[i]);
+    }
+
     //CHOICES
-    fprintf(fp, "selected_choice:%d\n", data->saveEvent.choice_count);
+    if(data->nxt_chap == NULL){
+        printf("pas de nxt_chap");
+        exit(54);
+    }
+    else{
+        int ret10 = fprintf(fp, "%s\n", data->nxt_chap);
+        if(ret10 < 0)
+        {
+            printf("quelque chose ne vas pas avec fprintf de data->nxt_chap(SaveGame)\n");
+            exit(122);
+        }
+    }
 
     fclose(fp);
 }
 
 SaveData loadGame() {
-	SaveData data;
-    FILE* fp = fopen("txt/save.txt", "r");
+    SaveData data = {0};
+    char buffer[256];
+    char buffer2[340];
+    data.load = 0;
+    FILE* fp = fopen("Save/save.txt", "r");
     if (fp == NULL) {
         printf("Erreur fopen (file LoadGame)\n");
         exit(111);
     }
 
-    //STAT
-    if (fscanf(fp, "%d", &(data.main_character.fame)) != 1 ||
-        fscanf(fp, "%d", &(data.main_character.power)) != 1 ||
-        fscanf(fp, "%d", &(data.main_character.intellect)) != 1 ||
-        fscanf(fp, "%d", &(data.main_character.wellness)) != 1 || 
-        fscanf(fp, "%d", &(data.main_character.health)) != 1 ||
-        fscanf(fp, "%d", &(data.main_character.dodge)) != 1 ||
-        fscanf(fp, "%d", &(data.main_character.defence)) != 1) {
-        printf("Erreur de lecture des données de stat\n");
-        fclose(fp);
-        exit(1);
+    //STAT STDT
+    int ret1 = fscanf(fp, "%d\n", &(data.main_character.fame));
+    if(ret1 < 0 )
+    {
+        printf("quelque chose ne vas pas avec fscanf de data.main_character.fame(loadGame)\n");
+        exit(112);
+    }
+    int ret2 = fscanf(fp, "%d\n", &(data.main_character.power));
+    if(ret2 < 0)
+    {
+        printf("quelque chose ne vas pas avec fscanf de data.main_character.power(loadGame)\n");
+        exit(113);
+    }
+    int ret3 = fscanf(fp, "%d\n", &(data.main_character.intellect));
+    if(ret3  < 0)
+    {
+        printf("quelque chose ne vas pas avec fscanf de data.main_character.intellect(loadGame)\n");
+        exit(114);
+    } 
+    int ret4 = fscanf(fp, "%d\n", &(data.main_character.wellness));
+    if(ret4  < 0)
+    {
+        printf("quelque chose ne vas pas avec fscanf de data.main_character.wellness(loadGame)\n");
+        exit(115);
+    }
+    int ret5 = fscanf(fp, "%d\n", &(data.main_character.health));
+    if(ret5  < 0)
+    {
+        printf("quelque chose ne vas pas avec fscanf de data.main_character.health(loadGame)\n");
+        exit(116);
+    }
+    int ret6 = fscanf(fp, "%d\n", &(data.main_character.dodge));
+    if(ret6  < 0)
+    {
+        printf("quelque chose ne vas pas avec fscanf de data.main_character.dodge(loadGame)\n");
+        exit(117);
+    }
+    int ret7 = fscanf(fp, "%d\n", &(data.main_character.defence));
+    if(ret7  < 0)
+    {
+        printf("quelque chose ne vas pas avec fscanf de data.main_character.defence(loadGame)\n");
+        exit(118);
+    }
+    int ret8 = fscanf(fp, "%d\n", &(data.main_character.token));
+    if(data.main_character.token < 0 || data.main_character.token > 3){
+        data.main_character.token = 0;
+    }
+    if(ret8  < 0)
+    {
+        printf("quelque chose ne vas pas avec fscanf de data.main_character.token(loadGame)\n");
+        exit(120);
     }
 
-	fclose(fp);
     //BAG
+    int ret9 = fscanf(fp, "%d\n", &(data.main_character.bag_size));
+    if(ret9  < 0)
+    {
+        printf("quelque chose ne vas pas avec fscanf de data.main_character.bag_size(loadGame)\n");
+        exit(119);
+    }
+    for (int i = 0; i < data.main_character.bag_size; i++)
+    {				
+        fscanf(fp, "%s\n", buffer);
+        data.main_character.Bag[i] = malloc(strlen(buffer)+1);
+        if(data.main_character.Bag[i] == NULL){
+            printf("Allocation data.main_character.Bag a pas marché(loadGame)\n");
+            exit(121);
+        }
+    	strcpy(data.main_character.Bag[i], buffer);
+    } 
+
+    for(int i = 0; i < MAX_BAG_SIZE; i++){
+        fscanf(fp, "%s\n", buffer);
+        data.main_character.ref_bag[i] = (char *)malloc((strlen(buffer)+1) * sizeof(char));
+        if(data.main_character.ref_bag[i] == NULL){
+            printf("Allocation data.main_character.ref_bag a pas marché(loadGame)\n");
+            exit(122);
+        }
+        strcpy(data.main_character.ref_bag[i], buffer);
+    }
+    //CHOICES
+    if(data.nxt_chap != NULL){
+        printf("quelque chose ne vas pas avec data.nxt_chap(loadGame)\n");
+        exit(123);
+    }
+    else{
+        fscanf(fp, "%s\n", buffer);
+        data.nxt_chap = (char *)malloc((strlen(buffer))* sizeof(char));
+        if(data.nxt_chap == NULL){
+            printf("allocation échouée pour data.nxt_chap(loadGame)\n");
+            exit(124);
+        }
+        strcpy(data.nxt_chap , buffer);
+    }
+    
+    fclose(fp);
+
     return data;
 }
-
-
-//Renvoie la lettre en majuscule
-
-
-
-
 
 int robust(int integer)
 {
@@ -453,21 +646,6 @@ int robust(int integer)
 	return choice;
 }
 
-
-
-
-void displayTxt(int size, char *txt)
-{
-//afficher .txt lettre par lettre avec un petit délai entre chaque lettre, ~> impression de temps réel
-	int delay1 = 0;//simuler l'effet de défilement(en ms) 
-	for(int i=0; i<size; i++){
-		printf("%c", txt[i]);
-		fflush(stdout);//force l'affichage du caractère sur la sortie standard avant de passer à la lettre suivante
-		struct timespec attente ={0, delay1*1000000};//attendre le délai spécifié entre chaque lettre
-		nanosleep(&attente, NULL);// permet de mettre en pause l'exécution du programme pendant une durée donnée(ici en delay1)
-	}
-}
-
 void displayLoading()
 {
   int pourcentage = 0;
@@ -480,11 +658,6 @@ void displayLoading()
     sleep(1);
     system("clear");
 }
-
-
-
-
-
 
 int pre_game()
 {
@@ -648,21 +821,6 @@ void ProcessEvent(chapter *chap, char *value, int counter)
 	//=> ajouter des événements
 }
 
-char *Corrigation_de_ProcessChoice(char *value) {
-	if (value == NULL) {
-		printf("ca va pas dans corrigaiton de process choice");
-		exit(345);
-	}
-	for (int i = 0; i <strlen(value) ; i++) {
-		char bonjour = value[i]; // Correction : retirer l'opérateur * ici
-		if (bonjour == '\n' || bonjour == '\r') { // Correction : utiliser des simples quotes pour les caractères
-			value[i] = '\0';
-			break;
-		}
-	}
-	return value;
-	
-}
 void ProcessChoice(chapter *chap, char *value)
 // =>Ce code est une fonction qui ajoute une option de choix à un chapitre d'une histoire interactive
 {
@@ -730,9 +888,9 @@ void ProcessChoice(chapter *chap, char *value)
 		}
 		else
 		{ // nous créons un nouveau chapitre en utilisant la sous-chaîne courante
-			cutteds = Corrigation_de_ProcessChoice(cutteds);
+			cutteds = Remove_carriage_return(cutteds);
 			ch.nextChapter = set_text_property(ch.nextChapter, cutteds);
-			printf("next chapter ptr = %s", ch.nextChapter);
+			//printf("next chapter ptr = %s", ch.nextChapter);
 			// ch.nextChapter = create_chapter(cutteds);
 		}
 		cutteds = strtok(NULL, delim);
@@ -781,7 +939,7 @@ chapter create_chapter(char *chapter_name)
 	}
 
 	// char buf[10] = "";
-	chapter chap = {}; // {malloc(1), malloc(0), malloc(0)};
+	chapter chap = {0}; // {malloc(1), malloc(0), malloc(0)};
 	char first_line_chars[4];
 
 	// GAME
@@ -825,29 +983,36 @@ chapter create_chapter(char *chapter_name)
 	return chap;
 }
 
-
-char *displayChapter(chapter chap, Stdt main_character)
+char *displayChapter(chapter chap, Stdt *main_character, char *next_chapter)
 {
+	if(next_chapter == NULL){
+		printf("next_chapter est nul(game.c)");
+		exit(4);
+	}
+	if(main_character == NULL){
+		printf("main_character est nul (game.c)");
+		exit(1);
+	}
 	// fighter1
-	char name1[SIZE_NAMES] = "Boris";
-	char sname1[SIZE_NAMES] = "Jackson";
+	char name1[SIZE_NAMES] = "Adama";
+	char sname1[SIZE_NAMES] = "Younga";
 	Stdt fighter1 = createFighter(name1, sname1);
 	// fighter2
-	char name2[SIZE_NAMES] = "Adama";
-	char sname2[SIZE_NAMES] = "Younga";
+	char name2[SIZE_NAMES] = "Eva";
+	char sname2[SIZE_NAMES] = "Ansermin";
 	Stdt fighter2 = createFighter(name2, sname2);
-	// fighter3
-	char name3[SIZE_NAMES] = "Lucas";
-	char sname3[SIZE_NAMES] = "Traoré";
-	Stdt fighter3 = createFighter(name3, sname3);
-	Stdt tab_fighter[3] = {fighter1, fighter2, fighter3};
+	
+	Stdt tab_fighter[2] = {fighter1, fighter2};
 
 	int lu;
 	int user_choice = 0, count = 0;
 	// printf("%s", chap.description);
-	system("cls");
+	system("clear");
 	displayTxt(strlen(chap.description), chap.description);
-	printf("\n");
+	printf("\n\n");
+	scanf("%*[^\n]"); // Vider le flux d'entrée
+	scanf("%*c");
+	displayStat(*(main_character));
 	WaitPress();
 	// EVENT DU JEU
 	switch (chap.event->type_event)
@@ -855,9 +1020,13 @@ char *displayChapter(chapter chap, Stdt main_character)
 	case 0:
 		break;
 	case 1:
-		// combat contre un monstre
-		displayBeforeFight(tab_fighter[chap.event->n_fighter], main_character);
-		fight(main_character, tab_fighter[chap.event->n_fighter]);
+		// combat contre un fighter
+		displayBeforeFight(tab_fighter[chap.event->n_fighter], *(main_character));
+		fight(*(main_character), tab_fighter[chap.event->n_fighter]);
+		if(main_character->health == 0){
+			return chap.choices[0].nextChapter;
+		}
+		return chap.choices[1].nextChapter;
 		break;
 
 	case 2:
@@ -869,22 +1038,22 @@ char *displayChapter(chapter chap, Stdt main_character)
 			if (chap.event->positive_or_negative == 1)
 			{
 				// c'est un malus de stat
-				main_character.fame -= chap.event->n_stat;
+				main_character->fame -= chap.event->n_stat;
 				// Si une Stat inf à 0 alors remit à 0
-				if (main_character.fame < 0)
+				if (main_character->fame < 0)
 				{
-					main_character.fame = 0;
+					main_character->fame = 0;
 				}
 				printf("Vous avez perdu %d de fame !\n", chap.event->n_stat);
 			}
 			else
 			{
 				// c'est un bonus de stat
-				main_character.fame += chap.event->n_stat;
+				main_character->fame += chap.event->n_stat;
 				// Si une Stat sup à 20 alors remit à 20
-				if (main_character.fame > 20)
+				if (main_character->fame > 20)
 				{
-					main_character.fame = 20;
+					main_character->fame = 20;
 				}
 				printf("Vous avez gagné %d de fame !\n", chap.event->n_stat);
 			}
@@ -895,22 +1064,22 @@ char *displayChapter(chapter chap, Stdt main_character)
 			if (chap.event->positive_or_negative == 1)
 			{
 				// c'est un malus de stat
-				main_character.intellect -= chap.event->n_stat * (main_character.fame / 10);
+				main_character->intellect -= chap.event->n_stat * (main_character->fame / 10);
 				// Si une Stat inf à 0 alors remit à 0
-				if (main_character.intellect < 0)
+				if (main_character->intellect < 0)
 				{
-					main_character.intellect = 0;
+					main_character->intellect = 0;
 				}
 				printf("Vous avez perdu %d d'intelligence !\n", chap.event->n_stat);
 			}
 			else
 			{
 				// c'est un bonus de stat
-				main_character.intellect += chap.event->n_stat * (main_character.fame / 10);
+				main_character->intellect += chap.event->n_stat * (main_character->fame / 10);
 				// Si une Stat sup à 20 alors remit à 20
-				if (main_character.intellect > 20)
+				if (main_character->intellect > 20)
 				{
-					main_character.intellect = 20;
+					main_character->intellect = 20;
 				}
 				printf("Vous avez gagné %d d'intelligence !\n", chap.event->n_stat);
 			}
@@ -920,22 +1089,22 @@ char *displayChapter(chapter chap, Stdt main_character)
 			if (chap.event->positive_or_negative == 1)
 			{
 				// c'est un malus de stat
-				main_character.power -= chap.event->n_stat * (main_character.fame / 10);
+				main_character->power -= chap.event->n_stat * (main_character->fame / 10);
 				// Si une Stat inf à 0 alors remit à 0
-				if (main_character.power < 0)
+				if (main_character->power < 0)
 				{
-					main_character.power = 0;
+					main_character->power = 0;
 				}
 				printf("Vous avez perdu %d de force !\n", chap.event->n_stat);
 			}
 			else
 			{
 				// c'est un bonus de stat
-				main_character.power += chap.event->n_stat * (main_character.fame / 10);
+				main_character->power += chap.event->n_stat * (main_character->fame / 10);
 				// Si une Stat sup à 20 alors remit à 20
-				if (main_character.power > 20)
+				if (main_character->power > 20)
 				{
-					main_character.power = 20;
+					main_character->power = 20;
 				}
 				printf("Vous avez gagné %d de force !\n", chap.event->n_stat);
 			}
@@ -944,25 +1113,26 @@ char *displayChapter(chapter chap, Stdt main_character)
 			if (chap.event->positive_or_negative == 1)
 			{
 				// c'est un malus de stat
-				main_character.wellness -= chap.event->n_stat * (main_character.fame / 10);
+				main_character->wellness -= chap.event->n_stat * (main_character->fame / 10);
 				// Si une Stat inf à 0 alors remit à 0
-				if (main_character.wellness < 0)
+				if (main_character->wellness < 0)
 				{
-					main_character.wellness = 0;
+					main_character->wellness = 0;
 				}
 				printf("Vous avez perdu %d de mental !\n", chap.event->n_stat);
 			}
 			else
 			{
 				// c'est un bonus de stat
-				main_character.wellness += chap.event->n_stat * (main_character.fame / 10);
+				main_character->wellness += chap.event->n_stat * (main_character->fame / 10);
 				// Si une Stat sup à 20 alors remit à 20
-				if (main_character.wellness > 20)
+				if (main_character->wellness > 20)
 				{
-					main_character.wellness = 20;
+					main_character->wellness = 20;
 				}
 				printf("Vous avez gagné %d de mental !\n", chap.event->n_stat);
 			}
+			break;
 		}
 	case 3:
 
@@ -970,24 +1140,31 @@ char *displayChapter(chapter chap, Stdt main_character)
 		if (chap.event->add_or_remove_bag == 1)
 		{
 			// c'est un malus de stat
-			removeItem(&main_character, chap.event->id_object);
-			displayBag(&main_character);
+			removeItem(main_character, chap.event->id_object);
+			displayBag(main_character);
 		}
 		else
 		{
 			// c'est un ajout d'objet dans l'inventaire
-			addItem(&main_character, chap.event->id_object);
-			displayBag(&main_character);
+			addItem(main_character, chap.event->id_object);
+			displayBag(main_character);
 		}
 		break;
 	
 	case 4:
-		displayStat(main_character);
+		displayStat(*(main_character));
 		break;
 	}
 	
 	if(chap.event->add_token == 1){
-		main_character.token ++;
+		main_character->token ++;
+	}
+
+	if(strcmp("15", next_chapter) == 0|| strcmp("23B", next_chapter) == 0|| strcmp("31B", next_chapter)== 0 ){
+		if(main_character->fame < 15){
+			return chap.choices[1].nextChapter;
+		}
+		return chap.choices[0].nextChapter;
 	}
 
 	if (chap.choice_count > 1)
@@ -1002,24 +1179,40 @@ char *displayChapter(chapter chap, Stdt main_character)
 		if(chap.after_description != NULL){
 			displayTxt(strlen(chap.after_description), chap.after_description);
 		}
-		printf("indx = %d\n", user_choice-1);
-		printf("PTR = %p\n", chap.choices[user_choice-1].nextChapter);
-		fflush(stdout);
+		//printf("indx = %d\n", user_choice-1);
+		
 		return chap.choices[user_choice - 1].nextChapter;
 	}
 	else
 	{
-		if (&chap.event->type_event != NULL)
-		{
-			if (chap.event->type_event != 0)
-			{
-				WaitPress();
-			}
+		if(chap.choice_count != 1){
+			WaitPress();
 		}
+		if((strcmp(chap.choices[0].nextChapter, "33") == 0) && main_character->health == 0){
+			char *rep;
+			rep = (char *)malloc(3 * sizeof(char));
+			if(rep == NULL){
+				printf("l'allocation du chapitre pour le combat final a pas marchée (game.c)\n");
+				exit(45);
+			}
+			strcpy(rep, "F2");
+			
+			return rep;
+		}
+		else if((strcmp(chap.choices[0].nextChapter, "33") == 0) && main_character->health > 0){
+			char *rep;
+			rep = (char *)malloc(3 * sizeof(char));
+			if(rep == NULL){
+				printf("l'allocation du chapitre pour le combat final a pas marchée (game.c)\n");
+				exit(45);
+			}
+			strcpy(rep, "34");
+			return rep;
+		}
+		
+	}
 		return chap.choices[0].nextChapter;
 	}
-}
-
 
 int main()
 {
@@ -1029,140 +1222,104 @@ int main()
     int verif = 1;
     int pourcentage;
     Stdt mainCharacter; 
-	SaveData save;
+	SaveData save;//créée le fichier de sauvegarde
     mainCharacter.bag_size = 0;
-
-    createBag(&mainCharacter);
+    createBag(&mainCharacter);//création du sac d'items 
     int start1, start2;
-    char* next_chap = NULL;
+	int game = 1;
+	char* next_chap = NULL;
 //CREATION DE FICHIER
 	start1 = pre_game();
+	
+	chapter ch = create_chapter("01");
+	next_chap = set_text_property(next_chap, "01"); 
 	//Choix d'une "Nouvelle Partie"
 	if(start1 == 1)
 	{
-		displayLoading();
-		//affichage de %tage en temps réelle
-		system("clear");
-		//CREATE STUDENTS
-		char* txt1 = "Avant de commencer a jouer, vous allez saisir votre personnage principal\n\n";
-		int size2 = strlen(txt1);
-		displayTxt(size2, txt1);//Affichage de Txt1   
+			displayLoading();
+			//affichage de %tage en temps réelle
+			system("clear");
+			//CREATE STUDENTS
+			char* txt1 = "Avant de commencer a jouer, vous allez saisir votre personnage principal\n\n";
+			int size2 = strlen(txt1);
+			displayTxt(size2, txt1);//Affichage de Txt1   
 
-		mainCharacter = createMainCharacter(mainCharacter);
-		system("clear");
-		displayStat(mainCharacter);
-		sleep(1);
-		system("clear");
+			mainCharacter = createMainCharacter(mainCharacter);//créée le personnage principal
+			system("clear");
+			displayStat(mainCharacter);//affiche les stats du personnage principal
+			WaitPress(); //attends une action de l'utilisateur (ENTREE) pour afficher la suite
+			system("clear");
 
-		char* txt2 = "Commençons...\n";
-		int size3 = strlen(txt2);
-		displayTxt(size3, txt2);
-		sleep(1);
-		system("clear");
+			//VARIABLES 
 
-		//VARIABLES 
-		int game = 1;
-		chapter ch = create_chapter("01");
-
-//GAME
-		while (game == 1)
-		{
-			next_chap = displayChapter(ch, mainCharacter);
-			save.main_character = mainCharacter;
-			ch = create_chapter(next_chap);
-			SaveGame(&save);
-			if(next_chap == "F1" || next_chap == "F2" || next_chap == "F3" || next_chap == "F4"){
-				game = 0;
-			}
-		}
-		}//ferme boucle de start == 1
+		}		//ferme boucle de start == 1
 		else if(start1 == 2){ //"Reprendre partie"
 			//affichage de %tage en temps réelle
-			for(pourcentage = 0; pourcentage <= 100; pourcentage+=20) {
-			printf("CHARGEMENT DE PARTIE... %d%%\r", pourcentage); // \r permet de revenir en début de ligne
-			fflush(stdout); // force l'affichage immédiat du texte
-			usleep(100000); // suspend l'exécution du programme pendant 100000 microsecondes (0,1 seconde)
-			}
-			printf("Chargement fini !\n");
-			sleep(1);
-			system("clear");
-			
-			
-			SaveData loadedData = loadGame();
-			if(loadedData.saveEvent.choice_count == 1){
+			displayLoading();
+				
+			if(is_save_txt_null() != 0){
 				printf("Sauvegarde chargée avec succès !\n");
 				sleep(1);
-				system("clear");
-				//VARIABLES 
-				char* next_chap;
-				//ROBUST
-				if(next_chap == NULL)
-				{
-					printf("Quelque chose ne vas pas avec next_chap(main/Charger partie)\n");
-					exit(10);
-				}
-				chapter ch = create_chapter("02");
-				next_chap= displayChapter(ch, mainCharacter);
+				system("clear"); 
+
+				SaveData loadedData = loadGame();
+				next_chap = Remove_carriage_return(loadedData.nxt_chap);
 				ch = create_chapter(next_chap);
 
-			} else {
+			} 
+			else 
+			{
 				printf("Impossible de charger la sauvegarde!\n\n");
 				start2 = no_game();
 				if(start2 == 1){ //"Nouvelle Partie"
-					system("clear");
-					//affichage de %tage en temps réelle
 					displayLoading();
+					//affichage de %tage en temps réelle
+					system("clear");
+					//CREATE STUDENTS
 					char* txt1 = "Avant de commencer a jouer, vous allez saisir votre personnage principal\n\n";
 					int size2 = strlen(txt1);
 					displayTxt(size2, txt1);//Affichage de Txt1   
 
-					mainCharacter = createMainCharacter(mainCharacter);
+					mainCharacter = createMainCharacter(mainCharacter);//créée le personnage principal
+					mainCharacter.token = 0;
 					system("clear");
-					displayStat(mainCharacter);
-					WaitPress();
+					displayStat(mainCharacter);//affiche les stats du personnage principal
+					WaitPress(); //attends une action de l'utilisateur (ENTREE) pour afficher la suite
 					system("clear");
-
-					char* txt2 = "Commençons...\n";
-					int size3 = strlen(txt2);
-					displayTxt(size3, txt2);
-					sleep(1);
-					system("clear");
-next_chap = displayChapter(create_chapter("DebutJeu"), mainCharacter);
-next_chap = displayChapter(create_chapter(next_chap), mainCharacter);
-					//GAME
-					int game = 1;
-					char* next_chap;
-					//ROBUST
-					if(next_chap == NULL)
-					{
-						printf("Quelque chose ne vas pas avec next_chap\n");
-						exit(100);
 					}
-					chapter ch = create_chapter("Event1");
-					//GAME
-					while (game == 1)
-					{
-						//strcpy(next_chap, displayChapter(ch));
-						next_chap= displayChapter(ch, mainCharacter);
-						ch = create_chapter(next_chap);
-
+					else{
+						//quitter le jeu
+						system("clear");
+						return 0;
 					}
-				return 0;
-				} else
-					{ //"Quitter le Jeu"
-					system("clear");
-					return 0;
-				  	}
 			}
 		}
-	else {//"Quitter le Jeu"
-		system("clear");
+		else {
+			system("clear");
+			return 0;
+		}
+		while (game == 1){
+			next_chap = displayChapter(ch, &mainCharacter, next_chap);
+			free(ch.description);
+			free(ch.after_description);
+			save.main_character = mainCharacter;//actualisation du fichier de sauvegarde
+			if(save.nxt_chap == NULL){
+				save.nxt_chap = (char *)malloc(strlen(next_chap) * sizeof(char));
+				if(save.nxt_chap == NULL){
+					printf("allocation de save.nxt_chap échouée'main.c)");
+					exit(5);
+				}
+			}
+			save.nxt_chap = next_chap;
+			ch = create_chapter(next_chap);
+			SaveGame(&save);
+			free(save.nxt_chap);
+
+			if(next_chap == "F1" || next_chap == "F2" || next_chap == "F3" || next_chap == "F4"){
+				game = 0;
+			}
+		}
+
+
 		return 0;
-	}
-return 0;
 }
-
-
-
-
-
